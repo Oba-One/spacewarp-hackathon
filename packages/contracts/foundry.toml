@@ -4,6 +4,13 @@ fuzz_runs = 256
 optimizer = true
 optimizer_runs = 1000000
 verbosity = 1
-libs = ["../../node_modules", "../../../mud"]
+libs = ["../../node_modules", "../../../mud", "lib"]
+remappings = [
+    "ds-test/=lib/ds-test/src/",
+    "solmate/=lib/solmate/src/",
+    "forge-std/=lib/forge-std/src/",
+    "oz/=lib/oz/contracts/"
+]
+rpc_endpoints = { wallaby = '${WALLABY_RPC_URL}' }
 src = "src"
 out = "out"
