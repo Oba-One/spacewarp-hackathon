@@ -8,8 +8,8 @@ import { StdCheatsSafe } from "forge-std/StdCheats.sol";
 import { StdStorage, stdStorageSafe } from "forge-std/StdStorage.sol";
 
 contract BaseTest is DSTest, StdCheatsSafe {
-    using stdStorageSafe for StdStorage;
+  using stdStorageSafe for StdStorage;
 
-    StdStorage stdstore;
-    Hevm internal constant hevm = Hevm(HEVM_ADDRESS);
+  StdStorage stdstore;
+  Hevm internal constant hevm = Hevm(HEVM_ADDRESS);
 }
