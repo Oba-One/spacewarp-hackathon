@@ -1,0 +1,100 @@
+/* see PropPacks for the full list */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans"), url("./assets/fonts/OpenSans.woff2") format("woff2");
+} */
+
+html {
+  --page-color: white;
+  --ink-color: black;
+  --highlight-color: red;
+  font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --page-color: black;
+    --ink-color: white;
+    --highlight-color: pink;
+    color-scheme: dark;
+    accent-color: pink;
+  }
+
+  img {
+    filter: brightness(0.8) contrast(1.2);
+  }
+}
+
+html {
+  accent-color: var(--highlight-color);
+}
+
+body {
+  margin: 0;
+  font-family: "OpenSans", sans-serif;
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--page-color);
+  color: var(--ink-color);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+article {
+  max-inline-size: 66ch;
+  line-height: 1.65;
+}
+
+blockquote {
+  max-inline-size: 45ch;
+  line-height: 2;
+}
+
+img,
+video,
+iframe {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+input {
+  background-color: var(--page-color);
+  color: var(--ink-color);
+  border-color: var(--ink-color);
+}
+
+button {
+  background-color: var(--ink-color);
+  color: var(--page-color);
+}
+
+svg {
+  stroke: var(--ink-color);
+  fill: var(--page-color);
+}
+
+#root {
+  display: grid;
+  grid-template-rows: 1fr 80px;
+  grid-template-columns: 92px 1fr;
+  height: 100%;
+  width: 100%;
+  grid-template-areas:
+    "content content"
+    "nav nav";
+}
+
+@media screen and (min-width: 768px) {
+  #root {
+    grid-template-areas:
+      "nav content"
+      "nav content";
+  }
+}
