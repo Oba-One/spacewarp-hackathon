@@ -11,7 +11,7 @@ import { IdentityComponent, ID as IdentityID } from "../components/IdentityCompo
 import { AssetComponent, ID as AssetID } from "../components/AssetComponent.sol";
 import { PositionComponent, ID as PositionID } from "../components/PositionComponent.sol";
 
-import { PositionType, AssetType } from "./MSTypes.sol";
+import { PositionType, AssetType, IdentityType } from "./MSTypes.sol";
 
 library LibInit {
   // Inits character entity with default values
@@ -24,9 +24,12 @@ library LibInit {
     uint256 playerEntity = world.getUniqueEntityId();
     PositionType position = PositionType.Deck;
     AssetType memory asset = AssetType({image: "tempimageurl", model: "tempmodelurl"});
+    IdentityType memory identity = IdentityType({name: "Character", description: "A character entity"});
 
     PositionComponent(getAddressById(components, PositionID)).set(characterEntity, position);
     OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
     AssetComponent(getAddressById(components, AssetID)).set(characterEntity, asset);
+    IdentityComponent(getAddressById(components, IdentityID)).set(characterEntity, identity);
+    
   }
 }

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 import "std-contracts/components/StringComponent.sol";
-import "libraries/MSTypes.sol";
+import { AssetType } from "libraries/MSTypes.sol";
 
 uint256 constant ID = uint256(keccak256("mudSnap.component.Asset"));
 

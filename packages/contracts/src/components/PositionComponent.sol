@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
+
 import "std-contracts/components/Uint256Component.sol";
-import "libraries/MSTypes.sol";
+import { PositionType } from "libraries/MSTypes.sol";
 
 uint256 constant ID = uint256(keccak256("mudSnap.component.Position"));
 
