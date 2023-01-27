@@ -17,13 +17,13 @@ library LibInit {
   // Inits character entity with default values
   function initCharacter(
     IUint256Component components,
-    IWorld world,
-    PositionType position,
-    AssetType memory asset
+    IWorld world
   ) internal returns (uint256 characterEntity) {
     characterEntity = world.getUniqueEntityId();
     // @junaama TODO: temp player entity id, abstract out later to sep function
     uint256 playerEntity = world.getUniqueEntityId();
+    PositionType position = PositionType.Deck;
+    AssetType memory asset = AssetType({image: "tempimageurl", model: "tempmodelurl"});
 
     PositionComponent(getAddressById(components, PositionID)).set(characterEntity, position);
     OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
