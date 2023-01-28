@@ -24,7 +24,7 @@ const Views = () => {
 };
 
 function App() {
-  const [status, setStatus] = useState<"loading" | "done" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "done" | "error">("done");
   const [error, setError] = useState("");
 
   function handleReload() {
