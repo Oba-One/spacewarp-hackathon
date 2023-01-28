@@ -4,7 +4,7 @@ import { ConnectWallet } from "./ConnectWallet";
 
 export const Nav: React.FC = () => {
   return (
-    <nav>
+    <nav className='fixed inset-0'>
       <ConnectWallet />
     </nav>
   );

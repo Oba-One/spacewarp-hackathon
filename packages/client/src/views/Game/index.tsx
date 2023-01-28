@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 /**
@@ -6,19 +6,46 @@ import { Unity, useUnityContext } from "react-unity-webgl";
  * 1, Will render unity view here and once the game is loaded, remove loader
  */
 const Game: React.FC = () => {
-  const { unityProvider } = useUnityContext({
-    dataUrl: "unity/game.data",
-    frameworkUrl: "unity/game.framework.js",
-    loaderUrl: "unity/game.loader.js",
-    codeUrl: "unity/game.wasm",
+  const { unityProvider, sendMessage, addEventListener, removeEventListener } =
+    useUnityContext({
+      dataUrl: "unity/game.data",
+      frameworkUrl: "unity/game.framework.js",
+      loaderUrl: "unity/game.loader.js",
+      codeUrl: "unity/game.wasm",
+    });
+
+  const onBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    sendMessage(
+      "MainCamera",
+      "ReactToUnityMethod",
+      JSON.stringify({
+        foo: "bar",
+      })
+    );
+  };
+
+  useEffect(() => {
+    const cb = (params: any) => {
+      console.log("DemoUnityToReact", params);
+    };
+
+    addEventListener("DemoUnityToReact", cb);
+
+    return () => {
+      removeEventListener("DemoUnityToReact", cb);
+    };
   });
 
   return (
-    <Unity
-      className="unity"
-      unityProvider={unityProvider}
-      style={{ width: "100vw", height: "100vh" }}
-    />
+    <div className="flex flex-col">
+      <Unity
+        className="unity"
+        unityProvider={unityProvider}
+        style={{ width: "100vw", height: "90vh" }}
+      />
+      <button onClick={onBtnClick}>Click</button>
+    </div>
   );
 };
 
