@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 GAME_ROOT="./packages/unity"
 PATH_TO_UNITY_BUILD="./packages/unity/builds/web/Build"
-PATH_TO_REACT_BUILD="./packages/client/src/views/Game/unity"
+PATH_TO_REACT_BUILD="./packages/client/public/unity"
 echo "--- Beginning to build the frontend"
 rm -rf $PATH_TO_UNITY_BUILD
 echo "-------- Web build started :: $(date +%T)"
