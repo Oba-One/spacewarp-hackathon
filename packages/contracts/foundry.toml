@@ -1,9 +1,11 @@
 [profile.default]
+solc = "0.8.17"
 ffi = false
 fuzz_runs = 256
 optimizer = true
 optimizer_runs = 1000000
 verbosity = 1
 libs = ["../../node_modules", "../../../mud"]
+rpc_endpoints = { hyperspace = '${HYPERSPACE_RPC_URL}' }
 src = "src"
 out = "out"
