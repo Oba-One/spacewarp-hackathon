@@ -15,22 +15,22 @@ enum PositionType {
     Location3
 }
 
-struct AssetType {
-    string image;
-    string model;
-}
-
-struct IdentityType {
-    string name;
-    string description;
-}
-
 // @junaama TODO: Action names are placeholders for now
 enum ActionType {
     Action1,
     Action2,
     Action3,
     Action4
+}
+// @junaama @TODO I don't think we need this for now
+// struct AssetType {
+//     string image;
+//     string model;
+// }
+
+struct IdentityType {
+    string name;
+    string description;
 }
 
 struct EffectType {
