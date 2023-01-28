@@ -15,6 +15,7 @@
     "dev:contracts": "yarn workspace contracts run dev",
     "build": "run-pty % yarn build:contracts % yarn build:client",
     "build:client": "yarn workspace client build",
+    "build:unity": "zsh ./scripts/build-unity.sh",
     "build:contracts": "yarn workspace contracts deploy"
   },
   "devDependencies": {
