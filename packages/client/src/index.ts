@@ -15,11 +15,6 @@ const world = createWorld();
 // If a contractId is provided, MUD syncs the state with the corresponding
 // component contract (in this case `CounterComponent.sol`)
 const components = {
-  Counter: defineNumberComponent(world, {
-    metadata: {
-      contractId: "component.Counter",
-    },
-  }),
   Asset: defineStringComponent(world, {
     metadata: {
       contractId: "component.Asset",
@@ -51,9 +46,6 @@ const components = {
 };
 
 // Components expose a stream that triggers when the component is updated.
-components.Counter.update$.subscribe(({ value }) => {
-  document.getElementById("counter")!.innerHTML = String(value?.[0]?.value);
-});
 components.Asset.update$.subscribe(({ value }) => {
   document.getElementById("asset")!.innerHTML = String(value?.[0]?.value);
 });
