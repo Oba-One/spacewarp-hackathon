@@ -11,25 +11,37 @@ import { IdentityComponent, ID as IdentityID } from "../components/IdentityCompo
 import { AssetComponent, ID as AssetID } from "../components/AssetComponent.sol";
 import { PositionComponent, ID as PositionID } from "../components/PositionComponent.sol";
 
-import { PositionType, AssetType, IdentityType } from "./MSTypes.sol";
+import { PositionType, IdentityType } from "./MSTypes.sol";
 
 library LibInit {
+  // Inits game with player with a few characters
+  function init(IWorld _world, IUint256Component components, uint256 playerEntity) public {
+    IdentityType memory identity1 = IdentityType({ name: "Character", description: "A character entity" });
+    // @junaama TODO: remove hardcoding later
+    string
+      memory asset1 = "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
+    initCharacter(components, _world, asset1, identity1, playerEntity);
+  }
+
+  // @junaama TODO: add components and add to PlayerComponent
+  function initPlayer(address playerAddress) internal returns (uint256 playerEntity) {
+    playerEntity = addressToEntity(playerAddress);
+  }
+
   // Inits character entity with default values
   function initCharacter(
     IUint256Component components,
-    IWorld world
+    IWorld world,
+    string memory assetValue,
+    IdentityType memory identity,
+    uint256 playerEntity
   ) internal returns (uint256 characterEntity) {
     characterEntity = world.getUniqueEntityId();
-    // @junaama TODO: temp player entity id, abstract out later to sep function
-    uint256 playerEntity = world.getUniqueEntityId();
     PositionType position = PositionType.Deck;
-    AssetType memory asset = AssetType({image: "tempimageurl", model: "tempmodelurl"});
-    IdentityType memory identity = IdentityType({name: "Character", description: "A character entity"});
 
     PositionComponent(getAddressById(components, PositionID)).set(characterEntity, position);
     OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
-    AssetComponent(getAddressById(components, AssetID)).set(characterEntity, asset);
+    AssetComponent(getAddressById(components, AssetID)).set(characterEntity, assetValue);
     IdentityComponent(getAddressById(components, IdentityID)).set(characterEntity, identity);
-    
   }
 }
