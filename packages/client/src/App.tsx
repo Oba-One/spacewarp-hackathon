@@ -1,5 +1,10 @@
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from "@livepeer/react";
 import { SWRConfig } from "swr";
-import { useState } from "react";
+import React, { useState } from "react";
 import { getDefaultProvider } from "ethers";
 import { WagmiConfig, createClient } from "wagmi";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
@@ -12,6 +17,12 @@ import { Loader } from "./components/Loader";
 const client = createClient({
   autoConnect: false,
   provider: getDefaultProvider(),
+});
+
+const livepeerClient = createReactClient({
+  provider: studioProvider({
+    apiKey: process.env.NEXT_PUBLIC_STUDIO_API_KEY ?? "",
+  }),
 });
 
 const Views = () => {
@@ -40,13 +51,15 @@ function App() {
           refreshInterval: 3000,
         }}
       >
-        <BrowserRouter>
-          {(status === "loading" || status === "error") && (
-            <Loader error={error} reload={handleReload} />
-          )}
-          <Nav />
-          <Views />
-        </BrowserRouter>
+        <LivepeerConfig client={livepeerClient}>
+          <BrowserRouter>
+            {(status === "loading" || status === "error") && (
+              <Loader error={error} reload={handleReload} />
+            )}
+            <Nav />
+            <Views />
+          </BrowserRouter>
+        </LivepeerConfig>
       </SWRConfig>
     </WagmiConfig>
   );
