@@ -8,6 +8,9 @@ uint256 constant ID = uint256(keccak256("ds.component.GameConfig"));
 
 import {GameConfig} from "../libraries/DSTypes.sol";
 
+///@title GameConfigComponent for item Character
+///@author Mehdi R.
+///@notice You can deploy this contract as ID for a system
 contract GameConfigComponent is Component {
     constructor(address world) Component(world, ID) {}
 
