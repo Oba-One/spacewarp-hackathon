@@ -3,7 +3,7 @@
   "systems": [
     {
       "name": "InitSystem",
-      "writeAccess": ["AssetComponent", "OwnedByComponent", "PositionComponent", "IdentityComponent"]
+      "writeAccess": ["*"]
     }
   ]
 }
