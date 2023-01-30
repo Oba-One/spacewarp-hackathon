@@ -69,9 +69,8 @@ setupMUDNetwork<typeof components, SystemTypes>(
   // After setting up the network, we can tell MUD to start the synchronization process.
   startSync();
   console.log("components", components.Asset.values);
-  console.log('systems: ', systems['mudSnap.system.Init']);
+  console.log("systems: ", systems["mudSnap.system.Init"]);
   // Just for demonstration purposes: we create a global function that can be
   // called to invoke the Increment system contract. (See IncrementSystem.sol.)
-  (window as any).init = () =>
-    systems["mudSnap.system.Init"].execute();
+  (window as any).init = () => systems["mudSnap.system.Init"].execute("");
 });

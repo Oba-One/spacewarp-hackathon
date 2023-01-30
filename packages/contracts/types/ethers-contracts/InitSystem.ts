@@ -4,7 +4,6 @@
 import type {
   BaseContract,
   BigNumber,
-  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
@@ -27,29 +26,20 @@ import type {
   PromiseOrValue,
 } from "./common";
 
-export interface IncrementSystemInterface extends utils.Interface {
+export interface InitSystemInterface extends utils.Interface {
   functions: {
     "execute(bytes)": FunctionFragment;
-    "executeTyped(uint256)": FunctionFragment;
     "owner()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic:
-      | "execute"
-      | "executeTyped"
-      | "owner"
-      | "transferOwnership"
+    nameOrSignatureOrTopic: "execute" | "owner" | "transferOwnership"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "execute",
     values: [PromiseOrValue<BytesLike>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "executeTyped",
-    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -58,10 +48,6 @@ export interface IncrementSystemInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(functionFragment: "execute", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "executeTyped",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
@@ -87,12 +73,12 @@ export type OwnershipTransferredEvent = TypedEvent<
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
 
-export interface IncrementSystem extends BaseContract {
+export interface InitSystem extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: IncrementSystemInterface;
+  interface: InitSystemInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -115,12 +101,7 @@ export interface IncrementSystem extends BaseContract {
 
   functions: {
     execute(
-      args: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    executeTyped(
-      entity: PromiseOrValue<BigNumberish>,
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -133,12 +114,7 @@ export interface IncrementSystem extends BaseContract {
   };
 
   execute(
-    args: PromiseOrValue<BytesLike>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  executeTyped(
-    entity: PromiseOrValue<BigNumberish>,
+    arg0: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -151,12 +127,7 @@ export interface IncrementSystem extends BaseContract {
 
   callStatic: {
     execute(
-      args: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    executeTyped(
-      entity: PromiseOrValue<BigNumberish>,
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -181,12 +152,7 @@ export interface IncrementSystem extends BaseContract {
 
   estimateGas: {
     execute(
-      args: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    executeTyped(
-      entity: PromiseOrValue<BigNumberish>,
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -200,12 +166,7 @@ export interface IncrementSystem extends BaseContract {
 
   populateTransaction: {
     execute(
-      args: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    executeTyped(
-      entity: PromiseOrValue<BigNumberish>,
+      arg0: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
