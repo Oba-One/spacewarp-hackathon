@@ -12,6 +12,9 @@ const Game: React.FC = () => {
       frameworkUrl: "unity/game.framework.js",
       loaderUrl: "unity/game.loader.js",
       codeUrl: "unity/game.wasm",
+      companyName: "MudSnap",
+      productName: "MudSnap",
+      productVersion: "0.1",
     });
 
   const onBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

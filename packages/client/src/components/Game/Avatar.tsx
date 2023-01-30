@@ -11,7 +11,7 @@ export const Stream = () => {
   } = useCreateStream();
 
   async function startCapture(displayMediaOptions) {
-    let captureStream = null;
+    let captureStream: null | MediaStream = null;
 
     try {
       captureStream = await navigator.mediaDevices.getDisplayMedia(
@@ -21,7 +21,7 @@ export const Stream = () => {
       console.error(`Error: ${err}`);
     }
     return captureStream;
-  } 
+  }
 
   return (
     <>
