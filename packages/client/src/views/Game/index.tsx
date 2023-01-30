@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
+import { LivepeerConfig } from "@livepeer/react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+
+import { livepeerClient } from "modules/clients";
+import { Player } from "components/Game/Player";
+import { useRootStore } from "@huddle01/huddle01-client/*";
 
 /**
  * Game View
@@ -16,6 +21,8 @@ const Game: React.FC = () => {
       productName: "MudSnap",
       productVersion: "0.1",
     });
+
+  const peerId = useRootStore((state) => state.peers[0].peerId);
 
   const onBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -41,14 +48,18 @@ const Game: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col">
+    <LivepeerConfig client={livepeerClient}>
       <Unity
         className="unity"
         unityProvider={unityProvider}
         style={{ width: "100vw", height: "90vh" }}
       />
-      <button onClick={onBtnClick}>Click</button>
-    </div>
+      <section id="react" className="fixed inset-0 w-screen h-screen">
+        <Player type="opponent" peerId={peerId} gameId="" />
+        <Player type="player" peerId={peerId} gameId="" />
+        {/* <button onClick={onBtnClick}>Click</button> */}
+      </section>
+    </LivepeerConfig>
   );
 };
 

@@ -1,29 +1,15 @@
-import {
-  LivepeerConfig,
-  createReactClient,
-  studioProvider,
-} from "@livepeer/react";
 import { SWRConfig } from "swr";
-import React, { useState } from "react";
-import { getDefaultProvider } from "ethers";
-import { WagmiConfig, createClient } from "wagmi";
+import { useState } from "react";
+import { WagmiConfig } from "wagmi";
+import { LivepeerConfig } from "@livepeer/react";
+import { HuddleClientProvider } from "@huddle01/huddle01-client";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import Game from "./views/Game";
 
 import { Nav } from "./components/Nav";
 import { Loader } from "./components/Loader";
-
-const client = createClient({
-  autoConnect: false,
-  provider: getDefaultProvider(),
-});
-
-const livepeerClient = createReactClient({
-  provider: studioProvider({
-    apiKey: "",
-  }),
-});
+import { huddleClient, livepeerClient, wagmiClient } from "modules/clients";
 
 const Views = () => {
   return (
@@ -45,21 +31,21 @@ function App() {
   }
 
   return (
-    <WagmiConfig client={client}>
+    <WagmiConfig client={wagmiClient}>
       <SWRConfig
         value={{
           refreshInterval: 3000,
         }}
       >
-        <LivepeerConfig client={livepeerClient}>
-          <BrowserRouter>
-            {(status === "loading" || status === "error") && (
-              <Loader error={error} reload={handleReload} />
-            )}
-            <Nav />
-            <Views />
-          </BrowserRouter>
-        </LivepeerConfig>
+          <HuddleClientProvider value={huddleClient}>
+            <BrowserRouter>
+              {(status === "loading" || status === "error") && (
+                <Loader error={error} reload={handleReload} />
+              )}
+              <Nav />
+              <Views />
+            </BrowserRouter>
+          </HuddleClientProvider>
       </SWRConfig>
     </WagmiConfig>
   );
