@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     private Transform[] handSlots;
     private Transform[] fieldSlots;
 
+    [SerializeField]
+    private Text account;
+
     void Awake()
     {
         deck = new List<CardManager>();
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        account.text = PlayerPrefs.GetString("Account");
     }
 
     void MoveCardFromDeck2Hand()
