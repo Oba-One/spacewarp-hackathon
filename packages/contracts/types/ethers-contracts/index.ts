@@ -14,7 +14,6 @@ export type { PositionComponent } from "./PositionComponent";
 export type { RegisterSystem } from "./RegisterSystem";
 export type { StringComponent } from "./StringComponent";
 export type { System } from "./System";
-export type { Uint256Component } from "./Uint256Component";
 export type { Uint32Component } from "./Uint32Component";
 export type { World } from "./World";
 export * as factories from "./factories";
@@ -31,6 +30,5 @@ export { PositionComponent__factory } from "./factories/PositionComponent__facto
 export { RegisterSystem__factory } from "./factories/RegisterSystem__factory";
 export { StringComponent__factory } from "./factories/StringComponent__factory";
 export { System__factory } from "./factories/System__factory";
-export { Uint256Component__factory } from "./factories/Uint256Component__factory";
 export { Uint32Component__factory } from "./factories/Uint32Component__factory";
 export { World__factory } from "./factories/World__factory";

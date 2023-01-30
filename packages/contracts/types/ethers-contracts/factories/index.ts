@@ -14,6 +14,5 @@ export { PositionComponent__factory } from "./PositionComponent__factory";
 export { RegisterSystem__factory } from "./RegisterSystem__factory";
 export { StringComponent__factory } from "./StringComponent__factory";
 export { System__factory } from "./System__factory";
-export { Uint256Component__factory } from "./Uint256Component__factory";
 export { Uint32Component__factory } from "./Uint32Component__factory";
 export { World__factory } from "./World__factory";
