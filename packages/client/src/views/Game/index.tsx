@@ -54,7 +54,7 @@ const Game: React.FC = () => {
         unityProvider={unityProvider}
         style={{ width: "100vw", height: "90vh" }}
       />
-      <section id="react" className="fixed inset-0 w-screen h-screen">
+      <section id="react" className="fixed inset-0 w-screen h-screen ">
         <Player type="opponent" peerId={peerId} gameId="" />
         <Player type="player" peerId={peerId} gameId="" />
         {/* <button onClick={onBtnClick}>Click</button> */}

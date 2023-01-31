@@ -10,7 +10,7 @@ interface PlayerProps {
 
 export const Player: FC<PlayerProps> = ({ gameId, peerId, type }) => {
   return (
-    <aside className="player">
+    <aside className="player ">
       <Avatar gameId={gameId} peerId={peerId} type={type} />
       <Chat peerId={peerId} />
     </aside>
