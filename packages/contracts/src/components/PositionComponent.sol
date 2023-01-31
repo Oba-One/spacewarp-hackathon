@@ -3,9 +3,8 @@ pragma solidity >=0.8.0;
 
 import "solecs/Component.sol";
 
-///@title PositionComponent for item Character
-///@author Mehdi R.
-///@notice You can deploy this contract as ID for a system
+uint256 constant ID = uint256(keccak256("ms.component.Position"));
+
 contract PositionComponent is Uint32Component {
     constructor(address world) Uint32Component(world, ID) {}
 }

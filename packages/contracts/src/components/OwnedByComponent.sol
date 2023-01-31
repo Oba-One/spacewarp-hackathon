@@ -3,11 +3,8 @@ pragma solidity >=0.8.0;
 
 import "std-contracts/components/BoolComponent.sol";
 
-uint256 constant ID = uint256(keccak256("ds.component.Loaded"));
+uint256 constant ID = uint256(keccak256("ms.component.OwnedBy"));
 
-///@title OwnedBy for item Character
-///@author Mehdi R.
-///@notice You can deploy this contract as ID for a system
-contract OwnedBy is BoolComponent {
-    constructor(address world) BoolComponent(world, ID) {}
+contract OwnedBy is AddressComponent {
+    constructor(address world) AddressComponent(world, ID) {}
 }

@@ -40,10 +40,7 @@ enum Phase {
 
 struct GameConfig {
     // Block timestamp when the game started
-    uint256 startTime;
-    // Number of seconds
-    uint32 commitPhaseLength;
-    uint32 revealPhaseLength;
-    uint32 actionPhaseLength;
-    uint32 worldRadius;
+    uint256 gameBegin;
+    // number of seconds from Deck --> Location
+    uint32 MoveCardLength;
 }
