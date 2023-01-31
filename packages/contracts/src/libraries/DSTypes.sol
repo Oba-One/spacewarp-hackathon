@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.8.0;
 
-import "std-contracts/components/CoordComponent.sol";
-
 uint256 constant GodID = uint256(0x060D);
 
 struct Power {
@@ -11,7 +9,6 @@ struct Power {
 
 struct MoveCard {
     uint32 position;
-    uint32 turn;
     bool isMoved;
 }
 
