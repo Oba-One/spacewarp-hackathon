@@ -2,7 +2,6 @@
 pragma solidity ^0.8.11;
 
 import "forge-std/Script.sol";
-import "../src/SimpleCoin.sol";
 import "../src/mocks/MinerAPI.sol";
 import "../src/mocks/MarketAPI.sol";
 
