@@ -14,7 +14,7 @@ contract MoveCardComponent is Component {
         keys = new string[](2);
         values = new LibTypes.SchemaValue[](2);
 
-        keys[0] = "position";
+        keys[0] = "location";
         values[0] = LibTypes.SchemaValue.UINT32;
 
         keys[1] = "isMoved";
@@ -26,8 +26,8 @@ contract MoveCardComponent is Component {
     }
 
     function getValue(uint256 entity) public view returns (MoveCard memory) {
-        (uint32 position, bool isMoved) = abi.decode(getRawValue(entity), (uint32, bool));
-        return MoveCard(distance, direction, rotation);
+        (uint32 location, bool isMoved) = abi.decode(getRawValue(entity), (uint32, bool));
+        return MoveCard(location, isMoved);
     }
 
     function getEntitiesWithValue(MoveCard calldata moveCard) public view returns (uint256[] memory) {
@@ -35,6 +35,6 @@ contract MoveCardComponent is Component {
     }
 
     function encodedValue(MoveCard calldata moveCard) private pure returns (bytes memory) {
-        return abi.encode(moveCard.position, moveCard.isMoved);
+        return abi.encode(moveCard.location, moveCard.isMoved);
     }
 }
