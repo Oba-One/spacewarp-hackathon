@@ -3,9 +3,9 @@ pragma solidity >=0.8.0;
 
 import "solecs/Component.sol";
 
-import {MoveCard} from "../libraries/DSTypes.sol";
+import {MoveCard} from "../libraries/MSTypes.sol";
 
-uint256 constant ID = uint256(keccak256("ds.component.MoveCard"));
+uint256 constant ID = uint256(keccak256("component.MoveCard"));
 
 contract MoveCardComponent is Component {
     constructor(address world) Component(world, ID) {}

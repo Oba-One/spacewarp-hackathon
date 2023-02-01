@@ -3,10 +3,10 @@ pragma solidity >=0.8.0;
 
 import "solecs/Component.sol";
 
-uint256 constant GodID = uint256();
-uint256 constant ID = uint256(keccak256("ms.component.GameConfig"));
+import { GodId } from "../libraries/MSTypes.sol";
+uint256 constant ID = uint256(keccak256("component.GameConfig"));
 
-import {GameConfig} from "../libraries/DSTypes.sol";
+import {GameConfig} from "../libraries/MSTypes.sol";
 
 ///@notice You can deploy this contract as ID for a system
 contract GameConfigComponent is Component {
