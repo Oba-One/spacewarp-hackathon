@@ -2,6 +2,8 @@ import React from "react";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
+import { Button } from "./Button";
+
 export const ConnectWallet = () => {
   const { connect } = useConnect({
     connector: new InjectedConnector(),
@@ -13,9 +15,9 @@ export const ConnectWallet = () => {
     return (
       <div>
         Connected to {address}
-        <button onClick={() => disconnect()}>Disconnect</button>
+        <Button onClick={() => disconnect()}>Disconnect</Button>
       </div>
     );
 
-  return <button onClick={() => connect()}>Connect</button>;
+  return <Button onClick={() => connect()}>Connect</Button>;
 };

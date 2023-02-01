@@ -1,165 +1,186 @@
-import { FC, useState } from "react";
-import { useCreateStream } from "@livepeer/react";
-import { useRootStore } from "@huddle01/huddle01-client/*";
-import { huddleClient } from "modules/clients";
-import { useAccount } from "wagmi";
+import { FC } from "react";
 
-interface AvatarProps {
-  gameId: string;
+import PlayerAvatar from "/assets/avatar1.png";
+import OpponentAvatar from "/assets/avatar2.png";
+import ChatIcon from "../../assets/chat.svg";
+import LogoutIcon from "../../assets/chat.svg";
+import MicEnabledIcon from "../../assets/mic-enabled.svg";
+import MicDisabledIcon from "../../assets/mic-disabled.svg";
+import RecordingEnabledIcon from "../../assets/recording-enabled.svg";
+import RecordingDisabledIcon from "../../assets/recording-disabled.svg";
+
+import { huddleClient } from "../../modules/clients";
+
+import { Input } from "../Input";
+import { Button } from "../Button";
+import { useOpponent, usePlayer } from "./usePlayer";
+
+export interface PlayerProps extends GameProps, OpponentAvatarProps {
+  type: "player" | "opponent";
+  opponentId?: string;
+}
+
+interface GameProps {
+  gameCode: number;
+  setGameCode: (gameCode: number) => void;
+}
+
+interface PlayerAvatarProps extends GameProps {
+  showChat: boolean;
+  hasNotifications: boolean;
+  setShowChat: (showChat: boolean) => void;
+}
+
+interface OpponentAvatarProps {
   peerId: string;
+}
+
+export interface AvatarProps extends PlayerAvatarProps, OpponentAvatarProps {
   type: "player" | "opponent";
 }
 
-interface PlayerProps {
-  gameId: string;
-}
+export const iconStyles =
+  "relative h-12 w-12 m-1 before:absolute before:rounded-full beforehover:bg-slate-700";
 
-interface OpponentProps {
-  peerId: string;
-}
+const Pulse = () => (
+  <span className="flex h-3 w-3">
+    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+    <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500"></span>
+  </span>
+);
 
-const Player: FC<PlayerProps> = ({ gameId }) => {
-  const [name, setName] = useState("");
-  const [isStreaming, setIsStreaming] = useState(false);
-  const [huddleEnabled, setHuddleEnabled] = useState(false);
-  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
+const Player: FC<PlayerAvatarProps> = ({
+  gameCode,
+  setGameCode,
+  showChat,
+  setShowChat,
+  hasNotifications,
+}) => {
+  const {
+    status,
+    micEnabled,
+    streamStatus,
+    isEditingAvatar,
+    setIsEditingAvatar,
+    huddleAvatar,
+    updateAvatar,
+    startLiveStream,
+    stopLiveStream,
+    handleConnection,
+    handleDisconnection,
+    forms: { avatar, connect },
+  } = usePlayer(gameCode, setGameCode);
 
-  const { address } = useAccount();
-  const livestream = useCreateStream({
-    name: `MudSnap Game: ${gameId}`,
-  });
-  const avatarUrl = useRootStore((state) => state.avatarUrl);
-  const micEnabled = useRootStore((state) => !state.isMicPaused);
+  const onStreamClick =
+    streamStatus === "idle" || streamStatus === "connecting"
+      ? startLiveStream
+      : stopLiveStream;
+  const onMicClick = micEnabled ? huddleClient.muteMic : huddleClient.enableMic;
 
-  async function joinHuddle(e: React.FormEvent<HTMLFormElement>) {
-    try {
-      if (!address) throw new Error("No address found");
-
-      await huddleClient.join(`mudsnap-${gameId}`, {
-        address,
-        wallet: "metamask",
-        ens: `${name}.eth}`,
-      });
-      setHuddleEnabled(true);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function updateAvatar(e: React.FormEvent<HTMLFormElement>) {
-    try {
-      await huddleClient.changeAvatarUrl("https://i.imgur.com/0nD6C7z.png");
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function startLiveStream() {
-    try {
-      await livestream.mutateAsync?.();
-      await huddleClient.sendReaction("👀");
-
-      setIsStreaming(true);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async function stopLiveStream() {
-    try {
-      await huddleClient.sendReaction("");
-      setIsStreaming(false);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const StreamingIcon =
+    streamStatus === "idle" || streamStatus === "connecting"
+      ? RecordingDisabledIcon
+      : RecordingEnabledIcon;
+  // const MicIcon = micEnabled ? MicEnabledIcon : MicDisabledIcon;
 
   return (
     <>
-      <div>
-        {!isEditingAvatar && (
-          <dialog
-            id="edit-avatar"
-            open={isEditingAvatar}
-            onClick={(e) => {
-              setIsEditingAvatar(false);
-              e.currentTarget.close();
-            }}
-          >
-            <form method="dialog" onSubmit={updateAvatar}>
-              <input
-                type="text"
+      <div id="player-avatar">
+        {isEditingAvatar && (
+          <div id="edit-avatar">
+            <form onSubmit={avatar.handleSubmit(updateAvatar)}>
+              <Input
                 placeholder="New avatar"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 required
-                minLength={3}
+                {...(avatar.register("avatar"),
+                {
+                  type: "url",
+                })}
               />
               <button type="submit">Update</button>
             </form>
-          </dialog>
+          </div>
         )}
         <img
-          src={avatarUrl}
+          src={huddleAvatar ?? PlayerAvatar}
           alt={`Your player avatar`}
           onClick={() => setIsEditingAvatar(true)}
+          className="h-2xl w-2xl -scale-x-100"
         />
-        ;
       </div>
-      {!huddleEnabled ? (
+      {status === "connected" || status === "disconnecting" ? (
         <>
-          <div
-            className=""
-            onClick={micEnabled ? huddleClient.muteMic : huddleClient.enableMic}
-          >
-            {micEnabled ? <div>On</div> : <div>Muted</div>}
-          </div>
-          <div
-            className=""
-            onClick={isStreaming ? stopLiveStream : startLiveStream}
-          >
-            {isStreaming ? <div>Streaming</div> : <div>Start Stream</div>}
+          <div id="player-actions">
+            <li className={`${iconStyles}`} onClick={onStreamClick}>
+              <img src={StreamingIcon} />
+            </li>
+            <li className={`${iconStyles}`} onClick={onMicClick}>
+              {/* <img src={MicIcon} /> */}
+            </li>
+            <li
+              className={`${iconStyles}`}
+              onClick={() => setShowChat(!showChat)}
+            >
+              {hasNotifications && <Pulse />}
+              <ChatIcon />
+            </li>
+            <li className={`${iconStyles}`} onClick={handleDisconnection}>
+              <LogoutIcon />
+            </li>
           </div>
         </>
       ) : (
-        <form onSubmit={joinHuddle}>
-          <input
-            type="text"
-            placeholder="Enter player name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            minLength={3}
+        <form
+          id="player-connection"
+          onSubmit={connect.handleSubmit(handleConnection)}
+          className="flex w-full flex-col gap-3"
+        >
+          <Input
+            placeholder="Player Name"
+            {...connect.register("name", {
+              required: true,
+              minLength: 3,
+              maxLength: 24,
+            })}
           />
-          <button type="submit">Join Huddle</button>
+          <Input
+            placeholder="Game ID"
+            {...connect.register("gameCode", { required: true })}
+          />
+          <Button type="submit">Join Chat</Button>
         </form>
       )}
     </>
   );
 };
 
-const Opponent: FC<OpponentProps> = ({ peerId }) => {
-  const avatarUrl = useRootStore((state) => state.peers[peerId].avatarUrl);
-  const micEnabled = useRootStore((state) => !state.peers[peerId].isMicPaused);
-  const reaction = useRootStore((state) => state.peers[peerId].reaction);
+const Opponent: FC<OpponentAvatarProps> = ({ peerId }) => {
+  const { name, avatar, micEnabled, reaction } = useOpponent(peerId);
 
   return (
     <>
-      <img src={avatarUrl} alt={`Opponent avatar`} />;
-      <div className="">{micEnabled ? <div>On</div> : <div>Muted</div>}</div>
-      {reaction === "👀" && <div>Streaming</div>}
+      <img
+        src={avatar ?? OpponentAvatar}
+        alt={`opponent avatar`}
+        className="h-2xl w-2xl "
+      />
+      <h3 className="text-xl">{name ?? "Opponent"}</h3>;
+      <ul id="opponent-actions">
+        <li className={`${iconStyles}`}>
+          {micEnabled ? null : <MicDisabledIcon />}
+        </li>
+        <li className={`${iconStyles}`}>
+          {reaction === "👀" && <RecordingEnabledIcon />}
+        </li>
+      </ul>
     </>
   );
 };
 
-export const Avatar: FC<AvatarProps> = ({ gameId, peerId, type }) => {
+export const Avatar: FC<AvatarProps> = ({ peerId, type, ...props }) => {
   return (
-    <div className="">
-      {type === "player" ? (
-        <Player gameId={gameId} />
-      ) : (
-        <Opponent peerId={peerId} />
-      )}
+    <div className="flex w-full flex-col items-center gap-3 px-4">
+      {type === "player" ? <Player {...props} /> : <Opponent peerId={peerId} />}
     </div>
   );
 };
