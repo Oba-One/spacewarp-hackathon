@@ -1,4 +1,9 @@
 {
-  "components": ["CounterComponent"],
-  "systems": [{ "name": "IncrementSystem", "writeAccess": ["CounterComponent"] }]
+  "components": ["AssetComponent", "OwnedByComponent", "PositionComponent", "IdentityComponent"],
+  "systems": [
+    {
+      "name": "InitSystem",
+      "writeAccess": ["AssetComponent", "OwnedByComponent", "PositionComponent", "IdentityComponent"]
+    }
+  ]
 }

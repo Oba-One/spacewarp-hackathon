@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "----- EXTERNAL -----": "---------------------------",
-    "prepare": "mud types",
+    "prepare": "mud types && zsh build-types.sh",
     "devnode": "mud devnode",
     "test": "mud test",
-    "types": "mud types",
+    "types": "mud types && zsh build-types.sh",
     "dev": "mud deploy-contracts --dev --watch --openUrl http://localhost:3000?dev=true",
     "deploy": "mud deploy-contracts",
     "lint": "yarn prettier && yarn solhint",

@@ -1,0 +1,60 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "../../node_modules/@latticexyz/std-contracts/src/components/Uint256Component.sol",
+    "id": 1502,
+    "exportedSymbols": {
+      "Component": [
+        262
+      ],
+      "IUint256Component": [
+        1003
+      ],
+      "LibTypes": [
+        34657
+      ],
+      "Uint256Component": [
+        974
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:74:25",
+    "nodes": [
+      {
+        "id": 1500,
+        "nodeType": "PragmaDirective",
+        "src": "32:24:25",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 1501,
+        "nodeType": "ImportDirective",
+        "src": "57:48:25",
+        "nodes": [],
+        "absolutePath": "../../node_modules/@latticexyz/solecs/src/components/Uint256Component.sol",
+        "file": "solecs/components/Uint256Component.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 1502,
+        "sourceUnit": 975,
+        "symbolAliases": [],
+        "unitAlias": ""
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 25
+}

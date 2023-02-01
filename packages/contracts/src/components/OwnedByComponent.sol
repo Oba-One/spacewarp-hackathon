@@ -1,10 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
+import "std-contracts/components/Uint256Component.sol";
 
-import "std-contracts/components/BoolComponent.sol";
+uint256 constant ID = uint256(keccak256("component.OwnedBy"));
 
-uint256 constant ID = uint256(keccak256("ms.component.OwnedBy"));
-
-contract OwnedBy is AddressComponent {
-    constructor(address world) AddressComponent(world, ID) {}
+contract OwnedByComponent is Uint256Component {
+  constructor(address world) Uint256Component(world, ID) {}
 }
