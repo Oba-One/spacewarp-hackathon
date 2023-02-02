@@ -10,7 +10,6 @@ import { PositionComponent, ID as PositionComponentID } from "../components/Posi
 import { Uint32Component } from "std-contracts/components/Uint32Component.sol";
 
 // Types
-import { MoveCard } from "./MSTypes.sol";
 
 /**
  * @notice

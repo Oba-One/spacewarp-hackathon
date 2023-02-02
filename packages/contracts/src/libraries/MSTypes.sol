@@ -3,18 +3,39 @@ pragma solidity >=0.8.0;
 
 uint256 constant GodID = uint256(0x060D);
 
-enum ElementType {
+enum ElementEnum {
   Water,
   Earth,
   Fire,
   Air
 }
 
-enum PositionType {
+enum PositionEnum {
   Deck,
+  Hand,
   Location1,
   Location2,
   Location3
+}
+
+// E stands for "Empty" and in no Zone
+enum ZoneEnum {
+  A,
+  B,
+  C,
+  D,
+  E
+}
+
+enum ActionEnum {
+  None,
+  Move
+}
+
+enum PhaseEnum {
+  Action,
+  Commit,
+  Reveal
 }
 
 struct IdentityType {
@@ -30,41 +51,19 @@ struct EffectType {
   ActionType action;
 }
 
-struct Power {
+struct PowerType {
   uint32 value;
 }
 
-struct MoveCard {
-  uint32 position;
-  bool isMoved;
-}
-
-struct Action {
+struct ActionType {
   uint256 useEntity;
-  ActionType[2] actionTypes;
+  ActionEnum[2] actionTypes;
 }
 
-enum ActionType {
-  None,
-  Move
-}
-
-enum CardPosition {
-  Hand,
-  Location1,
-  Location2,
-  Location3
-}
-
-enum Phase {
-  Commit,
-  Reveal,
-  Action
-}
-
-struct GameConfig {
-  // Block timestamp when the game started
-  uint256 gameBegin;
+struct MatchType {
+  uint256 startedAt; //
+  uint256 finishedAt;
+  uint8 turnsLeft;
   // number of seconds from Deck --> Location
   uint32 moveCardLength;
 }

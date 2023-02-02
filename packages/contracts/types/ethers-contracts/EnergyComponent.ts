@@ -27,21 +27,11 @@ import type {
   PromiseOrValue,
 } from "./common";
 
-export type MoveCardStruct = {
-  position: PromiseOrValue<BigNumberish>;
-  isMoved: PromiseOrValue<boolean>;
-};
-
-export type MoveCardStructOutput = [number, boolean] & {
-  position: number;
-  isMoved: boolean;
-};
-
-export interface MoveCardComponentInterface extends utils.Interface {
+export interface EnergyComponentInterface extends utils.Interface {
   functions: {
     "authorizeWriter(address)": FunctionFragment;
     "getEntities()": FunctionFragment;
-    "getEntitiesWithValue((uint32,bool))": FunctionFragment;
+    "getEntitiesWithValue(uint32)": FunctionFragment;
     "getEntitiesWithValue(bytes)": FunctionFragment;
     "getRawValue(uint256)": FunctionFragment;
     "getSchema()": FunctionFragment;
@@ -52,8 +42,8 @@ export interface MoveCardComponentInterface extends utils.Interface {
     "registerIndexer(address)": FunctionFragment;
     "registerWorld(address)": FunctionFragment;
     "remove(uint256)": FunctionFragment;
-    "set(uint256,(uint32,bool))": FunctionFragment;
     "set(uint256,bytes)": FunctionFragment;
+    "set(uint256,uint32)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "unauthorizeWriter(address)": FunctionFragment;
     "world()": FunctionFragment;
@@ -64,7 +54,7 @@ export interface MoveCardComponentInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "authorizeWriter"
       | "getEntities"
-      | "getEntitiesWithValue((uint32,bool))"
+      | "getEntitiesWithValue(uint32)"
       | "getEntitiesWithValue(bytes)"
       | "getRawValue"
       | "getSchema"
@@ -75,8 +65,8 @@ export interface MoveCardComponentInterface extends utils.Interface {
       | "registerIndexer"
       | "registerWorld"
       | "remove"
-      | "set(uint256,(uint32,bool))"
       | "set(uint256,bytes)"
+      | "set(uint256,uint32)"
       | "transferOwnership"
       | "unauthorizeWriter"
       | "world"
@@ -92,8 +82,8 @@ export interface MoveCardComponentInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getEntitiesWithValue((uint32,bool))",
-    values: [MoveCardStruct]
+    functionFragment: "getEntitiesWithValue(uint32)",
+    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "getEntitiesWithValue(bytes)",
@@ -127,12 +117,12 @@ export interface MoveCardComponentInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "set(uint256,(uint32,bool))",
-    values: [PromiseOrValue<BigNumberish>, MoveCardStruct]
-  ): string;
-  encodeFunctionData(
     functionFragment: "set(uint256,bytes)",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "set(uint256,uint32)",
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
@@ -157,7 +147,7 @@ export interface MoveCardComponentInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEntitiesWithValue((uint32,bool))",
+    functionFragment: "getEntitiesWithValue(uint32)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -183,11 +173,11 @@ export interface MoveCardComponentInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "remove", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,(uint32,bool))",
+    functionFragment: "set(uint256,bytes)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,bytes)",
+    functionFragment: "set(uint256,uint32)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -223,12 +213,12 @@ export type OwnershipTransferredEvent = TypedEvent<
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
 
-export interface MoveCardComponent extends BaseContract {
+export interface EnergyComponent extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: MoveCardComponentInterface;
+  interface: EnergyComponentInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -257,8 +247,8 @@ export interface MoveCardComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<[BigNumber[]]>;
 
-    "getEntitiesWithValue((uint32,bool))"(
-      moveCard: MoveCardStruct,
+    "getEntitiesWithValue(uint32)"(
+      value: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
@@ -279,7 +269,7 @@ export interface MoveCardComponent extends BaseContract {
     getValue(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<[MoveCardStructOutput]>;
+    ): Promise<[number]>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -305,15 +295,15 @@ export interface MoveCardComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    "set(uint256,(uint32,bool))"(
-      entity: PromiseOrValue<BigNumberish>,
-      moveCard: MoveCardStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    "set(uint256,uint32)"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -342,8 +332,8 @@ export interface MoveCardComponent extends BaseContract {
 
   getEntities(overrides?: CallOverrides): Promise<BigNumber[]>;
 
-  "getEntitiesWithValue((uint32,bool))"(
-    moveCard: MoveCardStruct,
+  "getEntitiesWithValue(uint32)"(
+    value: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
@@ -364,7 +354,7 @@ export interface MoveCardComponent extends BaseContract {
   getValue(
     entity: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
-  ): Promise<MoveCardStructOutput>;
+  ): Promise<number>;
 
   has(
     entity: PromiseOrValue<BigNumberish>,
@@ -390,15 +380,15 @@ export interface MoveCardComponent extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  "set(uint256,(uint32,bool))"(
-    entity: PromiseOrValue<BigNumberish>,
-    moveCard: MoveCardStruct,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   "set(uint256,bytes)"(
     entity: PromiseOrValue<BigNumberish>,
     value: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  "set(uint256,uint32)"(
+    entity: PromiseOrValue<BigNumberish>,
+    value: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -427,8 +417,8 @@ export interface MoveCardComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<BigNumber[]>;
 
-    "getEntitiesWithValue((uint32,bool))"(
-      moveCard: MoveCardStruct,
+    "getEntitiesWithValue(uint32)"(
+      value: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
@@ -449,7 +439,7 @@ export interface MoveCardComponent extends BaseContract {
     getValue(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<MoveCardStructOutput>;
+    ): Promise<number>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -475,15 +465,15 @@ export interface MoveCardComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "set(uint256,(uint32,bool))"(
-      entity: PromiseOrValue<BigNumberish>,
-      moveCard: MoveCardStruct,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "set(uint256,uint32)"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -524,8 +514,8 @@ export interface MoveCardComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getEntitiesWithValue((uint32,bool))"(
-      moveCard: MoveCardStruct,
+    "getEntitiesWithValue(uint32)"(
+      value: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -570,15 +560,15 @@ export interface MoveCardComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    "set(uint256,(uint32,bool))"(
-      entity: PromiseOrValue<BigNumberish>,
-      moveCard: MoveCardStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    "set(uint256,uint32)"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -608,8 +598,8 @@ export interface MoveCardComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getEntitiesWithValue((uint32,bool))"(
-      moveCard: MoveCardStruct,
+    "getEntitiesWithValue(uint32)"(
+      value: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -654,15 +644,15 @@ export interface MoveCardComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    "set(uint256,(uint32,bool))"(
-      entity: PromiseOrValue<BigNumberish>,
-      moveCard: MoveCardStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "set(uint256,uint32)"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
