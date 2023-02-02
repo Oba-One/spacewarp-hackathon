@@ -12,7 +12,6 @@ html {
   --page-color: white;
   --ink-color: black;
   --highlight-color: red;
-  font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
   color-scheme: light;
 }
 
