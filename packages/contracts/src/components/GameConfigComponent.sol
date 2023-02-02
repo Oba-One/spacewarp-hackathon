@@ -28,8 +28,11 @@ contract GameConfigComponent is Component {
   }
 
   function getValue(uint256 entity) public view returns (GameConfig memory) {
-    (uint256 gameBegin, uint32 moveCardLength) = abi.decode(getRawValue(entity), (uint256, uint32));
-    return GameConfig(gameBegin, moveCardLength);
+    (uint256 startedAt, uint256 finishedAt, uint8 turnsLeft, uint32 moveCardLength) = abi.decode(
+      getRawValue(entity),
+      (uint256, uint256, uint8, uint32)
+    );
+    return GameConfig(startedAt, finishedAt, turnsLeft, moveCardLength);
   }
 
   function getEntitiesWithValue(GameConfig calldata config) public view returns (uint256[] memory) {
@@ -37,6 +40,6 @@ contract GameConfigComponent is Component {
   }
 
   function encodedValue(GameConfig calldata config) private pure returns (bytes memory) {
-    return abi.encode(config.gameBegin, config.moveCardLength);
+    return abi.encode(config.startedAt, config.moveCardLength);
   }
 }

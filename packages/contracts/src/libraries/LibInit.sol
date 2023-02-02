@@ -8,7 +8,7 @@ library LibInit {
    * @param playerAddress address of player
    * @return playerEntity entity id of player
    */
-  function initPlayer(address playerAddress) internal returns (uint256 playerEntity) {
+  function initPlayer(address playerAddress) internal pure returns (uint256 playerEntity) {
     playerEntity = addressToEntity(playerAddress);
     // @junaama TODO: add components and add to PlayerComponent
   }
