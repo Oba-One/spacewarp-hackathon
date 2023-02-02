@@ -1,5 +1,5 @@
 {
-  "chainId": 31337,
-  "rpc": "http://localhost:8545",
-  "wsRpc": "ws://localhost:8545"
+  "chainId": 4242,
+  "rpc": "https://follower.testnet-chain.linfra.xyz",
+  "wsRpc": "wss://follower.testnet-chain.linfra.xyz"
 }
