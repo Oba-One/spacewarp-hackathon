@@ -12,6 +12,7 @@ enum ElementEnum {
 
 enum PositionEnum {
   Deck,
+  Hand,
   Location1,
   Location2,
   Location3
@@ -31,47 +32,35 @@ enum ActionEnum {
   Move
 }
 
-enum CardPositionEnum {
-  Hand,
-  Location1,
-  Location2,
-  Location3
-}
-
 enum PhaseEnum {
+  Action,
   Commit,
-  Reveal,
-  Action
+  Reveal
 }
 
-struct Identity {
+struct IdentityType {
   string name;
   string description;
 }
 
-struct Effect {
+struct EffectType {
   // @junaama NOTE: Could/Should we use IdentityType here?
   string name;
   string description;
   uint256 value;
-  Action action;
+  ActionType action;
 }
 
-struct Power {
+struct PowerType {
   uint32 value;
 }
 
-struct MoveCard {
-  uint32 position;
-  bool isMoved;
-}
-
-struct Action {
+struct ActionType {
   uint256 useEntity;
   ActionEnum[2] actionTypes;
 }
 
-struct GameConfig {
+struct MatchType {
   uint256 startedAt; //
   uint256 finishedAt;
   uint8 turnsLeft;

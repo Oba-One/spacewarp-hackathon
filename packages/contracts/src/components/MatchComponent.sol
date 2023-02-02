@@ -4,12 +4,12 @@ pragma solidity >=0.8.0;
 import "solecs/Component.sol";
 
 import { GodID } from "../libraries/MSTypes.sol";
-uint256 constant ID = uint256(keccak256("component.GameConfig"));
+uint256 constant ID = uint256(keccak256("component.MatchType"));
 
-import { GameConfig } from "../libraries/MSTypes.sol";
+import { MatchType } from "../libraries/MSTypes.sol";
 
 ///@notice You can deploy this contract as ID for a system
-contract GameConfigComponent is Component {
+contract MatchComponent is Component {
   constructor(address world) Component(world, ID) {}
 
   function getSchema() public pure override returns (string[] memory keys, LibTypes.SchemaValue[] memory values) {
@@ -23,23 +23,23 @@ contract GameConfigComponent is Component {
     values[1] = LibTypes.SchemaValue.UINT32;
   }
 
-  function set(uint256 entity, GameConfig calldata config) public {
+  function set(uint256 entity, MatchType calldata config) public {
     set(entity, encodedValue(config));
   }
 
-  function getValue(uint256 entity) public view returns (GameConfig memory) {
+  function getValue(uint256 entity) public view returns (MatchType memory) {
     (uint256 startedAt, uint256 finishedAt, uint8 turnsLeft, uint32 moveCardLength) = abi.decode(
       getRawValue(entity),
       (uint256, uint256, uint8, uint32)
     );
-    return GameConfig(startedAt, finishedAt, turnsLeft, moveCardLength);
+    return MatchType(startedAt, finishedAt, turnsLeft, moveCardLength);
   }
 
-  function getEntitiesWithValue(GameConfig calldata config) public view returns (uint256[] memory) {
+  function getEntitiesWithValue(MatchType calldata config) public view returns (uint256[] memory) {
     return getEntitiesWithValue(encodedValue(config));
   }
 
-  function encodedValue(GameConfig calldata config) private pure returns (bytes memory) {
+  function encodedValue(MatchType calldata config) private pure returns (bytes memory) {
     return abi.encode(config.startedAt, config.moveCardLength);
   }
 }

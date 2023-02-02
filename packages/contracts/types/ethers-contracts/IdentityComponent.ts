@@ -27,12 +27,12 @@ import type {
   PromiseOrValue,
 } from "./common";
 
-export type IdentityStruct = {
+export type IdentityTypeStruct = {
   name: PromiseOrValue<string>;
   description: PromiseOrValue<string>;
 };
 
-export type IdentityStructOutput = [string, string] & {
+export type IdentityTypeStructOutput = [string, string] & {
   name: string;
   description: string;
 };
@@ -144,7 +144,7 @@ export interface IdentityComponentInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "set(uint256,(string,string))",
-    values: [PromiseOrValue<BigNumberish>, IdentityStruct]
+    values: [PromiseOrValue<BigNumberish>, IdentityTypeStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
@@ -304,7 +304,7 @@ export interface IdentityComponent extends BaseContract {
     getValueTyped(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<[IdentityStructOutput]>;
+    ): Promise<[IdentityTypeStructOutput]>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -344,7 +344,7 @@ export interface IdentityComponent extends BaseContract {
 
     "set(uint256,(string,string))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: IdentityStruct,
+      value: IdentityTypeStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -400,7 +400,7 @@ export interface IdentityComponent extends BaseContract {
   getValueTyped(
     entity: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
-  ): Promise<IdentityStructOutput>;
+  ): Promise<IdentityTypeStructOutput>;
 
   has(
     entity: PromiseOrValue<BigNumberish>,
@@ -440,7 +440,7 @@ export interface IdentityComponent extends BaseContract {
 
   "set(uint256,(string,string))"(
     entity: PromiseOrValue<BigNumberish>,
-    value: IdentityStruct,
+    value: IdentityTypeStruct,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -496,7 +496,7 @@ export interface IdentityComponent extends BaseContract {
     getValueTyped(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<IdentityStructOutput>;
+    ): Promise<IdentityTypeStructOutput>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -536,7 +536,7 @@ export interface IdentityComponent extends BaseContract {
 
     "set(uint256,(string,string))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: IdentityStruct,
+      value: IdentityTypeStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -642,7 +642,7 @@ export interface IdentityComponent extends BaseContract {
 
     "set(uint256,(string,string))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: IdentityStruct,
+      value: IdentityTypeStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -737,7 +737,7 @@ export interface IdentityComponent extends BaseContract {
 
     "set(uint256,(string,string))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: IdentityStruct,
+      value: IdentityTypeStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
