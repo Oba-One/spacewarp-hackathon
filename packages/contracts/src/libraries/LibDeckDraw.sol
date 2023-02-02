@@ -19,7 +19,5 @@ import { MoveCard } from "./MSTypes.sol";
 
 // Base on a number of card set, generate a drawing for each player
 library LibDeckDraw {
-  uint256[] cardSet;
-
-  function drawDeck(cardSet memory _cardSet) public view returns (int32) {}
+  function drawDeck(uint[] memory _cardSet) public view returns (int32) {}
 }

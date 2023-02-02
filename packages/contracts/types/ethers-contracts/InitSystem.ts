@@ -29,17 +29,26 @@ import type {
 export interface InitSystemInterface extends utils.Interface {
   functions: {
     "execute(bytes)": FunctionFragment;
+    "executeTyped()": FunctionFragment;
     "owner()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "execute" | "owner" | "transferOwnership"
+    nameOrSignatureOrTopic:
+      | "execute"
+      | "executeTyped"
+      | "owner"
+      | "transferOwnership"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "execute",
     values: [PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "executeTyped",
+    values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -48,6 +57,10 @@ export interface InitSystemInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(functionFragment: "execute", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "executeTyped",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
@@ -105,6 +118,10 @@ export interface InitSystem extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    executeTyped(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     owner(overrides?: CallOverrides): Promise<[string]>;
 
     transferOwnership(
@@ -115,6 +132,10 @@ export interface InitSystem extends BaseContract {
 
   execute(
     arg0: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  executeTyped(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -130,6 +151,8 @@ export interface InitSystem extends BaseContract {
       arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
+
+    executeTyped(overrides?: CallOverrides): Promise<string>;
 
     owner(overrides?: CallOverrides): Promise<string>;
 
@@ -156,6 +179,10 @@ export interface InitSystem extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    executeTyped(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     transferOwnership(
@@ -167,6 +194,10 @@ export interface InitSystem extends BaseContract {
   populateTransaction: {
     execute(
       arg0: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    executeTyped(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
