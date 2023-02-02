@@ -5,7 +5,7 @@ import { useRootStore } from "@huddle01/huddle01-client";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
-import { huddleClient } from "../../modules/clients";
+import { huddleClient } from "../modules/clients";
 
 type FormValues = {
   name: string;

@@ -17,7 +17,7 @@ import { huddleClient } from "../../modules/clients";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
-import { useOpponent, usePlayer } from "./usePlayer";
+import { useOpponent, usePlayer } from "../../hooks/usePlayer";
 
 export interface PlayerProps extends GameProps, OpponentAvatarProps {
   type: "player" | "opponent";
