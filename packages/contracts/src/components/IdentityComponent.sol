@@ -2,7 +2,8 @@
 pragma solidity >=0.8.0;
 import "std-contracts/components/StringComponent.sol";
 import { IdentityType } from "libraries/MSTypes.sol";
-uint256 constant ID = uint256(keccak256("mudSnap.component.Identity"));
+
+uint256 constant ID = uint256(keccak256("component.Identity"));
 
 contract IdentityComponent is StringComponent {
   constructor(address world) StringComponent(world, ID) {}
