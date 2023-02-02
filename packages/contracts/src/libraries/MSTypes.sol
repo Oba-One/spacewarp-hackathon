@@ -1,42 +1,69 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
-enum ElementType {
-    Water,
-    Earth,
-    Fire,
-    Air
+uint256 constant GodID = uint256(0x060D);
+
+enum ElementEnum {
+  Water,
+  Earth,
+  Fire,
+  Air
 }
 
-enum PositionType {
-    Deck,
-    Location1,
-    Location2,
-    Location3
+enum PositionEnum {
+  Deck,
+  Hand,
+  Location1,
+  Location2,
+  Location3
 }
 
-// @junaama TODO: Action names are placeholders for now
-enum ActionType {
-    Action1,
-    Action2,
-    Action3,
-    Action4
+// E stands for "Empty" and in no Zone
+enum ZoneEnum {
+  A,
+  B,
+  C,
+  D,
+  E
 }
-// @junaama @TODO I don't think we need this for now
-// struct AssetType {
-//     string image;
-//     string model;
-// }
+
+enum ActionEnum {
+  None,
+  Move
+}
+
+enum PhaseEnum {
+  Action,
+  Commit,
+  Reveal
+}
 
 struct IdentityType {
-    string name;
-    string description;
+  string name;
+  string description;
 }
 
 struct EffectType {
-    // @junaama NOTE: Could/Should we use IdentityType here?
-    string name;
-    string description;
-    uint256 value;
-    ActionType action;
+  // @junaama NOTE: Could/Should we use IdentityType here?
+  string name;
+  string description;
+  uint256 value;
+  ActionType action;
+}
+
+struct PowerType {
+  uint32 value;
+}
+
+struct ActionType {
+  uint256 useEntity;
+  ActionEnum[2] actionTypes;
+}
+
+struct MatchType {
+  uint256 startedAt; //
+  uint256 finishedAt;
+  uint8 turnsLeft;
+  // number of seconds from Deck --> Location
+  uint32 moveCardLength;
 }

@@ -28,12 +28,14 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 
 ## What's next?
 
+**Optimization**
+
 **Gameplay**
 
 - Add more characters and locations and make a more interactive UI.
 - Introduce another matrix to the game with a Risk like element.
 
-**TeamDAO**
+**TeamDAOs**
 
 - Users can join one of 4 teams (Water, Earth, Fire, Air) and earn team tokens for playing games.
 - Users rank is based on game results and mostly contribution to the DAOs deck.
