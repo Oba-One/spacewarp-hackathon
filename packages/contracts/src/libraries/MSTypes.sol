@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
-uint256 constant _ID = uint256(0x060D);
+uint256 constant snapID = uint256(0x060D);
 
 enum ElementEnum {
     Water,

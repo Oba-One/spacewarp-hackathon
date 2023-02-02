@@ -32,7 +32,7 @@ contract InitSystem is System {
         IdentityComponent(getAddressById(components, IdentityID)).set(characterEntity, identity1);
         matchComponent MatchComponent = MatchComponent(getAddressById(components, MatchComponentID));
 
-        matchComponent.set(_ID, MatchType({startedAt: block.timestamp, finishedAt: block.timestamp, turnsLeft: 5}));
+        matchComponent.set(snapID, MatchType({startedAt: 0, finishedAt: block.timestamp, turnsLeft: 5}));
     }
 
     function executeTyped() public returns (bytes memory) {
