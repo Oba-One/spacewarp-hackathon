@@ -2,9 +2,8 @@ import { useForm } from "react-hook-form";
 import { FC, useEffect, useState } from "react";
 import { useRootStore } from "@huddle01/huddle01-client";
 
-import ChatIcon from "/assets/chat.svg";
-import HistoryIcon from "/assets/history.svg";
-
+import { RC as SendIcon } from "../../assets/send.svg";
+import { RC as HistoryIcon } from "../../assets/history.svg";
 import { huddleClient } from "../../modules/clients";
 
 import { Input } from "../Input";
@@ -70,7 +69,7 @@ const ChatInput: FC<ChatInputProps> = ({
   return (
     <div className="flex gap-2">
       <form onSubmit={handleSubmit(handleSendMessage)}>
-        <Input />;
+        <Input icon={{ Svg: SendIcon, title: "Send Message" }} />;
       </form>
       <div
         className={`${iconStyles}`}

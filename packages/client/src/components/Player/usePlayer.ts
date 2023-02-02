@@ -18,6 +18,29 @@ type AvatarFormValues = {
 
 type Status = "idle" | "connecting" | "connected" | "disconnecting";
 
+type ErrorStatus = "connect_wallet" | "invalid_game_code" | "default";
+
+const errorMsgs: Record<ErrorStatus, string> = {
+  connect_wallet: "Please log into your Metamask or Browser wallet",
+  invalid_game_code: "Invalid game code",
+  default: "Issue connecting, please try again",
+};
+
+const errorHandler = (error: any): ErrorStatus => {
+  if (error && typeof error.message === "string") {
+    switch (error.message) {
+      case "Invalid game code":
+        return "invalid_game_code";
+      case "Connector not found":
+        return "connect_wallet";
+      default:
+        return "default";
+    }
+  } else {
+    return "default";
+  }
+};
+
 export const usePlayer = (
   gameCode: number,
   setGameCode: (code: number) => void
@@ -25,8 +48,10 @@ export const usePlayer = (
   // LOCAL STATE
   const [error, setError] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
   const [streamStatus, setStreamStatus] = useState<Status>("idle");
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   // WALLET CONNECTION - Wagmi
   const { address } = useAccount();
@@ -47,7 +72,7 @@ export const usePlayer = (
   const huddleName = useRootStore((state) =>
     state.displayName ? state.displayName : null
   );
-  const micEnabled = useRootStore((state) => !state.isMicPaused);
+  const isMicPaused = useRootStore((state) => state.isMicPaused ?? false);
 
   // FORMS
   const connectForm = useForm<FormValues>({
@@ -58,7 +83,7 @@ export const usePlayer = (
     },
   });
   const avatarForm = useForm<AvatarFormValues>({
-    shouldUseNativeValidation: true,
+    // shouldUseNativeValidation: true,
     defaultValues: {
       avatar: huddleAvatar || "",
     },
@@ -108,6 +133,8 @@ export const usePlayer = (
   }
 
   async function handleConnection(values: FormValues) {
+    console.log("handleConnection", values);
+
     try {
       setStatus("connecting");
 
@@ -121,11 +148,28 @@ export const usePlayer = (
         ens: `${values.name}.eth}`,
       });
 
-      setStatus("connecting");
+      const mics = (await navigator.mediaDevices.enumerateDevices()).filter(
+        (device) => device.kind === "audioinput"
+      );
+
+      setMics(mics);
+
+      setStatus("connected");
       setGameCode(values.gameCode);
     } catch (error: any) {
-      setError(error.message ?? "Issue connecting, please try again");
-      console.error(error);
+      const errStatus = errorHandler(error.message);
+
+      if (errStatus === "connect_wallet") {
+        connectForm.setError("gameCode", {
+          type: "validate",
+        });
+        connectForm.trigger("gameCode", {
+          shouldFocus: true,
+        });
+      }
+
+      setError(errorMsgs[errStatus]);
+      console.error("Error Connecting", error.message);
     }
   }
 
@@ -146,24 +190,19 @@ export const usePlayer = (
 
   return {
     error,
-    setError,
     status,
     streamStatus,
     isEditingAvatar,
     setIsEditingAvatar,
-    micEnabled,
-    huddleName,
+    showSettings,
+    setShowSettings,
+    liveStream,
+    isMicPaused,
+    mics,
     huddleAvatar,
-    forms: {
-      connect: {
-        register: connectForm.register,
-        handleSubmit: connectForm.handleSubmit,
-      },
-      avatar: {
-        register: avatarForm.register,
-        handleSubmit: avatarForm.handleSubmit,
-      },
-    },
+    huddleName,
+    avatarForm,
+    connectForm,
     updateAvatar,
     startLiveStream,
     stopLiveStream,
@@ -179,15 +218,15 @@ export const useOpponent = (peerId: string) => {
   const avatar = useRootStore(
     (state) => state.peers[peerId]?.avatarUrl ?? null
   );
-  const micEnabled = useRootStore(
-    (state) => !state.peers[peerId]?.isMicPaused ?? false
+  const isMicPaused = useRootStore(
+    (state) => state.peers[peerId]?.isMicPaused ?? true
   );
   const reaction = useRootStore((state) => state.peers[peerId]?.reaction ?? "");
 
   return {
     name,
     avatar,
-    micEnabled,
+    isMicPaused,
     reaction,
   };
 };

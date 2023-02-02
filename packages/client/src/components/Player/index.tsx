@@ -11,7 +11,7 @@ export const Player: FC<PlayerProps> = ({
   const [hasNotifications, setHasNotifications] = useState(false);
 
   return (
-    <aside className="min-w-xs relative z-10 flex h-3/4 w-1/5 max-w-sm flex-col border-2 border-slate-700 py-3">
+    <aside className=" relative z-10 flex h-3/4 w-1/5 flex-col border-2 border-slate-700 py-3">
       <Avatar
         {...props}
         gameCode={gameCode}

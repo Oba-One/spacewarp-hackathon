@@ -1,13 +1,17 @@
 import { FC } from "react";
+import { Tooltip } from "react-tippy";
+import { Player as LivePlayer } from "@livepeer/react";
 
 import PlayerAvatar from "/assets/avatar1.png";
 import OpponentAvatar from "/assets/avatar2.png";
-import ChatIcon from "../../assets/chat.svg";
-import LogoutIcon from "../../assets/chat.svg";
-import MicEnabledIcon from "../../assets/mic-enabled.svg";
-import MicDisabledIcon from "../../assets/mic-disabled.svg";
-import RecordingEnabledIcon from "../../assets/recording-enabled.svg";
-import RecordingDisabledIcon from "../../assets/recording-disabled.svg";
+
+import { RC as ChatIcon } from "../../assets/chat.svg";
+import { RC as LogoutIcon } from "../../assets/logout.svg";
+import { RC as SettingsIcon } from "../../assets/settings.svg";
+import { RC as MicEnabledIcon } from "../../assets/mic-enabled.svg";
+import { RC as MicDisabledIcon } from "../../assets/mic-disabled.svg";
+import { RC as RecordingEnabledIcon } from "../../assets/recording-enabled.svg";
+import { RC as RecordingDisabledIcon } from "../../assets/recording-disabled.svg";
 
 import { huddleClient } from "../../modules/clients";
 
@@ -40,7 +44,7 @@ export interface AvatarProps extends PlayerAvatarProps, OpponentAvatarProps {
 }
 
 export const iconStyles =
-  "relative h-12 w-12 m-1 before:absolute before:rounded-full beforehover:bg-slate-700";
+  "relative grid place-items-center bg-slate-700 h-12 w-12 m-1 before:absolute p-1 rounded-full befor:bg-slate-700 cursor-pointer hover:bg-slate-600";
 
 const Pulse = () => (
   <span className="flex h-3 w-3">
@@ -58,41 +62,50 @@ const Player: FC<PlayerAvatarProps> = ({
 }) => {
   const {
     status,
-    micEnabled,
+    error,
+    mics,
+    isMicPaused,
     streamStatus,
+    liveStream,
     isEditingAvatar,
     setIsEditingAvatar,
+    huddleName,
     huddleAvatar,
     updateAvatar,
+    showSettings,
+    setShowSettings,
     startLiveStream,
     stopLiveStream,
     handleConnection,
     handleDisconnection,
-    forms: { avatar, connect },
+    avatarForm,
+    connectForm,
   } = usePlayer(gameCode, setGameCode);
 
   const onStreamClick =
     streamStatus === "idle" || streamStatus === "connecting"
       ? startLiveStream
       : stopLiveStream;
-  const onMicClick = micEnabled ? huddleClient.muteMic : huddleClient.enableMic;
+  const onMicClick = !isMicPaused
+    ? huddleClient.muteMic
+    : huddleClient.enableMic;
 
   const StreamingIcon =
     streamStatus === "idle" || streamStatus === "connecting"
       ? RecordingDisabledIcon
       : RecordingEnabledIcon;
-  // const MicIcon = micEnabled ? MicEnabledIcon : MicDisabledIcon;
+  const MicIcon = !isMicPaused ? MicEnabledIcon : MicDisabledIcon;
 
   return (
     <>
       <div id="player-avatar">
         {isEditingAvatar && (
           <div id="edit-avatar">
-            <form onSubmit={avatar.handleSubmit(updateAvatar)}>
+            <form onSubmit={avatarForm.handleSubmit(updateAvatar)}>
               <Input
                 placeholder="New avatar"
                 required
-                {...(avatar.register("avatar"),
+                {...(avatarForm.register("avatar"),
                 {
                   type: "url",
                 })}
@@ -110,12 +123,15 @@ const Player: FC<PlayerAvatarProps> = ({
       </div>
       {status === "connected" || status === "disconnecting" ? (
         <>
-          <div id="player-actions">
-            <li className={`${iconStyles}`} onClick={onStreamClick}>
-              <img src={StreamingIcon} />
-            </li>
+          <h3 className="text-xl font-semibold">
+            {huddleName ?? "Player One"}
+          </h3>
+          <ul id="player-actions" className="flex justify-center gap-1">
             <li className={`${iconStyles}`} onClick={onMicClick}>
-              {/* <img src={MicIcon} /> */}
+              <MicIcon />
+            </li>
+            <li className={`${iconStyles}`} onClick={onStreamClick}>
+              <StreamingIcon />
             </li>
             <li
               className={`${iconStyles}`}
@@ -124,38 +140,73 @@ const Player: FC<PlayerAvatarProps> = ({
               {hasNotifications && <Pulse />}
               <ChatIcon />
             </li>
+            <li
+              className={`${iconStyles}`}
+              onClick={() => setShowSettings(!showSettings)}
+            >
+              <Tooltip
+                open={showSettings}
+                html={
+                  <div>
+                    <h5>Select Mic</h5>
+                    <ul>
+                      {mics.map((mic) => {
+                        return <li>{mic.label}</li>;
+                      })}
+                    </ul>
+                  </div>
+                }
+              />
+              <SettingsIcon />
+            </li>
             <li className={`${iconStyles}`} onClick={handleDisconnection}>
               <LogoutIcon />
             </li>
-          </div>
+          </ul>
         </>
       ) : (
         <form
           id="player-connection"
-          onSubmit={connect.handleSubmit(handleConnection)}
+          onSubmit={connectForm.handleSubmit(handleConnection, (errors) => {
+            console.log("error", errors);
+          })}
           className="flex w-full flex-col gap-3"
         >
           <Input
             placeholder="Player Name"
-            {...connect.register("name", {
+            {...connectForm.register("name", {
               required: true,
-              minLength: 3,
-              maxLength: 24,
             })}
           />
           <Input
+            type={"number"}
             placeholder="Game ID"
-            {...connect.register("gameCode", { required: true })}
+            {...connectForm.register("gameCode", {
+              required: true,
+              valueAsNumber: true,
+              validate: (value) => value > 0,
+            })}
           />
-          <Button type="submit">Join Chat</Button>
+          <Button type="submit">Connect To HQ</Button>
         </form>
+      )}
+      <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
+        {error}
+      </p>
+      {liveStream.data?.playbackId && (
+        <LivePlayer
+          title={liveStream.data?.name}
+          playbackId={liveStream.data?.playbackId}
+          autoPlay
+          muted
+        />
       )}
     </>
   );
 };
 
 const Opponent: FC<OpponentAvatarProps> = ({ peerId }) => {
-  const { name, avatar, micEnabled, reaction } = useOpponent(peerId);
+  const { name, avatar, isMicPaused, reaction } = useOpponent(peerId);
 
   return (
     <>
@@ -164,14 +215,16 @@ const Opponent: FC<OpponentAvatarProps> = ({ peerId }) => {
         alt={`opponent avatar`}
         className="h-2xl w-2xl "
       />
-      <h3 className="text-xl">{name ?? "Opponent"}</h3>;
-      <ul id="opponent-actions">
+      <h3 className="text-xl font-semibold">{name ?? "Opponent"}</h3>
+      <ul id="opponent-actions" className="flex justify-center gap-2">
         <li className={`${iconStyles}`}>
-          {micEnabled ? null : <MicDisabledIcon />}
+          {!isMicPaused ? <MicEnabledIcon /> : <MicDisabledIcon />}
         </li>
-        <li className={`${iconStyles}`}>
-          {reaction === "👀" && <RecordingEnabledIcon />}
-        </li>
+        {reaction === "👀" && (
+          <li className={`${iconStyles}`}>
+            <RecordingEnabledIcon />
+          </li>
+        )}
       </ul>
     </>
   );
@@ -179,7 +232,7 @@ const Opponent: FC<OpponentAvatarProps> = ({ peerId }) => {
 
 export const Avatar: FC<AvatarProps> = ({ peerId, type, ...props }) => {
   return (
-    <div className="flex w-full flex-col items-center gap-3 px-4">
+    <div className="flex w-full flex-col items-center gap-1 px-4">
       {type === "player" ? <Player {...props} /> : <Opponent peerId={peerId} />}
     </div>
   );
