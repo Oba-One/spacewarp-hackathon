@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useCreateStream } from "@livepeer/react";
+import { useCreateStream, updateStream } from "@livepeer/react";
 import { useRootStore } from "@huddle01/huddle01-client";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
@@ -111,7 +111,14 @@ export const usePlayer = (
       setStreamStatus("connecting");
       if (!gameCode) throw new Error("No game id found");
 
+      let stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true,
+      });
+
       await liveStream.mutateAsync?.();
+      await updateStream({
+        streamId: stream.id,
+      });
       await huddleClient.sendReaction("👀");
 
       setStreamStatus("connected");
