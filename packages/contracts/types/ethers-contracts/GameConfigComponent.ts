@@ -28,12 +28,16 @@ import type {
 } from "./common";
 
 export type GameConfigStruct = {
-  gameBegin: PromiseOrValue<BigNumberish>;
+  startedAt: PromiseOrValue<BigNumberish>;
+  finishedAt: PromiseOrValue<BigNumberish>;
+  turnsLeft: PromiseOrValue<BigNumberish>;
   moveCardLength: PromiseOrValue<BigNumberish>;
 };
 
-export type GameConfigStructOutput = [BigNumber, number] & {
-  gameBegin: BigNumber;
+export type GameConfigStructOutput = [BigNumber, BigNumber, number, number] & {
+  startedAt: BigNumber;
+  finishedAt: BigNumber;
+  turnsLeft: number;
   moveCardLength: number;
 };
 
@@ -41,8 +45,8 @@ export interface GameConfigComponentInterface extends utils.Interface {
   functions: {
     "authorizeWriter(address)": FunctionFragment;
     "getEntities()": FunctionFragment;
-    "getEntitiesWithValue((uint256,uint32))": FunctionFragment;
     "getEntitiesWithValue(bytes)": FunctionFragment;
+    "getEntitiesWithValue((uint256,uint256,uint8,uint32))": FunctionFragment;
     "getRawValue(uint256)": FunctionFragment;
     "getSchema()": FunctionFragment;
     "getValue(uint256)": FunctionFragment;
@@ -52,8 +56,8 @@ export interface GameConfigComponentInterface extends utils.Interface {
     "registerIndexer(address)": FunctionFragment;
     "registerWorld(address)": FunctionFragment;
     "remove(uint256)": FunctionFragment;
+    "set(uint256,(uint256,uint256,uint8,uint32))": FunctionFragment;
     "set(uint256,bytes)": FunctionFragment;
-    "set(uint256,(uint256,uint32))": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "unauthorizeWriter(address)": FunctionFragment;
     "world()": FunctionFragment;
@@ -64,8 +68,8 @@ export interface GameConfigComponentInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "authorizeWriter"
       | "getEntities"
-      | "getEntitiesWithValue((uint256,uint32))"
       | "getEntitiesWithValue(bytes)"
+      | "getEntitiesWithValue((uint256,uint256,uint8,uint32))"
       | "getRawValue"
       | "getSchema"
       | "getValue"
@@ -75,8 +79,8 @@ export interface GameConfigComponentInterface extends utils.Interface {
       | "registerIndexer"
       | "registerWorld"
       | "remove"
+      | "set(uint256,(uint256,uint256,uint8,uint32))"
       | "set(uint256,bytes)"
-      | "set(uint256,(uint256,uint32))"
       | "transferOwnership"
       | "unauthorizeWriter"
       | "world"
@@ -92,12 +96,12 @@ export interface GameConfigComponentInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getEntitiesWithValue((uint256,uint32))",
-    values: [GameConfigStruct]
-  ): string;
-  encodeFunctionData(
     functionFragment: "getEntitiesWithValue(bytes)",
     values: [PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getEntitiesWithValue((uint256,uint256,uint8,uint32))",
+    values: [GameConfigStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "getRawValue",
@@ -127,12 +131,12 @@ export interface GameConfigComponentInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "set(uint256,bytes)",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
+    functionFragment: "set(uint256,(uint256,uint256,uint8,uint32))",
+    values: [PromiseOrValue<BigNumberish>, GameConfigStruct]
   ): string;
   encodeFunctionData(
-    functionFragment: "set(uint256,(uint256,uint32))",
-    values: [PromiseOrValue<BigNumberish>, GameConfigStruct]
+    functionFragment: "set(uint256,bytes)",
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
@@ -157,11 +161,11 @@ export interface GameConfigComponentInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEntitiesWithValue((uint256,uint32))",
+    functionFragment: "getEntitiesWithValue(bytes)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEntitiesWithValue(bytes)",
+    functionFragment: "getEntitiesWithValue((uint256,uint256,uint8,uint32))",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -183,11 +187,11 @@ export interface GameConfigComponentInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "remove", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,bytes)",
+    functionFragment: "set(uint256,(uint256,uint256,uint8,uint32))",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,(uint256,uint32))",
+    functionFragment: "set(uint256,bytes)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -257,13 +261,13 @@ export interface GameConfigComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<[BigNumber[]]>;
 
-    "getEntitiesWithValue((uint256,uint32))"(
-      config: GameConfigStruct,
+    "getEntitiesWithValue(bytes)"(
+      value: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
-    "getEntitiesWithValue(bytes)"(
-      value: PromiseOrValue<BytesLike>,
+    "getEntitiesWithValue((uint256,uint256,uint8,uint32))"(
+      config: GameConfigStruct,
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
@@ -305,15 +309,15 @@ export interface GameConfigComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    "set(uint256,bytes)"(
+    "set(uint256,(uint256,uint256,uint8,uint32))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: PromiseOrValue<BytesLike>,
+      config: GameConfigStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    "set(uint256,(uint256,uint32))"(
+    "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
-      config: GameConfigStruct,
+      value: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -342,13 +346,13 @@ export interface GameConfigComponent extends BaseContract {
 
   getEntities(overrides?: CallOverrides): Promise<BigNumber[]>;
 
-  "getEntitiesWithValue((uint256,uint32))"(
-    config: GameConfigStruct,
+  "getEntitiesWithValue(bytes)"(
+    value: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
-  "getEntitiesWithValue(bytes)"(
-    value: PromiseOrValue<BytesLike>,
+  "getEntitiesWithValue((uint256,uint256,uint8,uint32))"(
+    config: GameConfigStruct,
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
@@ -390,15 +394,15 @@ export interface GameConfigComponent extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  "set(uint256,bytes)"(
+  "set(uint256,(uint256,uint256,uint8,uint32))"(
     entity: PromiseOrValue<BigNumberish>,
-    value: PromiseOrValue<BytesLike>,
+    config: GameConfigStruct,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  "set(uint256,(uint256,uint32))"(
+  "set(uint256,bytes)"(
     entity: PromiseOrValue<BigNumberish>,
-    config: GameConfigStruct,
+    value: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -427,13 +431,13 @@ export interface GameConfigComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<BigNumber[]>;
 
-    "getEntitiesWithValue((uint256,uint32))"(
-      config: GameConfigStruct,
+    "getEntitiesWithValue(bytes)"(
+      value: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
-    "getEntitiesWithValue(bytes)"(
-      value: PromiseOrValue<BytesLike>,
+    "getEntitiesWithValue((uint256,uint256,uint8,uint32))"(
+      config: GameConfigStruct,
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
@@ -475,15 +479,15 @@ export interface GameConfigComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "set(uint256,bytes)"(
+    "set(uint256,(uint256,uint256,uint8,uint32))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: PromiseOrValue<BytesLike>,
+      config: GameConfigStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "set(uint256,(uint256,uint32))"(
+    "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
-      config: GameConfigStruct,
+      value: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -524,13 +528,13 @@ export interface GameConfigComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getEntitiesWithValue((uint256,uint32))"(
-      config: GameConfigStruct,
+    "getEntitiesWithValue(bytes)"(
+      value: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getEntitiesWithValue(bytes)"(
-      value: PromiseOrValue<BytesLike>,
+    "getEntitiesWithValue((uint256,uint256,uint8,uint32))"(
+      config: GameConfigStruct,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -570,15 +574,15 @@ export interface GameConfigComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    "set(uint256,bytes)"(
+    "set(uint256,(uint256,uint256,uint8,uint32))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: PromiseOrValue<BytesLike>,
+      config: GameConfigStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    "set(uint256,(uint256,uint32))"(
+    "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
-      config: GameConfigStruct,
+      value: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -608,13 +612,13 @@ export interface GameConfigComponent extends BaseContract {
 
     getEntities(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getEntitiesWithValue((uint256,uint32))"(
-      config: GameConfigStruct,
+    "getEntitiesWithValue(bytes)"(
+      value: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getEntitiesWithValue(bytes)"(
-      value: PromiseOrValue<BytesLike>,
+    "getEntitiesWithValue((uint256,uint256,uint8,uint32))"(
+      config: GameConfigStruct,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -654,15 +658,15 @@ export interface GameConfigComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    "set(uint256,bytes)"(
+    "set(uint256,(uint256,uint256,uint8,uint32))"(
       entity: PromiseOrValue<BigNumberish>,
-      value: PromiseOrValue<BytesLike>,
+      config: GameConfigStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    "set(uint256,(uint256,uint32))"(
+    "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
-      config: GameConfigStruct,
+      value: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

@@ -4,6 +4,7 @@
 export { AssetComponent__factory } from "./AssetComponent__factory";
 export { BareComponent__factory } from "./BareComponent__factory";
 export { EffectComponent__factory } from "./EffectComponent__factory";
+export { EnergyComponent__factory } from "./EnergyComponent__factory";
 export { GameConfigComponent__factory } from "./GameConfigComponent__factory";
 export { ISystem__factory } from "./ISystem__factory";
 export { IUint256Component__factory } from "./IUint256Component__factory";

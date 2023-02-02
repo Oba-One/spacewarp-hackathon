@@ -4,6 +4,7 @@
 export type { AssetComponent } from "./AssetComponent";
 export type { BareComponent } from "./BareComponent";
 export type { EffectComponent } from "./EffectComponent";
+export type { EnergyComponent } from "./EnergyComponent";
 export type { GameConfigComponent } from "./GameConfigComponent";
 export type { ISystem } from "./ISystem";
 export type { IUint256Component } from "./IUint256Component";
@@ -24,6 +25,7 @@ export * as factories from "./factories";
 export { AssetComponent__factory } from "./factories/AssetComponent__factory";
 export { BareComponent__factory } from "./factories/BareComponent__factory";
 export { EffectComponent__factory } from "./factories/EffectComponent__factory";
+export { EnergyComponent__factory } from "./factories/EnergyComponent__factory";
 export { GameConfigComponent__factory } from "./factories/GameConfigComponent__factory";
 export { IdentityComponent__factory } from "./factories/IdentityComponent__factory";
 export { InitSystem__factory } from "./factories/InitSystem__factory";

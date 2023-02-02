@@ -3,7 +3,7 @@ pragma solidity >=0.8.0;
 import { System, IWorld } from "solecs/System.sol";
 import { getAddressById } from "solecs/utils.sol";
 import { LibInit } from "libraries/LibInit.sol";
-import { IdentityType, PositionType } from "libraries/MSTypes.sol";
+import { Identity, PositionEnum } from "libraries/MSTypes.sol";
 import { OwnedByComponent, ID as OwnedByID } from "../components/OwnedByComponent.sol";
 import { IdentityComponent, ID as IdentityID } from "../components/IdentityComponent.sol";
 import { AssetComponent, ID as AssetID } from "../components/AssetComponent.sol";
@@ -16,12 +16,12 @@ contract InitSystem is System {
 
   function execute(bytes memory) public returns (bytes memory) {
     uint256 playerEntity = LibInit.initPlayer(msg.sender);
-    IdentityType memory identity1 = IdentityType({ name: "SpiderMan1", description: "Spiderman One" });
+    Identity memory identity1 = Identity({ name: "SpiderMan1", description: "Spiderman One" });
     // @junaama TODO: remove hardcoding later
     string
       memory asset = "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
 
-    PositionType position = PositionType.Deck;
+    PositionEnum position = PositionEnum.Deck;
     uint256 characterEntity = world.getUniqueEntityId();
 
     PositionComponent(getAddressById(components, PositionID)).set(characterEntity, position);
