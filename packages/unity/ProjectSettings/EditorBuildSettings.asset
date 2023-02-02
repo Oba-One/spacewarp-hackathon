@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/start.unity
+    path: Assets/Scenes/1 - connect.unity
     guid: ed4c5c9ab04de47379d57b38a334edf3
   - enabled: 1
-    path: Assets/Scenes/play.unity
+    path: Assets/Scenes/2 - select.unity
+    guid: 3e13229b323a249759f011981b8219ec
+  - enabled: 1
+    path: Assets/Scenes/3 - join.unity
+    guid: 77de166e6c0d34b80a464292fa9fa310
+  - enabled: 1
+    path: Assets/Scenes/4 - trash.unity
     guid: b61cd4781c4d64940b3db4e072b1b4ff
   - enabled: 0
     path: Assets/Scenes/WebLogin.unity
