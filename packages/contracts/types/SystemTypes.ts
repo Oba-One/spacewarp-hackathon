@@ -2,5 +2,5 @@
 import { InitSystem } from "./ethers-contracts/InitSystem";
  
 export type SystemTypes = {
-  "mudSnap.system.Init": InitSystem;
+  "system.Init": InitSystem;
 };

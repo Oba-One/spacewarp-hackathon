@@ -246,20 +246,20 @@
   },
   "ast": {
     "absolutePath": "../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol",
-    "id": 35069,
+    "id": 35388,
     "exportedSymbols": {
       "IERC173": [
         2793
       ],
       "ISystem": [
-        35068
+        35387
       ]
     },
     "nodeType": "SourceUnit",
     "src": "32:336:18",
     "nodes": [
       {
-        "id": 35056,
+        "id": 35375,
         "nodeType": "PragmaDirective",
         "src": "32:24:18",
         "nodes": [],
@@ -271,19 +271,19 @@
         ]
       },
       {
-        "id": 35058,
+        "id": 35377,
         "nodeType": "ImportDirective",
         "src": "58:40:18",
         "nodes": [],
         "absolutePath": "../../node_modules/@latticexyz/solecs/src/interfaces/IERC173.sol",
         "file": "./IERC173.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 35069,
-        "sourceUnit": 37431,
+        "scope": 35388,
+        "sourceUnit": 37750,
         "symbolAliases": [
           {
             "foreign": {
-              "id": 35057,
+              "id": 35376,
               "name": "IERC173",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -297,12 +297,12 @@
         "unitAlias": ""
       },
       {
-        "id": 35068,
+        "id": 35387,
         "nodeType": "ContractDefinition",
         "src": "264:103:18",
         "nodes": [
           {
-            "id": 35067,
+            "id": 35386,
             "nodeType": "FunctionDefinition",
             "src": "297:68:18",
             "nodes": [],
@@ -313,17 +313,17 @@
             "name": "execute",
             "nameLocation": "306:7:18",
             "parameters": {
-              "id": 35063,
+              "id": 35382,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 35062,
+                  "id": 35381,
                   "mutability": "mutable",
                   "name": "args",
                   "nameLocation": "327:4:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 35067,
+                  "scope": 35386,
                   "src": "314:17:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -332,7 +332,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 35061,
+                    "id": 35380,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "314:5:18",
@@ -347,17 +347,17 @@
               "src": "313:19:18"
             },
             "returnParameters": {
-              "id": 35066,
+              "id": 35385,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 35065,
+                  "id": 35384,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 35067,
+                  "scope": 35386,
                   "src": "351:12:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -366,7 +366,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 35064,
+                    "id": 35383,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "351:5:18",
@@ -380,7 +380,7 @@
               ],
               "src": "350:14:18"
             },
-            "scope": 35068,
+            "scope": 35387,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -390,7 +390,7 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 35059,
+              "id": 35378,
               "name": "IERC173",
               "nameLocations": [
                 "285:7:18"
@@ -399,7 +399,7 @@
               "referencedDeclaration": 2793,
               "src": "285:7:18"
             },
-            "id": 35060,
+            "id": 35379,
             "nodeType": "InheritanceSpecifier",
             "src": "285:7:18"
           }
@@ -409,13 +409,13 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          35068,
+          35387,
           2793,
-          36970
+          37289
         ],
         "name": "ISystem",
         "nameLocation": "274:7:18",
-        "scope": 35069,
+        "scope": 35388,
         "usedErrors": []
       }
     ],

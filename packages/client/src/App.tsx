@@ -1,18 +1,11 @@
 import { SWRConfig } from "swr";
-import { useState } from "react";
-import { getDefaultProvider } from "ethers";
-import { WagmiConfig, createClient } from "wagmi";
+import { WagmiConfig } from "wagmi";
+import { HuddleClientProvider } from "@huddle01/huddle01-client";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import Game from "./views/Game";
 
-import { Nav } from "./components/Nav";
-import { Loader } from "./components/Loader";
-
-const client = createClient({
-  autoConnect: false,
-  provider: getDefaultProvider(),
-});
+import { huddleClient, wagmiClient } from "./modules/clients";
 
 const Views = () => {
   return (
@@ -24,29 +17,18 @@ const Views = () => {
 };
 
 function App() {
-  const [status, setStatus] = useState<"loading" | "done" | "error">("done");
-  const [error, setError] = useState("");
-
-  function handleReload() {
-    setStatus("loading");
-    window.location.reload();
-    setError("");
-  }
-
   return (
-    <WagmiConfig client={client}>
+    <WagmiConfig client={wagmiClient}>
       <SWRConfig
         value={{
           refreshInterval: 3000,
         }}
       >
-        <BrowserRouter>
-          {(status === "loading" || status === "error") && (
-            <Loader error={error} reload={handleReload} />
-          )}
-          <Nav />
-          <Views />
-        </BrowserRouter>
+        <HuddleClientProvider value={huddleClient}>
+          <BrowserRouter>
+            <Views />
+          </BrowserRouter>
+        </HuddleClientProvider>
       </SWRConfig>
     </WagmiConfig>
   );
