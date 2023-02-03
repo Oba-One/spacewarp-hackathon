@@ -53,10 +53,10 @@
         "timeout": 10000000
     },
     "prettier": {
-        "tabWidth": 4,
-        "useTabs": false,
-        "semi": false,
-        "singleQuote": false,
-        "printWidth": 100
+      "printWidth": 120,
+    "semi": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true
     }
 }
