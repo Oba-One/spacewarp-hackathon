@@ -3,8 +3,10 @@ pragma solidity 0.8.17;
 import "./SquadCollectibles.sol";
 
 contract Squad is SquadCollectibles {
-  event ProposalCreated();
+  event ProposalCreated(uint256 id, address proposer, uint256 assetId);
   event ProposalVoted(address indexed voter, uint256 proposalId, uint256 support);
+  event ProposalCancelled(uint256 id);
+  event ProposalExecuted(uint256 id);
 
   address private _owner;
   address[] public squadMembers;
@@ -35,6 +37,12 @@ contract Squad is SquadCollectibles {
   struct Proposal {
     uint256 id;
     uint256 assetId;
+    address proposer;
+    uint256 forVotes;
+    uint256 againstVotes;
+    uint256 abstainVotes;
+    bool cancelled;
+    bool executed;
   }
 
   enum Vote {
@@ -103,11 +111,11 @@ contract Squad is SquadCollectibles {
     Proposal storage proposal = proposals[proposalId];
     Receipt storage receipt = proposal.receipts[msg.sender];
     if (support == 0) {
-      proposal.forVote = proposal.forVote + 1;
+      proposal.forVotes = proposal.forVotes + 1;
     } else if (support == 1) {
-      proposal.againstVote = proposal.againstVote + 1;
+      proposal.againstVotes = proposal.againstVotes + 1;
     } else {
-      proposal.abstainVote = proposal.abstainVote + 1;
+      proposal.abstainVotes = proposal.abstainVotes + 1;
     }
     receipt.voted = true;
     receipt.support = support;
