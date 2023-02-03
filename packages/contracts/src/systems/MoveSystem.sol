@@ -18,6 +18,8 @@ import {PositionComponent, ID as PositionComponentID} from "../components/Positi
 import {PowerComponent, ID as PowerComponentID} from "../components/PowerComponent.sol";
 import {ZoneComponent, ID as ZoneComponentID} from "../components/ZoneComponent.sol";
 
+import {LibRound} from "../libraries/LibRound.sol";
+
 import {
     ElementEnum,
     PositionEnum,
@@ -44,5 +46,13 @@ contract MoveCardSystem is System {
                 == CommitmentComponent(getAddressById(components, CommitmentComponentID)).getValue(playerEntity),
             "Commitment doesn't match the move : push next round "
         );
+
+        require(
+            LibRound.getCurrentTime(components) != PhaseEnum.Action,
+            "MoveSystem: cannot complete move during Action Timed"
+        );
+
+        uint32 currentRound = LibRound.getCurrentRound(components);
+        PhaseComponent.set(playerEntity, currentRound);
     }
 }
