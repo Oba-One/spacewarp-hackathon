@@ -29,32 +29,38 @@ const Game: React.FC = () => {
 
   return (
     <LivepeerConfig client={livepeerClient}>
-      <section
-        id="react"
-        className="fixed z-10 flex h-screen w-screen justify-between"
-      >
-        <Player
-          type="opponent"
-          peerId={peerId}
-          gameCode={gameCode}
-          setGameCode={setGameCode}
-        />
-        <Player
-          type="player"
-          peerId={peerId}
-          gameCode={gameCode}
-          setGameCode={setGameCode}
-          opponentId={peerId}
-        />
-      </section>
-      <section
-        id="unity"
-        className="flex grid h-screen w-screen place-items-center"
-      >
-        <Unity className="h-screen w-screen" unityProvider={unityProvider} />
-      </section>
+      <div className="container">
+        <div className="grid grid-cols-5">
+          <div>
+            <Player
+              type="opponent"
+              peerId={peerId}
+              gameCode={gameCode}
+              setGameCode={setGameCode}
+            />
+          </div>
+
+          <div className="col-span-3">
+            <Unity className="w-full" unityProvider={unityProvider} />
+          </div>
+
+          <div>
+            <Player
+              type="player"
+              peerId={peerId}
+              gameCode={gameCode}
+              setGameCode={setGameCode}
+              opponentId={peerId}
+            />
+          </div>
+        </div>
+      </div>
+        
+
+        
     </LivepeerConfig>
   );
 };
 
 export default Game;
+
