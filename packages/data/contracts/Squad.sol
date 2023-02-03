@@ -2,9 +2,14 @@
 pragma solidity 0.8.17;
 import "./MudCoin.sol";
 
-contract Team {
+contract Squad {
 
-  struct Submission {
+  enum ItemType {
+    ASSET,
+    COLLECTIBLE
+  }
+
+  struct Item {
     string url; 
     string dealId;
     string pieceId; 
@@ -18,7 +23,7 @@ contract Team {
   IERC20 public token;
   uint8 public stage; 
   mapping(address => bool) public members;
-  mapping(string => Submission) public submissions;
+  mapping(string => Item) public submissions;
   
   modifier ownerOnly() {
     require(msg.sender == owner, "Non Admin Call");
@@ -55,7 +60,7 @@ contract Team {
   }
 
   // TODO: Make this quadratic voting
-  function voteForSubmission(string memory url, uint voteCount) public memberOnly {
+  function voteForItem(string memory url, uint voteCount) public memberOnly {
     require(stage == 1,"Incorrect stage"); 
     // Ensure that the voter has enough tokens to vote
     require(token.balanceOf(msg.sender) >= voteCount, "Insufficient balance");
@@ -65,7 +70,7 @@ contract Team {
       token.transferFrom(msg.sender, address(this), voteCount);
     }
     else {
-      Submission memory newSubmission = Submission({
+      Item memory newItem = Item({
         url: url,
         dealId: "",
         pieceId: "",
@@ -75,21 +80,21 @@ contract Team {
         noVotes: 0,
         valid: true
       });
-      submissions[url] = newSubmission;
+      submissions[url] = newItem;
     }
   }
 
   // Miners can submit their interest and submit proofs of storage as well
   function submitMinerProof(string memory url, string memory dealId, string memory pieceCid) public {
     require(stage == 2,"Incorrect stage"); 
-    Submission memory targetSubmission = submissions[url];
-    if(targetSubmission.valid)  {
-      targetSubmission.dealId = dealId;
-      targetSubmission.pieceId = pieceCid;
-      targetSubmission.spAddress = msg.sender;
-      targetSubmission.noVotes = targetSubmission.totalVotes - targetSubmission.yesVotes;
+    Item memory targetItem = submissions[url];
+    if(targetItem.valid)  {
+      targetItem.dealId = dealId;
+      targetItem.pieceId = pieceCid;
+      targetItem.spAddress = msg.sender;
+      targetItem.noVotes = targetItem.totalVotes - targetItem.yesVotes;
     }
-    submissions[url] = targetSubmission;
+    submissions[url] = targetItem;
   }
 
   function voteStorageProvider() public {
