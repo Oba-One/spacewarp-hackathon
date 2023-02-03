@@ -1,3 +1,4 @@
+import { useAsset } from 'hooks/useAsset';
 import { FC } from "react";
 
 interface Metadata {
@@ -14,17 +15,19 @@ interface AssetProps {
   actionsEnabled: boolean;
 }
 
-export const Asset: FC<AssetProps> = ({ image, metadata, actionsEnabled }) => {
+export const Asset: FC<AssetProps> = (asset) => {
+  // const {} = useAsset(asset);
+  
   return (
     <li className="relative">
       <div className="absolute left-0 top-0 flex justify-between">
-        <p>{metadata.power}</p>
-        <p>{metadata.energy}</p>
+        <p>{asset.metadata.power}</p>
+        <p>{asset.metadata.energy}</p>
       </div>
-      <img src={image} alt={`Asset for ${metadata.name}`} />
-      <h3>{metadata.name}</h3>
-      <p>{metadata.description}</p>
-      {actionsEnabled && (
+      <img src={asset.image} alt={`Asset for ${asset.metadata.name}`} />
+      <h3>{asset.metadata.name}</h3>
+      <p>{asset.metadata.description}</p>
+      {asset.actionsEnabled && (
         <div className="">
           <button>Propose Update</button>
           <button>Vote</button>
