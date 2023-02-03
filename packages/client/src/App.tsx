@@ -4,7 +4,7 @@ import { HuddleClientProvider } from "@huddle01/huddle01-client";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import Game from "./views/Game";
-import Team from "./views/Team";
+import Squad from "./views/Squad";
 
 import { huddleClient, wagmiClient } from "./modules/clients";
 
@@ -12,7 +12,7 @@ const Views = () => {
   return (
     <Routes>
       <Route index element={<Game />} />
-      <Route path="/team" element={<Team />} />
+      <Route path="/squad" element={<Squad />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

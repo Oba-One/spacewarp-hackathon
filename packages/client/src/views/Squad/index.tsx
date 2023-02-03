@@ -2,7 +2,7 @@ import React from "react";
 
 import { Nav } from "../../components/Nav";
 
-const Team: React.FC = () => {
+const Squad: React.FC = () => {
   return (
     <>
       <Nav />
@@ -14,4 +14,4 @@ const Team: React.FC = () => {
   );
 };
 
-export default Team;
+export default Squad;
