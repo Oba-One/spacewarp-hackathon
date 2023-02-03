@@ -1,15 +1,3 @@
-export interface Asset {
-  id: string;
-  name: string;
-  description: string;
-  winner: string;
-  image: string;
-  stream: string;
-  characters: string[];
-  locations: string[];
-  proposals: string[];
-}
-
 export const useAsset = (asset: Asset) => {
   async function proposeUpdate() {
     const res = await fetch(`/assets/${asset.id}/proposeUpdate`, {

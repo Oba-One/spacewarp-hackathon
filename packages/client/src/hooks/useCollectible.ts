@@ -1,14 +1,3 @@
-interface Collectible {
-  id: string;
-  name: string;
-  description: string;
-  owner: string;
-  image: string;
-  stream: string;
-  assetsEarned: string[];
-  redeemed?: boolean;
-}
-
 export const useCollectible = (collectible: Collectible) => {
   async function redeem() {
     const res = await fetch(`/collectibles/${collectible.id}/redeem`, {

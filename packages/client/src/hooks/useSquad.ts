@@ -1,39 +1,5 @@
 import useSwr from "swr";
 import { useContract } from "wagmi";
-import { Asset } from "./useAsset";
-
-export interface Squad {
-  id: string;
-  name: string;
-  description: string;
-  owner: string;
-  image: string;
-  stream: string;
-  assetsEarned: string[];
-  joinSquaded?: boolean;
-}
-
-export interface Member {
-  id: string;
-  name: string;
-  description: string;
-  owner: string;
-  image: string;
-  stream: string;
-  assetsEarned: string[];
-  joinSquaded?: boolean;
-}
-
-export interface Proposal {
-  id: string;
-  name: string;
-  description: string;
-  owner: string;
-  image: string;
-  stream: string;
-  assetsEarned: string[];
-  joinSquaded?: boolean;
-}
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -46,8 +12,8 @@ export const useSquad = (address: string) => {
   const members = useSwr<Member[]>(`/squads/${address}/members`, fetcher);
   const proposals = useSwr<Proposal[]>(`/squads/${address}/members`, fetcher);
 
-  async function joinSquad() {
-    const res = await fetch(`/squads/joinSquad`, {
+  async function join() {
+    const res = await fetch(`/squads/join`, {
       method: "POST",
     });
     return await res.json();
@@ -58,6 +24,6 @@ export const useSquad = (address: string) => {
     assets,
     members,
     proposals,
-    joinSquad,
+    join,
   };
 };

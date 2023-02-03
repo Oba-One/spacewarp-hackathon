@@ -7,14 +7,6 @@ import { livepeerClient } from "../../modules/clients";
 import { Player } from "../../components/Player";
 import { Loader } from "../../components/Loader";
 
-interface GameResult {
-  winner: string;
-  loser: string;
-  locationsWon: number;
-  teams: string[];
-  screenshot?: string;
-}
-
 const Game: React.FC = () => {
   const [code, setCode] = useState(1);
   const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
