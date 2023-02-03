@@ -7,7 +7,7 @@ interface MemberProps {
 }
 
 interface LeaderBoardProps {
-  team: "water" | "earth" | "fire" | "air";
+  team: GameElement;
   members: MemberProps[];
 }
 

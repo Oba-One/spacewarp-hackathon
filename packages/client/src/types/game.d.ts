@@ -16,3 +16,5 @@ declare interface GameResult {
   teams: string[];
   screenshot?: string;
 }
+
+declare type GameElement = "water" | "earth" | "fire" | "air";

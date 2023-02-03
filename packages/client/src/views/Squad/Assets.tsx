@@ -7,7 +7,7 @@ interface AssetProps {
 }
 
 interface AssetsProps {
-  team: "water" | "earth" | "fire" | "air";
+  team: GameElement;
   members: AssetProps[];
 }
 

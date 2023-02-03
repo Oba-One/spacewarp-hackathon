@@ -7,6 +7,7 @@ declare interface Squad {
   stream: string;
   assetsEarned: string[];
   joinSquaded?: boolean;
+  element: GameElement;
 }
 
 declare interface Member {
@@ -17,18 +18,17 @@ declare interface Member {
   image: string;
   stream: string;
   assetsEarned: string[];
-  joinSquaded?: boolean;
+  element: GameElement;
 }
 
 declare interface Proposal {
   id: string;
-  name: string;
+  proposer: string;
   description: string;
-  owner: string;
+  asset: string;
   image: string;
-  stream: string;
-  assetsEarned: string[];
-  joinSquaded?: boolean;
+  votesFor: number;
+  votesAgainst: number;
 }
 
 declare interface Asset {
