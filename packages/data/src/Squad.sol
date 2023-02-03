@@ -1,12 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
+import "./SquadCollectibles.sol";
 
-contract Squad {
+contract Squad is SquadCollectibles {
+  event ProposalCreated();
+  event ProposalVoted(address indexed voter, uint256 proposalId, uint256 support);
+
   address private _owner;
   address[] public squadMembers;
   mapping(address => bool) public members;
   mapping(string => Item) public submissions;
   mapping(address => uint256) public winsOfMember;
+  uint256 public squadId;
 
   enum ItemType {
     ASSET,
@@ -27,10 +32,28 @@ contract Squad {
     string uri;
     uint256 assetId;
   }
-  Asset[] public assets;
+  struct Proposal {
+    uint256 id;
+    uint256 assetId;
+  }
 
-  constructor() {
+  enum Vote {
+    FOR,
+    AGAINST,
+    ABSTAIN
+  }
+  struct Receipt {
+    bool voted;
+    Vote support;
+  }
+
+  Proposal[] public proposals;
+  Asset[] public assets;
+  mapping(address => Receipt) public receipts;
+
+  constructor(uint256 _squadId) {
     _owner = msg.sender;
+    squadId = _squadId;
   }
 
   modifier ownerOnly() {
@@ -53,28 +76,22 @@ contract Squad {
     _;
   }
 
-  modifier notInOtherSquad() {
-    // @junaama TODO: implement this
-    _;
-  }
-
-  receive() external payable {}
-
   function redeemCollectible() public {
-
+    mintCollectible(msg.sender);
+    winsOfMember[msg.sender] = winsOfMember[msg.sender] + 1;
   }
 
   function joinSquad() internal {
+    receiveOnJoin(msg.sender, squadId);
     members[msg.sender] = true;
   }
 
-  function getAssets() public {
+  function getAssets() public returns (Asset[] memory) {
     return assets;
   }
 
   function getMembers() public {
-    // create array of all members in squad
-
+    // @junaama TODO create gas efficient way to enumerate members
   }
 
   function getProposals() public {
@@ -107,8 +124,6 @@ contract Squad {
 
     return proposal.id;
   }
-
-  function validateGame() public {}
 
   function isMember(address _address) public view returns (bool) {
     return members[_address];
