@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
+import "std-contracts/components/CoordComponent.sol";
+
 uint256 constant snapID = uint256(0x060D);
 
 enum ElementEnum {
