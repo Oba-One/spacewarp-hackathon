@@ -13,7 +13,6 @@ const Views = () => {
     <Routes>
       <Route index element={<Game />} />
       <Route path="/team" element={<Team />} />
-
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

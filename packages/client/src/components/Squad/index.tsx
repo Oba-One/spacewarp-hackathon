@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const Member: FC<{}> = () => {
+export const Squad: FC<{}> = () => {
   return (
     <div>
       <h1>Member</h1>

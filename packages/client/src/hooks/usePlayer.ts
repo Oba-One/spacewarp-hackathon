@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useCreateStream, updateStream } from "@livepeer/react";
+import { Client } from "@livepeer/webrtmp-sdk";
+import { useCreateStream } from "@livepeer/react";
 import { useRootStore } from "@huddle01/huddle01-client";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
@@ -107,23 +108,35 @@ export const usePlayer = (
   }
 
   async function startLiveStream() {
+    setStreamStatus("connecting");
+
     try {
-      setStreamStatus("connecting");
       if (!gameCode) throw new Error("No game id found");
 
-      let stream = await navigator.mediaDevices.getDisplayMedia({
+      const stream = await navigator.mediaDevices.getDisplayMedia({
         video: true,
       });
 
       await liveStream.mutateAsync?.();
-      await updateStream({
-        streamId: stream.id,
+
+      const client = new Client();
+      const session = client.cast(stream, liveStream.data?.streamKey ?? "");
+
+      session.on("open", () => {
+        console.log("Stream started.");
       });
-      await huddleClient.sendReaction("👀");
+      session.on("close", () => {
+        console.log("Stream stopped.");
+      });
+      session.on("error", (err) => {
+        console.log("Stream error.", err.message);
+      });
 
       setStreamStatus("connected");
+
+      await huddleClient.sendReaction("👀");
     } catch (error: any) {
-      console.error(error);
+      console.error("Error Starting Stream", error);
       setError(error.message ?? "Issue starting stream, please try again");
     }
   }
@@ -131,10 +144,12 @@ export const usePlayer = (
   async function stopLiveStream() {
     try {
       setStreamStatus("disconnecting");
+      await liveStream.mutateAsync?.();
       await huddleClient.sendReaction("");
+
       setStreamStatus("idle");
     } catch (error: any) {
-      console.error(error);
+      console.error("Error Stoping Stream", error);
       setError(error.message ?? "Issue stopping stream, please try again");
     }
   }
@@ -164,6 +179,8 @@ export const usePlayer = (
       setStatus("connected");
       setGameCode(values.gameCode);
     } catch (error: any) {
+      console.error("Error Starting Connection", error);
+
       const errStatus = errorHandler(error.message);
 
       if (errStatus === "connect_wallet") {
@@ -190,8 +207,8 @@ export const usePlayer = (
       setStatus("idle");
       setIsEditingAvatar(false);
     } catch (error: any) {
+      console.error("Error Disconnecting", error);
       setError(error.message ?? "Issue disconnecting, please try again");
-      console.error(error);
     }
   }
 

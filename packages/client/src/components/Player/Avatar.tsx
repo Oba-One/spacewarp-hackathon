@@ -32,6 +32,10 @@ interface GameProps {
 interface PlayerAvatarProps extends GameProps {
   showChat: boolean;
   hasNotifications: boolean;
+  takeScreenshot: (
+    dataType?: string | undefined,
+    quality?: number | undefined
+  ) => string | undefined;
   setShowChat: (showChat: boolean) => void;
 }
 
@@ -121,7 +125,7 @@ const Player: FC<PlayerAvatarProps> = ({
           className="h-2xl w-2xl -scale-x-100"
         />
       </div>
-      {status === "connected" || status === "disconnecting" ? (
+      {status === "connected" || status !== "disconnecting" ? (
         <>
           <h3 className="text-xl font-semibold">
             {huddleName ?? "Player One"}
