@@ -1,0 +1,436 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "args",
+          "type": "bytes"
+        }
+      ],
+      "name": "execute",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "execute(bytes)": "09c5eabe",
+    "owner()": "8da5cb5b",
+    "transferOwnership(address)": "f2fde38b"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"args\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"returns\":{\"_0\":\"conrtact owner\"}},\"transferOwnership(address)\":{\"params\":{\"account\":\"address of new owner\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"owner()\":{\"notice\":\"get the ERC173 contract owner\"},\"transferOwnership(address)\":{\"notice\":\"transfer contract ownership to new account\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol\":\"ISystem\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000000},\"remappings\":[\":@ensdomains/=../../node_modules/@ensdomains/\",\":@latticexyz/=../../node_modules/@latticexyz/\",\":@openzeppelin/=../../node_modules/@openzeppelin/\",\":@rari-capital/=../../node_modules/@rari-capital/\",\":@solidstate/=../../node_modules/@solidstate/\",\":@zondax/=../../node_modules/@zondax/\",\":buffer/=../../node_modules/data/contracts/lib/buffer/\",\":components/=src/components/\",\":data/=../../node_modules/data/\",\":ds-test/=../../node_modules/ds-test/src/\",\":eth-gas-reporter/=../../node_modules/eth-gas-reporter/\",\":filecoin-solidity/=../../node_modules/data/contracts/lib/filecoin-solidity/\",\":forge-std/=../../node_modules/forge-std/src/\",\":hardhat-deploy/=../../node_modules/hardhat-deploy/\",\":hardhat/=../../node_modules/hardhat/\",\":libraries/=src/libraries/\",\":memmove/=../../node_modules/memmove/src/\",\":openzeppelin-contracts/=../../node_modules/data/contracts/lib/openzeppelin-contracts/\",\":solecs/=../../node_modules/@latticexyz/solecs/src/\",\":solidity-cborutils/=../../node_modules/solidity-cborutils/\",\":solmate/=../../node_modules/@rari-capital/solmate/src/\",\":std-contracts/=../../node_modules/@latticexyz/std-contracts/src/\",\":systems/=src/systems/\"]},\"sources\":{\"../../node_modules/@latticexyz/solecs/src/interfaces/IERC173.sol\":{\"keccak256\":\"0x2bd9a729a3bfcfc445bc557a914aee17fcaf1c0f74b909b6a91a5d3755a699e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://203741d681a686fb75f0715332e554083733f349100dfe11252c17fbe9cd094e\",\"dweb:/ipfs/QmaBXDHiU4ZdJ8K5jQZ3FfswMpWEqSPsBWGFkJMU2qmmWi\"]},\"../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol\":{\"keccak256\":\"0xbc1c0b0c72ab5e20ff7eae3cf53627aac367a2f9a65d2e87451a0313869d3bed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b2a7c4c30beb9b96c4e8112b9864f7bac5c761e61765e0dc359d926572feaa5a\",\"dweb:/ipfs/QmVNJbky7itfqBBdDCh8anSWMaHhXs2mKhzuW7hbCVWgj3\"]},\"../../node_modules/@solidstate/contracts/interfaces/IERC173.sol\":{\"keccak256\":\"0x9b18a5ad66323c65a81ecd62c3536db99115fe69a30b56a04409de941da7deb6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a93684363c5bfd4e31fa2cc2d3402e9451ba61c7dbb404e8e50658610fb2a555\",\"dweb:/ipfs/QmanFgF5v5GjBBrAEYCpaZyXRFRvzLGgB8SQcSEf9Dkj5Q\"]},\"../../node_modules/@solidstate/contracts/interfaces/IERC173Internal.sol\":{\"keccak256\":\"0x9644c3e56c9ecd1763f8aaa437d5d573a7f64a8d93ad7bea1a9c44beb5911b89\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c32cfda38b44878ab196d32eeb72823a9f9904e8193286c787caccfb2e5bfa75\",\"dweb:/ipfs/QmfBNKWUSKaJtYL3JJ3YFioXCVFeeakqQ4cR5XzAxxZkCx\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address",
+              "indexed": true
+            }
+          ],
+          "type": "event",
+          "name": "OwnershipTransferred",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "args",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "execute",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "transferOwnership"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "owner()": {
+            "returns": {
+              "_0": "conrtact owner"
+            }
+          },
+          "transferOwnership(address)": {
+            "params": {
+              "account": "address of new owner"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "owner()": {
+            "notice": "get the ERC173 contract owner"
+          },
+          "transferOwnership(address)": {
+            "notice": "transfer contract ownership to new account"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@ensdomains/=../../node_modules/@ensdomains/",
+        ":@latticexyz/=../../node_modules/@latticexyz/",
+        ":@openzeppelin/=../../node_modules/@openzeppelin/",
+        ":@rari-capital/=../../node_modules/@rari-capital/",
+        ":@solidstate/=../../node_modules/@solidstate/",
+        ":@zondax/=../../node_modules/@zondax/",
+        ":buffer/=../../node_modules/data/contracts/lib/buffer/",
+        ":components/=src/components/",
+        ":data/=../../node_modules/data/",
+        ":ds-test/=../../node_modules/ds-test/src/",
+        ":eth-gas-reporter/=../../node_modules/eth-gas-reporter/",
+        ":filecoin-solidity/=../../node_modules/data/contracts/lib/filecoin-solidity/",
+        ":forge-std/=../../node_modules/forge-std/src/",
+        ":hardhat-deploy/=../../node_modules/hardhat-deploy/",
+        ":hardhat/=../../node_modules/hardhat/",
+        ":libraries/=src/libraries/",
+        ":memmove/=../../node_modules/memmove/src/",
+        ":openzeppelin-contracts/=../../node_modules/data/contracts/lib/openzeppelin-contracts/",
+        ":solecs/=../../node_modules/@latticexyz/solecs/src/",
+        ":solidity-cborutils/=../../node_modules/solidity-cborutils/",
+        ":solmate/=../../node_modules/@rari-capital/solmate/src/",
+        ":std-contracts/=../../node_modules/@latticexyz/std-contracts/src/",
+        ":systems/=src/systems/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol": "ISystem"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "../../node_modules/@latticexyz/solecs/src/interfaces/IERC173.sol": {
+        "keccak256": "0x2bd9a729a3bfcfc445bc557a914aee17fcaf1c0f74b909b6a91a5d3755a699e9",
+        "urls": [
+          "bzz-raw://203741d681a686fb75f0715332e554083733f349100dfe11252c17fbe9cd094e",
+          "dweb:/ipfs/QmaBXDHiU4ZdJ8K5jQZ3FfswMpWEqSPsBWGFkJMU2qmmWi"
+        ],
+        "license": "MIT"
+      },
+      "../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol": {
+        "keccak256": "0xbc1c0b0c72ab5e20ff7eae3cf53627aac367a2f9a65d2e87451a0313869d3bed",
+        "urls": [
+          "bzz-raw://b2a7c4c30beb9b96c4e8112b9864f7bac5c761e61765e0dc359d926572feaa5a",
+          "dweb:/ipfs/QmVNJbky7itfqBBdDCh8anSWMaHhXs2mKhzuW7hbCVWgj3"
+        ],
+        "license": "MIT"
+      },
+      "../../node_modules/@solidstate/contracts/interfaces/IERC173.sol": {
+        "keccak256": "0x9b18a5ad66323c65a81ecd62c3536db99115fe69a30b56a04409de941da7deb6",
+        "urls": [
+          "bzz-raw://a93684363c5bfd4e31fa2cc2d3402e9451ba61c7dbb404e8e50658610fb2a555",
+          "dweb:/ipfs/QmanFgF5v5GjBBrAEYCpaZyXRFRvzLGgB8SQcSEf9Dkj5Q"
+        ],
+        "license": "MIT"
+      },
+      "../../node_modules/@solidstate/contracts/interfaces/IERC173Internal.sol": {
+        "keccak256": "0x9644c3e56c9ecd1763f8aaa437d5d573a7f64a8d93ad7bea1a9c44beb5911b89",
+        "urls": [
+          "bzz-raw://c32cfda38b44878ab196d32eeb72823a9f9904e8193286c787caccfb2e5bfa75",
+          "dweb:/ipfs/QmfBNKWUSKaJtYL3JJ3YFioXCVFeeakqQ4cR5XzAxxZkCx"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "../../node_modules/@latticexyz/solecs/src/interfaces/ISystem.sol",
+    "id": 44907,
+    "exportedSymbols": {
+      "IERC173": [
+        3343
+      ],
+      "ISystem": [
+        44906
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:336:18",
+    "nodes": [
+      {
+        "id": 44894,
+        "nodeType": "PragmaDirective",
+        "src": "32:24:18",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 44896,
+        "nodeType": "ImportDirective",
+        "src": "58:40:18",
+        "nodes": [],
+        "absolutePath": "../../node_modules/@latticexyz/solecs/src/interfaces/IERC173.sol",
+        "file": "./IERC173.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 44907,
+        "sourceUnit": 59727,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 44895,
+              "name": "IERC173",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3343,
+              "src": "67:7:18",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 44906,
+        "nodeType": "ContractDefinition",
+        "src": "264:103:18",
+        "nodes": [
+          {
+            "id": 44905,
+            "nodeType": "FunctionDefinition",
+            "src": "297:68:18",
+            "nodes": [],
+            "functionSelector": "09c5eabe",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "execute",
+            "nameLocation": "306:7:18",
+            "parameters": {
+              "id": 44901,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44900,
+                  "mutability": "mutable",
+                  "name": "args",
+                  "nameLocation": "327:4:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 44905,
+                  "src": "314:17:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 44899,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "314:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "313:19:18"
+            },
+            "returnParameters": {
+              "id": 44904,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44903,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 44905,
+                  "src": "351:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 44902,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "351:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "350:14:18"
+            },
+            "scope": 44906,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 44897,
+              "name": "IERC173",
+              "nameLocations": [
+                "285:7:18"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3343,
+              "src": "285:7:18"
+            },
+            "id": 44898,
+            "nodeType": "InheritanceSpecifier",
+            "src": "285:7:18"
+          }
+        ],
+        "canonicalName": "ISystem",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          44906,
+          3343,
+          45445
+        ],
+        "name": "ISystem",
+        "nameLocation": "274:7:18",
+        "scope": 44907,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 18
+}

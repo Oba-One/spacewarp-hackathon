@@ -22,19 +22,17 @@ library LibRound {
 
     function getTimeAt(IUint256Component components, uint256 atTime) internal view returns (PhaseEnum) {
         MatchType memory matchType = MatchComponent(getAddressById(components, MatchComponentID)).getValue(snapID);
-        require(atTime >= gameConfig.startTime, "invalid atTime");
+        require(atTime >= matchType.startedAt, "invalid atTime");
 
-        uint256 gameLength = atTime - gameConfig.startTime;
-        uint256 _turnLength = gameConfig.commitPhaseLength + gameConfig.revealPhaseLength + gameConfig.actionPhaseLength;
-        uint256 secondsIntoTurn = gameLength % _turnLength;
+        uint256 gameLength = atTime - matchType.startedAt;
+        uint256 secondsIntoTurn = 10;
 
-        if (secondsIntoTurn < gameConfig.commitPhaseLength) return Phase.Commit;
-        else if (secondsIntoTurn < (gameConfig.commitPhaseLength + gameConfig.revealPhaseLength)) return Phase.Reveal;
-        else return Phase.Action;
+        if (secondsIntoTurn < 10) return PhaseEnum.Commit;
+        else return PhaseEnum.Action;
     }
 
     function getRoundAt(IUint256Component components, uint256 atTime) internal view returns (uint32) {
-        MatchType memory matchType = MatchComponent(getAddressById(components, GameConfigComponentID)).getValue(GodID);
+        MatchType memory matchType = MatchComponent(getAddressById(components, MatchComponentID)).getValue(snapID);
         require(atTime >= matchType.startedAt, "invalid block time");
 
         uint256 result = atTime - matchType.startedAt;

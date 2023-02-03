@@ -4,7 +4,7 @@ pragma solidity >=0.8.0;
 import {System, IWorld} from "solecs/System.sol";
 import {getAddressById} from "solecs/utils.sol";
 import {LibInit} from "libraries/LibInit.sol";
-import {IdentityType, PositionEnum, MatchType} from "libraries/MSTypes.sol";
+import {IdentityType, PositionEnum, MatchType, snapID} from "libraries/MSTypes.sol";
 import {OwnedByComponent, ID as OwnedByID} from "../components/OwnedByComponent.sol";
 import {IdentityComponent, ID as IdentityID} from "../components/IdentityComponent.sol";
 import {AssetComponent, ID as AssetID} from "../components/AssetComponent.sol";
@@ -30,7 +30,7 @@ contract InitSystem is System {
         OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
         AssetComponent(getAddressById(components, AssetID)).set(characterEntity, asset);
         IdentityComponent(getAddressById(components, IdentityID)).set(characterEntity, identity1);
-        matchComponent MatchComponent = MatchComponent(getAddressById(components, MatchComponentID));
+        MatchComponent matchComponent  = MatchComponent(getAddressById(components, MatchID));
 
         matchComponent.set(snapID, MatchType({startedAt: 0, finishedAt: block.timestamp, turnsLeft: 5}));
     }

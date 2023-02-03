@@ -27,24 +27,19 @@ import type {
   PromiseOrValue,
 } from "./common";
 
-export type MatchTypeStruct = {
-  startedAt: PromiseOrValue<BigNumberish>;
-  finishedAt: PromiseOrValue<BigNumberish>;
-  turnsLeft: PromiseOrValue<BigNumberish>;
+export type CoordStruct = {
+  x: PromiseOrValue<BigNumberish>;
+  y: PromiseOrValue<BigNumberish>;
 };
 
-export type MatchTypeStructOutput = [BigNumber, BigNumber, number] & {
-  startedAt: BigNumber;
-  finishedAt: BigNumber;
-  turnsLeft: number;
-};
+export type CoordStructOutput = [number, number] & { x: number; y: number };
 
-export interface MatchComponentInterface extends utils.Interface {
+export interface CoordComponentInterface extends utils.Interface {
   functions: {
     "authorizeWriter(address)": FunctionFragment;
     "getEntities()": FunctionFragment;
     "getEntitiesWithValue(bytes)": FunctionFragment;
-    "getEntitiesWithValue((uint256,uint256,uint8))": FunctionFragment;
+    "getEntitiesWithValue((int32,int32))": FunctionFragment;
     "getRawValue(uint256)": FunctionFragment;
     "getSchema()": FunctionFragment;
     "getValue(uint256)": FunctionFragment;
@@ -54,8 +49,8 @@ export interface MatchComponentInterface extends utils.Interface {
     "registerIndexer(address)": FunctionFragment;
     "registerWorld(address)": FunctionFragment;
     "remove(uint256)": FunctionFragment;
-    "set(uint256,(uint256,uint256,uint8))": FunctionFragment;
     "set(uint256,bytes)": FunctionFragment;
+    "set(uint256,(int32,int32))": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "unauthorizeWriter(address)": FunctionFragment;
     "world()": FunctionFragment;
@@ -67,7 +62,7 @@ export interface MatchComponentInterface extends utils.Interface {
       | "authorizeWriter"
       | "getEntities"
       | "getEntitiesWithValue(bytes)"
-      | "getEntitiesWithValue((uint256,uint256,uint8))"
+      | "getEntitiesWithValue((int32,int32))"
       | "getRawValue"
       | "getSchema"
       | "getValue"
@@ -77,8 +72,8 @@ export interface MatchComponentInterface extends utils.Interface {
       | "registerIndexer"
       | "registerWorld"
       | "remove"
-      | "set(uint256,(uint256,uint256,uint8))"
       | "set(uint256,bytes)"
+      | "set(uint256,(int32,int32))"
       | "transferOwnership"
       | "unauthorizeWriter"
       | "world"
@@ -98,8 +93,8 @@ export interface MatchComponentInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
-    functionFragment: "getEntitiesWithValue((uint256,uint256,uint8))",
-    values: [MatchTypeStruct]
+    functionFragment: "getEntitiesWithValue((int32,int32))",
+    values: [CoordStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "getRawValue",
@@ -129,12 +124,12 @@ export interface MatchComponentInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "set(uint256,(uint256,uint256,uint8))",
-    values: [PromiseOrValue<BigNumberish>, MatchTypeStruct]
-  ): string;
-  encodeFunctionData(
     functionFragment: "set(uint256,bytes)",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "set(uint256,(int32,int32))",
+    values: [PromiseOrValue<BigNumberish>, CoordStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
@@ -163,7 +158,7 @@ export interface MatchComponentInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getEntitiesWithValue((uint256,uint256,uint8))",
+    functionFragment: "getEntitiesWithValue((int32,int32))",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -185,11 +180,11 @@ export interface MatchComponentInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "remove", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,(uint256,uint256,uint8))",
+    functionFragment: "set(uint256,bytes)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "set(uint256,bytes)",
+    functionFragment: "set(uint256,(int32,int32))",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -225,12 +220,12 @@ export type OwnershipTransferredEvent = TypedEvent<
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
 
-export interface MatchComponent extends BaseContract {
+export interface CoordComponent extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: MatchComponentInterface;
+  interface: CoordComponentInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -264,8 +259,8 @@ export interface MatchComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
-    "getEntitiesWithValue((uint256,uint256,uint8))"(
-      config: MatchTypeStruct,
+    "getEntitiesWithValue((int32,int32))"(
+      coord: CoordStruct,
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
@@ -281,7 +276,7 @@ export interface MatchComponent extends BaseContract {
     getValue(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<[MatchTypeStructOutput]>;
+    ): Promise<[CoordStructOutput]>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -307,15 +302,15 @@ export interface MatchComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    "set(uint256,(uint256,uint256,uint8))"(
-      entity: PromiseOrValue<BigNumberish>,
-      config: MatchTypeStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    "set(uint256,(int32,int32))"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: CoordStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -349,8 +344,8 @@ export interface MatchComponent extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
-  "getEntitiesWithValue((uint256,uint256,uint8))"(
-    config: MatchTypeStruct,
+  "getEntitiesWithValue((int32,int32))"(
+    coord: CoordStruct,
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
@@ -366,7 +361,7 @@ export interface MatchComponent extends BaseContract {
   getValue(
     entity: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
-  ): Promise<MatchTypeStructOutput>;
+  ): Promise<CoordStructOutput>;
 
   has(
     entity: PromiseOrValue<BigNumberish>,
@@ -392,15 +387,15 @@ export interface MatchComponent extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  "set(uint256,(uint256,uint256,uint8))"(
-    entity: PromiseOrValue<BigNumberish>,
-    config: MatchTypeStruct,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   "set(uint256,bytes)"(
     entity: PromiseOrValue<BigNumberish>,
     value: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  "set(uint256,(int32,int32))"(
+    entity: PromiseOrValue<BigNumberish>,
+    value: CoordStruct,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -434,8 +429,8 @@ export interface MatchComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
-    "getEntitiesWithValue((uint256,uint256,uint8))"(
-      config: MatchTypeStruct,
+    "getEntitiesWithValue((int32,int32))"(
+      coord: CoordStruct,
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
@@ -451,7 +446,7 @@ export interface MatchComponent extends BaseContract {
     getValue(
       entity: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<MatchTypeStructOutput>;
+    ): Promise<CoordStructOutput>;
 
     has(
       entity: PromiseOrValue<BigNumberish>,
@@ -477,15 +472,15 @@ export interface MatchComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "set(uint256,(uint256,uint256,uint8))"(
-      entity: PromiseOrValue<BigNumberish>,
-      config: MatchTypeStruct,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "set(uint256,(int32,int32))"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: CoordStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -531,8 +526,8 @@ export interface MatchComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getEntitiesWithValue((uint256,uint256,uint8))"(
-      config: MatchTypeStruct,
+    "getEntitiesWithValue((int32,int32))"(
+      coord: CoordStruct,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -572,15 +567,15 @@ export interface MatchComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    "set(uint256,(uint256,uint256,uint8))"(
-      entity: PromiseOrValue<BigNumberish>,
-      config: MatchTypeStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    "set(uint256,(int32,int32))"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: CoordStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -615,8 +610,8 @@ export interface MatchComponent extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getEntitiesWithValue((uint256,uint256,uint8))"(
-      config: MatchTypeStruct,
+    "getEntitiesWithValue((int32,int32))"(
+      coord: CoordStruct,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -656,15 +651,15 @@ export interface MatchComponent extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    "set(uint256,(uint256,uint256,uint8))"(
-      entity: PromiseOrValue<BigNumberish>,
-      config: MatchTypeStruct,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     "set(uint256,bytes)"(
       entity: PromiseOrValue<BigNumberish>,
       value: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "set(uint256,(int32,int32))"(
+      entity: PromiseOrValue<BigNumberish>,
+      value: CoordStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
