@@ -2,6 +2,12 @@
 pragma solidity 0.8.17;
 
 contract Squad {
+  address private _owner;
+  address[] public squadMembers;
+  mapping(address => bool) public members;
+  mapping(string => Item) public submissions;
+  mapping(address => uint256) public winsOfMember;
+
   enum ItemType {
     ASSET,
     COLLECTIBLE
@@ -17,14 +23,18 @@ contract Squad {
     uint noVotes;
     bool valid;
   }
+  struct Asset {
+    string uri;
+    uint256 assetId;
+  }
+  Asset[] public assets;
 
-  uint8 public stage;
-  mapping(address => bool) public members;
-  mapping(string => Item) public submissions;
-  mapping(address => uint256) public winsOfMember;
+  constructor() {
+    _owner = msg.sender;
+  }
 
   modifier ownerOnly() {
-    require(msg.sender == owner, "Non Admin Call");
+    require(msg.sender == _owner, "Non Admin Call");
     _;
   }
 
@@ -43,30 +53,60 @@ contract Squad {
     _;
   }
 
-  address public owner;
-
-  constructor() {
-    owner = msg.sender;
-    stage = 0;
+  modifier notInOtherSquad() {
+    // @junaama TODO: implement this
+    _;
   }
 
   receive() external payable {}
 
-  function redeemCollectible() public {}
+  function redeemCollectible() public {
 
-  function joinSquad() external {
+  }
+
+  function joinSquad() internal {
     members[msg.sender] = true;
   }
 
-  function getAssets() public {}
+  function getAssets() public {
+    return assets;
+  }
 
-  function getMembers() public {}
+  function getMembers() public {
+    // create array of all members in squad
 
-  function getProposals() public {}
+  }
 
-  function voteOnProposal() public {}
+  function getProposals() public {
 
-  function propose() public {}
+  }
+
+  function voteOnProposal(uint256 proposalId, uint256 support) external {
+    require(support <= 2, "Invalid vote");
+    Proposal storage proposal = proposals[proposalId];
+    Receipt storage receipt = proposal.receipts[msg.sender];
+    if (support == 0) {
+      proposal.forVote = proposal.forVote + 1;
+    } else if (support == 1) {
+      proposal.againstVote = proposal.againstVote + 1;
+    } else {
+      proposal.abstainVote = proposal.abstainVote + 1;
+    }
+    receipt.voted = true;
+    receipt.support = support;
+
+    emit ProposalVoted(msg.sender, proposalId, support);
+  }
+
+  /**
+   * @notice Function to propose a new asset to be added to the DAO
+   */
+  function propose(string memory description) public returns (uint256) {
+    Proposal memory proposal;
+    emit ProposalCreated();
+
+    return proposal.id;
+  }
 
   function validateGame() public {}
 

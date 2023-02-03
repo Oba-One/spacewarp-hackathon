@@ -8,6 +8,14 @@ contract SquadFactory {
 
   Squad[] public _squads;
 
+  modifier notInOtherSquad(){
+    for(uint i = 0; i < _squads.length; i++){
+      Squad squad = _squads[i];
+      require(squad.isMember(msg.sender) == false, "Already in a squad");
+    }
+    _;
+  }
+
   function createSquad() public returns (Squad){
     Squad d = new Squad(); 
     _squads.push(d);
@@ -23,4 +31,9 @@ contract SquadFactory {
     return _squads[index];
   }
 
+  function joinSquad(uint index) notInOtherSquad public {
+    require(index <= _squads.length, "Squad does not exist");
+    Squad squad = _squads[index];
+    squad.joinSquad();
+  }
 }
