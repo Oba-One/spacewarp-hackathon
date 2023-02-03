@@ -20,11 +20,12 @@ contract Squad {
     bool valid;
   }
 
-  IERC20 public token;
+  // IERC20 public token;
   uint8 public stage; 
   mapping(address => bool) public members;
   mapping(string => Item) public submissions;
-  
+  mapping(address => uint256) public winsOfMember;
+
   modifier ownerOnly() {
     require(msg.sender == owner, "Non Admin Call");
     _;
@@ -35,6 +36,16 @@ contract Squad {
     _;
   }
 
+  modifier requireThreeWins() {
+    require(winsOfMember[msg.sender] >= 3, "Insufficient wins");
+    _;
+  }
+
+  modifier requireTenWins() {
+    require(winsOfMember[msg.sender] >= 10, "Insufficient wins");
+    _;
+  }
+
   address public owner;
 
   constructor() {
@@ -42,11 +53,26 @@ contract Squad {
     stage = 0;
   }
 
-  // Set the native token of the DAO
-  function setToken(address tokenAddress) public ownerOnly {
-    token = IERC20(address(tokenAddress));
+  receive() external payable {}
+
+  function redeemCollectible() public {
+
   }
 
+  function joinSquad() external {}
+
+  function getAssets() public {}
+
+  function getMembers() public {}
+
+  function getProposals() public {}
+
+  function voteOnProposal() public {}
+
+  function propose() public {}
+
+  function validateGame() public {}
+  
   // Use a cron or an oracle to advance the stages
   function advance() public ownerOnly {
     stage = stage % 5;
