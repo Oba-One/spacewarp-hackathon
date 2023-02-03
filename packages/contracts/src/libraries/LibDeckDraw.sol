@@ -9,9 +9,6 @@ import { IUint256Component } from "solecs/interfaces/IUint256Component.sol";
 import { PositionComponent, ID as PositionComponentID } from "../components/PositionComponent.sol";
 import { Uint32Component } from "std-contracts/components/Uint32Component.sol";
 
-// Types
-import { MoveCard } from "./MSTypes.sol";
-
 /**
  * @notice
  * @param
