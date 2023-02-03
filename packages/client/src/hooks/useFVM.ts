@@ -1,29 +1,29 @@
 import { useContractRead } from "wagmi";
 
-const WaterDAO = import.meta.env.VITE_VERCEL_WATER_DAO ?? "";
-const EarthDAO = import.meta.env.VITE_VERCEL_WATER_DAO ?? "";
-const FireDAO = import.meta.env.VITE_VERCEL_WATER_DAO ?? "";
-const AirDAO = import.meta.env.VITE_VERCEL_WATER_DAO ?? "";
+const WaterSquad = import.meta.env.VITE_VERCEL_WATER_SQUAD ?? "";
+const EarthSquad = import.meta.env.VITE_VERCEL_EARTH_SQUAD ?? "";
+const FireSquad = import.meta.env.VITE_VERCEL_FIRE_SQUAD ?? "";
+const AirSquad = import.meta.env.VITE_VERCEL_AIR_SQUAD ?? "";
 
 export const useFVM = () => {
   const { data: waterBalance } = useContractRead({
     // abi: "erc20",
-    address: WaterDAO,
+    address: WaterSquad,
     // method: "balanceOf",
   });
   const { data: earthBalance } = useContractRead({
     // abi: "erc20",
-    address: EarthDAO,
+    address: EarthSquad,
     // method: "balanceOf",
   });
   const { data: fireBalance } = useContractRead({
     // abi: "erc20",
-    address: FireDAO,
+    address: FireSquad,
     // method: "balanceOf",
   });
   const { data: airBalance } = useContractRead({
     // abi: "erc20",
-    address: AirDAO,
+    address: AirSquad,
     // method: "balanceOf",
   });
 

@@ -1,11 +1,9 @@
-import { createClient, configureChains } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { getHuddleClient } from "@huddle01/huddle01-client";
+import { Chain, createClient, configureChains } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { createReactClient, studioProvider } from "@livepeer/react";
-
-import { Chain } from "wagmi";
 
 export const hyperspace = {
   id: 3141,
@@ -19,13 +17,13 @@ export const hyperspace = {
   rpcUrls: {
     public: {
       http: [
-        import.meta.env.VITE_VERCEL_RPC_UR ??
+        import.meta.env.VITE_VERCEL_RPC_URL ??
           "https://api.hyperspace.node.glif.io/rpc/v1",
       ],
     },
     default: {
       http: [
-        import.meta.env.VITE_VERCEL_RPC_UR ??
+        import.meta.env.VITE_VERCEL_RPC_URL ??
           "https://api.hyperspace.node.glif.io/rpc/v1",
       ],
     },
