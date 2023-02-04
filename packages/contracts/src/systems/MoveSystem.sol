@@ -11,12 +11,13 @@ import {AssetComponent, ID as AssetComponentID} from "../components/AssetCompone
 import {EffectComponent, ID as EffectComponentID} from "../components/EffectComponent.sol";
 import {EnergyComponent, ID as EnergyComponentID} from "../components/EnergyComponent.sol";
 import {IdentityComponent, ID as IdentityComponentID} from "../components/IdentityComponent.sol";
-import {MatchComponent, ID as MatchComponentID} from "../components/IdentityComponent.sol";
+import {MatchComponent, ID as MatchComponentID} from "../components/MatchComponent.sol";
 import {OwnedByComponent, ID as OwnedByComponentID} from "../components/OwnedByComponent.sol";
 import {PhaseComponent, ID as PhaseComponentID} from "../components/PhaseComponent.sol";
 import {PositionComponent, ID as PositionComponentID} from "../components/PositionComponent.sol";
 import {PowerComponent, ID as PowerComponentID} from "../components/PowerComponent.sol";
 import {ZoneComponent, ID as ZoneComponentID} from "../components/ZoneComponent.sol";
+import {CommitmentComponent, ID as CommitmentComponentID} from "../components/CommitmentComponent.sol";
 
 import {LibRound} from "../libraries/LibRound.sol";
 
@@ -48,11 +49,13 @@ contract MoveCardSystem is System {
         );
 
         require(
-            LibRound.getCurrentTime(components) != PhaseEnum.Action,
+            LibRound.getCurrentPhase(components) != PhaseEnum.Action,
             "MoveSystem: cannot complete move during Action Timed"
         );
 
         uint32 currentRound = LibRound.getCurrentRound(components);
-        PhaseComponent.set(playerEntity, currentRound);
+        PhaseComponent phaseComponent = PhaseComponent(getAddressById(components, PhaseComponentID));
+
+        phaseComponent.set(playerEntity, currentRound);
     }
 }

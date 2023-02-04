@@ -14,8 +14,4 @@ contract MudSnapTest is MudTest {
         _;
         vm.stopPrank();
     }
-
-    function 
-
-
 }
