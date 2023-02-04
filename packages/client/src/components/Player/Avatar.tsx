@@ -125,7 +125,7 @@ const Player: FC<PlayerAvatarProps> = ({
           className="h-2xl w-2xl -scale-x-100"
         />
       </div>
-      {status === "connected" || status !== "disconnecting" ? (
+      {status === "connected" || status === "disconnecting" ? (
         <>
           <h3 className="text-xl font-semibold">
             {huddleName ?? "Player One"}
