@@ -4,8 +4,8 @@ import { ConnectWallet } from "./ConnectWallet";
 
 export const Nav: React.FC = () => {
   return (
-    <header className="header py-02 sticky top-0 flex items-center justify-between bg-white px-8 shadow-md">
-      <img src='' alt='Dao Smack Logo' className='' />
+    <header className="navbar flex items-center justify-between bg-slate-200 px-8">
+      <img src="" alt="Dao Smack Logo" className="" />
       <ConnectWallet />
     </header>
   );
