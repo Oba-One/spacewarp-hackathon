@@ -83,7 +83,7 @@ contract League is Ownable {
     playerMerkleRoot = _playerMerkleRoot;
   }
 
-  function squadMembers(uint256 _squadId) public returns (address[] memory) {
+  function squadMembers(uint256 _squadId) public view returns (address[] memory) {
     Squad squad = Squad(squads[_squadId]);
     return squad.getMembers();
   }
