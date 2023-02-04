@@ -6,6 +6,7 @@
   "workspaces": [
     "packages/contracts",
     "packages/client",
+    "packages/assets",
     "packages/data",
     "packages/api"
   ],
