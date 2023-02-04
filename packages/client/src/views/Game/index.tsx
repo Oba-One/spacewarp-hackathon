@@ -8,7 +8,7 @@ import { Player } from "../../components/Player";
 import { Loader } from "../../components/Loader";
 
 const Game: React.FC = () => {
-  const [code, setCode] = useState(1);
+  const [code, setCode] = useState(7);
   const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
   const [result, seResult] = useState<GameResult>({
     winner: "",

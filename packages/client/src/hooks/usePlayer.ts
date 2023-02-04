@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Client } from "@livepeer/webrtmp-sdk";
 import { useCreateStream } from "@livepeer/react";
@@ -64,6 +64,18 @@ export const usePlayer = (
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
     name: `MudSnap Game: ${gameCode}`,
+    record: true,
+    // multistream: {
+    //   targets: [
+    //     {
+    //       profile: "source",
+    //       spec: {
+    //         url: "rtmp://rtmp.livepeer.com/live",
+    //         name: "YouTube",
+    //       },
+    //     },
+    //   ],
+    // },
   });
 
   // CHAT - Huddle
@@ -113,28 +125,7 @@ export const usePlayer = (
     try {
       if (!gameCode) throw new Error("No game id found");
 
-      const stream = await navigator.mediaDevices.getDisplayMedia({
-        video: true,
-      });
-
-      await liveStream.mutateAsync?.();
-
-      const client = new Client();
-      const session = client.cast(stream, liveStream.data?.streamKey ?? "");
-
-      session.on("open", () => {
-        console.log("Stream started.");
-      });
-      session.on("close", () => {
-        console.log("Stream stopped.");
-      });
-      session.on("error", (err) => {
-        console.log("Stream error.", err.message);
-      });
-
-      setStreamStatus("connected");
-
-      await huddleClient.sendReaction("👀");
+      liveStream.mutate?.();
     } catch (error: any) {
       console.error("Error Starting Stream", error);
       setError(error.message ?? "Issue starting stream, please try again");
@@ -211,6 +202,44 @@ export const usePlayer = (
       setError(error.message ?? "Issue disconnecting, please try again");
     }
   }
+
+  useEffect(() => {
+    if (liveStream.isError) {
+      setError(liveStream.error?.message ?? "Issue starting stream");
+    }
+
+    if (liveStream.isSuccess) {
+      navigator.mediaDevices
+        .getDisplayMedia({
+          video: true,
+          audio: true,
+        })
+        .then(async (stream) => {
+          if (!liveStream.data?.streamKey) {
+            console.log("Stream Data", liveStream.data);
+
+            throw new Error("No stream key!");
+          }
+
+          const client = new Client();
+          const session = client.cast(stream, liveStream.data?.streamKey ?? "");
+
+          session.on("open", () => {
+            console.log("Stream started.");
+          });
+          session.on("close", () => {
+            console.log("Stream stopped.");
+          });
+          session.on("error", (err) => {
+            console.log("Stream error.", err.message);
+          });
+
+          setStreamStatus("connected");
+          huddleClient.sendReaction("👀");
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [liveStream.isSuccess, liveStream.isError]);
 
   return {
     error,
