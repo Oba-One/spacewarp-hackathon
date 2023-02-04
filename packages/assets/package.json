@@ -2,5 +2,12 @@
   "name": "assets",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "upload:assets": "node ./scripts/uploadAssets.js"
+  },
+  "dependencies": {
+    "@lighthouse-web3/sdk": "0.1.12",
+    "dotenv": "16.0.3"
+  }
 }
