@@ -30,5 +30,5 @@ glob(__dirname + "/src/**/*.png", {}, async (err, files) => {
     return;
   }
 
-  await Promise.all(files.map((file) => uploadAsset(file)));
+  // await Promise.all(files.map((file) => uploadAsset(file)));
 });
