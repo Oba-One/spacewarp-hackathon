@@ -10,7 +10,7 @@ const Squad: React.FC = () => {
         id="team"
         className="flex h-full w-full flex-col sm:grid sm:grid-cols-[1fr_minmax(360px,_25%)]"
       >
-        <div className="flex h-full flex-col gap-16 overflow-scroll bg-green-500 py-20 px-8">
+        <div className="flex h-full flex-col gap-16 overflow-auto py-20 px-8">
           <div className="flex flex-col gap-4 px-4">
             <div className="flex justify-between">
               <h2 className="text-4xl font-bold">Your Matches</h2>
