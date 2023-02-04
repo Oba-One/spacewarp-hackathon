@@ -11,5 +11,7 @@ library LibInit {
   function initPlayer(address playerAddress) internal pure returns (uint256 playerEntity) {
     playerEntity = addressToEntity(playerAddress);
     // @junaama TODO: add components and add to PlayerComponent
+
+    
   }
 }
