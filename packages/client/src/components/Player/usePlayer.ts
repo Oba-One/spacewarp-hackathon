@@ -62,7 +62,7 @@ export const usePlayer = (
 
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
-    name: `MudSnap Game: ${gameCode}`,
+    name: `daosmack-match-${gameCode}`,
   });
 
   // CHAT - Huddle
