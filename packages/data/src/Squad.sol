@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity ^0.8.0;
 import "./SquadCollectibles.sol";
 
 contract Squad is SquadCollectibles {
   event ProposalCreated(uint256 id, address proposer, uint256 assetId);
-  event ProposalVoted(address indexed voter, uint256 proposalId, uint256 support);
+  event ProposalVoted(address indexed voter, uint256 proposalId, uint8 support);
   event ProposalCancelled(uint256 id);
   event ProposalExecuted(uint256 id);
 
   address private _owner;
   address[] public squadMembers;
   mapping(address => bool) public members;
-  mapping(string => Item) public submissions;
   mapping(address => uint256) public collectiblesEarned;
+  uint256 collectiblesId;
   uint256 public squadId;
 
   enum ItemType {
@@ -38,22 +38,16 @@ contract Squad is SquadCollectibles {
     bool cancelled;
     bool executed;
   }
-
-  enum Vote {
-    FOR,
-    AGAINST,
-    ABSTAIN
-  }
   struct Receipt {
     bool voted;
-    Vote support;
+    uint8 support;
   }
 
   Proposal[] public proposals;
   Asset[] public assets;
   mapping(address => Receipt) public receipts;
 
-  constructor(uint256 _squadId) {
+  constructor(uint256 _squadId, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
     squadId = _squadId;
   }
@@ -79,20 +73,20 @@ contract Squad is SquadCollectibles {
   }
 
   function redeemCollectible() public {
-    mintCollectible(msg.sender);
+    mintCollectible(msg.sender, collectiblesId);
     collectiblesEarned[msg.sender] = collectiblesEarned[msg.sender] + 1;
   }
 
-  function join() internal {
+  function join() public ownerOnly {
     receiveOnJoin(msg.sender, squadId);
     members[msg.sender] = true;
   }
 
-  function getAssets() public returns (Asset[] memory) {
+  function getAssets() public view returns (Asset[] memory) {
     return assets;
   }
 
-  function getMembers() public {
+  function getMembers() public view returns (address[] memory) {
     return squadMembers;
   }
   function getMembersData() public view returns (Member[] memory) {
@@ -102,14 +96,14 @@ contract Squad is SquadCollectibles {
     }
     return membersData;
   }
-  function getProposals() public {
+  function getProposals() public view returns (Proposal[] memory) {
     return proposals;
   }
 
-  function voteOnProposal(uint256 proposalId, uint256 support) external {
+  function voteOnProposal(uint256 proposalId, uint8 support) external {
     require(support <= 2, "Invalid vote");
     Proposal storage proposal = proposals[proposalId];
-    Receipt storage receipt = proposal.receipts[msg.sender];
+    Receipt storage receipt = receipts[msg.sender];
     if (support == 0) {
       proposal.forVotes = proposal.forVotes + 1;
     } else if (support == 1) {
@@ -126,14 +120,19 @@ contract Squad is SquadCollectibles {
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function proposeUpdate(string memory description) public returns (uint256) {
+  function proposeUpdate(string memory _description, uint256 _assetId) public returns (uint256) {
     Proposal memory proposal;
-    emit ProposalCreated();
-
+    proposal.id = proposals.length + 1;
+    proposal.proposer = msg.sender;
+    proposal.description = _description;
+    proposal.assetId = _assetId;
+    proposals.push(proposal);
+    emit ProposalCreated(proposal.id, msg.sender, proposal.assetId);
     return proposal.id;
   }
 
   function isMember(address _address) public view returns (bool) {
     return members[_address];
   }
+
 }

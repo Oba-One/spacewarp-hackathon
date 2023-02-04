@@ -1,38 +1,40 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity ^0.8.0;
 import "@solmate/tokens/ERC1155.sol";
-import "@openzeppelin/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 // make erc1155 contract for each squad
 contract SquadCollectibles is ERC1155, Ownable {
+  using Strings for uint256;
   string public name;
   string public symbol;
   string public baseURI;
   string public contractURI;
-  //  @junaama FIX: collectibleIds need to be reserved so it doesnt clash with squad ids in an extensible/composable manner
-  uint256 collectibleId = 4;
+  
   struct Collectible {
     bytes metadata;
     bool created;
     address minter;
   }
   mapping(uint256 => Collectible) public collectibles;
-
-  // collectibles[]
+  uint256 public collectibleEditions;
 
   modifier notSquadId(uint256 _collectibleId) {
-    require(_collectibleId > 3, "Collectible cannot be a squad id");
+    require(_collectibleId > 0, "Collectible cannot be a squad id");
     _;
   }
 
-  constructor(string memory _baseURI, string memory _contractURI) public {
+  constructor(string memory _baseURI, string memory _contractURI) {
     baseURI = _baseURI;
     contractURI = _contractURI;
+    collectibles[0].created = true;
+    collectibles[0].minter = address(this);
   }
 
   function createNewCollectible(
     uint256 tokenId,
     bytes calldata metadataLink
-  ) external onlyOwner {
+  ) public onlyOwner {
     require(
       !collectibles[tokenId].created,
       "Collectible token already created"
@@ -43,15 +45,14 @@ contract SquadCollectibles is ERC1155, Ownable {
 
   function mintCollectible(
     address to,
-    bytes calldata data,
     uint256 tokenId
-  ) public notSquadId {
+  ) internal notSquadId(tokenId) {
     require(collectibles[tokenId].created, "Collectible token not created");
-    _mint(to, tokenCount + 1, 1, data);
+    _mint(to, tokenId, 1, "");
   }
 
   function receiveOnJoin(address _to, uint256 squadId) internal {
-    require(collectibles[minter] == address(this), "Only internal minter");
+    require(collectibles[0].minter == address(this), "Only internal minter");
     _mint(_to, squadId, 1, "");
   }
 
@@ -68,7 +69,7 @@ contract SquadCollectibles is ERC1155, Ownable {
     contractURI = _contractURI;
   }
 
-  function withdraw(address payable to) external onlyOwner {
+  function withdraw(address payable to) public onlyOwner {
     uint256 balance = address(this).balance;
     (bool succ, ) = to.call{ value: balance }("");
     if (!succ) revert("Transfer failed");
