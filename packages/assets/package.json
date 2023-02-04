@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@lighthouse-web3/sdk": "0.1.12",
-    "dotenv": "16.0.3"
+    "dotenv": "16.0.3",
+    "glob": "8.1.0"
   }
 }
