@@ -17,6 +17,6 @@ export const config: SetupContractConfig = {
   chainId: Number(params.get("chainId")) || 4242,
   snapshotServiceUrl: params.get("snapshot") ?? undefined,
   initialBlockNumber: Number(params.get("initialBlockNumber")) || 0,
-  worldAddress: params.get("worldAddress") || "0xAA5cf75F386d96A8a1Ce321020F865dd2D7E9274",
+  worldAddress: params.get("worldAddress") || "0x6D9d7022395332D3392E2d485De4cB9cF0E38Af6",
   devMode: params.get("dev") === "true",
 };
