@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
-import "@solmate/src/tokens/ERC1155.sol";
-
+import "@solmate/tokens/ERC1155.sol";
+import "@openzeppelin/access/Ownable.sol";
 // make erc1155 contract for each squad
-contract SquadCollectibles is ERC1155 {
+contract SquadCollectibles is ERC1155, Ownable {
   string public name;
   string public symbol;
   string public baseURI;

@@ -12,23 +12,16 @@ contract Squad is SquadCollectibles {
   address[] public squadMembers;
   mapping(address => bool) public members;
   mapping(string => Item) public submissions;
-  mapping(address => uint256) public winsOfMember;
+  mapping(address => uint256) public collectiblesEarned;
   uint256 public squadId;
 
   enum ItemType {
     ASSET,
     COLLECTIBLE
   }
-
-  struct Item {
-    string url;
-    string dealId;
-    string pieceId;
-    address spAddress;
-    uint totalVotes;
-    uint yesVotes;
-    uint noVotes;
-    bool valid;
+  struct Member {
+    address memberAddress;
+    uint256 wins;
   }
   struct Asset {
     string uri;
@@ -38,6 +31,7 @@ contract Squad is SquadCollectibles {
     uint256 id;
     uint256 assetId;
     address proposer;
+    string description;
     uint256 forVotes;
     uint256 againstVotes;
     uint256 abstainVotes;
@@ -75,21 +69,21 @@ contract Squad is SquadCollectibles {
   }
 
   modifier requireThreeWins() {
-    require(winsOfMember[msg.sender] >= 3, "Insufficient wins");
+    require(collectiblesEarned[msg.sender] >= 3, "Insufficient wins");
     _;
   }
 
   modifier requireTenWins() {
-    require(winsOfMember[msg.sender] >= 10, "Insufficient wins");
+    require(collectiblesEarned[msg.sender] >= 10, "Insufficient wins");
     _;
   }
 
   function redeemCollectible() public {
     mintCollectible(msg.sender);
-    winsOfMember[msg.sender] = winsOfMember[msg.sender] + 1;
+    collectiblesEarned[msg.sender] = collectiblesEarned[msg.sender] + 1;
   }
 
-  function joinSquad() internal {
+  function join() internal {
     receiveOnJoin(msg.sender, squadId);
     members[msg.sender] = true;
   }
@@ -99,11 +93,17 @@ contract Squad is SquadCollectibles {
   }
 
   function getMembers() public {
-    // @junaama TODO create gas efficient way to enumerate members
+    return squadMembers;
   }
-
+  function getMembersData() public view returns (Member[] memory) {
+    Member[] memory membersData = new Member[](squadMembers.length);
+    for (uint256 i = 0; i < squadMembers.length; i++) {
+      membersData[i] = Member(squadMembers[i], collectiblesEarned[squadMembers[i]]);
+    }
+    return membersData;
+  }
   function getProposals() public {
-
+    return proposals;
   }
 
   function voteOnProposal(uint256 proposalId, uint256 support) external {
@@ -126,7 +126,7 @@ contract Squad is SquadCollectibles {
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function propose(string memory description) public returns (uint256) {
+  function proposeUpdate(string memory description) public returns (uint256) {
     Proposal memory proposal;
     emit ProposalCreated();
 
