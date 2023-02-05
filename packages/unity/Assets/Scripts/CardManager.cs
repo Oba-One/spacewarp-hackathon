@@ -6,12 +6,32 @@ using UnityEngine.Networking;
 
 public class CardManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject imageObj;
+    [SerializeField]
+    private GameObject moveButtons;
     private Image image;
     private int slot;
     private string imageUri;
 
+    private GameObject[] locations;
+
+    public void MoveToLocation(int locationIndex)
+    {
+        LocationController location = locations[locationIndex-1].GetComponent<LocationController>();
+        int zoneIndex = location.GetNextZone();
+        Debug.Log("Move to location " + locationIndex.ToString() + ", zone " + zoneIndex.ToString());
+        if (zoneIndex > 0)
+        {
+            Transform zone = location.GetZone(zoneIndex - 1);
+            transform.position = zone.position;
+            transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
+            location.lastZoneFilled++;
+            moveButtons.SetActive(false);
+        }
+    }
+
     IEnumerator GetTexture(string url) {
-        image = transform.GetComponent<Image>();
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
 
@@ -37,7 +57,12 @@ public class CardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        image = imageObj.transform.GetComponent<Image>();
+        locations = new GameObject[]{
+            GameObject.Find("L1"),
+            GameObject.Find("L2"),
+            GameObject.Find("L3")
+        };
     }
 
     // Update is called once per frame

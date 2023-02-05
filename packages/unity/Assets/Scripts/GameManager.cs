@@ -45,6 +45,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DrawHand(new string[]{
+            "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1",
+            "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U",
+            "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av",
+            "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7",
+            "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E",
+            "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3",
+            "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN"
+            });
     }
 
     // public async Task<int> PollMudState()
