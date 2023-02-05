@@ -72,8 +72,8 @@ contract League is AccessControl {
     _;
   }
 
-  function createSquad(string memory _baseURI, string memory _contractURI) public maxSquads returns (uint256){
-    Squad newSquad = new Squad(squads.length + 1, _baseURI, _contractURI); 
+  function createSquad(string memory _baseURI, string memory _squadName, string memory _squadDescription, string memory _contractURI) public maxSquads returns (uint256){
+    Squad newSquad = new Squad(squads.length + 1, _squadName, _squadDescription, _baseURI, _contractURI); 
     uint256 index = squads.length + 1;
     squads.push(newSquad);
     squadAddresses[index] = address(newSquad);
