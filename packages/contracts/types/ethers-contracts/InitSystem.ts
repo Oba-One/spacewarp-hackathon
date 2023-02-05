@@ -115,7 +115,7 @@ export interface InitSystem extends BaseContract {
 
   functions: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -133,7 +133,7 @@ export interface InitSystem extends BaseContract {
   };
 
   execute(
-    args: PromiseOrValue<BytesLike>,
+    arguments: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -151,7 +151,7 @@ export interface InitSystem extends BaseContract {
 
   callStatic: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -181,7 +181,7 @@ export interface InitSystem extends BaseContract {
 
   estimateGas: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -200,7 +200,7 @@ export interface InitSystem extends BaseContract {
 
   populateTransaction: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
