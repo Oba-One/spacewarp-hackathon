@@ -1,7 +1,6 @@
 // SPDX-license-identifier: MIT
 pragma solidity ^0.8.0;
 import "./Squad.sol";
-import "./SquadFactory.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
