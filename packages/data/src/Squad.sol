@@ -75,6 +75,7 @@ contract Squad is SquadCollectibles {
 
   function join() public ownerOnly {
     receiveOnJoin(msg.sender, squadId);
+    squadMembers.push(msg.sender);
     members[msg.sender] = true;
   }
 
