@@ -1,0 +1,446 @@
+{
+  "water": [
+    {
+      "id": 1,
+      "name": "the infinaut",
+      "description": "The Infinaut is a Marvel character not known by many.",
+      "power": 20,
+      "energy": 6,
+      "effect": {
+        "value": 0,
+        "action": "NONE"
+      },
+      "image": "/water/infinaut.png",
+      "cid": "QmV5FZ65pSq8f3wLuVxy6dyYeJXR7L3HJxujsV1ad5tuUb"
+    },
+    {
+      "id": 2,
+      "name": "america chavez",
+      "description": "America Chavez is a Marvel character most known for her time in the Ultimates.",
+      "power": 9,
+      "energy": 6,
+      "image": "/water/america-chavez.png",
+      "cid": "QmdXT7QQBrcvteebd7wEz2F9RJRbQBE6PzBDrkNq4dPfJC"
+    },
+    {
+      "id": 3,
+      "name": "namor",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 5,
+      "energy": 4,
+      "image": "/water/namor.png",
+      "cid": "Qme4M7CiWn5ybxUxzvYCA851xshAE4u5rw4Pj7etsDBf7J"
+    },
+    {
+      "id": 4,
+      "name": "cyclops",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 4,
+      "energy": 3,
+      "image": "/water/cyclops.png",
+      "cid": "QmVEsUnw1KHtNk81yN6aqWMSwtotz8rSZrwAu5z56rGddK"
+    },
+    {
+      "id": 3,
+      "name": "blue marvel",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 3,
+      "energy": 5,
+      "image": "/water/namor.png",
+      "cid": "QmaDSdQTTQwxzYkATv1izh9FE3v2DEhVm4MqvJJLNJBi7u"
+    },
+    {
+      "id": 3,
+      "name": "beast",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 2,
+      "energy": 2,
+      "image": "/water/namor.png",
+      "cid": "QmdwUZSVmRx6KeEoSkT7RSVkWtfRZAekHvNeaBVJJxkbW9"
+    },
+    {
+      "id": 3,
+      "name": "mister fantastic",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 2,
+      "energy": 3,
+      "image": "/water/namor.png",
+      "cid": "QmSKtKpQssqUjG8ZdFQ5ZoybAFrUiof2boti6q5XD2MRF1"
+    },
+    {
+      "id": 3,
+      "name": "shuri",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 2,
+      "energy": 4,
+      "image": "/water/namor.png",
+      "cid": "QmY9xUbEDtYLHcXRj1UQWw1hfS75bFZ1qdCntYjCGxii3g"
+    },
+    {
+      "id": 3,
+      "name": "iceman",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 2,
+      "energy": 1,
+      "image": "/water/namor.png",
+      "cid": "QmVP1owy23PwJ67mgvh6Uy4JHnhBRwYEuC8FjuUXJnL7dj"
+    },
+    {
+      "id": 3,
+      "name": "nightcrawler",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 2,
+      "energy": 1,
+      "image": "/water/namor.png",
+      "cid": "QmNUgcxjVwcmVCXzD39XuKk8j1RdJzeHg5ez1jLNTR7dFy"
+    },
+    {
+      "id": 3,
+      "name": "rogue",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 3,
+      "energy": 1,
+      "image": "/water/namor.png",
+      "cid": "QmP78diCD1qLAeNe6WScMGfESUqYQMDjN2CGGbD5csrQPG"
+    },
+    {
+      "id": 3,
+      "name": "mystique",
+      "description": "Namor is a Marvel character most recently seen in Wakanda Forever.",
+      "power": 0,
+      "energy": 3,
+      "image": "/water/namor.png",
+      "cid": "Qme4M7CiWn5ybxUxzvYCA851xshAE4u5rw4Pj7etsDBf7J"
+    }
+  ],
+  "earth": [
+    {
+      "id": 1,
+      "name": "hulk",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 12,
+      "energy": 6,
+      "image": "/earth/hulk.png",
+      "cid": "QmPb271d6uuwBFA3j4tuTLt9KVtmV67vQVVuEyZf2BDBuU"
+    },
+    {
+      "id": 2,
+      "name": "nick fury",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 5,
+      "energy": 7,
+      "image": "/earth/nick-fury.png",
+      "cid": "QmSrey9PwVDBAXL63VM3dG9DqX8yV4uxxQeh1sdCwE5nrd"
+    },
+    {
+      "id": 3,
+      "name": "the thing",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 6,
+      "energy": 4,
+      "image": "/earth/the-thing.png",
+      "cid": "QmWY1ofTPTfxAdvHaMLwCgn4h6rLczfEVtdZU5zNCjPiUE"
+    },
+    {
+      "id": 4,
+      "name": "ultron",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 8,
+      "energy": 6,
+      "image": "/earth/ultron.png",
+      "cid": "QmXxHggF5eTwAF1wP1qkJWvDpHiVREUjLF9iwdEd2ftuka"
+    },
+    {
+      "id": 5,
+      "name": "jessica jones",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 4,
+      "energy": 4,
+      "image": "/earth/jessica-jones.png",
+      "cid": "QmatK1JVhYkoFG4py5aJxHhwuFYVPWJpCC5gwwQmVRhNGs"
+    },
+    {
+      "id": 6,
+      "name": "wolverine",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 2,
+      "image": "/earth/wolverine.png",
+      "cid": "QmPDsNehHPdb5SPWR3vRgukkWL5mJJdwSMaXA4LzB6jRUJ"
+    },
+    {
+      "id": 7,
+      "name": "black panther",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 5,
+      "energy": 4,
+      "image": "/earth/black-panther.png",
+      "cid": "QmQDdXVMUfsct3eDzw85mMcTq5rJ5TW3TRZzZ9bheE3HTq"
+    },
+    {
+      "id": 8,
+      "name": "professor x",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 5,
+      "image": "/earth/professor-x.png",
+      "cid": "QmeeiPNbG89Hk33By4L9hMm54aqfUn5FrA1kq3Q7zfj6Db"
+    },
+    {
+      "id": 9,
+      "name": "captain america",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 3,
+      "image": "/earth/captain-america.png",
+      "cid": "QmYbRVbXjdUF1AceDVCHCCY5HE7mDVM5gS8dL7jPjxx2AR"
+    },
+    {
+      "id": 10,
+      "name": "okoye",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 2,
+      "energy": 2,
+      "image": "/earth/okoye.png",
+      "cid": "QmWFtozjHAuE7DAs58HrKd8rwvkwQvkrwkKVt93u6Ek7s4"
+    },
+    {
+      "id": 11,
+      "name": "deadpool",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 1,
+      "energy": 1,
+      "image": "/earth/deadpool.png",
+      "cid": "QmUH5N2NskvqU8Tmd486PbvvpVFY3FNtagC6YmahofHpZa"
+    },
+    {
+      "id": 12,
+      "name": "antman",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 1,
+      "energy": 1,
+      "image": "/earth/antman.png",
+      "cid": "QmTA8bqkYFp2LneAxkSs36MKGCoCYsWQPWCSQpmEnGU2cZ"
+    }
+  ],
+  "fire": [
+    {
+      "id": 1,
+      "name": "agatha harkness",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 14,
+      "energy": 6,
+      "image": "/fire/agatha-harkness.png",
+      "cid": "QmQ7YQtv9aV8xhk1TAUmhDycwkVx4Kzm9jZn8xNvTCsxkN"
+    },
+    {
+      "id": 2,
+      "name": "hela",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 6,
+      "energy": 6,
+      "image": "/fire/hela.png",
+      "cid": "QmVhNgfcM7ejUHztKHqAgJpezmM6aJQ364R8mmHAbbxezY"
+    },
+    {
+      "id": 3,
+      "name": "gamora",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 5,
+      "energy": 7,
+      "image": "/fire/gamora.png",
+      "cid": "QmPKqQRSKUSsw7CSDVk9mVrtksdeK5mzyvgMLfmzKNh6ZQ"
+    },
+    {
+      "id": 4,
+      "name": "doctor doom",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 5,
+      "energy": 6,
+      "image": "/fire/doctor-doom.png",
+      "cid": "QmfCUo7wkTFvhcq7nQWez1hWGwshjrDmeMmcA3MM8BPh3T"
+    },
+    {
+      "id": 5,
+      "name": "enchantress",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 4,
+      "energy": 4,
+      "image": "/fire/enchantress.png",
+      "cid": "QmZTmZ573EPN4Nsfgi24WN5YsEnDojz63UHNmdG8jvpb8c"
+    },
+    {
+      "id": 6,
+      "name": "moon knight",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 3,
+      "image": "/fire/agatha-harkness.png",
+      "cid": "QmPaHN9HdeW3EtRCMQw7NZYQYoCCvLDoc7sZMQFQZT2bER"
+    },
+    {
+      "id": 7,
+      "name": "green goblin",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 3,
+      "image": "/fire/green-goblin.png",
+      "cid": "QmWZUX2XkYTt3GcQmrY3pcR5UzxLFWKUAoyTPwoyCCm1eQ"
+    },
+    {
+      "id": 8,
+      "name": "blade",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 3,
+      "energy": 1,
+      "image": "/fire/blade.png",
+      "cid": "QmUwfKkMsSHkjGRy73u4UJJgvKFTc8Zcp9RPmFDuMfzAuD"
+    },
+    {
+      "id": 9,
+      "name": "daredevil",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 2,
+      "energy": 2,
+      "image": "/fire/daredevil.png",
+      "cid": "QmcAipoMGQxUrkjvgyxB3sV7Y2etbs23uxfNWDkQFjkQHq"
+    },
+    {
+      "id": 10,
+      "name": "punisher",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 2,
+      "energy": 3,
+      "image": "/fire/punisher.png",
+      "cid": "QmRbqeqtTiNVhr71eV637r7SWEAugUqma5M6EHqWFTPaGd"
+    },
+    {
+      "id": 11,
+      "name": "human torch",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 2,
+      "energy": 1,
+      "image": "/fire/human-torch.png",
+      "cid": "QmdMQGqr6bUmfrVNnPPtHjwNb8SBxZa4xWqGzkfweNxMKG"
+    },
+    {
+      "id": 12,
+      "name": "black widow",
+      "description": "The Hulk is a Marvel character most known for his time in the Avengers.",
+      "power": 1,
+      "energy": 2,
+      "image": "/fire/black-widow.png",
+      "cid": "QmX4AByqQktcrvc4RzM4cpQA9np8cP8RMFubcLty6d9YBL"
+    }
+  ],
+  "air": [
+    {
+      "id": 1,
+      "name": "magneto",
+      "description": "Magneto the ever plotting villan, who believes that humans and mutants should be seperated.",
+      "power": 14,
+      "energy": 6,
+      "image": "/air/magneto.png",
+      "cid": "QmPeftXiRhwSBmmSqw4wujm4KXD7o7BswsWt8LQgXTrfou"
+    },
+    {
+      "id": 2,
+      "name": "thanos",
+      "description": "Thanos obssessed with the idea of balance, he will stop at nothing to get the infinity stones.",
+      "power": 8,
+      "energy": 6,
+      "image": "/air/thanos.png",
+      "cid": "QmbcKJvZbgnUWuE28wZ89fiPHad7FhXTuGM39L2HDBkxpE"
+    },
+    {
+      "id": 3,
+      "name": "vision",
+      "description": "Vision is a android made from Ultron, Jarvis, and the Mind Stone.",
+      "power": 7,
+      "energy": 5,
+      "image": "/air/vision.png",
+      "cid": "QmQSsuVKUpuwedxK3fxFBsQVM3DgQCTJwk8L57kA6P9YVj"
+    },
+    {
+      "id": 4,
+      "name": "miles morales",
+      "description": "Miles Morales is a young spiderman who is trying to make a name for himself.",
+      "power": 5,
+      "energy": 4,
+      "image": "/air/miles-morales.png",
+      "cid": "QmaeCTXfr21TQsEF4wcsUkPnhWFBx9FUKm1yQadxquJGcE"
+    },
+    {
+      "id": 5,
+      "name": "thor",
+      "description": "Thor is the God of Thunder, and the son of Odin.",
+      "power": 4,
+      "energy": 3,
+      "image": "/air/thor.png",
+      "cid": "QmZmSEeP8FquHR7tcTr1c476vcGjFieCoSZRpg4YzM9JAg"
+    },
+    {
+      "id": 6,
+      "name": "doctor strange",
+      "description": "Doctor Strange is a master of the mystic arts, and is the Sorcerer Supreme.",
+      "power": 3,
+      "energy": 3,
+      "image": "/air/doctor-strange.png",
+      "cid": "QmNyDMsrup9CZqF3HUQqfciBJqxBXeMKLaRdMdByS5UpCs"
+    },
+    {
+      "id": 7,
+      "name": "scarlett witch",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 3,
+      "energy": 2,
+      "image": "/air/scarlett-witch.png",
+      "cid": "QmaSkJpBWLtZfNCYyxBv4AVnaEybwQSre3xbQi7LiuPtV1"
+    },
+    {
+      "id": 8,
+      "name": "galactus",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 2,
+      "energy": 6,
+      "image": "/air/galactus.png",
+      "cid": "QmPVTatRYvcY4JJyioJNYdrWZQS48RUkobhUdNVmyqmybX"
+    },
+    {
+      "id": 9,
+      "name": "storm",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 2,
+      "energy": 3,
+      "image": "/air/storm.png",
+      "cid": "QmUhevMgF18eFx5cf1erQVYCjnxZ3wJ23wT86qtWnMyDdS"
+    },
+    {
+      "id": 10,
+      "name": "starlord",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 2,
+      "energy": 2,
+      "image": "/air/starlord.png",
+      "cid": "QmYqGdi2okEf8BCWejF1n8roeHTt7wHWA6iKK3EYwotvGH"
+    },
+    {
+      "id": 11,
+      "name": "vatu the watcher",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 1,
+      "energy": 2,
+      "image": "/air/vatu-the-watcher.png",
+      "cid": "QmZwNTcJUqghctvngV3NSc4izgaUwfzK4qhwKqk9wpDG5H"
+    },
+    {
+      "id": 12,
+      "name": "wasp",
+      "description": "Scarlett Witch is a mutant with the ability to manipulate reality.",
+      "power": 1,
+      "energy": 0,
+      "image": "/air/wasp.png",
+      "cid": "QmUbdQA5dg9ZwAb1VGoSmVQ3z3AsCoq6FSmcqDFic3e9fZ"
+    }
+  ]
+}
