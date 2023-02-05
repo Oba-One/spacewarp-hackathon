@@ -32,11 +32,11 @@ contract Squad is SquadCollectibles {
     string description;
     uint256 forVotes;
     uint256 againstVotes;
-    uint256 abstainVotes;
     bool cancelled;
     bool executed;
   }
   struct Receipt {
+    uint256 proposalId;
     bool voted;
     bool support;
   }

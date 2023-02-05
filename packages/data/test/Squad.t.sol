@@ -49,4 +49,6 @@ contract LeagueTest is Test {
         league.joinSquad(squadIdIdx);
         _squad.redeemCollectible();
     }
+
+    // TODO: Tests for proposal creation, voting, execution, etc.
 }
