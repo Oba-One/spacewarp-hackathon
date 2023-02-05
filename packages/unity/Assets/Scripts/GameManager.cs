@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     //     {
     //         Debug.Log("PollMudState");
     //         shouldPoll = false;
-            
+
     //         string gameHex = PlayerData.gameIdHex();
     //         string matchState = await GetMatchState(gameHex);
     //         Debug.Log("Got match state");
@@ -83,7 +83,8 @@ public class GameManager : MonoBehaviour
         foreach (var imageCid in imageCids)
         {
             Debug.Log("Creating card " + handSlotIndex);
-            if (handSlotIndex >= handSlots.Length) {
+            if (handSlotIndex >= handSlots.Length)
+            {
                 Debug.Log("More characters then spaces on the board!!!!!!!!!");
                 break;
             }
@@ -92,9 +93,9 @@ public class GameManager : MonoBehaviour
             card.transform.SetParent(canvas.transform, false);
             CardManager cardManager = card.GetComponent<CardManager>();
             card.transform.position = cardPosition;
-            
+
             Debug.Log(cardManager);
-            
+
             string cardUri = ipfsHost + "/" + imageCid;
             cardManager.SetImage(cardUri);
             Debug.Log("Created card " + handSlotIndex);
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log(character);
             }
-            
+
             string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
             Debug.Log("Assets for each character");
             foreach (var asset in characterAssets)
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(asset);
             }
             DrawHand(characterAssets);
-        } 
+        }
         else
         {
             Debug.Log("Will not redraw characters");
