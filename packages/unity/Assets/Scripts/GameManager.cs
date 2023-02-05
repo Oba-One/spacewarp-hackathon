@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     void CreateGame()
     {
         Debug.Log("CreateGame");
-        string ipfsHost = "https://cloudflare-ipfs.com/ipfs";
+        string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
         List<string> imageCids = new List<string>{
             // chavez
             "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN",

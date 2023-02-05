@@ -36,7 +36,7 @@ import {
 
 uint256 constant ID = uint256(keccak256("system.Move"));
 
-contract MoveCardSystem is System {
+contract MoveSystem is System {
     constructor(IWorld _world, address _components) System(_world, _components) {}
 
     function execute(bytes memory arguments) public returns (bytes memory) {
