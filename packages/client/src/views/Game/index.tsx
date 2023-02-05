@@ -74,6 +74,7 @@ const Game: React.FC = () => {
 
   return (
     <LivepeerConfig client={livepeerClient}>
+<<<<<<< HEAD
       {isLoaded === false && <Loader precents={loadingPercentage} />}
       <section id="unity" className="h-screen w-screen pt-20">
         <Player
@@ -94,6 +95,34 @@ const Game: React.FC = () => {
           unityProvider={unityProvider}
         />
       </section>
+=======
+            <div className="container">
+        <div className="grid grid-cols-5">
+          <div>
+            <Player
+              type="opponent"
+              peerId={peerId}
+              gameCode={code}
+              setGameCode={setCode}
+            />
+          </div>
+
+          <div className="col-span-3">
+            <Unity className="w-full" unityProvider={unityProvider} />
+          </div>
+
+          <div>
+            <Player
+              type="player"
+              peerId={peerId}
+              gameCode={code}
+              setGameCode={setCode}
+              opponentId={peerId}
+            />
+          </div>
+        </div>
+      </div>
+>>>>>>> 160328f (feat(unity): pretty board)
     </LivepeerConfig>
   );
 };
