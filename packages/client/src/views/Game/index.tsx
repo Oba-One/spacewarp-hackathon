@@ -75,10 +75,7 @@ const Game: React.FC = () => {
   return (
     <LivepeerConfig client={livepeerClient}>
       {isLoaded === false && <Loader precents={loadingPercentage} />}
-      <section
-        id="react"
-        className="fixed mt-20 flex h-full w-full justify-between p-4"
-      >
+      <section id="unity" className="h-screen w-screen pt-20">
         <Player
           type="opponent"
           peerId={peerId}
@@ -92,12 +89,10 @@ const Game: React.FC = () => {
           setGameCode={setCode}
           opponentId={peerId}
         />
-      </section>
-      <section
-        id="unity"
-        className="flex grid h-screen w-screen place-items-center"
-      >
-        <Unity className="h-screen w-screen" unityProvider={unityProvider} />
+        <Unity
+          style={{ width: "100%", height: "100%" }}
+          unityProvider={unityProvider}
+        />
       </section>
     </LivepeerConfig>
   );

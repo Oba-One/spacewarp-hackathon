@@ -11,7 +11,9 @@ export const Player: FC<PlayerProps> = ({
   const [hasNotifications, setHasNotifications] = useState(false);
 
   return (
-    <aside className="relative py-3">
+    <aside
+      className={`fixed py-3 ${props.type === "player" ? "right-0" : "left-0"}`}
+    >
       <Avatar
         {...props}
         gameCode={gameCode}
