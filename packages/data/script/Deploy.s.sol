@@ -13,4 +13,9 @@ contract DeployScript is Script {
         vm.broadcast();
 
     }
+
+    // TODO: Add deployment of Element league with 4 squads
+    // TODO: Use whitelist of address to add members to suads and generate match results
+    // TODO: Creata an initial proposal
+
 }
