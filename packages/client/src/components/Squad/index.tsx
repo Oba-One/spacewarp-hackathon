@@ -35,8 +35,8 @@ interface SquadProps extends Squad {
 }
 
 export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
-  function handleJoin() {
-    join(id);
+  async function handleJoin() {
+    await join(id);
   }
 
   return (

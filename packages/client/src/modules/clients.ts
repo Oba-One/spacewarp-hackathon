@@ -41,7 +41,7 @@ const { chains, provider } = configureChains(
   [
     jsonRpcProvider({
       rpc: (chain) => ({
-        http: `https://${chain.id}.example.com`,
+        http: `https://api.hyperspace.node.glif.io/rpc/v1`,
       }),
     }),
     publicProvider(),

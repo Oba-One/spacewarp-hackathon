@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Tooltip } from "react-tippy";
+import { AvatarGenerator } from "random-avatar-generator";
 import { Player as LivePlayer } from "@livepeer/react";
 
 import PlayerAvatar from "/assets/avatar1.png";
@@ -45,6 +45,15 @@ export interface AvatarProps extends PlayerAvatarProps, OpponentAvatarProps {
 
 export const iconStyles =
   "relative grid place-items-center bg-slate-700 h-12 w-12 m-1 before:absolute p-1 rounded-full befor:bg-slate-700 cursor-pointer hover:bg-slate-600";
+
+const generator = new AvatarGenerator();
+
+// Simply get a random avatar
+generator.generateRandomAvatar();
+
+// Optionally specify a seed for the avatar. e.g. for always getting the same avatar for a user id.
+// With seed 'avatar', always returns https://avataaars.io/?accessoriesType=Kurt&avatarStyle=Circle&clotheColor=Blue01&clotheType=Hoodie&eyeType=EyeRoll&eyebrowType=RaisedExcitedNatural&facialHairColor=Blonde&facialHairType=BeardMagestic&hairColor=Black&hatColor=White&mouthType=Sad&skinColor=Yellow&topType=ShortHairShortWaved
+generator.generateRandomAvatar("avatar");
 
 const Pulse = () => (
   <span className="flex h-3 w-3">
@@ -124,19 +133,14 @@ const Player: FC<PlayerAvatarProps> = ({
               className={`${iconStyles}`}
               onClick={() => setShowSettings(!showSettings)}
             >
-              {/* <Tooltip
-                open={showSettings}
-                html={
-                  <div>
-                    <h5>Select Mic</h5>
-                    <ul>
-                      {mics.map((mic) => {
-                        return <li>{mic.label}</li>;
-                      })}
-                    </ul>
-                  </div>
-                }
-              /> */}
+              <div>
+                <h5>Select Mic</h5>
+                <ul>
+                  {mics.map((mic) => {
+                    return <li>{mic.label}</li>;
+                  })}
+                </ul>
+              </div>
               <SettingsIcon />
             </li>
             <li className={`${iconStyles}`} onClick={handleDisconnection}>
