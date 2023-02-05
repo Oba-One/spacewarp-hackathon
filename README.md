@@ -99,4 +99,4 @@ You can contact the team on the address : contact@mudsnap.com
 
 ## Video Link :
 
-[MudSnap3 Video](https://www.loom.com)
+[SquadDAO Video](https://www.loom.com)
