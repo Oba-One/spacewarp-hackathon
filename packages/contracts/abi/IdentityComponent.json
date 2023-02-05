@@ -1253,7 +1253,7 @@
     "id": 42889,
     "exportedSymbols": {
       "BareComponent": [
-        44984
+        45004
       ],
       "Component": [
         262
@@ -1262,7 +1262,7 @@
         42840
       ],
       "IEntityIndexer": [
-        45401
+        45421
       ],
       "IWorld": [
         2474
@@ -1274,13 +1274,13 @@
         43833
       ],
       "LibTypes": [
-        45023
+        45043
       ],
       "MapSet": [
-        45216
+        45236
       ],
       "Set": [
-        45382
+        45402
       ],
       "StringComponent": [
         3000
@@ -1685,9 +1685,9 @@
                       "overloadedDeclarations": [
                         42869,
                         2961,
-                        44859
+                        44879
                       ],
-                      "referencedDeclaration": 44859,
+                      "referencedDeclaration": 44879,
                       "src": "415:3:103",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
@@ -1844,7 +1844,7 @@
                           "name": "getRawValue",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 44904,
+                          "referencedDeclaration": 44924,
                           "src": "559:11:103",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_bytes_memory_ptr_$",
@@ -2066,8 +2066,8 @@
         ],
         "canonicalName": "IdentityComponent",
         "contractDependencies": [
-          45216,
-          45382
+          45236,
+          45402
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -2075,26 +2075,26 @@
           42888,
           3000,
           262,
-          44984,
-          60248,
-          45442,
+          45004,
+          60268,
+          45462,
           3300,
-          45985,
-          60287,
-          45861,
+          46005,
+          60307,
+          45881,
           2332,
-          45728,
+          45748,
           3343,
-          45995
+          46015
         ],
         "name": "IdentityComponent",
         "nameLocation": "245:17:103",
         "scope": 42889,
         "usedErrors": [
-          44784,
-          60175,
-          60284,
-          60286
+          44804,
+          60195,
+          60304,
+          60306
         ]
       }
     ],

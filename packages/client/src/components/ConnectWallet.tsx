@@ -1,4 +1,5 @@
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { useAccount, useConnect, useDisconnect, useNetwork } from "wagmi";
 
 import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
@@ -7,6 +8,7 @@ export const ConnectWallet = () => {
   const { connect } = useConnect();
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
+  const { chain } = useNetwork();
 
   function handleDisconnection() {
     disconnect();
@@ -14,9 +16,9 @@ export const ConnectWallet = () => {
 
   if (isConnected)
     return (
-      <div className="flex-none gap-2">
+      <div className="flex flex-none gap-2">
         <div className="grid place-items-center">
-          <h5>Hyperspace</h5>
+          <h5>{chain?.name}</h5>
           <div className="badge-secondary badge badge-md grid w-24 place-items-center line-clamp-1">
             {address ?? "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"}
           </div>

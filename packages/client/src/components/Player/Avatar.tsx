@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
-import { Player as LivePlayer } from "@livepeer/react";
 
 import PlayerAvatar from "/assets/avatar1.png";
 import OpponentAvatar from "/assets/avatar2.png";
@@ -18,6 +17,7 @@ import { huddleClient } from "../../modules/clients";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { useOpponent, usePlayer } from "../../hooks/usePlayer";
+import { useLighthouse } from "../../hooks/useLighthouse";
 
 export interface PlayerProps extends GameProps, OpponentAvatarProps {
   type: "player" | "opponent";
@@ -69,13 +69,13 @@ const Player: FC<PlayerAvatarProps> = ({
   setShowChat,
   hasNotifications,
 }) => {
+  const { applyAccessConditions } = useLighthouse();
   const {
     status,
     error,
     mics,
     isMicPaused,
     streamStatus,
-    liveStream,
     huddleName,
     huddleAvatar,
     showSettings,
@@ -137,7 +137,7 @@ const Player: FC<PlayerAvatarProps> = ({
                 <h5>Select Mic</h5>
                 <ul>
                   {mics.map((mic) => {
-                    return <li>{mic.label}</li>;
+                    return <li key={mic.deviceId}>{mic.label}</li>;
                   })}
                 </ul>
               </div>
@@ -171,20 +171,15 @@ const Player: FC<PlayerAvatarProps> = ({
               validate: (value) => value > 0,
             })}
           />
-          <Button type="submit">Connect To HQ</Button>
+          <Button type="submit">Join Chat</Button>
         </form>
       )}
+      <Button onClick={() => applyAccessConditions(undefined, [])}>
+        Test Lighthouse
+      </Button>
       <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
         {error}
       </p>
-      {liveStream.data?.playbackId && (
-        <LivePlayer
-          title={liveStream.data?.name}
-          playbackId={liveStream.data?.playbackId}
-          autoPlay
-          muted
-        />
-      )}
     </>
   );
 };

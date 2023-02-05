@@ -1114,7 +1114,7 @@
     "id": 42803,
     "exportedSymbols": {
       "BareComponent": [
-        44984
+        45004
       ],
       "Component": [
         262
@@ -1126,19 +1126,19 @@
         42788
       ],
       "IEntityIndexer": [
-        45401
+        45421
       ],
       "IWorld": [
         2474
       ],
       "LibTypes": [
-        45023
+        45043
       ],
       "MapSet": [
-        45216
+        45236
       ],
       "Set": [
-        45382
+        45402
       ],
       "Uint32Component": [
         3118
@@ -1430,8 +1430,8 @@
         ],
         "canonicalName": "EffectComponent",
         "contractDependencies": [
-          45216,
-          45382
+          45236,
+          45402
         ],
         "contractKind": "contract",
         "documentation": {
@@ -1445,26 +1445,26 @@
           42802,
           3118,
           262,
-          44984,
-          60248,
-          45442,
+          45004,
+          60268,
+          45462,
           3300,
-          45985,
-          60287,
-          45861,
+          46005,
+          60307,
+          45881,
           2332,
-          45728,
+          45748,
           3343,
-          45995
+          46015
         ],
         "name": "EffectComponent",
         "nameLocation": "245:15:101",
         "scope": 42803,
         "usedErrors": [
-          44784,
-          60175,
-          60284,
-          60286
+          44804,
+          60195,
+          60304,
+          60306
         ]
       }
     ],

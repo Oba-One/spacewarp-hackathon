@@ -6,7 +6,7 @@ import { ConnectWallet } from "./ConnectWallet";
 
 export const Nav: React.FC = () => {
   return (
-    <header className="navbar flex items-center justify-between bg-gray-900 px-8 py-3">
+    <header className="navbar fixed z-10 bg-gray-900 px-8 py-4 shadow-sm">
       <div className="navbar-start">
         <img
           src={avatarGenerator.generateRandomAvatar()}
