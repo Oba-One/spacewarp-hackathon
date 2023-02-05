@@ -45,6 +45,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DrawHand(new string[]{
+            "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1",
+            "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U",
+            "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av",
+            "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7",
+            "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E",
+            "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3",
+            "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN"
+            });
     }
 
     // public async Task<int> PollMudState()
@@ -53,7 +62,6 @@ public class GameManager : MonoBehaviour
     //     {
     //         Debug.Log("PollMudState");
     //         shouldPoll = false;
-            
     //         string gameHex = PlayerData.gameIdHex();
     //         string matchState = await GetMatchState(gameHex);
     //         Debug.Log("Got match state");
@@ -69,7 +77,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        account.text = PlayerPrefs.GetString("Account");
+        account.text = PlayerData.teamName() + " " + PlayerPrefs.GetString("Account");
         joinCode.text = "Join code:  " + PlayerData.gameId.ToString();
         // await PollMudState();
     }
@@ -83,7 +91,8 @@ public class GameManager : MonoBehaviour
         foreach (var imageCid in imageCids)
         {
             Debug.Log("Creating card " + handSlotIndex);
-            if (handSlotIndex >= handSlots.Length) {
+            if (handSlotIndex >= handSlots.Length)
+            {
                 Debug.Log("More characters then spaces on the board!!!!!!!!!");
                 break;
             }
@@ -92,9 +101,9 @@ public class GameManager : MonoBehaviour
             card.transform.SetParent(canvas.transform, false);
             CardManager cardManager = card.GetComponent<CardManager>();
             card.transform.position = cardPosition;
-            
+
             Debug.Log(cardManager);
-            
+
             string cardUri = ipfsHost + "/" + imageCid;
             cardManager.SetImage(cardUri);
             Debug.Log("Created card " + handSlotIndex);
@@ -114,7 +123,6 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log(character);
             }
-            
             string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
             Debug.Log("Assets for each character");
             foreach (var asset in characterAssets)
@@ -122,7 +130,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(asset);
             }
             DrawHand(characterAssets);
-        } 
+        }
         else
         {
             Debug.Log("Will not redraw characters");

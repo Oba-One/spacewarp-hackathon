@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 public class JoinSceneController : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class JoinSceneController : MonoBehaviour
     public async Task<string> MudSystemInit()
     {
         Debug.Log("Calling MudSystemInit");
-        string abi = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"}],\"name\":\"executeTyped\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
+        string abi = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"teamId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"executeTyped\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}]}]";
         // address of contract
         string contract = Mud.SYSTEM_INIT;
 
@@ -72,10 +73,13 @@ public class JoinSceneController : MonoBehaviour
         string method = "executeTyped";
         // equivalent to sending empty bytes as arg
         string gameIdHex = PlayerData.gameIdHex();
+        string teamIdHex = PlayerData.teamIdHex();
         Debug.Log("Game ID hex: " + gameIdHex);
+        string[] args = {gameIdHex, teamIdHex};
+        string argsSerialized = JsonConvert.SerializeObject(args);
 
         // connects to user's browser wallet to call a transaction
-        string response = await Web3GL.SendContract(method, abi, contract, gameIdHex, "0", "", "");
+        string response = await Web3GL.SendContract(method, abi, contract, argsSerialized, "0", "", "");
         Debug.Log("Got response");
         print(response);
         return response;

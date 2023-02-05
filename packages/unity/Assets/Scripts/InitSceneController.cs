@@ -8,7 +8,7 @@ public class InitSceneController : Singleton<InitSceneController>
     {
         DisableCaptureKeyboard();
         InitChainsafe();
-        SceneManager.LoadScene("1 - connect");
+        SceneManager.LoadScene("0 - team");
     }
 
     // Update is called once per frame
