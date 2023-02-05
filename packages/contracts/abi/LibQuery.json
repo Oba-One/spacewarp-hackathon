@@ -51,7 +51,7 @@
   },
   "deployedBytecode": {
     "object": "0x73000000000000000000000000000000000000000030146080604052600436106100405760003560e01c80635c35f12f14610045578063e87f3be91461006e575b600080fd5b61005861005336600461024a565b61008f565b604051610065919061026c565b60405180910390f35b61008161007c3660046102df565b610168565b604051908152602001610065565b60608167ffffffffffffffff8111156100aa576100aa6102b0565b6040519080825280602002602001820160405280156100d3578160200160208202803683370190505b509050811561016257600169ffffffffffffffffffff606085901c1660005b821561015e5760006101168360408051808201909152600080825260208201525090565b9050806000015185838151811061012f5761012f6103bb565b602090810291909101015281610144816103ea565b60b089901c949094015180151595509392506100f2915050565b5050505b92915050565b76200000000000000000000000000000000000000000000060005b82518110156101df576101cb6101c460405180604001604052808685815181106101af576101af6103bb565b60200260200101518152602001600081525090565b83906101e5565b9150806101d7816103ea565b915050610183565b50919050565b6000808360501b60b01c116001811461020a578260101b8360601b8517179150610243565b828460b01c8560a01b60b01c01528260101b7fffffffffffffffffffffffffffffffffffffffff00000000000000000000000085161791505b5092915050565b6000806040838503121561025d57600080fd5b50508035926020909101359150565b6020808252825182820181905260009190848201906040850190845b818110156102a457835183529284019291840191600101610288565b50909695505050505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b600060208083850312156102f257600080fd5b823567ffffffffffffffff8082111561030a57600080fd5b818501915085601f83011261031e57600080fd5b813581811115610330576103306102b0565b8060051b6040517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f83011681018181108582111715610373576103736102b0565b60405291825284820192508381018501918883111561039157600080fd5b938501935b828510156103af57843584529385019392850192610396565b98975050505050505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203610442577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b506001019056fea2646970667358221220c8d6b010c27bb5e87e8231130e000656d4ece8a78bd22ab8778a7baffce29df364736f6c63430008110033",
-    "sourceMap": "3736:8733:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;11719:424;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;12216:251;;;;;;:::i;:::-;;:::i;:::-;;;2498:25:124;;;2486:2;2471:18;12216:251:2;2312:217:124;11719:424:2;11794:22;11846:6;11832:21;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;11832:21:2;-1:-1:-1;11824:29:2;-1:-1:-1;11859:29:2;;11876:12;11859:29;11910:4;4582:20:53;;;;;;11895:12:2;11975:164;11982:7;11975:164;;;11999:23;12025:20;12037:7;-1:-1:-1;;;;;;;;;;;;;;;;;;579:3:2;448:140;12025:20;11999:46;;12064:4;:10;;;12053:5;12059:1;12053:8;;;;;;;;:::i;:::-;;;;;;;;;;:21;12082:3;;;;:::i;:::-;6494::53;6490:14;;;6477:28;;;;6471:35;6529:14;;;;-1:-1:-1;6471:35:53;12082:3:2;-1:-1:-1;11975:164:2;;-1:-1:-1;;11975:164:2;;11818:325;;;11719:424;;;;;:::o;12216:251::-;4237:24:53;12282:15:2;12349:114;12369:5;:12;12365:1;:16;12349:114;;;12403:53;12422:33;12430:24;;;;;;;;12442:5;12448:1;12442:8;;;;;;;;:::i;:::-;;;;;;;12430:24;;;;12452:1;12430:24;;;439:1;310:136;12422:33;12403:4;;:18;:53::i;:::-;12396:60;-1:-1:-1;12383:3:2;;;;:::i;:::-;;;;12349:114;;;;12216:251;;;:::o;5475:835:53:-;5555:12;5653:1;5645:4;5641:2;5637:13;5632:3;5628:23;5625:30;5674:1;5669:462;;;;6271:7;6267:2;6263:16;6252:7;6248:2;6244:16;6238:4;6235:26;6232:48;6227:53;;5618:676;;5669:462;5988:7;5902:4;5897:3;5893:14;5841:4;5836:3;5832:14;5827:3;5823:24;5794:172;5766:247;6108:7;6104:2;6100:16;6088:9;6082:4;6078:20;6075:42;6070:47;;5618:676;;5475:835;;;;:::o;14:280:124:-;114:6;122;175:2;163:9;154:7;150:23;146:32;143:52;;;191:1;188;181:12;143:52;-1:-1:-1;;214:23:124;;;284:2;269:18;;;256:32;;-1:-1:-1;14:280:124:o;299:640::-;478:2;530:21;;;600:13;;503:18;;;622:22;;;449:4;;478:2;701:15;;;;675:2;660:18;;;449:4;744:169;758:6;755:1;752:13;744:169;;;819:13;;807:26;;888:15;;;;853:12;;;;780:1;773:9;744:169;;;-1:-1:-1;930:3:124;;299:640;-1:-1:-1;;;;;;299:640:124:o;944:184::-;996:77;993:1;986:88;1093:4;1090:1;1083:15;1117:4;1114:1;1107:15;1133:1174;1217:6;1248:2;1291;1279:9;1270:7;1266:23;1262:32;1259:52;;;1307:1;1304;1297:12;1259:52;1347:9;1334:23;1376:18;1417:2;1409:6;1406:14;1403:34;;;1433:1;1430;1423:12;1403:34;1471:6;1460:9;1456:22;1446:32;;1516:7;1509:4;1505:2;1501:13;1497:27;1487:55;;1538:1;1535;1528:12;1487:55;1574:2;1561:16;1596:2;1592;1589:10;1586:36;;;1602:18;;:::i;:::-;1648:2;1645:1;1641:10;1680:2;1674:9;1739:66;1734:2;1730;1726:11;1722:84;1714:6;1710:97;1857:6;1845:10;1842:22;1837:2;1825:10;1822:18;1819:46;1816:72;;;1868:18;;:::i;:::-;1904:2;1897:22;1954:18;;;1988:15;;;;-1:-1:-1;2030:11:124;;;2026:20;;;2058:19;;;2055:39;;;2090:1;2087;2080:12;2055:39;2114:11;;;;2134:142;2150:6;2145:3;2142:15;2134:142;;;2216:17;;2204:30;;2167:12;;;;2254;;;;2134:142;;;2295:6;1133:1174;-1:-1:-1;;;;;;;;1133:1174:124:o;2534:184::-;2586:77;2583:1;2576:88;2683:4;2680:1;2673:15;2707:4;2704:1;2697:15;2723:349;2762:3;2793:66;2786:5;2783:77;2780:257;;2893:77;2890:1;2883:88;2994:4;2991:1;2984:15;3022:4;3019:1;3012:15;2780:257;-1:-1:-1;3064:1:124;3053:13;;2723:349::o",
+    "sourceMap": "3736:8733:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;11719:424;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;12216:251;;;;;;:::i;:::-;;:::i;:::-;;;2498:25:125;;;2486:2;2471:18;12216:251:2;2312:217:125;11719:424:2;11794:22;11846:6;11832:21;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;11832:21:2;-1:-1:-1;11824:29:2;-1:-1:-1;11859:29:2;;11876:12;11859:29;11910:4;4582:20:53;;;;;;11895:12:2;11975:164;11982:7;11975:164;;;11999:23;12025:20;12037:7;-1:-1:-1;;;;;;;;;;;;;;;;;;579:3:2;448:140;12025:20;11999:46;;12064:4;:10;;;12053:5;12059:1;12053:8;;;;;;;;:::i;:::-;;;;;;;;;;:21;12082:3;;;;:::i;:::-;6494::53;6490:14;;;6477:28;;;;6471:35;6529:14;;;;-1:-1:-1;6471:35:53;12082:3:2;-1:-1:-1;11975:164:2;;-1:-1:-1;;11975:164:2;;11818:325;;;11719:424;;;;;:::o;12216:251::-;4237:24:53;12282:15:2;12349:114;12369:5;:12;12365:1;:16;12349:114;;;12403:53;12422:33;12430:24;;;;;;;;12442:5;12448:1;12442:8;;;;;;;;:::i;:::-;;;;;;;12430:24;;;;12452:1;12430:24;;;439:1;310:136;12422:33;12403:4;;:18;:53::i;:::-;12396:60;-1:-1:-1;12383:3:2;;;;:::i;:::-;;;;12349:114;;;;12216:251;;;:::o;5475:835:53:-;5555:12;5653:1;5645:4;5641:2;5637:13;5632:3;5628:23;5625:30;5674:1;5669:462;;;;6271:7;6267:2;6263:16;6252:7;6248:2;6244:16;6238:4;6235:26;6232:48;6227:53;;5618:676;;5669:462;5988:7;5902:4;5897:3;5893:14;5841:4;5836:3;5832:14;5827:3;5823:24;5794:172;5766:247;6108:7;6104:2;6100:16;6088:9;6082:4;6078:20;6075:42;6070:47;;5618:676;;5475:835;;;;:::o;14:280:125:-;114:6;122;175:2;163:9;154:7;150:23;146:32;143:52;;;191:1;188;181:12;143:52;-1:-1:-1;;214:23:125;;;284:2;269:18;;;256:32;;-1:-1:-1;14:280:125:o;299:640::-;478:2;530:21;;;600:13;;503:18;;;622:22;;;449:4;;478:2;701:15;;;;675:2;660:18;;;449:4;744:169;758:6;755:1;752:13;744:169;;;819:13;;807:26;;888:15;;;;853:12;;;;780:1;773:9;744:169;;;-1:-1:-1;930:3:125;;299:640;-1:-1:-1;;;;;;299:640:125:o;944:184::-;996:77;993:1;986:88;1093:4;1090:1;1083:15;1117:4;1114:1;1107:15;1133:1174;1217:6;1248:2;1291;1279:9;1270:7;1266:23;1262:32;1259:52;;;1307:1;1304;1297:12;1259:52;1347:9;1334:23;1376:18;1417:2;1409:6;1406:14;1403:34;;;1433:1;1430;1423:12;1403:34;1471:6;1460:9;1456:22;1446:32;;1516:7;1509:4;1505:2;1501:13;1497:27;1487:55;;1538:1;1535;1528:12;1487:55;1574:2;1561:16;1596:2;1592;1589:10;1586:36;;;1602:18;;:::i;:::-;1648:2;1645:1;1641:10;1680:2;1674:9;1739:66;1734:2;1730;1726:11;1722:84;1714:6;1710:97;1857:6;1845:10;1842:22;1837:2;1825:10;1822:18;1819:46;1816:72;;;1868:18;;:::i;:::-;1904:2;1897:22;1954:18;;;1988:15;;;;-1:-1:-1;2030:11:125;;;2026:20;;;2058:19;;;2055:39;;;2090:1;2087;2080:12;2055:39;2114:11;;;;2134:142;2150:6;2145:3;2142:15;2134:142;;;2216:17;;2204:30;;2167:12;;;;2254;;;;2134:142;;;2295:6;1133:1174;-1:-1:-1;;;;;;;;1133:1174:125:o;2534:184::-;2586:77;2583:1;2576:88;2683:4;2680:1;2673:15;2707:4;2704:1;2697:15;2723:349;2762:3;2793:66;2786:5;2783:77;2780:257;;2893:77;2890:1;2883:88;2994:4;2991:1;2984:15;3022:4;3019:1;3012:15;2780:257;-1:-1:-1;3064:1:125;3053:13;;2723:349::o",
     "linkReferences": {}
   },
   "methodIdentifiers": {
@@ -267,10 +267,10 @@
         14896
       ],
       "QueryFragment": [
-        45048
+        45359
       ],
       "QueryType": [
-        45039
+        45350
       ],
       "QueryVars": [
         622
@@ -356,7 +356,7 @@
         "file": "./interfaces/Query.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 1551,
-        "sourceUnit": 45049,
+        "sourceUnit": 45360,
         "symbolAliases": [
           {
             "foreign": {
@@ -364,7 +364,7 @@
               "name": "QueryFragment",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 45048,
+              "referencedDeclaration": 45359,
               "src": "126:13:2",
               "typeDescriptions": {}
             },
@@ -376,7 +376,7 @@
               "name": "QueryType",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 45039,
+              "referencedDeclaration": 45350,
               "src": "141:9:2",
               "typeDescriptions": {}
             },
@@ -806,7 +806,7 @@
                 "lValueRequested": false,
                 "leftExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 309,
@@ -823,7 +823,7 @@
                       "referencedDeclaration": 300,
                       "src": "680:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -835,10 +835,10 @@
                     "memberLocation": "689:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "680:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -850,10 +850,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "702:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -865,10 +865,10 @@
                     "memberLocation": "712:3:2",
                     "memberName": "Has",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45033,
+                    "referencedDeclaration": 45344,
                     "src": "702:13:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -882,7 +882,7 @@
                 "operator": "||",
                 "rightExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 314,
@@ -899,7 +899,7 @@
                       "referencedDeclaration": 300,
                       "src": "719:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -911,10 +911,10 @@
                     "memberLocation": "728:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "719:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -926,10 +926,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "741:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -941,10 +941,10 @@
                     "memberLocation": "751:8:2",
                     "memberName": "HasValue",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45035,
+                    "referencedDeclaration": 45346,
                     "src": "741:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -988,7 +988,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -1001,13 +1001,13 @@
                     "618:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "618:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "618:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -1079,7 +1079,7 @@
                 "lValueRequested": false,
                 "leftExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 330,
@@ -1096,7 +1096,7 @@
                       "referencedDeclaration": 321,
                       "src": "854:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -1108,10 +1108,10 @@
                     "memberLocation": "863:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "854:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1123,10 +1123,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "876:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -1138,10 +1138,10 @@
                     "memberLocation": "886:3:2",
                     "memberName": "Not",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45034,
+                    "referencedDeclaration": 45345,
                     "src": "876:13:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1155,7 +1155,7 @@
                 "operator": "||",
                 "rightExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 335,
@@ -1172,7 +1172,7 @@
                       "referencedDeclaration": 321,
                       "src": "893:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -1184,10 +1184,10 @@
                     "memberLocation": "902:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "893:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1199,10 +1199,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "915:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -1214,10 +1214,10 @@
                     "memberLocation": "925:8:2",
                     "memberName": "NotValue",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45036,
+                    "referencedDeclaration": 45347,
                     "src": "915:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1261,7 +1261,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -1274,13 +1274,13 @@
                     "792:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "792:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "792:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -1352,7 +1352,7 @@
                 "lValueRequested": false,
                 "leftExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 351,
@@ -1369,7 +1369,7 @@
                       "referencedDeclaration": 342,
                       "src": "1027:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -1381,10 +1381,10 @@
                     "memberLocation": "1036:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "1027:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1396,10 +1396,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "1049:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -1411,10 +1411,10 @@
                     "memberLocation": "1059:9:2",
                     "memberName": "ProxyRead",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45037,
+                    "referencedDeclaration": 45348,
                     "src": "1049:19:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1428,7 +1428,7 @@
                 "operator": "||",
                 "rightExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 356,
@@ -1445,7 +1445,7 @@
                       "referencedDeclaration": 342,
                       "src": "1072:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -1457,10 +1457,10 @@
                     "memberLocation": "1081:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "1072:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1472,10 +1472,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "1094:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -1487,10 +1487,10 @@
                     "memberLocation": "1104:11:2",
                     "memberName": "ProxyExpand",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45038,
+                    "referencedDeclaration": 45349,
                     "src": "1094:21:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1534,7 +1534,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -1547,13 +1547,13 @@
                     "965:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "965:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "965:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -1645,7 +1645,7 @@
                     "lValueRequested": false,
                     "leftExpression": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       },
                       "id": 372,
@@ -1662,7 +1662,7 @@
                           "referencedDeclaration": 363,
                           "src": "1212:8:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                             "typeString": "struct QueryFragment memory"
                           }
                         },
@@ -1674,10 +1674,10 @@
                         "memberLocation": "1221:9:2",
                         "memberName": "queryType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 45042,
+                        "referencedDeclaration": 45353,
                         "src": "1212:18:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_QueryType_$45039",
+                          "typeIdentifier": "t_enum$_QueryType_$45350",
                           "typeString": "enum QueryType"
                         }
                       },
@@ -1689,10 +1689,10 @@
                           "name": "QueryType",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 45039,
+                          "referencedDeclaration": 45350,
                           "src": "1234:9:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                            "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                             "typeString": "type(enum QueryType)"
                           }
                         },
@@ -1704,10 +1704,10 @@
                         "memberLocation": "1244:3:2",
                         "memberName": "Has",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 45033,
+                        "referencedDeclaration": 45344,
                         "src": "1234:13:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_QueryType_$45039",
+                          "typeIdentifier": "t_enum$_QueryType_$45350",
                           "typeString": "enum QueryType"
                         }
                       },
@@ -1721,7 +1721,7 @@
                     "operator": "||",
                     "rightExpression": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       },
                       "id": 377,
@@ -1738,7 +1738,7 @@
                           "referencedDeclaration": 363,
                           "src": "1255:8:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                             "typeString": "struct QueryFragment memory"
                           }
                         },
@@ -1750,10 +1750,10 @@
                         "memberLocation": "1264:9:2",
                         "memberName": "queryType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 45042,
+                        "referencedDeclaration": 45353,
                         "src": "1255:18:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_QueryType_$45039",
+                          "typeIdentifier": "t_enum$_QueryType_$45350",
                           "typeString": "enum QueryType"
                         }
                       },
@@ -1765,10 +1765,10 @@
                           "name": "QueryType",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 45039,
+                          "referencedDeclaration": 45350,
                           "src": "1277:9:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                            "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                             "typeString": "type(enum QueryType)"
                           }
                         },
@@ -1780,10 +1780,10 @@
                         "memberLocation": "1287:8:2",
                         "memberName": "HasValue",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 45035,
+                        "referencedDeclaration": 45346,
                         "src": "1277:18:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_QueryType_$45039",
+                          "typeIdentifier": "t_enum$_QueryType_$45350",
                           "typeString": "enum QueryType"
                         }
                       },
@@ -1803,7 +1803,7 @@
                   "operator": "||",
                   "rightExpression": {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     },
                     "id": 383,
@@ -1820,7 +1820,7 @@
                         "referencedDeclaration": 363,
                         "src": "1303:8:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       },
@@ -1832,10 +1832,10 @@
                       "memberLocation": "1312:9:2",
                       "memberName": "queryType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 45042,
+                      "referencedDeclaration": 45353,
                       "src": "1303:18:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       }
                     },
@@ -1847,10 +1847,10 @@
                         "name": "QueryType",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 45039,
+                        "referencedDeclaration": 45350,
                         "src": "1325:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                           "typeString": "type(enum QueryType)"
                         }
                       },
@@ -1862,10 +1862,10 @@
                       "memberLocation": "1335:3:2",
                       "memberName": "Not",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 45034,
+                      "referencedDeclaration": 45345,
                       "src": "1325:13:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       }
                     },
@@ -1885,7 +1885,7 @@
                 "operator": "||",
                 "rightExpression": {
                   "commonType": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   },
                   "id": 389,
@@ -1902,7 +1902,7 @@
                       "referencedDeclaration": 363,
                       "src": "1346:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                         "typeString": "struct QueryFragment memory"
                       }
                     },
@@ -1914,10 +1914,10 @@
                     "memberLocation": "1355:9:2",
                     "memberName": "queryType",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45042,
+                    "referencedDeclaration": 45353,
                     "src": "1346:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1929,10 +1929,10 @@
                       "name": "QueryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 45039,
+                      "referencedDeclaration": 45350,
                       "src": "1368:9:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                        "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                         "typeString": "type(enum QueryType)"
                       }
                     },
@@ -1944,10 +1944,10 @@
                     "memberLocation": "1378:8:2",
                     "memberName": "NotValue",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 45036,
+                    "referencedDeclaration": 45347,
                     "src": "1368:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     }
                   },
@@ -1991,7 +1991,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -2004,13 +2004,13 @@
                     "1146:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "1146:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "1146:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -2072,7 +2072,7 @@
             {
               "condition": {
                 "commonType": {
-                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                  "typeIdentifier": "t_enum$_QueryType_$45350",
                   "typeString": "enum QueryType"
                 },
                 "id": 407,
@@ -2089,7 +2089,7 @@
                     "referencedDeclaration": 398,
                     "src": "1495:8:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -2101,10 +2101,10 @@
                   "memberLocation": "1504:9:2",
                   "memberName": "queryType",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45042,
+                  "referencedDeclaration": 45353,
                   "src": "1495:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2116,10 +2116,10 @@
                     "name": "QueryType",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 45039,
+                    "referencedDeclaration": 45350,
                     "src": "1517:9:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                       "typeString": "type(enum QueryType)"
                     }
                   },
@@ -2131,10 +2131,10 @@
                   "memberLocation": "1527:3:2",
                   "memberName": "Has",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45033,
+                  "referencedDeclaration": 45344,
                   "src": "1517:13:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2184,7 +2184,7 @@
                             "referencedDeclaration": 398,
                             "src": "1585:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           },
@@ -2196,7 +2196,7 @@
                           "memberLocation": "1594:9:2",
                           "memberName": "component",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 45045,
+                          "referencedDeclaration": 45356,
                           "src": "1585:18:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -2245,7 +2245,7 @@
             {
               "condition": {
                 "commonType": {
-                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                  "typeIdentifier": "t_enum$_QueryType_$45350",
                   "typeString": "enum QueryType"
                 },
                 "id": 420,
@@ -2262,7 +2262,7 @@
                     "referencedDeclaration": 398,
                     "src": "1628:8:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -2274,10 +2274,10 @@
                   "memberLocation": "1637:9:2",
                   "memberName": "queryType",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45042,
+                  "referencedDeclaration": 45353,
                   "src": "1628:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2289,10 +2289,10 @@
                     "name": "QueryType",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 45039,
+                    "referencedDeclaration": 45350,
                     "src": "1650:9:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                       "typeString": "type(enum QueryType)"
                     }
                   },
@@ -2304,10 +2304,10 @@
                   "memberLocation": "1660:8:2",
                   "memberName": "HasValue",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45035,
+                  "referencedDeclaration": 45346,
                   "src": "1650:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2347,7 +2347,7 @@
                               "referencedDeclaration": 398,
                               "src": "1743:8:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -2359,7 +2359,7 @@
                             "memberLocation": "1752:5:2",
                             "memberName": "value",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 45047,
+                            "referencedDeclaration": 45358,
                             "src": "1743:14:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -2436,7 +2436,7 @@
                                   "referencedDeclaration": 398,
                                   "src": "1772:8:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -2448,7 +2448,7 @@
                                 "memberLocation": "1781:9:2",
                                 "memberName": "component",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 45045,
+                                "referencedDeclaration": 45356,
                                 "src": "1772:18:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -2538,7 +2538,7 @@
             {
               "condition": {
                 "commonType": {
-                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                  "typeIdentifier": "t_enum$_QueryType_$45350",
                   "typeString": "enum QueryType"
                 },
                 "id": 440,
@@ -2555,7 +2555,7 @@
                     "referencedDeclaration": 398,
                     "src": "1824:8:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -2567,10 +2567,10 @@
                   "memberLocation": "1833:9:2",
                   "memberName": "queryType",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45042,
+                  "referencedDeclaration": 45353,
                   "src": "1824:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2582,10 +2582,10 @@
                     "name": "QueryType",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 45039,
+                    "referencedDeclaration": 45350,
                     "src": "1846:9:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                       "typeString": "type(enum QueryType)"
                     }
                   },
@@ -2597,10 +2597,10 @@
                   "memberLocation": "1856:3:2",
                   "memberName": "Not",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45034,
+                  "referencedDeclaration": 45345,
                   "src": "1846:13:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2660,7 +2660,7 @@
                               "referencedDeclaration": 398,
                               "src": "1919:8:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -2672,7 +2672,7 @@
                             "memberLocation": "1928:9:2",
                             "memberName": "component",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 45045,
+                            "referencedDeclaration": 45356,
                             "src": "1919:18:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -2726,7 +2726,7 @@
             {
               "condition": {
                 "commonType": {
-                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                  "typeIdentifier": "t_enum$_QueryType_$45350",
                   "typeString": "enum QueryType"
                 },
                 "id": 454,
@@ -2743,7 +2743,7 @@
                     "referencedDeclaration": 398,
                     "src": "1962:8:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -2755,10 +2755,10 @@
                   "memberLocation": "1971:9:2",
                   "memberName": "queryType",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45042,
+                  "referencedDeclaration": 45353,
                   "src": "1962:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2770,10 +2770,10 @@
                     "name": "QueryType",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 45039,
+                    "referencedDeclaration": 45350,
                     "src": "1984:9:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                       "typeString": "type(enum QueryType)"
                     }
                   },
@@ -2785,10 +2785,10 @@
                   "memberLocation": "1994:8:2",
                   "memberName": "NotValue",
                   "nodeType": "MemberAccess",
-                  "referencedDeclaration": 45036,
+                  "referencedDeclaration": 45347,
                   "src": "1984:18:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                    "typeIdentifier": "t_enum$_QueryType_$45350",
                     "typeString": "enum QueryType"
                   }
                 },
@@ -2828,7 +2828,7 @@
                               "referencedDeclaration": 398,
                               "src": "2081:8:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -2840,7 +2840,7 @@
                             "memberLocation": "2090:5:2",
                             "memberName": "value",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 45047,
+                            "referencedDeclaration": 45358,
                             "src": "2081:14:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -2917,7 +2917,7 @@
                                   "referencedDeclaration": 398,
                                   "src": "2110:8:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -2929,7 +2929,7 @@
                                 "memberLocation": "2119:9:2",
                                 "memberName": "component",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 45045,
+                                "referencedDeclaration": 45356,
                                 "src": "2110:18:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -3029,7 +3029,7 @@
                         "referencedDeclaration": 398,
                         "src": "2183:8:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       }
@@ -3037,7 +3037,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       ],
@@ -3048,7 +3048,7 @@
                       "referencedDeclaration": 393,
                       "src": "2166:16:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                         "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                       }
                     },
@@ -3202,7 +3202,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -3215,13 +3215,13 @@
                     "1436:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "1436:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "1436:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -3293,7 +3293,7 @@
                         "referencedDeclaration": 485,
                         "src": "2430:8:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       }
@@ -3301,7 +3301,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       ],
@@ -3312,7 +3312,7 @@
                       "referencedDeclaration": 393,
                       "src": "2413:16:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                        "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                         "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                       }
                     },
@@ -3399,7 +3399,7 @@
                 "arguments": [
                   {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                      "typeIdentifier": "t_enum$_QueryType_$45350",
                       "typeString": "enum QueryType"
                     },
                     "id": 507,
@@ -3416,7 +3416,7 @@
                         "referencedDeclaration": 488,
                         "src": "2474:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       },
@@ -3428,10 +3428,10 @@
                       "memberLocation": "2484:9:2",
                       "memberName": "queryType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 45042,
+                      "referencedDeclaration": 45353,
                       "src": "2474:19:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       }
                     },
@@ -3443,10 +3443,10 @@
                         "name": "QueryType",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 45039,
+                        "referencedDeclaration": 45350,
                         "src": "2497:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                           "typeString": "type(enum QueryType)"
                         }
                       },
@@ -3458,10 +3458,10 @@
                       "memberLocation": "2507:9:2",
                       "memberName": "ProxyRead",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 45037,
+                      "referencedDeclaration": 45348,
                       "src": "2497:19:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                        "typeIdentifier": "t_enum$_QueryType_$45350",
                         "typeString": "enum QueryType"
                       }
                     },
@@ -3630,7 +3630,7 @@
                               "referencedDeclaration": 488,
                               "src": "2727:9:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -3642,7 +3642,7 @@
                             "memberLocation": "2737:9:2",
                             "memberName": "component",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 45045,
+                            "referencedDeclaration": 45356,
                             "src": "2727:19:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -3800,7 +3800,7 @@
                                   "referencedDeclaration": 488,
                                   "src": "2864:9:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -3812,7 +3812,7 @@
                                 "memberLocation": "2874:9:2",
                                 "memberName": "component",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 45045,
+                                "referencedDeclaration": 45356,
                                 "src": "2864:19:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -3993,7 +3993,7 @@
                             "referencedDeclaration": 485,
                             "src": "2968:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           }
@@ -4005,7 +4005,7 @@
                               "typeString": "uint256"
                             },
                             {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           ],
@@ -4016,7 +4016,7 @@
                           "referencedDeclaration": 480,
                           "src": "2935:19:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (uint256,struct QueryFragment memory) view returns (bool)"
                           }
                         },
@@ -4069,7 +4069,7 @@
                           "referencedDeclaration": 485,
                           "src": "3016:8:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                             "typeString": "struct QueryFragment memory"
                           }
                         }
@@ -4081,7 +4081,7 @@
                             "typeString": "bool"
                           },
                           {
-                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                             "typeString": "struct QueryFragment memory"
                           }
                         ],
@@ -4092,7 +4092,7 @@
                         "referencedDeclaration": 608,
                         "src": "2988:19:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_bool_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_bool_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                           "typeString": "function (bool,struct QueryFragment memory) pure returns (bool)"
                         }
                       },
@@ -4210,7 +4210,7 @@
                         "referencedDeclaration": 488,
                         "src": "2612:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                           "typeString": "struct QueryFragment memory"
                         }
                       },
@@ -4222,7 +4222,7 @@
                       "memberLocation": "2622:5:2",
                       "memberName": "value",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 45047,
+                      "referencedDeclaration": 45358,
                       "src": "2612:15:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes_memory_ptr",
@@ -4498,7 +4498,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -4511,13 +4511,13 @@
                     "2291:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "2291:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "2291:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -4535,7 +4535,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -4548,13 +4548,13 @@
                     "2324:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "2324:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "2324:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -4687,7 +4687,7 @@
                             "referencedDeclaration": 587,
                             "src": "3528:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           }
@@ -4695,7 +4695,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           ],
@@ -4706,7 +4706,7 @@
                           "referencedDeclaration": 318,
                           "src": "3509:18:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                           }
                         },
@@ -4799,7 +4799,7 @@
                             "referencedDeclaration": 587,
                             "src": "3573:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           }
@@ -4807,7 +4807,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           ],
@@ -4818,7 +4818,7 @@
                           "referencedDeclaration": 339,
                           "src": "3554:18:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                           }
                         },
@@ -4925,7 +4925,7 @@
               "stateVariable": false,
               "storageLocation": "memory",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                 "typeString": "struct QueryFragment"
               },
               "typeName": {
@@ -4938,13 +4938,13 @@
                     "3436:13:2"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 45048,
+                  "referencedDeclaration": 45359,
                   "src": "3436:13:2"
                 },
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "3436:13:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                  "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                   "typeString": "struct QueryFragment"
                 }
               },
@@ -5075,7 +5075,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+              "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
               "typeString": "struct QueryFragment"
             },
             "typeName": {
@@ -5088,13 +5088,13 @@
                   "3655:13:2"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "3655:13:2"
               },
-              "referencedDeclaration": 45048,
+              "referencedDeclaration": 45359,
               "src": "3655:13:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                 "typeString": "struct QueryFragment"
               }
             },
@@ -5112,7 +5112,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+              "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
               "typeString": "struct QueryFragment"
             },
             "typeName": {
@@ -5125,13 +5125,13 @@
                   "3682:13:2"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 45048,
+                "referencedDeclaration": 45359,
                 "src": "3682:13:2"
               },
-              "referencedDeclaration": 45048,
+              "referencedDeclaration": 45359,
               "src": "3682:13:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                 "typeString": "struct QueryFragment"
               }
             },
@@ -5474,7 +5474,7 @@
                     "referencedDeclaration": 616,
                     "src": "4177:11:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -5507,7 +5507,7 @@
                     "referencedDeclaration": 619,
                     "src": "4194:13:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                       "typeString": "struct QueryFragment memory"
                     }
                   },
@@ -5601,7 +5601,7 @@
                             "stateVariable": false,
                             "storageLocation": "memory",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment"
                             },
                             "typeName": {
@@ -5614,13 +5614,13 @@
                                   "4320:13:2"
                                 ],
                                 "nodeType": "IdentifierPath",
-                                "referencedDeclaration": 45048,
+                                "referencedDeclaration": 45359,
                                 "src": "4320:13:2"
                               },
-                              "referencedDeclaration": 45048,
+                              "referencedDeclaration": 45359,
                               "src": "4320:13:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                                 "typeString": "struct QueryFragment"
                               }
                             },
@@ -5637,7 +5637,7 @@
                             "referencedDeclaration": 631,
                             "src": "4352:9:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45048_memory_ptr_$dyn_memory_ptr",
+                              "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45359_memory_ptr_$dyn_memory_ptr",
                               "typeString": "struct QueryFragment memory[] memory"
                             }
                           },
@@ -5661,7 +5661,7 @@
                           "nodeType": "IndexAccess",
                           "src": "4352:12:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                             "typeString": "struct QueryFragment memory"
                           }
                         },
@@ -5679,7 +5679,7 @@
                               "referencedDeclaration": 682,
                               "src": "4394:8:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             }
@@ -5687,7 +5687,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             ],
@@ -5698,7 +5698,7 @@
                             "referencedDeclaration": 360,
                             "src": "4376:17:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                              "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                               "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                             }
                           },
@@ -6297,7 +6297,7 @@
                                             "referencedDeclaration": 682,
                                             "src": "6523:8:2",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                               "typeString": "struct QueryFragment memory"
                                             }
                                           }
@@ -6309,7 +6309,7 @@
                                               "typeString": "uint256"
                                             },
                                             {
-                                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                               "typeString": "struct QueryFragment memory"
                                             }
                                           ],
@@ -6320,7 +6320,7 @@
                                           "referencedDeclaration": 480,
                                           "src": "6495:19:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                                            "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                                             "typeString": "function (uint256,struct QueryFragment memory) view returns (bool)"
                                           }
                                         },
@@ -6386,7 +6386,7 @@
                                               "referencedDeclaration": 682,
                                               "src": "6653:8:2",
                                               "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                 "typeString": "struct QueryFragment memory"
                                               }
                                             },
@@ -6422,7 +6422,7 @@
                                                 "typeString": "struct QueryVars memory"
                                               },
                                               {
-                                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                 "typeString": "struct QueryFragment memory"
                                               },
                                               {
@@ -6441,7 +6441,7 @@
                                             "referencedDeclaration": 1046,
                                             "src": "6632:17:2",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_function_internal_view$_t_struct$_QueryVars_$622_memory_ptr_$_t_struct$_QueryFragment_$45048_memory_ptr_$_t_uint256_$_t_bool_$returns$_t_bool_$",
+                                              "typeIdentifier": "t_function_internal_view$_t_struct$_QueryVars_$622_memory_ptr_$_t_struct$_QueryFragment_$45359_memory_ptr_$_t_uint256_$_t_bool_$returns$_t_bool_$",
                                               "typeString": "function (struct QueryVars memory,struct QueryFragment memory,uint256,bool) view returns (bool)"
                                             }
                                           },
@@ -6788,7 +6788,7 @@
                                               "referencedDeclaration": 682,
                                               "src": "7100:8:2",
                                               "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                 "typeString": "struct QueryFragment memory"
                                               }
                                             },
@@ -6836,7 +6836,7 @@
                                                 "typeString": "struct QueryVars memory"
                                               },
                                               {
-                                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                 "typeString": "struct QueryFragment memory"
                                               },
                                               {
@@ -6859,7 +6859,7 @@
                                             "referencedDeclaration": 1207,
                                             "src": "7077:19:2",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_function_internal_view$_t_struct$_QueryVars_$622_memory_ptr_$_t_struct$_QueryFragment_$45048_memory_ptr_$_t_uint256_$_t_userDefinedValueType$_LinkedList_$14526_$_t_uint256_$returns$_t_userDefinedValueType$_LinkedList_$14526_$_t_uint256_$",
+                                              "typeIdentifier": "t_function_internal_view$_t_struct$_QueryVars_$622_memory_ptr_$_t_struct$_QueryFragment_$45359_memory_ptr_$_t_uint256_$_t_userDefinedValueType$_LinkedList_$14526_$_t_uint256_$returns$_t_userDefinedValueType$_LinkedList_$14526_$_t_uint256_$",
                                               "typeString": "function (struct QueryVars memory,struct QueryFragment memory,uint256,LinkedList,uint256) view returns (LinkedList,uint256)"
                                             }
                                           },
@@ -7188,7 +7188,7 @@
                                           "referencedDeclaration": 682,
                                           "src": "4807:8:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         }
@@ -7196,7 +7196,7 @@
                                       "expression": {
                                         "argumentTypes": [
                                           {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         ],
@@ -7207,7 +7207,7 @@
                                         "referencedDeclaration": 318,
                                         "src": "4788:18:2",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                                          "typeIdentifier": "t_function_internal_pure$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                                           "typeString": "function (struct QueryFragment memory) pure returns (bool)"
                                         }
                                       },
@@ -7398,7 +7398,7 @@
                                 "initialValue": {
                                   "condition": {
                                     "commonType": {
-                                      "typeIdentifier": "t_enum$_QueryType_$45039",
+                                      "typeIdentifier": "t_enum$_QueryType_$45350",
                                       "typeString": "enum QueryType"
                                     },
                                     "id": 739,
@@ -7415,7 +7415,7 @@
                                         "referencedDeclaration": 682,
                                         "src": "4966:8:2",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                           "typeString": "struct QueryFragment memory"
                                         }
                                       },
@@ -7427,10 +7427,10 @@
                                       "memberLocation": "4975:9:2",
                                       "memberName": "queryType",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 45042,
+                                      "referencedDeclaration": 45353,
                                       "src": "4966:18:2",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                                        "typeIdentifier": "t_enum$_QueryType_$45350",
                                         "typeString": "enum QueryType"
                                       }
                                     },
@@ -7442,10 +7442,10 @@
                                         "name": "QueryType",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 45039,
+                                        "referencedDeclaration": 45350,
                                         "src": "4988:9:2",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                                          "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                                           "typeString": "type(enum QueryType)"
                                         }
                                       },
@@ -7457,10 +7457,10 @@
                                       "memberLocation": "4998:3:2",
                                       "memberName": "Has",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 45033,
+                                      "referencedDeclaration": 45344,
                                       "src": "4988:13:2",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_enum$_QueryType_$45039",
+                                        "typeIdentifier": "t_enum$_QueryType_$45350",
                                         "typeString": "enum QueryType"
                                       }
                                     },
@@ -7481,7 +7481,7 @@
                                           "referencedDeclaration": 682,
                                           "src": "5099:8:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         },
@@ -7493,7 +7493,7 @@
                                         "memberLocation": "5108:5:2",
                                         "memberName": "value",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 45047,
+                                        "referencedDeclaration": 45358,
                                         "src": "5099:14:2",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_bytes_memory_ptr",
@@ -7517,7 +7517,7 @@
                                           "referencedDeclaration": 682,
                                           "src": "5059:8:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         },
@@ -7529,7 +7529,7 @@
                                         "memberLocation": "5068:9:2",
                                         "memberName": "component",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 45045,
+                                        "referencedDeclaration": 45356,
                                         "src": "5059:18:2",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -7587,7 +7587,7 @@
                                           "referencedDeclaration": 682,
                                           "src": "5014:8:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         },
@@ -7599,7 +7599,7 @@
                                         "memberLocation": "5023:9:2",
                                         "memberName": "component",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 45045,
+                                        "referencedDeclaration": 45356,
                                         "src": "5014:18:2",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -7865,7 +7865,7 @@
                                                 "referencedDeclaration": 619,
                                                 "src": "5316:13:2",
                                                 "typeDescriptions": {
-                                                  "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                  "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                   "typeString": "struct QueryFragment memory"
                                                 }
                                               },
@@ -7877,7 +7877,7 @@
                                               "memberLocation": "5330:9:2",
                                               "memberName": "component",
                                               "nodeType": "MemberAccess",
-                                              "referencedDeclaration": 45045,
+                                              "referencedDeclaration": 45356,
                                               "src": "5316:23:2",
                                               "typeDescriptions": {
                                                 "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -8049,7 +8049,7 @@
                                             "referencedDeclaration": 619,
                                             "src": "5370:13:2",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                               "typeString": "struct QueryFragment memory"
                                             }
                                           },
@@ -8061,7 +8061,7 @@
                                           "memberLocation": "5384:5:2",
                                           "memberName": "value",
                                           "nodeType": "MemberAccess",
-                                          "referencedDeclaration": 45047,
+                                          "referencedDeclaration": 45358,
                                           "src": "5370:19:2",
                                           "typeDescriptions": {
                                             "typeIdentifier": "t_bytes_memory_ptr",
@@ -8309,7 +8309,7 @@
                                                     "referencedDeclaration": 619,
                                                     "src": "5581:13:2",
                                                     "typeDescriptions": {
-                                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                       "typeString": "struct QueryFragment memory"
                                                     }
                                                   },
@@ -8321,7 +8321,7 @@
                                                   "memberLocation": "5595:9:2",
                                                   "memberName": "component",
                                                   "nodeType": "MemberAccess",
-                                                  "referencedDeclaration": 45045,
+                                                  "referencedDeclaration": 45356,
                                                   "src": "5581:23:2",
                                                   "typeDescriptions": {
                                                     "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -8355,7 +8355,7 @@
                                                         "referencedDeclaration": 619,
                                                         "src": "5631:13:2",
                                                         "typeDescriptions": {
-                                                          "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                                          "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                                           "typeString": "struct QueryFragment memory"
                                                         }
                                                       },
@@ -8367,7 +8367,7 @@
                                                       "memberLocation": "5645:5:2",
                                                       "memberName": "value",
                                                       "nodeType": "MemberAccess",
-                                                      "referencedDeclaration": 45047,
+                                                      "referencedDeclaration": 45358,
                                                       "src": "5631:19:2",
                                                       "typeDescriptions": {
                                                         "typeIdentifier": "t_bytes_memory_ptr",
@@ -9092,7 +9092,7 @@
                             {
                               "condition": {
                                 "commonType": {
-                                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                                  "typeIdentifier": "t_enum$_QueryType_$45350",
                                   "typeString": "enum QueryType"
                                 },
                                 "id": 694,
@@ -9109,7 +9109,7 @@
                                     "referencedDeclaration": 682,
                                     "src": "4485:8:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
@@ -9121,10 +9121,10 @@
                                   "memberLocation": "4494:9:2",
                                   "memberName": "queryType",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 45042,
+                                  "referencedDeclaration": 45353,
                                   "src": "4485:18:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                                    "typeIdentifier": "t_enum$_QueryType_$45350",
                                     "typeString": "enum QueryType"
                                   }
                                 },
@@ -9136,10 +9136,10 @@
                                     "name": "QueryType",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 45039,
+                                    "referencedDeclaration": 45350,
                                     "src": "4507:9:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                                       "typeString": "type(enum QueryType)"
                                     }
                                   },
@@ -9151,10 +9151,10 @@
                                   "memberLocation": "4517:9:2",
                                   "memberName": "ProxyRead",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 45037,
+                                  "referencedDeclaration": 45348,
                                   "src": "4507:19:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                                    "typeIdentifier": "t_enum$_QueryType_$45350",
                                     "typeString": "enum QueryType"
                                   }
                                 },
@@ -9198,7 +9198,7 @@
                                     "referencedDeclaration": 616,
                                     "src": "4528:11:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
@@ -9212,13 +9212,13 @@
                                     "referencedDeclaration": 682,
                                     "src": "4542:8:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
                                   "src": "4528:22:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -9230,7 +9230,7 @@
                             {
                               "condition": {
                                 "commonType": {
-                                  "typeIdentifier": "t_enum$_QueryType_$45039",
+                                  "typeIdentifier": "t_enum$_QueryType_$45350",
                                   "typeString": "enum QueryType"
                                 },
                                 "id": 706,
@@ -9247,7 +9247,7 @@
                                     "referencedDeclaration": 682,
                                     "src": "4564:8:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
@@ -9259,10 +9259,10 @@
                                   "memberLocation": "4573:9:2",
                                   "memberName": "queryType",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 45042,
+                                  "referencedDeclaration": 45353,
                                   "src": "4564:18:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                                    "typeIdentifier": "t_enum$_QueryType_$45350",
                                     "typeString": "enum QueryType"
                                   }
                                 },
@@ -9274,10 +9274,10 @@
                                     "name": "QueryType",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 45039,
+                                    "referencedDeclaration": 45350,
                                     "src": "4586:9:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45039_$",
+                                      "typeIdentifier": "t_type$_t_enum$_QueryType_$45350_$",
                                       "typeString": "type(enum QueryType)"
                                     }
                                   },
@@ -9289,10 +9289,10 @@
                                   "memberLocation": "4596:11:2",
                                   "memberName": "ProxyExpand",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 45038,
+                                  "referencedDeclaration": 45349,
                                   "src": "4586:21:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_enum$_QueryType_$45039",
+                                    "typeIdentifier": "t_enum$_QueryType_$45350",
                                     "typeString": "enum QueryType"
                                   }
                                 },
@@ -9336,7 +9336,7 @@
                                     "referencedDeclaration": 619,
                                     "src": "4609:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
@@ -9350,13 +9350,13 @@
                                     "referencedDeclaration": 682,
                                     "src": "4625:8:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
                                   "src": "4609:24:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -9403,7 +9403,7 @@
                         "referencedDeclaration": 631,
                         "src": "4289:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45048_memory_ptr_$dyn_memory_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45359_memory_ptr_$dyn_memory_ptr",
                           "typeString": "struct QueryFragment memory[] memory"
                         }
                       },
@@ -9632,7 +9632,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45048_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45359_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct QueryFragment[]"
                   },
                   "typeName": {
@@ -9646,13 +9646,13 @@
                           "3999:13:2"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 45048,
+                        "referencedDeclaration": 45359,
                         "src": "3999:13:2"
                       },
-                      "referencedDeclaration": 45048,
+                      "referencedDeclaration": 45359,
                       "src": "3999:13:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                        "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                         "typeString": "struct QueryFragment"
                       }
                     },
@@ -9660,7 +9660,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "3999:15:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45048_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_QueryFragment_$45359_storage_$dyn_storage_ptr",
                       "typeString": "struct QueryFragment[]"
                     }
                   },
@@ -9786,7 +9786,7 @@
                                 "referencedDeclaration": 616,
                                 "src": "7689:11:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                  "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                   "typeString": "struct QueryFragment memory"
                                 }
                               },
@@ -9798,7 +9798,7 @@
                               "memberLocation": "7701:9:2",
                               "memberName": "component",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 45045,
+                              "referencedDeclaration": 45356,
                               "src": "7689:21:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -9956,7 +9956,7 @@
                                 "referencedDeclaration": 616,
                                 "src": "7746:11:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                  "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                   "typeString": "struct QueryFragment memory"
                                 }
                               },
@@ -9968,7 +9968,7 @@
                               "memberLocation": "7758:5:2",
                               "memberName": "value",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 45047,
+                              "referencedDeclaration": 45358,
                               "src": "7746:17:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bytes_memory_ptr",
@@ -10129,7 +10129,7 @@
                             "referencedDeclaration": 988,
                             "src": "7818:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           }
@@ -10141,7 +10141,7 @@
                               "typeString": "bool"
                             },
                             {
-                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                               "typeString": "struct QueryFragment memory"
                             }
                           ],
@@ -10152,7 +10152,7 @@
                           "referencedDeclaration": 608,
                           "src": "7790:19:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_internal_pure$_t_bool_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_internal_pure$_t_bool_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (bool,struct QueryFragment memory) pure returns (bool)"
                           }
                         },
@@ -10275,7 +10275,7 @@
                               "referencedDeclaration": 988,
                               "src": "7911:8:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -10303,7 +10303,7 @@
                               "referencedDeclaration": 616,
                               "src": "7921:11:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             }
@@ -10315,11 +10315,11 @@
                                 "typeString": "uint256"
                               },
                               {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               },
                               {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             ],
@@ -10330,7 +10330,7 @@
                             "referencedDeclaration": 581,
                             "src": "7878:24:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45048_memory_ptr_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$_t_bool_$",
+                              "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45359_memory_ptr_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$_t_bool_$",
                               "typeString": "function (uint256,struct QueryFragment memory,struct QueryFragment memory) view returns (bool,bool)"
                             }
                           },
@@ -10469,7 +10469,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                     "typeString": "struct QueryFragment"
                   },
                   "typeName": {
@@ -10482,13 +10482,13 @@
                         "7564:13:2"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 45048,
+                      "referencedDeclaration": 45359,
                       "src": "7564:13:2"
                     },
-                    "referencedDeclaration": 45048,
+                    "referencedDeclaration": 45359,
                     "src": "7564:13:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                       "typeString": "struct QueryFragment"
                     }
                   },
@@ -10651,7 +10651,7 @@
                                   "referencedDeclaration": 619,
                                   "src": "8341:13:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                     "typeString": "struct QueryFragment memory"
                                   }
                                 },
@@ -10663,7 +10663,7 @@
                                 "memberLocation": "8355:9:2",
                                 "memberName": "component",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 45045,
+                                "referencedDeclaration": 45356,
                                 "src": "8341:23:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -10835,7 +10835,7 @@
                               "referencedDeclaration": 619,
                               "src": "8395:13:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                 "typeString": "struct QueryFragment memory"
                               }
                             },
@@ -10847,7 +10847,7 @@
                             "memberLocation": "8409:5:2",
                             "memberName": "value",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 45047,
+                            "referencedDeclaration": 45358,
                             "src": "8395:19:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -11064,7 +11064,7 @@
                                 "referencedDeclaration": 619,
                                 "src": "8515:13:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                  "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                   "typeString": "struct QueryFragment memory"
                                 }
                               },
@@ -11076,7 +11076,7 @@
                               "memberLocation": "8529:9:2",
                               "memberName": "component",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 45045,
+                              "referencedDeclaration": 45356,
                               "src": "8515:23:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -11110,7 +11110,7 @@
                                     "referencedDeclaration": 619,
                                     "src": "8559:13:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   },
@@ -11122,7 +11122,7 @@
                                   "memberLocation": "8573:5:2",
                                   "memberName": "value",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 45047,
+                                  "referencedDeclaration": 45358,
                                   "src": "8559:19:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bytes_memory_ptr",
@@ -11401,7 +11401,7 @@
                                     "referencedDeclaration": 1052,
                                     "src": "8835:8:2",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   }
@@ -11413,7 +11413,7 @@
                                       "typeString": "uint256"
                                     },
                                     {
-                                      "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                      "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                       "typeString": "struct QueryFragment memory"
                                     }
                                   ],
@@ -11424,7 +11424,7 @@
                                   "referencedDeclaration": 480,
                                   "src": "8802:19:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$",
+                                    "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$",
                                     "typeString": "function (uint256,struct QueryFragment memory) view returns (bool)"
                                   }
                                 },
@@ -11534,7 +11534,7 @@
                                             "referencedDeclaration": 616,
                                             "src": "8969:11:2",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                              "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                               "typeString": "struct QueryFragment memory"
                                             }
                                           },
@@ -11546,7 +11546,7 @@
                                           "memberLocation": "8981:9:2",
                                           "memberName": "component",
                                           "nodeType": "MemberAccess",
-                                          "referencedDeclaration": 45045,
+                                          "referencedDeclaration": 45356,
                                           "src": "8969:21:2",
                                           "typeDescriptions": {
                                             "typeIdentifier": "t_contract$_IComponent_$2332",
@@ -11710,7 +11710,7 @@
                                           "referencedDeclaration": 616,
                                           "src": "9020:11:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         },
@@ -11722,7 +11722,7 @@
                                         "memberLocation": "9032:5:2",
                                         "memberName": "value",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 45047,
+                                        "referencedDeclaration": 45358,
                                         "src": "9020:17:2",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_bytes_memory_ptr",
@@ -11941,7 +11941,7 @@
                                           "referencedDeclaration": 1052,
                                           "src": "9152:8:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         },
@@ -11969,7 +11969,7 @@
                                           "referencedDeclaration": 616,
                                           "src": "9162:11:2",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         }
@@ -11981,11 +11981,11 @@
                                             "typeString": "uint256"
                                           },
                                           {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           },
                                           {
-                                            "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                                            "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                                             "typeString": "struct QueryFragment memory"
                                           }
                                         ],
@@ -11996,7 +11996,7 @@
                                         "referencedDeclaration": 581,
                                         "src": "9114:24:2",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45048_memory_ptr_$_t_struct$_QueryFragment_$45048_memory_ptr_$returns$_t_bool_$_t_bool_$",
+                                          "typeIdentifier": "t_function_internal_view$_t_uint256_$_t_struct$_QueryFragment_$45359_memory_ptr_$_t_struct$_QueryFragment_$45359_memory_ptr_$returns$_t_bool_$_t_bool_$",
                                           "typeString": "function (uint256,struct QueryFragment memory,struct QueryFragment memory) view returns (bool,bool)"
                                         }
                                       },
@@ -12569,7 +12569,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_QueryFragment_$45048_memory_ptr",
+                    "typeIdentifier": "t_struct$_QueryFragment_$45359_memory_ptr",
                     "typeString": "struct QueryFragment"
                   },
                   "typeName": {
@@ -12582,13 +12582,13 @@
                         "8166:13:2"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 45048,
+                      "referencedDeclaration": 45359,
                       "src": "8166:13:2"
                     },
-                    "referencedDeclaration": 45048,
+                    "referencedDeclaration": 45359,
                     "src": "8166:13:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QueryFragment_$45048_storage_ptr",
+                      "typeIdentifier": "t_struct$_QueryFragment_$45359_storage_ptr",
                       "typeString": "struct QueryFragment"
                     }
                   },
