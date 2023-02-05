@@ -67,18 +67,14 @@ const Player: FC<PlayerAvatarProps> = ({
     isMicPaused,
     streamStatus,
     liveStream,
-    isEditingAvatar,
-    setIsEditingAvatar,
     huddleName,
     huddleAvatar,
-    updateAvatar,
     showSettings,
     setShowSettings,
     startLiveStream,
     stopLiveStream,
     handleConnection,
     handleDisconnection,
-    avatarForm,
     connectForm,
   } = usePlayer(gameCode, setGameCode);
 
@@ -98,26 +94,10 @@ const Player: FC<PlayerAvatarProps> = ({
 
   return (
     <>
-      <div id="player-avatar">
-        {isEditingAvatar && (
-          <div id="edit-avatar">
-            <form onSubmit={avatarForm.handleSubmit(updateAvatar)}>
-              <Input
-                placeholder="New avatar"
-                required
-                {...(avatarForm.register("avatar"),
-                {
-                  type: "url",
-                })}
-              />
-              <button type="submit">Update</button>
-            </form>
-          </div>
-        )}
+      <div id="player-avatar mask mask-hexagon-2">
         <img
           src={huddleAvatar ?? PlayerAvatar}
           alt={`Your player avatar`}
-          onClick={() => setIsEditingAvatar(true)}
           className="h-2xl w-2xl -scale-x-100"
         />
       </div>

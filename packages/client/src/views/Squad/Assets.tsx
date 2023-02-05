@@ -1,34 +1,25 @@
 import { FC } from "react";
 
-interface AssetProps {
-  name: string;
-  avatar?: string;
-  collectiblesEarned: number;
-}
-
 interface AssetsProps {
   team: GameElement;
-  members: AssetProps[];
+  assets: Asset[];
 }
 
-//  <ul className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] w-full gap-3 place-items-center ">
-//       {assets.map((asset) => (
-//         <AssetCard key={asset.slug} {...asset} />
-//       ))}
-//     </ul>
-
-export const Assets: FC<AssetsProps> = ({ members }) => {
-  members.sort((a, b) => b.collectiblesEarned - a.collectiblesEarned);
-
+export const Assets: FC<AssetsProps> = ({ assets }) => {
   return (
-    <ul className="flex flex-col gap-2 p-3 ">
-      {members.map((member) => (
-        <li className="flex items-center gap-2">
-          <img src={member.avatar} alt={`Avatar of teammate ${member.name}`} />
-          <h3>{member.name}</h3>
-          <p>{member.collectiblesEarned}</p>
-        </li>
-      ))}
-    </ul>
+    <div className="flex flex-col gap-4 px-4">
+      <div className="flex justify-between">
+        <h2 className="text-4xl font-bold">Squad Assets</h2>
+        <select className=" select max-w-xs">
+          <option disabled selected>
+            Normal
+          </option>
+          <option>Normal Apple</option>
+          <option>Normal Orange</option>
+          <option>Normal Tomato</option>
+        </select>
+      </div>
+      <ul className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4"></ul>
+    </div>
   );
 };

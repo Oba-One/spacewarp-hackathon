@@ -1,31 +1,60 @@
-import { useContractReads } from "wagmi";
+import { useState } from "react";
+import {
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+} from "wagmi";
+
+const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
 
 export const useLeague = () => {
-  const squads: string | false =
-    useContractReads({}).data?.reduce<string | false>((acc, cur) => {
-      if (cur) {
-        return "address";
-      }
+  const [squadId, setSquadId] = useState<string>("");
 
-      return "acc";
-    }, false) ?? false;
+  const squads = useContractRead<any, "", Squad[]>({
+    address,
+  }).data?.map((squad) => {
+    return {
+      id: squad.id,
+      name: squad.name,
+      description: squad.description,
+      owner: squad.owner,
+    };
+  });
 
-  const isMember: string | false =
-    useContractReads({}).data?.reduce<string | false>((acc, cur) => {
-      if (cur) {
-        return "address";
-      }
+  const isMember = useContractRead<any, "", boolean>({}).data;
 
-      return "acc";
-    }, false) ?? false;
+  const prepareJoinLeague = usePrepareContractWrite({
+    address,
+    abi: [
+      {
+        name: "memberJoin",
+        type: "function",
+        stateMutability: "nonpayable",
+        inputs: ["address"],
+        outputs: [],
+      },
+    ],
+    functionName: "memberJoin",
+    args: [squadId],
+  });
+
+  const { writeAsync } = useContractWrite(prepareJoinLeague.config);
 
   // Potential for joining a legue and being put in a draft or having to meet some criteria
   async function join(squad: string) {
-    const res = await fetch(`/squads/join`, {
-      method: "POST",
-    });
-    return await res.json();
+    try {
+      setSquadId(squad);
+
+      if (!writeAsync) throw new Error("No writeAsync defined");
+
+      const trasnaction = await writeAsync();
+
+      return trasnaction.hash;
+    } catch (error) {
+      setSquadId("");
+      console.error("Error joining league", error);
+    }
   }
 
-  return { squads, isMember, join };
+  return { squads, squadId, isMember, join };
 };

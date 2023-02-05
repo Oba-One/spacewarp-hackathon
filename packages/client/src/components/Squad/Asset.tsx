@@ -1,5 +1,6 @@
-import { useAsset } from 'hooks/useAsset';
 import { FC } from "react";
+
+import { useAsset } from "../../hooks/useAsset";
 
 interface Metadata {
   name: string;
@@ -8,7 +9,7 @@ interface Metadata {
   energy: number;
 }
 
-interface AssetProps {
+interface AssetProps extends Asset {
   id: string;
   image: string;
   metadata: Metadata;
@@ -16,23 +17,50 @@ interface AssetProps {
 }
 
 export const Asset: FC<AssetProps> = (asset) => {
-  // const {} = useAsset(asset);
-  
+  const { proposeUpdate, voteOnProposal } = useAsset(asset);
+
   return (
-    <li className="relative">
-      <div className="absolute left-0 top-0 flex justify-between">
-        <p>{asset.metadata.power}</p>
-        <p>{asset.metadata.energy}</p>
+    <li className="card card-side flex aspect-[3/4] flex-col items-center justify-between gap-3 bg-slate-800 px-4 py-3 shadow-xl">
+      <div className="flex w-full items-center justify-around">
+        <h4 className="text-lg font-bold">Rank 4</h4>
+        <h4 className="text-xl font-bold">Value: 0.01 FIL</h4>
       </div>
-      <img src={asset.image} alt={`Asset for ${asset.metadata.name}`} />
-      <h3>{asset.metadata.name}</h3>
-      <p>{asset.metadata.description}</p>
-      {asset.actionsEnabled && (
-        <div className="">
-          <button>Propose Update</button>
-          <button>Vote</button>
+
+      <div className="flex w-full flex-col items-center justify-around">
+        <figure className="w-200 mask mask-squircle">
+          <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
+        </figure>
+        <ul className="avatar-group -space-x-6">
+          <figure className="mask mask-hexagon w-16">
+            <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
+          </figure>
+          <figure className="mask mask-hexagon w-16">
+            <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
+          </figure>
+          <figure className="mask mask-hexagon w-16">
+            <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
+          </figure>
+        </ul>
+        <p className="text-lg font-light">Asset Name</p>
+        <p className="text-center ">
+          Short description about asset and metadata
+        </p>
+      </div>
+
+      <div className=" flex gap-6 py-3">
+        <div
+          className="max-w-36 tooltip tooltip-top "
+          data-tip="A Cherished Decentralized Memory Awaits"
+        >
+          <button className="btn-secondary btn">Propose Update</button>
         </div>
-      )}
+        <div
+          className="max-w-36 tooltip tooltip-top "
+          data-tip="What are you waiting for?"
+        >
+          <button className="wide btn-primary btn">Vot For Proposal</button>
+        </div>
+      </div>
     </li>
   );
 };

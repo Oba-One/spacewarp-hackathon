@@ -3,18 +3,13 @@ import { useForm } from "react-hook-form";
 import { Client } from "@livepeer/webrtmp-sdk";
 import { useCreateStream } from "@livepeer/react";
 import { useRootStore } from "@huddle01/huddle01-client";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { InjectedConnector } from "wagmi/connectors/injected";
+import { useAccount, useConnect } from "wagmi";
 
 import { huddleClient } from "../modules/clients";
 
 type FormValues = {
   name: string;
   gameCode: number;
-};
-
-type AvatarFormValues = {
-  avatar: string;
 };
 
 type Status = "idle" | "connecting" | "connected" | "disconnecting";
@@ -51,15 +46,11 @@ export const usePlayer = (
   const [status, setStatus] = useState<Status>("idle");
   const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
   const [streamStatus, setStreamStatus] = useState<Status>("idle");
-  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   // WALLET CONNECTION - Wagmi
   const { address } = useAccount();
-  const { connectAsync } = useConnect({
-    connector: new InjectedConnector(),
-  });
-  const { disconnect } = useDisconnect();
+  const { connectAsync } = useConnect();
 
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
@@ -84,30 +75,7 @@ export const usePlayer = (
       gameCode,
     },
   });
-  const avatarForm = useForm<AvatarFormValues>({
-    // shouldUseNativeValidation: true,
-    defaultValues: {
-      avatar: huddleAvatar || "",
-    },
-  });
-
   // METHODS
-  async function updateAvatar(values: AvatarFormValues) {
-    try {
-      await huddleClient.changeAvatarUrl(values.avatar);
-    } catch (error: any) {
-      avatarForm.setError("avatar", {
-        type: "validate",
-      });
-      avatarForm.trigger("avatar", {
-        shouldFocus: true,
-      });
-
-      console.error(error);
-      setError(error.message ?? "Issue updating avatar, please try again");
-    }
-  }
-
   async function startLiveStream() {
     setStreamStatus("connecting");
 
@@ -182,10 +150,9 @@ export const usePlayer = (
       setStatus("disconnecting");
 
       if (streamStatus) await stopLiveStream();
-      if (status) disconnect();
-
+      // huddleClient.disableMic();
+      huddleClient.close("left");
       setStatus("idle");
-      setIsEditingAvatar(false);
     } catch (error: any) {
       console.error("Error Disconnecting", error);
       setError(error.message ?? "Issue disconnecting, please try again");
@@ -234,8 +201,6 @@ export const usePlayer = (
     error,
     status,
     streamStatus,
-    isEditingAvatar,
-    setIsEditingAvatar,
     showSettings,
     setShowSettings,
     liveStream,
@@ -243,9 +208,7 @@ export const usePlayer = (
     mics,
     huddleAvatar,
     huddleName,
-    avatarForm,
     connectForm,
-    updateAvatar,
     startLiveStream,
     stopLiveStream,
     handleConnection,

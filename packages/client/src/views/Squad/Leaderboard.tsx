@@ -15,14 +15,11 @@ export const LeaderBoard: FC<LeaderBoardProps> = ({ members }) => {
   members.sort((a, b) => b.collectiblesEarned - a.collectiblesEarned);
 
   return (
-    <ul className="flex flex-col gap-2 p-3 ">
-      {members.map((member) => (
-        <li className="flex items-center gap-2">
-          <img src={member.avatar} alt={`Avatar of teammate ${member.name}`} />
-          <h3>{member.name}</h3>
-          <p>{member.collectiblesEarned}</p>
-        </li>
-      ))}
-    </ul>
+    <aside className="flex flex-col gap-6 py-20 px-4">
+      <div className="flex justify-between px-4">
+        <h2 className="text-4xl font-bold">Squad Rankings</h2>
+      </div>
+      <ul className="flex flex-col gap-1"></ul>
+    </aside>
   );
 };

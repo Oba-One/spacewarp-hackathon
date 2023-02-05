@@ -8,7 +8,7 @@
   src: local("OpenSans"), url("./assets/fonts/OpenSans.woff2") format("woff2");
 } */
 
-html {
+/* html {
   --page-color: white;
   --ink-color: black;
   --highlight-color: red;
@@ -28,7 +28,7 @@ html {
   img {
     filter: brightness(0.8) contrast(1.2);
   }
-}
+} */
 
 body {
   margin: 0;
@@ -40,6 +40,7 @@ body {
   color: var(--ink-color);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  color: white;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -77,18 +78,10 @@ iframe {
   block-size: auto;
 }
 
-input {
+/* input {
   background-color: var(--page-color);
   color: var(--ink-color);
   border-color: var(--ink-color);
-}
+} */
 
-button {
-  background-color: var(--ink-color);
-  color: var(--page-color);
-}
-
-svg {
-  stroke: var(--ink-color);
-  fill: var(--page-color);
-}
+/* / */
