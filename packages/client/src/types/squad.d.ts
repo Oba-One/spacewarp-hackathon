@@ -1,9 +1,7 @@
 declare interface Squad {
-  id: string;
-  name: string;
+  id: `0x${string}`; // address of Squad
+  name: string; //
   description: string;
-  // owner: string;
-  logo?: string;
   element: GameElement;
 }
 
@@ -36,13 +34,14 @@ declare interface Proposal {
   image: string;
   forVotes: number;
   againstVotes: number;
-  abstainVotes: number;
+  // abstainVotes: number;
   cancelled: boolean;
   executed: boolean;
 }
 
 declare interface Asset {
   id: string;
+  squadId: `0x${string}`;
   name: string;
   description: string;
   image: string;

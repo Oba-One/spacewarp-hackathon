@@ -75,6 +75,7 @@ export const usePlayer = (
       gameCode,
     },
   });
+
   // METHODS
   async function startLiveStream() {
     setStreamStatus("connecting");

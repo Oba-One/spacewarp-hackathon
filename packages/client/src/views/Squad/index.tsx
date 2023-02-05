@@ -11,25 +11,25 @@ import { LeaderBoard } from "./Leaderboard";
 
 const squads: Record<GameElement, Squad> = {
   water: {
-    id: "water",
+    id: `0x${"water".padEnd(64, "0")}`,
     name: "Water",
     element: "water",
     description: "Water is the coldest",
   },
   earth: {
-    id: "earth",
+    id: `0x${"earth".padEnd(64, "0")}`,
     name: "Earth",
     element: "earth",
     description: "Earth is the hardest",
   },
   fire: {
-    id: "fire",
+    id: `0x${"fire".padEnd(64, "0")}`,
     name: "Fire",
     element: "fire",
     description: "Fire is the hottest",
   },
   air: {
-    id: "air",
+    id: `0x${"air".padEnd(64, "0")}å`,
     name: "Air",
     element: "air",
     description: "Air is the lightest",

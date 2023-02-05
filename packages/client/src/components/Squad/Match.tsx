@@ -1,22 +1,8 @@
-import { useAsset } from "hooks/useAsset";
+import { useMatch } from "../../hooks/useMatch";
 import { FC } from "react";
 
-interface Metadata {
-  name: string;
-  description: string;
-  power: number;
-  energy: number;
-}
-
-interface AssetProps {
-  id: string;
-  image: string;
-  metadata: Metadata;
-  actionsEnabled: boolean;
-}
-
-export const Asset: FC<AssetProps> = (asset) => {
-  // const {} = useAsset(asset);
+export const Match: FC<Match> = (match) => {
+  const { mintCollectible, uploadStream } = useMatch(match);
 
   return (
     <li className="card card-side flex aspect-[4/3] flex-col items-center justify-between gap-3 bg-slate-800 px-4 py-3 shadow-xl">
@@ -54,13 +40,17 @@ export const Asset: FC<AssetProps> = (asset) => {
           className="max-w-36 tooltip tooltip-top "
           data-tip="A Cherished Decentralized Memory Awaits"
         >
-          <button className="btn-secondary btn">Upload Stream</button>
+          <button className="btn-secondary btn" onClick={uploadStream}>
+            Upload Stream
+          </button>
         </div>
         <div
           className="max-w-36 tooltip tooltip-top "
           data-tip="What are you waiting for?"
         >
-          <button className="wide btn-primary btn">Mint Collectible</button>
+          <button className="wide btn-primary btn" onClick={mintCollectible}>
+            Mint Collectible
+          </button>
         </div>
       </div>
     </li>

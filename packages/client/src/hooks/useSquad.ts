@@ -1,23 +1,27 @@
-import useSwr from "swr";
-import { useContract } from "wagmi";
+import { useContractRead } from "wagmi";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-export const useSquad = (address: string) => {
-  const squad = useContract({
+export const useSquad = (address: `0x${string}`) => {
+  const squad = useContractRead({
     address,
   });
-
-  const assets = useSwr<Asset[]>(`/squads/${address}/assets`, fetcher);
-  const members = useSwr<Member[]>(`/squads/${address}/members`, fetcher);
-  const proposals = useSwr<Proposal[]>(`/squads/${address}/members`, fetcher);
-  const matches = useSwr<Match[]>(`/squads/${address}/members`, fetcher);
+  const assets = useContractRead<any, "", Asset[]>({
+    address,
+  });
+  const matches = useContractRead<any, "", Match[]>({
+    address,
+  });
+  const members = useContractRead<any, "", Member[]>({
+    address,
+  });
+  const proposals = useContractRead<any, "", Proposal[]>({
+    address,
+  });
 
   return {
     squad,
     assets,
-    members,
     matches,
+    members,
     proposals,
   };
 };

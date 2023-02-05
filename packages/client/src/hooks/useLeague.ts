@@ -8,7 +8,7 @@ import {
 const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
 
 export const useLeague = () => {
-  const [squadId, setSquadId] = useState<string>("");
+  const [squadId, setSquadId] = useState<`0x${string}`>(`0x`);
 
   const squads = useContractRead<any, "", Squad[]>({
     address,
@@ -41,7 +41,7 @@ export const useLeague = () => {
   const { writeAsync } = useContractWrite(prepareJoinLeague.config);
 
   // Potential for joining a legue and being put in a draft or having to meet some criteria
-  async function join(squad: string) {
+  async function join(squad: `0x${string}`) {
     try {
       setSquadId(squad);
 
@@ -51,7 +51,7 @@ export const useLeague = () => {
 
       console.log("Success joining league", trasnaction);
     } catch (error) {
-      setSquadId("");
+      setSquadId(`0x`);
       console.error("Error joining league", error);
     }
   }

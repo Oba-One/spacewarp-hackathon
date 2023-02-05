@@ -31,7 +31,7 @@ const squadColors: Record<GameElement, string> = {
 };
 
 interface SquadProps extends Squad {
-  join: (squad: string) => Promise<void>;
+  join: (squad: `0x${string}`) => Promise<void>;
 }
 
 export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {

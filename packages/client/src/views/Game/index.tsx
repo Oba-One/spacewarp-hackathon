@@ -34,8 +34,8 @@ const Game: React.FC = () => {
     frameworkUrl: "unity/game.framework.js",
     loaderUrl: "unity/game.loader.js",
     codeUrl: "unity/game.wasm",
-    companyName: "MudSnap",
-    productName: "MudSnap",
+    companyName: "DAOSmack",
+    productName: "DAOSmack",
     productVersion: "0.1",
   });
 
