@@ -8,13 +8,24 @@ import Game from "./views/Game";
 import Squad from "./views/Squad";
 
 import { Nav } from "./components/Nav";
+import { useLeague } from "./hooks/useLeague";
 import { huddleClient, wagmiClient } from "./modules/clients";
 
 const Views = () => {
+  const { squadId, squadMap, isMember, join } = useLeague();
+
   return (
     <Routes>
-      <Route index element={<Game />} />
-      <Route path="/squad" element={<Squad />} />
+      <Route
+        index
+        element={
+          <Game squadId={squadId} squadMap={squadMap} isMember={isMember} />
+        }
+      />
+      <Route
+        path="/squad"
+        element={<Squad squadId={squadId} join={join} isMember={isMember} />}
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

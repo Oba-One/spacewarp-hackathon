@@ -4,9 +4,14 @@ import { useRootStore } from "@huddle01/huddle01-client";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 import { livepeerClient } from "../../modules/clients";
-import { useLeague } from "../../hooks/useLeague";
 import { Player } from "../../components/Player";
 // import { Loader } from "../../components/Loader";
+
+interface GameProps {
+  isMember?: boolean;
+  squadId: string;
+  squadMap: Record<string, Squad>;
+}
 
 const teamEnums = {
   water: 1,
@@ -15,7 +20,7 @@ const teamEnums = {
   air: 4,
 };
 
-const Game: React.FC = () => {
+const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
   const [code, setCode] = useState(7);
   // const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
   const [result, seResult] = useState<GameResult>({
@@ -28,8 +33,6 @@ const Game: React.FC = () => {
   const peerId = useRootStore((state) =>
     state.peers.length ? state.peers[0].peerId : ""
   );
-
-  const { isMember, squadId, squadMap } = useLeague();
 
   const {
     sendMessage,

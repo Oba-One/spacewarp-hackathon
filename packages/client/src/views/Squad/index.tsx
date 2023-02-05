@@ -1,12 +1,17 @@
 import React from "react";
 
-import { Squad } from "../../components/Squad";
+import { Squad as SquadComp } from "../../components/Squad";
 import { useSquad } from "../../hooks/useSquad";
-import { useLeague } from "../../hooks/useLeague";
 
 import { Assets } from "./Assets";
 import { Matches } from "./Matches";
 import { LeaderBoard } from "./Leaderboard";
+
+interface SquadProps {
+  isMember?: boolean;
+  squadId: `0x${string}`;
+  join: (squad: `0x${string}`) => Promise<void>;
+}
 
 const squads: Record<GameElement, Squad> = {
   water: {
@@ -35,15 +40,14 @@ const squads: Record<GameElement, Squad> = {
   },
 };
 
-const League: React.FC = () => {
-  const { squadId, isMember, join } = useLeague();
+const Squad: React.FC<SquadProps> = ({ squadId, isMember, join }) => {
   const { members, assets, proposals } = useSquad(squadId);
 
   if (!isMember) {
     return (
       <section className="sm:grid-rows-[repeat(2,_minmax(320px,_1fr)] flex h-full w-full flex-col gap-6  p-12 pt-24 sm:grid sm:grid-cols-[repeat(2,_1fr)] sm:place-content-evenly sm:place-items-center">
         {Object.values(squads).map((squad) => (
-          <Squad key={squad.id} join={join} {...squad} />
+          <SquadComp key={squad.id} join={join} {...squad} />
         ))}
       </section>
     );
@@ -67,4 +71,4 @@ const League: React.FC = () => {
   );
 };
 
-export default League;
+export default Squad;
