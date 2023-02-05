@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using System;
 
 public class CreateJoinGame : MonoBehaviour
 {
@@ -48,7 +49,11 @@ public class CreateJoinGame : MonoBehaviour
         // method you want to write to
         string method = "executeTyped";
         // equivalent to sending empty bytes as arg
+<<<<<<< HEAD
         string gameIdHex = PlayerData.gameIdHex();
+=======
+        string gameIdHex = "0x" + PlayerData.gameId.ToString("X64");
+>>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
         Debug.Log("Game ID hex: " + gameIdHex);
 
         // connects to user's browser wallet to call a transaction

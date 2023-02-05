@@ -125,7 +125,7 @@ export interface ActionSystem extends BaseContract {
 
   functions: {
     execute(
-      arguments: PromiseOrValue<BytesLike>,
+      args: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -143,7 +143,7 @@ export interface ActionSystem extends BaseContract {
   };
 
   execute(
-    arguments: PromiseOrValue<BytesLike>,
+    args: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -161,7 +161,7 @@ export interface ActionSystem extends BaseContract {
 
   callStatic: {
     execute(
-      arguments: PromiseOrValue<BytesLike>,
+      args: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -191,7 +191,7 @@ export interface ActionSystem extends BaseContract {
 
   estimateGas: {
     execute(
-      arguments: PromiseOrValue<BytesLike>,
+      args: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -210,7 +210,7 @@ export interface ActionSystem extends BaseContract {
 
   populateTransaction: {
     execute(
-      arguments: PromiseOrValue<BytesLike>,
+      args: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

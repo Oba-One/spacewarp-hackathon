@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
+=======
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "@/styles/Home.module.css";
+
+const inter = Inter({ subsets: ["latin"] });
+>>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
 
 export default function Home() {
   return (
@@ -15,6 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+<<<<<<< HEAD
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -38,6 +48,19 @@ export default function Home() {
             </a>
           </div>
         </div>
+=======
+        <span>DAO Shall Not Steal</span>
+        <span>DAO Shall Not Lie</span>
+        <span>DAO Shall Play and Join a Squad</span>
+
+        <button>
+          Click Dice Roller Here After 3 times show new CTA linking to Dao
+          Smack.
+        </button>
+        <div>Dice Roller here</div>
+
+        <footer>Twitter and Youtube</footer>
+>>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
 
         <div className={styles.center}>
           <Image
@@ -119,5 +142,9 @@ export default function Home() {
         </div>
       </main>
     </>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
 }

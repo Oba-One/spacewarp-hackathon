@@ -61,6 +61,28 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("CreateGame");
         string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
+<<<<<<< HEAD
+=======
+        List<string> imageCids = new List<string>{
+            // chavez
+            "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN",
+            // antman
+            "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3",
+            // apocalypse
+            "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7",
+            // blackbolt
+            "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av",
+            // captain marvel
+            "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U",
+            // thanos
+            "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1",
+            // prof x
+            "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E"
+
+
+        };
+        // create new card from prefab for each image and place in deck
+>>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
 
         int handSlotIndex = 0;
         foreach (var imageCid in imageCids)
