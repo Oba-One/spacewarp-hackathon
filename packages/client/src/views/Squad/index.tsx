@@ -1,9 +1,8 @@
 import React from "react";
 
-import { useLeague } from "../../hooks/useLeague";
-import { useSquad } from "../../hooks/useSquad";
 import { Squad } from "../../components/Squad";
-import { Nav } from "../../components/Nav";
+import { useSquad } from "../../hooks/useSquad";
+import { useLeague } from "../../hooks/useLeague";
 
 import { Assets } from "./Assets";
 import { Matches } from "./Matches";
@@ -41,35 +40,30 @@ const League: React.FC = () => {
   const { members, assets, proposals } = useSquad(squadId);
 
   if (!isMember) {
-    return <div>Not a member</div>;
+    return (
+      <section className="grid h-full w-full grid-cols-2 grid-rows-2 gap-4">
+        {Object.values(squads).map((squad) => (
+          <Squad key={squad.id} join={join} {...squad} />
+        ))}
+      </section>
+    );
   }
 
   return (
-    <>
-      <Nav />
-      {isMember ? (
-        <section
-          id="team"
-          className="flex h-full w-full flex-col sm:grid sm:grid-cols-[1fr_minmax(360px,_25%)]"
-        >
-          <div className="flex h-full flex-col gap-16 py-20 px-8 sm:overflow-auto">
-            <Matches team="water" members={members.data ?? []} />
-            <Assets
-              team="water"
-              assets={assets.data ?? []}
-              proposals={proposals.data ?? []}
-            />
-          </div>
-          <LeaderBoard team="water" members={members.data ?? []} />
-        </section>
-      ) : (
-        <section className="grid h-full w-full grid-cols-2 grid-rows-2">
-          {Object.values(squads).map((squad) => (
-            <Squad key={squad.id} join={join} {...squad} />
-          ))}
-        </section>
-      )}
-    </>
+    <section
+      id="team"
+      className="flex h-full w-full flex-col sm:grid sm:grid-cols-[1fr_minmax(360px,_25%)]"
+    >
+      <div className="flex h-full flex-col gap-16 py-20 px-8 sm:overflow-auto">
+        <Matches team="water" members={members.data ?? []} />
+        <Assets
+          team="water"
+          assets={assets.data ?? []}
+          proposals={proposals.data ?? []}
+        />
+      </div>
+      <LeaderBoard team="water" members={members.data ?? []} />
+    </section>
   );
 };
 
