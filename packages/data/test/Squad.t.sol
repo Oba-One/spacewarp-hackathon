@@ -2,7 +2,6 @@
 pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "../src/Squad.sol";
-import "../src/SquadFactory.sol";
 import "../src/LeagueFactory.sol";
 import "../src/League.sol";
 
@@ -25,5 +24,13 @@ contract LeagueTest is Test {
         Squad _squad = Squad(squadAddress);
         league.joinSquad(squadIdIdx);
         assertEq(_squad.getMembers().length, 1);
+    }
+    function testRedeemCollectible() public {
+        uint256 squadIdIdx = league.createSquad("TestSquadBaseURI", "TestSquadContractURI");
+        address squadAddress = league.squadAddresses(squadIdIdx);
+        Squad _squad = Squad(squadAddress);
+        league.joinSquad(squadIdIdx);
+        _squad.mintCollectible();
+        assertEq(_squad.getCollectibles().length, 1);
     }
 }

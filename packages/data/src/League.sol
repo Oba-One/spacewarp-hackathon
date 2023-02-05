@@ -9,6 +9,15 @@ contract League is Ownable {
   event SquadCreated(address newAddress, uint256 squadId);
   event SquadJoined(address member, uint256 squadId);
   event CollectibleRedeemed(address member, uint256 collectibleTokenId);
+  struct Match {
+    uint256 id;
+    uint256 gameId;
+    uint256 startedAt;
+    uint256 finishedAt;
+    string winner;
+    string[] players;
+    string[] squads;
+  }
 
   bytes public matchMerkleRoot;
   bytes public playerMerkleRoot;
@@ -18,6 +27,7 @@ contract League is Ownable {
   string description;
   mapping(uint256 => address) public squadAddresses;
   Squad[] public squads;
+  Match[] public matches;
   constructor(string memory _name, string memory _description, uint256 _maxSquadsAllowed){
     maxSquadsAllowed = _maxSquadsAllowed;
     name = _name;
@@ -63,6 +73,7 @@ contract League is Ownable {
     squad.join();
     emit SquadJoined(msg.sender, _index);
   }
+
   function isSquadMember(address member) public view returns (bool) {
     for (uint i = 0; i < squads.length; i++) {
         Squad squad = squads[i];
@@ -97,6 +108,13 @@ contract League is Ownable {
   function getDescription() public view returns (string memory) {
     return description;
   }
+  function getMatches() public view returns (Match[] memory) {
+    return matches;
+  }
+  function updateMatches(Match _match) public onlyOwner {
+    matches.push(_match);
+  }
+
   function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
         return this.onERC1155Received.selector;
     }

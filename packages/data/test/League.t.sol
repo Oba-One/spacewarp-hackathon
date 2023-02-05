@@ -2,7 +2,6 @@
 pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "../src/Squad.sol";
-import "../src/SquadFactory.sol";
 import "../src/LeagueFactory.sol";
 import "../src/League.sol";
 

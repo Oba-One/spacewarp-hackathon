@@ -36,7 +36,7 @@ contract Squad is SquadCollectibles {
   }
   struct Receipt {
     bool voted;
-    uint8 support;
+    bool support;
   }
 
   Proposal[] public proposals;
@@ -97,11 +97,11 @@ contract Squad is SquadCollectibles {
     return proposals;
   }
 
-  function voteOnProposal(uint256 proposalId, uint8 support) external {
+  function voteOnProposal(uint256 proposalId, bool support) external {
     require(support <= 2, "Invalid vote");
     Proposal storage proposal = proposals[proposalId];
     Receipt storage receipt = receipts[msg.sender];
-    if (support == 0) {
+    if (support) {
       proposal.forVotes = proposal.forVotes + 1;
     } else if (support == 1) {
       proposal.againstVotes = proposal.againstVotes + 1;
@@ -117,12 +117,13 @@ contract Squad is SquadCollectibles {
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function proposeUpdate(string memory _description, uint256 _assetId) public returns (uint256) {
+  function proposeUpdate(uint256 _assetId, string memory _description, string _uri) public returns (uint256) {
     Proposal memory proposal;
     proposal.id = proposals.length + 1;
     proposal.proposer = msg.sender;
     proposal.description = _description;
     proposal.assetId = _assetId;
+    proposal.uri = _uri;
     proposals.push(proposal);
     emit ProposalCreated(proposal.id, msg.sender, proposal.assetId);
     return proposal.id;
