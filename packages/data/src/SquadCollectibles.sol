@@ -52,7 +52,6 @@ contract SquadCollectibles is ERC1155, Ownable {
   }
 
   function receiveOnJoin(address _to, uint256 squadId) internal {
-    require(collectibles[0].minter == address(this), "Only internal minter");
     _mint(_to, squadId, 1, "");
   }
 
