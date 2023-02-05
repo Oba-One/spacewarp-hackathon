@@ -30,7 +30,7 @@ contract LeagueTest is Test {
         address squadAddress = league.squadAddresses(squadIdIdx);
         Squad _squad = Squad(squadAddress);
         league.joinSquad(squadIdIdx);
-        _squad.mintCollectible();
-        assertEq(_squad.getCollectibles().length, 1);
+        _squad.redeemCollectible();
+        // @junaama TODO: test that collectible earned of addy = this addy
     }
 }

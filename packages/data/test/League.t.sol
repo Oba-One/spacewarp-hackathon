@@ -21,4 +21,10 @@ contract LeagueTest is Test {
         League[] memory leagues = factory.getLeagues();
         assert(leagues.length == 1);
     }
+    function testJoinLeague() public {
+        address leagueAddress = factory.createLeague("name", "description", 2);
+        League league = League(leagueAddress);
+        league.joinLeague();
+    }
+
 }
