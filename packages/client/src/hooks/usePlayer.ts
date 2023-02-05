@@ -63,19 +63,8 @@ export const usePlayer = (
 
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
-    name: `MudSnap Game: ${gameCode}`,
+    name: `daosmack-match-${gameCode}`,
     record: true,
-    // multistream: {
-    //   targets: [
-    //     {
-    //       profile: "source",
-    //       spec: {
-    //         url: "rtmp://rtmp.livepeer.com/live",
-    //         name: "YouTube",
-    //       },
-    //     },
-    //   ],
-    // },
   });
 
   // CHAT - Huddle
