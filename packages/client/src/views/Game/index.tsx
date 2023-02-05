@@ -4,9 +4,9 @@ import { useRootStore } from "@huddle01/huddle01-client";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 import { livepeerClient } from "../../modules/clients";
+import { useLeague } from "../../hooks/useLeague";
 import { Player } from "../../components/Player";
 // import { Loader } from "../../components/Loader";
-import { useLeague } from "hooks/useLeague";
 
 const teamEnums = {
   water: 1,
