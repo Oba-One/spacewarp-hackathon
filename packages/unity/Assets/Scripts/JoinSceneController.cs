@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,8 +21,8 @@ public class JoinSceneController : MonoBehaviour
 
     public void Join()
     {
-        PlayerData.gameId = joinCode.GetComponent<Text>().text;
+        // PlayerData.gameId = joinCode.GetComponent<Text>().text;
         Debug.Log("Setting game ID to " + PlayerData.gameId);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("4 - play");
     }
 }

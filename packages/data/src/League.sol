@@ -71,15 +71,10 @@ contract League is AccessControl {
     );
     _;
   }
-   
-  modifier collectibleNotExpired(Match memory _match) {
-    require(_match.collectibleExpiresAt < block.timestamp, "Collectible redemption period has expired.");
-    _;
-  }
-  
-  function createSquad(string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) public maxSquads onlyRole(DEFAULT_ADMIN_ROLE) returns (uint256){
-    Squad newSquad = new Squad(squads.length + 1, _squadName, _squadDescription, _baseURI, _contractURI); 
-    uint256 index = squads.length;
+
+  function createSquad(string memory _baseURI, string memory _contractURI) public maxSquads returns (uint256){
+    Squad newSquad = new Squad(squads.length + 1, _baseURI, _contractURI); 
+    uint256 index = squads.length + 1;
     squads.push(newSquad);
     squadAddresses[index] = address(newSquad);
     emit SquadCreated(address(newSquad), index);
@@ -128,29 +123,5 @@ contract League is AccessControl {
 
   function getSquads() public view returns (Squad[] memory) {
     return squads;
-  }
-  function getName() public view returns (string memory) {
-    return name;
-  }
-  function getDescription() public view returns (string memory) {
-    return description;
-  }
-  function getMatches() public view returns (Match[] memory) {
-    return matches;
-  }
-  function updateMatches(Match memory _match) public {
-    matches.push(_match);
-  }
-
-  function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
-    return this.onERC1155Received.selector;
-  }
-
-  function onERC1155BatchReceived(address, address, uint256[] memory, uint256[] memory, bytes memory) public virtual returns (bytes4) {
-    return this.onERC1155BatchReceived.selector;
-  }
-
-  function onERC721Received(address, address, uint256, bytes memory) public virtual returns (bytes4) {
-    return this.onERC721Received.selector;
   }
 }

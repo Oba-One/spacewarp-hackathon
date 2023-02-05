@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 public class CreateJoinGame : MonoBehaviour
@@ -21,7 +18,7 @@ public class CreateJoinGame : MonoBehaviour
 
     public void JoinGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("3 - join");
     }
 
     public async void CreateGame()
@@ -33,7 +30,7 @@ public class CreateJoinGame : MonoBehaviour
         if (response.Length > 0)
         {
             Debug.Log("Response is valid");
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("4 - play");
         }
         else
         {
@@ -44,18 +41,18 @@ public class CreateJoinGame : MonoBehaviour
     public async Task<string> MudSystemInit()
     {
         Debug.Log("Calling MudSystemInit");
-        string abi = "[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
+        string abi = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"}],\"name\":\"executeTyped\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
         // address of contract
         string contract = Mud.SYSTEM_INIT;
 
         // method you want to write to
-        string method = "execute";
+        string method = "executeTyped";
         // equivalent to sending empty bytes as arg
-        string args = "[[]]";
-        string argsSerialized = JsonConvert.SerializeObject(args);
-        Debug.Log(argsSerialized);
+        string gameIdHex = PlayerData.gameIdHex();
+        Debug.Log("Game ID hex: " + gameIdHex);
+
         // connects to user's browser wallet to call a transaction
-        string response = await Web3GL.SendContract(method, abi, contract, argsSerialized, "0", "", "");
+        string response = await Web3GL.SendContract(method, abi, contract, gameIdHex, "0", "", "");
         Debug.Log("Got response");
         print(response);
         return response;
