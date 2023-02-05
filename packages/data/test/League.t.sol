@@ -13,7 +13,13 @@ contract LeagueTest is Test {
         factory = new LeagueFactory();
     }
     function testCreateLeague() public {
-        factory.createLeague("name", "description", 4);
-        assertEq(factory.getLeagues().length, 1);
+        address leagueAddress = factory.createLeague("name", "description", 4);
+        console.log(leagueAddress);
+        assertEq(leagueAddress, factory.leagueAddresses(0));
+    }
+    function testGetLeagues() public {
+        factory.createLeague("name", "description", 2);
+        League[] memory leagues = factory.getLeagues();
+        assert(leagues.length == 1);
     }
 }
