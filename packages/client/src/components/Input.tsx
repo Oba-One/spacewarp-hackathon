@@ -24,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       </span>
       {icon && (
         <span className="absolute inset-y-0 right-0 grid w-10 place-content-center">
-          <Tooltip
+          {/* <Tooltip
             title={icon.title}
             html={
               <button
@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 <icon.Svg />
               </button>
             }
-          />
+          /> */}
         </span>
       )}
     </label>

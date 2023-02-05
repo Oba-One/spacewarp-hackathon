@@ -2,8 +2,8 @@ declare interface Squad {
   id: string;
   name: string;
   description: string;
-  owner: string;
-  logo: string;
+  // owner: string;
+  logo?: string;
   element: GameElement;
 }
 

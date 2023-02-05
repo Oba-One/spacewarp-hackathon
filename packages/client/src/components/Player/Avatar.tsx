@@ -124,7 +124,7 @@ const Player: FC<PlayerAvatarProps> = ({
               className={`${iconStyles}`}
               onClick={() => setShowSettings(!showSettings)}
             >
-              <Tooltip
+              {/* <Tooltip
                 open={showSettings}
                 html={
                   <div>
@@ -136,7 +136,7 @@ const Player: FC<PlayerAvatarProps> = ({
                     </ul>
                   </div>
                 }
-              />
+              /> */}
               <SettingsIcon />
             </li>
             <li className={`${iconStyles}`} onClick={handleDisconnection}>

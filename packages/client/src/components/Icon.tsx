@@ -17,12 +17,12 @@ export const iconStyles =
 export const Icon: FC<IconProps> = ({ title, Svg, size, color, listItem }) => {
   if (listItem) {
     <li className={`${iconStyles} grid place-items-center`}>
-      <Tooltip title={title} position="bottom" html={<Svg />} />
+      {/* <Tooltip title={title} position="bottom" html={<Svg />} /> */}
     </li>;
   }
   return (
     <div className={`${iconStyles} grid place-items-center`}>
-      <Tooltip title={title} position="bottom" html={<Svg />} />
+      {/* <Tooltip title={title} position="bottom" html={<Svg />} /> */}
     </div>
   );
 };

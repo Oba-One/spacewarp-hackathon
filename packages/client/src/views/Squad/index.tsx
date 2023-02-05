@@ -2,14 +2,43 @@ import React from "react";
 
 import { useLeague } from "../../hooks/useLeague";
 import { useSquad } from "../../hooks/useSquad";
+import { Squad } from "../../components/Squad";
 import { Nav } from "../../components/Nav";
 
 import { Assets } from "./Assets";
 import { Matches } from "./Matches";
+import { LeaderBoard } from "./Leaderboard";
 
-const Squad: React.FC = () => {
+const squads: Record<GameElement, Squad> = {
+  water: {
+    id: "water",
+    name: "Water",
+    element: "water",
+    description: "Water is the coldest",
+  },
+  earth: {
+    id: "earth",
+    name: "Earth",
+    element: "earth",
+    description: "Earth is the hardest",
+  },
+  fire: {
+    id: "fire",
+    name: "Fire",
+    element: "fire",
+    description: "Fire is the hottest",
+  },
+  air: {
+    id: "air",
+    name: "Air",
+    element: "air",
+    description: "Air is the lightest",
+  },
+};
+
+const League: React.FC = () => {
   const { squadId, isMember, join } = useLeague();
-  const { squad, members, assets } = useSquad(squadId);
+  const { members, assets, proposals } = useSquad(squadId);
 
   if (!isMember) {
     return <div>Not a member</div>;
@@ -25,35 +54,23 @@ const Squad: React.FC = () => {
         >
           <div className="flex h-full flex-col gap-16 py-20 px-8 sm:overflow-auto">
             <Matches team="water" members={members.data ?? []} />
-            <Assets team="water" assets={assets.data ?? []} />
+            <Assets
+              team="water"
+              assets={assets.data ?? []}
+              proposals={proposals.data ?? []}
+            />
           </div>
+          <LeaderBoard team="water" members={members.data ?? []} />
         </section>
       ) : (
         <section className="grid h-full w-full grid-cols-2 grid-rows-2">
-          <div className="grid place-items-center">
-            <div>
-              <h1>Water</h1>
-              <p></p>
-              <ul>
-                <li>
-                  <img
-                    src="https://picsum.photos/seed/picsum/300/400"
-                    alt="Water assets you'll gain access to if you join"
-                  />
-                </li>
-                <li>
-                  <img
-                    src="https://picsum.photos/seed/picsum/300/400"
-                    alt="Water assets you'll gain access to if you join"
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
+          {Object.values(squads).map((squad) => (
+            <Squad key={squad.id} join={join} {...squad} />
+          ))}
         </section>
       )}
     </>
   );
 };
 
-export default Squad;
+export default League;

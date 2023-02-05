@@ -1,14 +1,10 @@
 import { FC } from "react";
 
-interface MemberProps {
-  name: string;
-  avatar?: string;
-  collectiblesEarned: number;
-}
+import { Member } from "../../components/Squad/Member";
 
 interface LeaderBoardProps {
   team: GameElement;
-  members: MemberProps[];
+  members: Member[];
 }
 
 export const LeaderBoard: FC<LeaderBoardProps> = ({ members }) => {
@@ -19,7 +15,11 @@ export const LeaderBoard: FC<LeaderBoardProps> = ({ members }) => {
       <div className="flex justify-between px-4">
         <h2 className="text-4xl font-bold">Squad Rankings</h2>
       </div>
-      <ul className="flex flex-col gap-1"></ul>
+      <ul className="flex flex-col gap-1">
+        {members.map((member) => (
+          <Member key={member.name} {...member} />
+        ))}
+      </ul>
     </aside>
   );
 };

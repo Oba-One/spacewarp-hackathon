@@ -11,19 +11,13 @@ export const useSquad = (address: string) => {
   const assets = useSwr<Asset[]>(`/squads/${address}/assets`, fetcher);
   const members = useSwr<Member[]>(`/squads/${address}/members`, fetcher);
   const proposals = useSwr<Proposal[]>(`/squads/${address}/members`, fetcher);
-
-  async function join() {
-    const res = await fetch(`/squads/join`, {
-      method: "POST",
-    });
-    return await res.json();
-  }
+  const matches = useSwr<Match[]>(`/squads/${address}/members`, fetcher);
 
   return {
     squad,
     assets,
     members,
+    matches,
     proposals,
-    join,
   };
 };

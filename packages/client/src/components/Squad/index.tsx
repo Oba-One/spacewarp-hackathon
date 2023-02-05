@@ -1,28 +1,60 @@
 import { FC } from "react";
 
 const assets: Record<GameElement, string[]> = {
-  water: ["/"],
+  water: [
+    "/assets/water/america-chavez.png",
+    "/assets/water/namor.png",
+    "/assets/water/the-infinaut.png",
+  ],
+  earth: [
+    "/assets/earth/hulk.png",
+    "/assets/earth/nick-fury.png",
+    "/assets/earth/ultron.png",
+  ],
+  fire: [
+    "/assets/fire/agatha-harkness.png",
+    "/assets/fire/blade.png",
+    "/assets/fire/doctor-doom.png",
+  ],
+  air: [
+    "/assets/air/magneto.png",
+    "/assets/air/thanos.png",
+    "/assets/air/vision.png",
+  ],
 };
 
-export const Squad: FC<Squad> = ({ element, description }) => {
+const squadColors: Record<GameElement, string> = {
+  water: "bg-blue-500",
+  earth: "bg-green-500",
+  fire: "bg-red-500",
+  air: "bg-yellow-500",
+};
+
+interface SquadProps extends Squad {
+  join: (squad: string) => Promise<void>;
+}
+
+export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
+  function handleJoin() {
+    join(id);
+  }
+
   return (
-    <div>
-      <h1 className="">{element}</h1>
-      <p>{description}</p>
-      <ul>
-        <li>
-          <img
-            src="https://picsum.photos/seed/picsum/300/400"
-            alt="Water assets you'll gain access to if you join"
-          />
-        </li>
-        <li>
-          <img
-            src="https://picsum.photos/seed/picsum/300/400"
-            alt="Water assets you'll gain access to if you join"
-          />
-        </li>
-      </ul>
+    <div
+      className={`${squadColors[element]} grid place-items-center`}
+      onClick={handleJoin}
+    >
+      <div className="">
+        <h1 className="text-3xl font-bold">{element}</h1>
+        <p>{description}</p>
+        <ul className="avatar-group -space-x-6">
+          {assets[element].map((asset) => (
+            <li className="aspect-[2/3]">
+              <img className="" src={asset} alt={`${element} character`} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

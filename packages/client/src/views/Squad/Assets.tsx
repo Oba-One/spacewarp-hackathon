@@ -3,6 +3,7 @@ import { FC } from "react";
 interface AssetsProps {
   team: GameElement;
   assets: Asset[];
+  proposals: Proposal[];
 }
 
 export const Assets: FC<AssetsProps> = ({ assets }) => {

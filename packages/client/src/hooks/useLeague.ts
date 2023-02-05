@@ -17,7 +17,7 @@ export const useLeague = () => {
       id: squad.id,
       name: squad.name,
       description: squad.description,
-      owner: squad.owner,
+      // owner: squad.owner,
     };
   });
 
@@ -49,7 +49,7 @@ export const useLeague = () => {
 
       const trasnaction = await writeAsync();
 
-      return trasnaction.hash;
+      console.log("Success joining league", trasnaction);
     } catch (error) {
       setSquadId("");
       console.error("Error joining league", error);
