@@ -40,19 +40,19 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
 
   return (
     <div
-      className={`${squadColors[element]} grid place-items-center`}
+      className={`${squadColors[element]} min-w-sm grid aspect-[1/1] place-items-center rounded-md`}
       onClick={handleJoin}
     >
-      <div className="">
+      <div className="flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold">{element}</h1>
         <p>{description}</p>
-        {/* <ul className="avatar-group -space-x-6">
+        <ul className="avatar-group -space-x-6">
           {assets[element].map((asset) => (
-            <li className="aspect-[2/3]">
+            <li className="aspect-[2/3] ">
               <img className="" src={asset} alt={`${element} character`} />
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     </div>
   );
