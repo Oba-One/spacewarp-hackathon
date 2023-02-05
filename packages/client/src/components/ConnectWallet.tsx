@@ -5,9 +5,7 @@ import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
 
 export const ConnectWallet = () => {
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  });
+  const { connect } = useConnect();
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
   const { chain } = useNetwork();
