@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 #if UNITY_WEBGL
 public class ConnectSceneController : MonoBehaviour
@@ -15,8 +15,16 @@ public class ConnectSceneController : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void SetConnectAccount(string value);
 
+    [SerializeField]
+    private Text teamName;
+
     private int expirationTime;
-    private string account; 
+    private string account;
+
+    public void Start()
+    {
+        teamName.text = "Squad: " + PlayerData.teamName();
+    }
 
     public void OnLogin()
     {
@@ -33,6 +41,7 @@ public class ConnectSceneController : MonoBehaviour
         };
         // save account for next scene
         PlayerPrefs.SetString("Account", account);
+        Debug.Log("Logged in as " + account);
         // reset login message
         SetConnectAccount("");
         // load next scene

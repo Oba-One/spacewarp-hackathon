@@ -101,7 +101,7 @@ export interface MoveSystem extends BaseContract {
 
   functions: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -114,7 +114,7 @@ export interface MoveSystem extends BaseContract {
   };
 
   execute(
-    args: PromiseOrValue<BytesLike>,
+    arguments: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -127,7 +127,7 @@ export interface MoveSystem extends BaseContract {
 
   callStatic: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -152,7 +152,7 @@ export interface MoveSystem extends BaseContract {
 
   estimateGas: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -166,7 +166,7 @@ export interface MoveSystem extends BaseContract {
 
   populateTransaction: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

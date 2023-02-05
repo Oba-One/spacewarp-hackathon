@@ -23,6 +23,7 @@ const Game: React.FC = () => {
 
   const {
     isLoaded,
+    sendMessage,
     unityProvider,
     takeScreenshot,
     loadingProgression,
@@ -72,31 +73,25 @@ const Game: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handleWaterSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 1);
+  }
+
+  function handleEarthSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 2);
+  }
+
+  function handleFireSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 3);
+  }
+
+  function handleAirSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 4);
+  }
+
   return (
     <LivepeerConfig client={livepeerClient}>
-<<<<<<< HEAD
-      {isLoaded === false && <Loader precents={loadingPercentage} />}
-      <section id="unity" className="h-screen w-screen pt-20">
-        <Player
-          type="opponent"
-          peerId={peerId}
-          gameCode={code}
-          setGameCode={setCode}
-        />
-        <Player
-          type="player"
-          peerId={peerId}
-          gameCode={code}
-          setGameCode={setCode}
-          opponentId={peerId}
-        />
-        <Unity
-          style={{ width: "100%", height: "100%" }}
-          unityProvider={unityProvider}
-        />
-      </section>
-=======
-            <div className="container">
+      <div className="container">
         <div className="grid grid-cols-5">
           <div>
             <Player
@@ -121,8 +116,13 @@ const Game: React.FC = () => {
             />
           </div>
         </div>
+        <div>
+          <button className="btn" onClick={handleWaterSelected}>Water</button>
+            <button className="btn" onClick={handleEarthSelected}>Earth</button>
+            <button className="btn" onClick={handleFireSelected}>Fire</button>
+            <button className="btn" onClick={handleAirSelected}>Air</button>
+        </div>
       </div>
->>>>>>> 160328f (feat(unity): pretty board)
     </LivepeerConfig>
   );
 };

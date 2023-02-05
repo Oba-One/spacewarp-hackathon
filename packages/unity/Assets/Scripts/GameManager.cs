@@ -53,11 +53,6 @@ public class GameManager : MonoBehaviour
     //     {
     //         Debug.Log("PollMudState");
     //         shouldPoll = false;
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 160328f (feat(unity): pretty board)
     //         string gameHex = PlayerData.gameIdHex();
     //         string matchState = await GetMatchState(gameHex);
     //         Debug.Log("Got match state");
@@ -73,7 +68,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        account.text = PlayerPrefs.GetString("Account");
+        account.text = PlayerData.teamName() + " " + PlayerPrefs.GetString("Account");
         joinCode.text = "Join code:  " + PlayerData.gameId.ToString();
         // await PollMudState();
     }
@@ -119,11 +114,6 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log(character);
             }
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 160328f (feat(unity): pretty board)
             string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
             Debug.Log("Assets for each character");
             foreach (var asset in characterAssets)
@@ -131,11 +121,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(asset);
             }
             DrawHand(characterAssets);
-<<<<<<< HEAD
         }
-=======
-        } 
->>>>>>> 160328f (feat(unity): pretty board)
         else
         {
             Debug.Log("Will not redraw characters");
