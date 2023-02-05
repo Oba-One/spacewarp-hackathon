@@ -9,7 +9,7 @@ import { Loader } from "../../components/Loader";
 
 const Game: React.FC = () => {
   const [code, setCode] = useState(7);
-  const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
+  // const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
   const [result, seResult] = useState<GameResult>({
     winner: "",
     loser: "",
@@ -44,12 +44,12 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     function onGameStarted() {
-      setStatus("match");
+      // setStatus("match");
     }
     function onGameEnded() {
       const screenshot = takeScreenshot();
 
-      setStatus("post-match");
+      // setStatus("post-match");
 
       seResult({
         ...result,
@@ -74,40 +74,31 @@ const Game: React.FC = () => {
 
   return (
     <LivepeerConfig client={livepeerClient}>
-      {!isLoaded && <Loader precents={loadingPercentage} />}
-      {status === "post-match" ? (
-        <section className="flex h-screen w-screen items-center justify-center bg-amber-700"></section>
-      ) : (
-        <>
-          <section
-            id="react"
-            className="z-1 fixed flex h-screen w-screen justify-between"
-          >
-            <Player
-              type="opponent"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-            />
-            <Player
-              type="player"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-              opponentId={peerId}
-            />
-          </section>
-          <section
-            id="unity"
-            className="flex grid h-screen w-screen place-items-center"
-          >
-            <Unity
-              className="h-screen w-screen"
-              unityProvider={unityProvider}
-            />
-          </section>
-        </>
-      )}
+      {isLoaded === false && <Loader precents={loadingPercentage} />}
+      <section
+        id="react"
+        className="fixed mt-20 flex h-full w-full justify-between"
+      >
+        <Player
+          type="opponent"
+          peerId={peerId}
+          gameCode={code}
+          setGameCode={setCode}
+        />
+        <Player
+          type="player"
+          peerId={peerId}
+          gameCode={code}
+          setGameCode={setCode}
+          opponentId={peerId}
+        />
+      </section>
+      <section
+        id="unity"
+        className="flex grid h-screen w-screen place-items-center"
+      >
+        <Unity className="h-screen w-screen" unityProvider={unityProvider} />
+      </section>
     </LivepeerConfig>
   );
 };

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 
-// import { useLighthouse } from "../../hooks/useLighthouse";
+import { useLighthouse } from "../../hooks/useLighthouse";
 import { useAsset } from "../../hooks/useAsset";
 
 // interface Metadata {
@@ -20,7 +20,7 @@ interface AssetProps extends Asset {
 
 export const Asset: FC<AssetProps> = (asset) => {
   const { proposeUpdate, voteOnProposal } = useAsset(asset);
-  // const { encryptFile, applyAccessConditions } = useLighthouse();
+  const { encryptFile, applyAccessConditions } = useLighthouse();
 
   const { register, handleSubmit } = useForm<{
     image: string;
@@ -33,21 +33,21 @@ export const Asset: FC<AssetProps> = (asset) => {
     const { image } = values;
 
     try {
-      // const encryptedFile = await encryptFile(image);
-      // await applyAccessConditions(encryptedFile, [
-      //   {
-      //     id: 1,
-      //     chain: "hyperspace",
-      //     contractAddress: asset.squadId,
-      //     method: "balanceOf",
-      //     returnValueTest: {
-      //       comparator: ">",
-      //       value: 0,
-      //     },
-      //     standardContractType: "ERC1155",
-      //   },
-      // ]);
-      // await proposeUpdate(asset.id, encryptedFile);
+      const encryptedFile = await encryptFile(image);
+      await applyAccessConditions(encryptedFile, [
+        {
+          id: 1,
+          chain: "hyperspace",
+          contractAddress: asset.squadId,
+          method: "balanceOf",
+          returnValueTest: {
+            comparator: ">",
+            value: 0,
+          },
+          standardContractType: "ERC1155",
+        },
+      ]);
+      await proposeUpdate(asset.id, encryptedFile);
     } catch (error) {
       console.error(error);
     }

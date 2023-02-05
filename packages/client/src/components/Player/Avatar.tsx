@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
-import { Player as LivePlayer } from "@livepeer/react";
 
 import PlayerAvatar from "/assets/avatar1.png";
 import OpponentAvatar from "/assets/avatar2.png";
@@ -14,10 +13,11 @@ import { RC as RecordingEnabledIcon } from "../../assets/recording-enabled.svg";
 import { RC as RecordingDisabledIcon } from "../../assets/recording-disabled.svg";
 
 import { huddleClient } from "../../modules/clients";
+import { useLighthouse } from "../../hooks/useLighthouse";
+import { useOpponent, usePlayer } from "../../hooks/usePlayer";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
-import { useOpponent, usePlayer } from "../../hooks/usePlayer";
 
 export interface PlayerProps extends GameProps, OpponentAvatarProps {
   type: "player" | "opponent";
@@ -69,6 +69,8 @@ const Player: FC<PlayerAvatarProps> = ({
   setShowChat,
   hasNotifications,
 }) => {
+  const { applyAccessConditions } = useLighthouse();
+
   const {
     status,
     error,
@@ -135,11 +137,11 @@ const Player: FC<PlayerAvatarProps> = ({
             >
               <div>
                 <h5>Select Mic</h5>
-                <ul>
+                {/* <ul>
                   {mics.map((mic) => {
-                    return <li>{mic.label}</li>;
+                    return <li key={mic.deviceId}>{mic.label}</li>;
                   })}
-                </ul>
+                </ul> */}
               </div>
               <SettingsIcon />
             </li>
@@ -171,20 +173,18 @@ const Player: FC<PlayerAvatarProps> = ({
               validate: (value) => value > 0,
             })}
           />
-          <Button type="submit">Connect To HQ</Button>
+          <Button
+            type="submit"
+            onClick={() => applyAccessConditions(undefined, [])}
+          >
+            Join Chat
+          </Button>
         </form>
       )}
+      <Button>Test Lighthouse</Button>
       <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
         {error}
       </p>
-      {liveStream.data?.playbackId && (
-        <LivePlayer
-          title={liveStream.data?.name}
-          playbackId={liveStream.data?.playbackId}
-          autoPlay
-          muted
-        />
-      )}
     </>
   );
 };
