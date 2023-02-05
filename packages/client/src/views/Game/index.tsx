@@ -74,21 +74,22 @@ const Game: React.FC = () => {
 
   return (
     <LivepeerConfig client={livepeerClient}>
-      {!isLoaded && <Loader precents={loadingPercentage} />}
-      {status === "post-match" ? (
-        <section className="flex h-screen w-screen items-center justify-center bg-amber-700"></section>
-      ) : (
-        <>
-          <section
-            id="react"
-            className="z-1 fixed flex h-screen w-screen justify-between"
-          >
+            <div className="container">
+        <div className="grid grid-cols-5">
+          <div>
             <Player
               type="opponent"
               peerId={peerId}
               gameCode={code}
               setGameCode={setCode}
             />
+          </div>
+
+          <div className="col-span-3">
+            <Unity className="w-full" unityProvider={unityProvider} />
+          </div>
+
+          <div>
             <Player
               type="player"
               peerId={peerId}
@@ -96,18 +97,9 @@ const Game: React.FC = () => {
               setGameCode={setCode}
               opponentId={peerId}
             />
-          </section>
-          <section
-            id="unity"
-            className="flex grid h-screen w-screen place-items-center"
-          >
-            <Unity
-              className="h-screen w-screen"
-              unityProvider={unityProvider}
-            />
-          </section>
-        </>
-      )}
+          </div>
+        </div>
+      </div>
     </LivepeerConfig>
   );
 };

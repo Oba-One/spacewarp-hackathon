@@ -50,7 +50,6 @@ contract InitSystem is System {
     }
 
     function genCharacters(uint256 playerEntity, uint256 gameId) private {
-<<<<<<< HEAD
         genCharacter(
             playerEntity,
             "the infinaut",
@@ -135,15 +134,6 @@ contract InitSystem is System {
             "Qme4M7CiWn5ybxUxzvYCA851xshAE4u5rw4Pj7etsDBf7J",
             gameId
         );
-=======
-        genCharacter(playerEntity, "America Chavez", "1", "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN", gameId);
-        genCharacter(playerEntity, "Ant Man", "3", "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3", gameId);
-        genCharacter(playerEntity, "Apocalypse", "4", "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7", gameId);
-        genCharacter(playerEntity, "Black Bolt", "5", "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av", gameId);
-        genCharacter(playerEntity, "Captain Marvel", "6", "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U", gameId);
-        genCharacter(playerEntity, "Thanos", "7", "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1", gameId);
-        genCharacter(playerEntity, "Professor X.", "8", "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E", gameId);
->>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
     }
 
     function genCharacter(

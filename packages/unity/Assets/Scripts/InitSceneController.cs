@@ -1,8 +1,4 @@
 using UnityEngine.SceneManagement;
-<<<<<<< HEAD
-=======
-
->>>>>>> 83dfb0ec83306c72bc39b41911b99b8a0a94490e
 using UnityEngine;
 
 public class InitSceneController : Singleton<InitSceneController>
