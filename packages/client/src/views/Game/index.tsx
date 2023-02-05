@@ -58,7 +58,7 @@ const Game: React.FC = () => {
       sendMessage("TeamSceneManager", "SetTeam", teamEnums[squad.element]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMember, sendMessage, squadId]);
+  }, [isMember, squadId]);
 
   useEffect(() => {
     function onGameStarted() {

@@ -17,7 +17,6 @@ export type { InGameComponent } from "./InGameComponent";
 export type { InitSystem } from "./InitSystem";
 export type { LibQuery } from "./LibQuery";
 export type { MatchComponent } from "./MatchComponent";
-export type { MoveCharacterSystem } from "./MoveCharacterSystem";
 export type { MoveSystem } from "./MoveSystem";
 export type { OwnedByComponent } from "./OwnedByComponent";
 export type { PhaseComponent } from "./PhaseComponent";
@@ -47,7 +46,6 @@ export { IUint256Component__factory } from "./factories/IUint256Component__facto
 export { IWorld__factory } from "./factories/IWorld__factory";
 export { LibQuery__factory } from "./factories/LibQuery__factory";
 export { MatchComponent__factory } from "./factories/MatchComponent__factory";
-export { MoveCharacterSystem__factory } from "./factories/MoveCharacterSystem__factory";
 export { MoveSystem__factory } from "./factories/MoveSystem__factory";
 export { OwnedByComponent__factory } from "./factories/OwnedByComponent__factory";
 export { PhaseComponent__factory } from "./factories/PhaseComponent__factory";
