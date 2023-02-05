@@ -130,7 +130,7 @@ contract Squad is SquadCollectibles {
   function isMember(address _address) public view returns (bool) {
     return members[_address];
   }
-  function setAssets(Asset[] memory _assets) public ownerOnly {
-    assets = _assets;
+  function updateAssets(Asset calldata _assets) public ownerOnly {
+    assets.push(_assets);
   }
 }
