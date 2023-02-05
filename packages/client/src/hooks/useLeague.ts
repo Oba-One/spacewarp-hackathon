@@ -10,16 +10,13 @@ const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
 export const useLeague = () => {
   const [squadId, setSquadId] = useState<`0x${string}`>(`0x`);
 
-  const squads = useContractRead<any, "", Squad[]>({
-    address,
-  }).data?.map((squad) => {
-    return {
-      id: squad.id,
-      name: squad.name,
-      description: squad.description,
-      // owner: squad.owner,
-    };
-  });
+  const squadMap =
+    useContractRead<any, "", Squad[]>({
+      address,
+    }).data?.reduce((map: Record<string, Squad>, squad) => {
+      map[squad.id] = squad;
+      return map;
+    }, {}) ?? {};
 
   const isMember = useContractRead<any, "", boolean>({}).data;
 
@@ -56,5 +53,5 @@ export const useLeague = () => {
     }
   }
 
-  return { squads, squadId, isMember, join };
+  return { squadMap, squadId, isMember, join };
 };

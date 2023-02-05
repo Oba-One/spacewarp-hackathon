@@ -5,7 +5,15 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 
 import { livepeerClient } from "../../modules/clients";
 import { Player } from "../../components/Player";
-import { Loader } from "../../components/Loader";
+// import { Loader } from "../../components/Loader";
+import { useLeague } from "hooks/useLeague";
+
+const teamEnums = {
+  water: 1,
+  earth: 2,
+  fire: 3,
+  air: 4,
+};
 
 const Game: React.FC = () => {
   const [code, setCode] = useState(7);
@@ -21,12 +29,12 @@ const Game: React.FC = () => {
     state.peers.length ? state.peers[0].peerId : ""
   );
 
+  const { isMember, squadId, squadMap } = useLeague();
+
   const {
-    isLoaded,
     sendMessage,
     unityProvider,
     takeScreenshot,
-    loadingProgression,
     addEventListener,
     removeEventListener,
     initialisationError,
@@ -41,7 +49,16 @@ const Game: React.FC = () => {
   });
 
   initialisationError && console.error("Error With Unity", initialisationError);
-  const loadingPercentage = Math.round(loadingProgression * 100);
+  // const loadingPercentage = Math.round(loadingProgression * 100);
+
+  useEffect(() => {
+    if (isMember && squadId) {
+      const squad = squadMap[squadId];
+
+      sendMessage("TeamSceneManager", "SetTeam", teamEnums[squad.element]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMember, sendMessage, squadId]);
 
   useEffect(() => {
     function onGameStarted() {
@@ -73,22 +90,6 @@ const Game: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleWaterSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 1);
-  }
-
-  function handleEarthSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 2);
-  }
-
-  function handleFireSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 3);
-  }
-
-  function handleAirSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 4);
-  }
-
   return (
     <LivepeerConfig client={livepeerClient}>
       <div className="container">
@@ -115,12 +116,6 @@ const Game: React.FC = () => {
               opponentId={peerId}
             />
           </div>
-        </div>
-        <div>
-          <button className="btn" onClick={handleWaterSelected}>Water</button>
-            <button className="btn" onClick={handleEarthSelected}>Earth</button>
-            <button className="btn" onClick={handleFireSelected}>Fire</button>
-            <button className="btn" onClick={handleAirSelected}>Air</button>
         </div>
       </div>
     </LivepeerConfig>
