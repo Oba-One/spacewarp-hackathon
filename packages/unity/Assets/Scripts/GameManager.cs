@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text account;
 
+    [SerializeField]
+    private Text joinCode;
+
     void Awake()
     {
         deck = new List<CardManager>();
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         account.text = PlayerPrefs.GetString("Account");
+        joinCode.text = "Join code:  " + PlayerData.gameId.ToString();
     }
 
     
