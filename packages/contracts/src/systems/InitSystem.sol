@@ -50,13 +50,90 @@ contract InitSystem is System {
     }
 
     function genCharacters(uint256 playerEntity, uint256 gameId) private {
-        genCharacter(playerEntity, "America Chavez", "1", "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN", gameId);
-        genCharacter(playerEntity, "Ant Man", "3", "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3", gameId);
-        genCharacter(playerEntity, "Apocalypse", "4", "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7", gameId);
-        genCharacter(playerEntity, "Black Bolt", "5", "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av", gameId);
-        genCharacter(playerEntity, "Captain Marvel", "6", "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U", gameId);
-        genCharacter(playerEntity, "Thanos", "7", "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1", gameId);
-        genCharacter(playerEntity, "Professor X.", "8", "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E", gameId);
+        genCharacter(
+            playerEntity,
+            "the infinaut",
+            "The Infinaut is a Marvel character not known by many.",
+            "QmV5FZ65pSq8f3wLuVxy6dyYeJXR7L3HJxujsV1ad5tuUb",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "america chavez",
+            "America Chavez is a Marvel character most known for her time in the Ultimates.",
+            "QmdXT7QQBrcvteebd7wEz2F9RJRbQBE6PzBDrkNq4dPfJC",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "namor",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "Qme4M7CiWn5ybxUxzvYCA851xshAE4u5rw4Pj7etsDBf7J",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "cyclops",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmVEsUnw1KHtNk81yN6aqWMSwtotz8rSZrwAu5z56rGddK",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "blue marvel",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmaDSdQTTQwxzYkATv1izh9FE3v2DEhVm4MqvJJLNJBi7u",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "beast",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmdwUZSVmRx6KeEoSkT7RSVkWtfRZAekHvNeaBVJJxkbW9",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "mister fantastic",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmSKtKpQssqUjG8ZdFQ5ZoybAFrUiof2boti6q5XD2MRF1",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "shuri",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmY9xUbEDtYLHcXRj1UQWw1hfS75bFZ1qdCntYjCGxii3g",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "iceman",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmVP1owy23PwJ67mgvh6Uy4JHnhBRwYEuC8FjuUXJnL7dj",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "nightcrawler",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmNUgcxjVwcmVCXzD39XuKk8j1RdJzeHg5ez1jLNTR7dFy",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "rogue",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "QmP78diCD1qLAeNe6WScMGfESUqYQMDjN2CGGbD5csrQPG",
+            gameId
+        );
+        genCharacter(
+            playerEntity,
+            "mystique",
+            "Namor is a Marvel character most recently seen in Wakanda Forever.",
+            "Qme4M7CiWn5ybxUxzvYCA851xshAE4u5rw4Pj7etsDBf7J",
+            gameId
+        );
     }
 
     function genCharacter(

@@ -15,10 +15,6 @@ contract Squad is SquadCollectibles {
   uint256 collectiblesId;
   uint256 public squadId;
 
-  enum ItemType {
-    ASSET,
-    COLLECTIBLE
-  }
   struct Member {
     address memberAddress;
     uint256 wins;
@@ -79,6 +75,7 @@ contract Squad is SquadCollectibles {
 
   function join() public ownerOnly {
     receiveOnJoin(msg.sender, squadId);
+    squadMembers.push(msg.sender);
     members[msg.sender] = true;
   }
 
@@ -134,5 +131,7 @@ contract Squad is SquadCollectibles {
   function isMember(address _address) public view returns (bool) {
     return members[_address];
   }
-
+  function updateAssets(Asset calldata _assets) public ownerOnly {
+    assets.push(_assets);
+  }
 }

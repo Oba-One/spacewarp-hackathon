@@ -50,7 +50,7 @@ contract League is Ownable {
 
   function createSquad(string memory _baseURI, string memory _contractURI) public maxSquads returns (uint256){
     Squad newSquad = new Squad(squads.length + 1, _baseURI, _contractURI); 
-    uint256 index = squads.length + 1;
+    uint256 index = squads.length;
     squads.push(newSquad);
     squadAddresses[index] = address(newSquad);
     emit SquadCreated(address(newSquad), index);
@@ -91,4 +91,21 @@ contract League is Ownable {
   function getSquads() public view returns (Squad[] memory){
     return squads;
   }
+  function getName() public view returns (string memory) {
+    return name;
+  }
+  function getDescription() public view returns (string memory) {
+    return description;
+  }
+  function onERC1155Received(address, address, uint256, uint256, bytes memory) public virtual returns (bytes4) {
+        return this.onERC1155Received.selector;
+    }
+
+    function onERC1155BatchReceived(address, address, uint256[] memory, uint256[] memory, bytes memory) public virtual returns (bytes4) {
+        return this.onERC1155BatchReceived.selector;
+    }
+
+    function onERC721Received(address, address, uint256, bytes memory) public virtual returns (bytes4) {
+        return this.onERC721Received.selector;
+    }
 }

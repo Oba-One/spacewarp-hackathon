@@ -4,7 +4,7 @@ const { ethers, BigNumber } = require("ethers");
 const _ = require('lodash');
 const provider = new ethers.providers.JsonRpcProvider('https://follower.testnet-chain.linfra.xyz');
 
-const GAME_ID = 5000;
+const GAME_ID = 15397;
 
 // Components
 const ASSET_COMPONENT = "0x03A70eBAa1f93596a12AE3378B4A9CA1669f3Ea5"
@@ -132,8 +132,10 @@ const initSystem = async (gameId) => {
 
 const main = async () => {
     // const gameId = num2Uint256(GAME_ID)
-  const gameId = '0x000000000000000000000000000000000000000000000000000000000001415d'
-    await initSystem(gameId)
+    const gameId = '0x0000000000000000000000000000000000000000000000000000000000003C25'
+    await getValue("0x0E015F902C527607628F7649074B24D3EFD1151F9F546CE1AECF38852C06DA883")
+    // await getEntitiesOwnedBy("0x8815f73D79E075eec86605C813DEA3bE026a8da9")
+    // await initSystem(gameId)
     // const playersOwnedByGame = await getEntitiesOwnedBy(gameId)
     // playersOwnedByGame.forEach(async (player) => {
     //     const characters = await getCharactersOwnedByPlayerInGame(player, gameId)
@@ -145,70 +147,7 @@ const main = async () => {
 }
 
 main()
+
 // console.log(parseInt("0x8815f73D79E075eec86605C813DEA3bE026a8da9"))
 
 
-
-// getValue
-// {
-//     "inputs": [
-//       {
-//         "internalType": "uint256",
-//         "name": "entity",
-//         "type": "uint256"
-//       }
-//     ],
-//     "name": "getValue",
-//     "outputs": [
-//       {
-//         "internalType": "string",
-//         "name": "",
-//         "type": "string"
-//       }
-//     ],
-//     "stateMutability": "view",
-//     "type": "function"
-//   },
-// const address = '0x47e9Fbef8C83A1714F1951F142132E6e90F5fa5D'
-// const abi = [
-//     "function getValue(uint) view returns (uint)"
-// ]
-// const contract = new ethers.Contract(address, abi, provider);
-
-// contract.getValue(123).then(v => {
-//     console.log('value is')
-//     console.log(v)
-// })
-
-// const address = '0x47e9Fbef8C83A1714F1951F142132E6e90F5fa5D'
-// const abi = [
-//     "function world() view returns (address)"
-// ]
-// const contract = new ethers.Contract(address, abi, provider);
-
-// contract.world().then(v => {
-//     console.log('value is')
-//     console.log(v)
-// })
-
-
-// provider.getBalance("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266").then(b => {
-//     console.log("Got balancne")
-//     console.log(ethers.utils.formatEther(b))
-// })
-
-// provider.getBalance("0x67b1d87101671b127f5f8714789C7192f7ad340e").then(b => {
-//     console.log("Should be none")
-//     console.log(ethers.utils.formatEther(b))
-// })
-
-// contract.getNumEntities().then(v => {
-//     console.log('value is')
-//     console.log(v)
-// })
-
-
-// provider.getCode(address).then((c) => {
-//     console.log("got code")
-//     console.log(c)
-// })
