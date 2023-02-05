@@ -142,7 +142,7 @@ contract Squad is SquadCollectibles {
     assets.push(_assets);
   }
 
-  function getSquadInfo() public view returns (uint256, string memory, string memory) {
-    return (squadId, squadName, squadDescription);
+  function getSquadInfo() public view returns (bytes32) {
+    return keccak256(abi.encodePacked(squadId, squadName, squadDescription));
   }
 }

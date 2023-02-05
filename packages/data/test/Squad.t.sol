@@ -19,13 +19,14 @@ contract LeagueTest is Test {
         leagueAddress = factory.createLeague("TestName", "TestDescription", 4);
         league = League(leagueAddress);
     }
+    // @junaama TODO: evm revert errors
     function testCreateSquad() public {
-        // assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, msg.sender));
+        assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, address(this)));
         uint256 squadIdIdx = league.createSquad("SquadName", "SquadDescription", "TestSquadBaseURI", "TestSquadContractURI");
         assertEq(league.getSquads().length, squadIdIdx + 1);
     }
     function testJoinSquad() public {
-        // assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, msg.sender));
+        assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, address(this)));
         uint256 squadIdIdx = league.createSquad("SquadName", "SquadDescription", "TestSquadBaseURI", "TestSquadContractURI");
         address squadAddress = league.squadAddresses(squadIdIdx);
         Squad _squad = Squad(squadAddress);
@@ -33,7 +34,7 @@ contract LeagueTest is Test {
         assertEq(_squad.getMembers().length, 1);
     }
     function testRedeemCollectible() public {
-        // assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, msg.sender));
+        assertTrue(accessControl.hasRole(DEFAULT_ADMIN_ROLE, address(this)));
         uint256 squadIdIdx = league.createSquad("SquadName", "SquadDescription", "TestSquadBaseURI", "TestSquadContractURI");
         address squadAddress = league.squadAddresses(squadIdIdx);
         Squad _squad = Squad(squadAddress);
@@ -43,10 +44,10 @@ contract LeagueTest is Test {
     }
 
     function testGetSquadInfo() public {
-        uint256 squadIdIdx = league.createSquad("SquadName", "SquadDescription", "TestSquadBaseURI", "TestSquadContractURI");
+        uint256 squadIdIdx = league.createSquad("TestName", "TestDescription", "TestSquadBaseURI", "TestSquadContractURI");
         address squadAddress = league.squadAddresses(squadIdIdx);
         Squad _squad = Squad(squadAddress);
-        league.joinSquad(squadIdIdx);
-        _squad.redeemCollectible();
+        // @junaama TODO: failing assertion
+        assertEq(_squad.getSquadInfo(),keccak256(abi.encodePacked(squadIdIdx, "TestName", "TestDescription")));
     }
 }
