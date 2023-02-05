@@ -32,10 +32,6 @@ interface GameProps {
 interface PlayerAvatarProps extends GameProps {
   showChat: boolean;
   hasNotifications: boolean;
-  takeScreenshot: (
-    dataType?: string | undefined,
-    quality?: number | undefined
-  ) => string | undefined;
   setShowChat: (showChat: boolean) => void;
 }
 
