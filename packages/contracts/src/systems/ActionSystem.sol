@@ -28,10 +28,6 @@ contract ActionSystem is System {
     constructor(IWorld _world, address _components) System(_world, _components) {}
 
     function execute(bytes memory arguments) public returns (bytes memory) {
-        ActionType[] memory actions = abi.decode(arguments, (ActionType[]));
-
-        uint256 playerEntity = addressToEntity(msg.sender);
-
         PrevActionComponent prevActionComponent = PrevActionComponent(getAddressById(components, PrevActionID));
         require(LibRound.getCurrentPhase(components) == PhaseEnum.Action, "ActionSystem: incorrect phase");
 

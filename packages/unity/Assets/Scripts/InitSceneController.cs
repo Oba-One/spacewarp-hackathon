@@ -1,5 +1,4 @@
 using UnityEngine.SceneManagement;
-
 using UnityEngine;
 
 public class InitSceneController : Singleton<InitSceneController>
