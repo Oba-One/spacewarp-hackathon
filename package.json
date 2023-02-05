@@ -6,7 +6,9 @@
   "workspaces": [
     "packages/contracts",
     "packages/client",
-    "packages/data"
+    "packages/assets",
+    "packages/data",
+    "packages/api"
   ],
   "scripts": {
     "prepare": "yarn workspace contracts prepare",

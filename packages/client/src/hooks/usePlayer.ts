@@ -1,19 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Client } from "@livepeer/webrtmp-sdk";
 import { useCreateStream } from "@livepeer/react";
 import { useRootStore } from "@huddle01/huddle01-client";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { InjectedConnector } from "wagmi/connectors/injected";
+import { useAccount, useConnect } from "wagmi";
 
-import { huddleClient } from "../../modules/clients";
+import { huddleClient } from "../modules/clients";
 
 type FormValues = {
   name: string;
   gameCode: number;
-};
-
-type AvatarFormValues = {
-  avatar: string;
 };
 
 type Status = "idle" | "connecting" | "connected" | "disconnecting";
@@ -50,19 +46,16 @@ export const usePlayer = (
   const [status, setStatus] = useState<Status>("idle");
   const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
   const [streamStatus, setStreamStatus] = useState<Status>("idle");
-  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   // WALLET CONNECTION - Wagmi
   const { address } = useAccount();
-  const { connectAsync } = useConnect({
-    connector: new InjectedConnector(),
-  });
-  const { disconnect } = useDisconnect();
+  const { connectAsync } = useConnect();
 
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
-    name: `MudSnap Game: ${gameCode}`,
+    name: `daosmack-match-${gameCode}`,
+    record: true,
   });
 
   // CHAT - Huddle
@@ -82,41 +75,17 @@ export const usePlayer = (
       gameCode,
     },
   });
-  const avatarForm = useForm<AvatarFormValues>({
-    // shouldUseNativeValidation: true,
-    defaultValues: {
-      avatar: huddleAvatar || "",
-    },
-  });
 
   // METHODS
-  async function updateAvatar(values: AvatarFormValues) {
-    try {
-      await huddleClient.changeAvatarUrl(values.avatar);
-    } catch (error: any) {
-      avatarForm.setError("avatar", {
-        type: "validate",
-      });
-      avatarForm.trigger("avatar", {
-        shouldFocus: true,
-      });
-
-      console.error(error);
-      setError(error.message ?? "Issue updating avatar, please try again");
-    }
-  }
-
   async function startLiveStream() {
+    setStreamStatus("connecting");
+
     try {
-      setStreamStatus("connecting");
       if (!gameCode) throw new Error("No game id found");
 
-      await liveStream.mutateAsync?.();
-      await huddleClient.sendReaction("👀");
-
-      setStreamStatus("connected");
+      liveStream.mutate?.();
     } catch (error: any) {
-      console.error(error);
+      console.error("Error Starting Stream", error);
       setError(error.message ?? "Issue starting stream, please try again");
     }
   }
@@ -124,10 +93,12 @@ export const usePlayer = (
   async function stopLiveStream() {
     try {
       setStreamStatus("disconnecting");
+      await liveStream.mutateAsync?.();
       await huddleClient.sendReaction("");
+
       setStreamStatus("idle");
     } catch (error: any) {
-      console.error(error);
+      console.error("Error Stoping Stream", error);
       setError(error.message ?? "Issue stopping stream, please try again");
     }
   }
@@ -157,6 +128,8 @@ export const usePlayer = (
       setStatus("connected");
       setGameCode(values.gameCode);
     } catch (error: any) {
+      console.error("Error Starting Connection", error);
+
       const errStatus = errorHandler(error.message);
 
       if (errStatus === "connect_wallet") {
@@ -178,22 +151,57 @@ export const usePlayer = (
       setStatus("disconnecting");
 
       if (streamStatus) await stopLiveStream();
-      if (status) disconnect();
-
+      // huddleClient.disableMic();
+      huddleClient.close("left");
       setStatus("idle");
-      setIsEditingAvatar(false);
     } catch (error: any) {
+      console.error("Error Disconnecting", error);
       setError(error.message ?? "Issue disconnecting, please try again");
-      console.error(error);
     }
   }
+
+  useEffect(() => {
+    if (liveStream.isError) {
+      setError(liveStream.error?.message ?? "Issue starting stream");
+    }
+
+    if (liveStream.isSuccess) {
+      navigator.mediaDevices
+        .getDisplayMedia({
+          video: true,
+          audio: true,
+        })
+        .then(async (stream) => {
+          if (!liveStream.data?.streamKey) {
+            console.log("Stream Data", liveStream.data);
+
+            throw new Error("No stream key!");
+          }
+
+          const client = new Client();
+          const session = client.cast(stream, liveStream.data?.streamKey ?? "");
+
+          session.on("open", () => {
+            console.log("Stream started.");
+          });
+          session.on("close", () => {
+            console.log("Stream stopped.");
+          });
+          session.on("error", (err) => {
+            console.log("Stream error.", err.message);
+          });
+
+          setStreamStatus("connected");
+          huddleClient.sendReaction("👀");
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [liveStream.isSuccess, liveStream.isError]);
 
   return {
     error,
     status,
     streamStatus,
-    isEditingAvatar,
-    setIsEditingAvatar,
     showSettings,
     setShowSettings,
     liveStream,
@@ -201,9 +209,7 @@ export const usePlayer = (
     mics,
     huddleAvatar,
     huddleName,
-    avatarForm,
     connectForm,
-    updateAvatar,
     startLiveStream,
     stopLiveStream,
     handleConnection,
