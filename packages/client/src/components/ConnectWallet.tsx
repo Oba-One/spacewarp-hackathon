@@ -1,10 +1,8 @@
-import { useLivepeer } from "../hooks/useLivepeer";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { useAccount, useConnect, useDisconnect, useNetwork } from "wagmi";
 
 import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
-import { useLighthouse } from "../hooks/useLighthouse";
 
 export const ConnectWallet = () => {
   const { connect } = useConnect({

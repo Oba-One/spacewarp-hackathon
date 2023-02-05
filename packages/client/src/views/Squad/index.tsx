@@ -41,7 +41,7 @@ const League: React.FC = () => {
 
   if (!isMember) {
     return (
-      <section className="mt-20 flex min-h-0 w-full min-w-0 flex-col justify-items-center justify-items-center gap-6 p-12 sm:grid sm:grid-cols-[repeat(2,_1fr)] sm:grid-rows-[repeat(2,_1fr)] sm:place-content-center">
+      <section className="sm:grid-rows-[repeat(2,_minmax(320px,_1fr)] flex h-full w-full flex-col gap-6  p-12 pt-24 sm:grid sm:grid-cols-[repeat(2,_1fr)] sm:place-content-evenly sm:place-items-center">
         {Object.values(squads).map((squad) => (
           <Squad key={squad.id} join={join} {...squad} />
         ))}

@@ -1,3 +1,4 @@
+import { Button } from "../../components/Button";
 import { FC } from "react";
 
 interface SquadProps extends Squad {
@@ -27,10 +28,10 @@ const assets: Record<GameElement, string[]> = {
   ],
 };
 const squadColors: Record<GameElement, string> = {
-  water: "bg-blue-600 border-blue-700 border-4",
-  earth: "bg-green-600 border-green-700 border-4",
-  fire: "bg-red-700 border-red-800 border-4",
-  air: "bg-yellow-500 border-yellow-600 border-4",
+  water: " border-blue-500 border-4",
+  earth: "border-green-500 border-4",
+  fire: "border-red-500 border-4",
+  air: "border-yellow-500 border-4",
 };
 
 export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
@@ -40,19 +41,21 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
 
   return (
     <div
-      className={`${squadColors[element]} grid aspect-[1/1] min-h-0 min-w-0 cursor-pointer overflow-hidden rounded-lg shadow-xl`}
+      className={`card bg-slate-800 ${squadColors[element]} grid aspect-[1/1] max-h-full  cursor-pointer overflow-hidden rounded-lg shadow-xl`}
       onClick={handleJoin}
     >
-      <div className="flex flex-col items-center justify-center">
-        {/* <h1 className="text-4xl font-bold capitalize">{element}</h1>
+      <div className="flex flex-col items-center justify-center gap-3">
+        <h1 className="text-4xl font-bold capitalize">{element}</h1>
         <p className="text-xl ">{description}</p>
         <ul className="avatar-group -space-x-6">
           {assets[element].map((asset) => (
-            <li className="aspect-[2/3] ">
+            <li className="">
               <img className="" src={asset} alt={`${element} character`} />
             </li>
           ))}
-        </ul> */}
+        </ul>
+        {/* <p className="text-xl ">{description}</p */}
+        <Button className="">Join Squad</Button>
       </div>
     </div>
   );

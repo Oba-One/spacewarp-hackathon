@@ -13,11 +13,11 @@ import { RC as RecordingEnabledIcon } from "../../assets/recording-enabled.svg";
 import { RC as RecordingDisabledIcon } from "../../assets/recording-disabled.svg";
 
 import { huddleClient } from "../../modules/clients";
-import { useLighthouse } from "../../hooks/useLighthouse";
-import { useOpponent, usePlayer } from "../../hooks/usePlayer";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { useOpponent, usePlayer } from "../../hooks/usePlayer";
+import { useLighthouse } from "../../hooks/useLighthouse";
 
 export interface PlayerProps extends GameProps, OpponentAvatarProps {
   type: "player" | "opponent";
@@ -70,14 +70,12 @@ const Player: FC<PlayerAvatarProps> = ({
   hasNotifications,
 }) => {
   const { applyAccessConditions } = useLighthouse();
-
   const {
     status,
     error,
     mics,
     isMicPaused,
     streamStatus,
-    liveStream,
     huddleName,
     huddleAvatar,
     showSettings,
@@ -137,11 +135,11 @@ const Player: FC<PlayerAvatarProps> = ({
             >
               <div>
                 <h5>Select Mic</h5>
-                {/* <ul>
+                <ul>
                   {mics.map((mic) => {
                     return <li key={mic.deviceId}>{mic.label}</li>;
                   })}
-                </ul> */}
+                </ul>
               </div>
               <SettingsIcon />
             </li>
@@ -173,15 +171,12 @@ const Player: FC<PlayerAvatarProps> = ({
               validate: (value) => value > 0,
             })}
           />
-          <Button
-            type="submit"
-            onClick={() => applyAccessConditions(undefined, [])}
-          >
-            Join Chat
-          </Button>
+          <Button type="submit">Join Chat</Button>
         </form>
       )}
-      <Button>Test Lighthouse</Button>
+      <Button onClick={() => applyAccessConditions(undefined, [])}>
+        Test Lighthouse
+      </Button>
       <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
         {error}
       </p>

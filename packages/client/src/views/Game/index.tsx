@@ -77,7 +77,7 @@ const Game: React.FC = () => {
       {isLoaded === false && <Loader precents={loadingPercentage} />}
       <section
         id="react"
-        className="fixed mt-20 flex h-full w-full justify-between"
+        className="fixed mt-20 flex h-full w-full justify-between p-4"
       >
         <Player
           type="opponent"
