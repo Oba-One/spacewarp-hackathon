@@ -26,5 +26,5 @@ contract LeagueTest is Test {
         League league = League(leagueAddress);
         league.joinLeague();
     }
-
+    
 }

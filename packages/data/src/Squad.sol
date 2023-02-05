@@ -14,7 +14,8 @@ contract Squad is SquadCollectibles {
   mapping(address => uint256) public collectiblesEarned;
   uint256 collectiblesId;
   uint256 public squadId;
-
+  string public squadName;
+  string public squadDescription;
   struct Member {
     address memberAddress;
     uint256 wins;
@@ -44,9 +45,11 @@ contract Squad is SquadCollectibles {
   Asset[] public assets;
   mapping(address => Receipt) public receipts;
 
-  constructor(uint256 _squadId, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
+  constructor(uint256 _squadId, string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
     squadId = _squadId;
+    squadName = _squadName;
+    squadDescription = _squadDescription;
   }
 
   modifier ownerOnly() {
@@ -98,7 +101,7 @@ contract Squad is SquadCollectibles {
   function getCollectiblesEarned() public view returns (uint256) {
     return collectiblesEarned[msg.sender];
   }
-  
+
   function getProposals() public view returns (Proposal[] memory) {
     return proposals;
   }
@@ -137,5 +140,9 @@ contract Squad is SquadCollectibles {
   }
   function updateAssets(Asset calldata _assets) public ownerOnly {
     assets.push(_assets);
+  }
+
+  function getSquadInfo() public view returns (uint256, string memory, string memory) {
+    return (squadId, squadName, squadDescription);
   }
 }

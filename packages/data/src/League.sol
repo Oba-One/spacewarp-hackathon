@@ -19,7 +19,7 @@ contract League is AccessControl {
 
   string name;
   string description;
-
+  // @junaama TODO: remove mapping of id -> address
   mapping(uint256 => address) public squadAddresses;
   address[] public leagueMembers;
   mapping(address => bool) public memberExists;
@@ -77,8 +77,8 @@ contract League is AccessControl {
     _;
   }
   
-  function createSquad(string memory _baseURI, string memory _contractURI) public maxSquads onlyRole(DEFAULT_ADMIN_ROLE) returns (uint256){
-    Squad newSquad = new Squad(squads.length + 1, _baseURI, _contractURI); 
+  function createSquad(string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) public maxSquads onlyRole(DEFAULT_ADMIN_ROLE) returns (uint256){
+    Squad newSquad = new Squad(squads.length + 1, _squadName, _squadDescription, _baseURI, _contractURI); 
     uint256 index = squads.length;
     squads.push(newSquad);
     squadAddresses[index] = address(newSquad);
