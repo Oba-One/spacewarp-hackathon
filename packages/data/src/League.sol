@@ -63,8 +63,8 @@ contract League is AccessControl, SquadFactory {
   }
 
   modifier onlyOpenLeague(){
-    require(block.timestamp >= leagueOpensAt, "League is not open yet");
-    require(block.timestamp <= leageClosesAt, "League is closed");
+    // require(block.timestamp >= leagueOpensAt, "League is not open yet");
+    // require(block.timestamp <= leageClosesAt, "League is closed");
     _;
   }
 
