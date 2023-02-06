@@ -28,7 +28,7 @@ contract League is AccessControl, SquadFactory {
   mapping(address => address) public memberToSquad;
 
   Game[] public games;
-  Squad[] public squads;
+  // Squad[] public squads; // Not needed for now while League is also squad factory
   Match[] public matches;
   address[] public members;
 
@@ -39,11 +39,11 @@ contract League is AccessControl, SquadFactory {
 
   struct Match {
     uint256 id;
-    uint256 gameId; // ECS World Address
     uint256 startedAt; // Timestamp
     uint256 finishedAt; // Timestamp
     uint256 collectibleExpiresAt; 
     bool collectibleRedeemed; 
+    address gameId; // ECS World Address
     address winner; // Address of winner either player or squad
     address[] players;
     address[] squads;
@@ -112,6 +112,15 @@ contract League is AccessControl, SquadFactory {
     leageClosesAt = _leageClosesAt;
   }
 
+  function enterLeague(address _squadAddress) public onlyOpenLeague maxSquads {
+    require(squadExists[_squadAddress] == false, "Squad already exists");
+    Squad squad = Squad(_squadAddress);
+    squads.push(squad);
+    squadExists[_squadAddress] = true;
+
+    emit SquadJoined(msg.sender, squads.length - 1);
+  }
+
   function closeLeague() public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague {
     leageClosesAt = block.timestamp;
   }
@@ -147,15 +156,15 @@ contract League is AccessControl, SquadFactory {
     for (uint i = 0; i < squads.length; i++) {
       Squad squad = squads[i];
       if (squad.isMember(member)) {
-        return  new MemberInfo(address(squad));
+        return MemberInfo(address(squad));
       }
     }
-    return new MemberInfo(address(0));
+    return MemberInfo(address(0));
   }
 
   function createMatch(
-    uint256 _gameId,
     uint256 _collectibleExpiresIn,
+    address _gameId,
     address[] memory _players,
     address[] memory _squads
   ) public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague isGameRegistered(_gameId) {
@@ -164,11 +173,11 @@ contract League is AccessControl, SquadFactory {
 
     Match memory newMatch = Match(
       matches.length + 1,
-      _gameId,
       block.timestamp,
       0,
       block.timestamp + _collectibleExpiresIn + 10 minutes,
       false,
+      _gameId,
       address(0),
       _players,
       _squads
@@ -177,19 +186,19 @@ contract League is AccessControl, SquadFactory {
   }
 
   function finishMatch(uint256 _matchId, address _winner) public onlyRole(DEFAULT_ADMIN_ROLE) {
-    Match game = matches[_matchId];
+    Match storage game = matches[_matchId];
     game.finishedAt = block.timestamp;
     game.winner = _winner;
   }
 
   function redeemMatchCollectible(uint256 _matchId) external onlyLeagueMember onlyClosedLeague {
-    Match game = matches[_matchId];
+    Match storage game = matches[_matchId];
     require(game.collectibleRedeemed == false, "Collectible already redeemed");
     require(game.collectibleExpiresAt > block.timestamp, "Collectible expired");
     require(game.winner == msg.sender, "Not winner of match");
 
-    Squad squad = Squad(squadExists[msg.sender]);
-    squad.redeemCollectible(game.gameId);
+    Squad squad = Squad(memberToSquad[msg.sender]);
+    squad.redeemCollectible();
     game.collectibleRedeemed = true;
 
     emit CollectibleRedeemed(msg.sender, _matchId);
@@ -205,16 +214,14 @@ contract League is AccessControl, SquadFactory {
     playerMerkleRoot = _playerMerkleRoot;
   }
 
-  function squadMembers(uint256 _squadId) external view returns (address[] memory) {
+  function squadMembers(uint256 _squadId) public view returns (address[] memory) {
     Squad squad = Squad(squads[_squadId]);
     return squad.getMembers();
   }
 
-  function getSquads() external view returns (Squad[] memory) {
-    return squads;
+  function getMatch(uint256 _matchId) public view returns (Match memory) {
+    return matches[_matchId];
   }
 
-   function getMatches() external view returns (Match[] memory) {
-    return matches;
-  }
+
 }

@@ -8,7 +8,7 @@ contract DeployScript is Script {
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("FVM_PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
-        LeagueFactory factory = new LeagueFactory();
+        LeagueFactory leagueFactory = new LeagueFactory();
         vm.stopBroadcast();
         vm.broadcast();
 
