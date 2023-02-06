@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Globalization;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,9 +23,10 @@ public class GameManager : MonoBehaviour
     private int handSlotsFilled = 0;
     [SerializeField]
     private Transform[] handSlots;
-    [SerializeField]
-    private Transform[] fieldSlots;
 
+    // private Transform opponentHand;
+
+    
     [SerializeField]
     private Text account;
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void GameStarted();
+    private int opponentCounter = 0;
 
 
     private bool firstLoad = true;
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SeedDebugData();
+        // SeedDebugData();
         StartCoroutine(ContinuouslyPollMudState());
     }
 
@@ -80,33 +83,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("ContinuouslyPollMudState");
         for(;;)
         {
-            Debug.Log("WaitForOurTask");
+            // Debug.Log("WaitForOurTask");
             Task task = RefreshFromMud();
             yield return new WaitUntil(() => task.IsCompleted);
             yield return new WaitForSeconds(Mud.POLL_INTERVAL_SECS);
         }
     }
-
-    // public async Task<string[]> PollMudState()
-    // {
-    //     Debug.Log("PollMudState");
-    //     string gameHex = PlayerData.gameIdHex();
-    //     string[] matchState = await GetMatchState(gameHex);
-    //     Debug.Log("Got match state");
-    //     foreach (var s in matchState)
-    //     {
-    //         Debug.Log(s);
-    //     }    
-    //     int matchStartedAt = int.Parse(matchState[0]);
-    //     Debug.Log(matchStartedAt.ToString());
-
-    //     if (matchStartedAt > 0) {
-    //         Debug.Log("Opponent detected");
-    //         isOpponentPresent = true;
-    //     }
-
-    //     return new string[]{};
-    // }
 
     // Update is called once per frame
     void Update()
@@ -115,34 +97,6 @@ public class GameManager : MonoBehaviour
         joinCode.text = "Join code:  " + PlayerData.gameId.ToString();
         // await PollMudState();
     }
-
-    // void DrawHand(string[] imageCids)
-    // {
-    //     Debug.Log("CreateGame");
-    //     string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
-
-    //     int handSlotIndex = 0;
-    //     foreach (var imageCid in imageCids)
-    //     {
-    //         Debug.Log("Creating card " + handSlotIndex);
-    //         if (handSlotIndex >= handSlots.Length)
-    //         {
-    //             Debug.Log("More characters then spaces on the board!!!!!!!!!");
-    //             break;
-    //         }
-    //         UnityEngine.Vector3 cardPosition = handSlots[handSlotIndex++].position;
-    //         GameObject card = Instantiate(cardPrefab, cardPosition, UnityEngine.Quaternion.identity);
-    //         card.transform.SetParent(canvas.transform, false);
-    //         CardManager cardManager = card.GetComponent<CardManager>();
-    //         card.transform.position = cardPosition;
-
-    //         Debug.Log(cardManager);
-
-    //         string cardUri = ipfsHost + "/" + imageCid;
-    //         cardManager.SetImage(cardUri);
-    //         Debug.Log("Created card " + handSlotIndex);
-    //     }
-    // }
 
     void AddToHand(string characterId, string imageCid)
     {
@@ -171,32 +125,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("Created card " + handSlotsFilled + 1);
     }
 
-    // void AddToOpponentHand(string characterId, string imageCid)
-    // {
-    //     Debug.Log("CreateGame");
-    //     string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
+    void AddToOpponentHand(string characterId, string imageCid)
+    {
+        Debug.Log("AddToOpponentHand");
+        string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
 
-    //     Debug.Log("Creating card " + handSlotsFilled + 1);
-    //     if (handSlotsFilled >= handSlots.Length)
-    //     {
-    //         // TODO. keep track of characters already added
-    //         Debug.Log("More characters then spaces on the board!!!!!!!!!");
-    //         return;
-    //     }
+        Debug.Log("Creating opponent " + (opponentCounter + 1));
 
-    //     UnityEngine.Vector3 cardPosition = handSlots[handSlotsFilled++].position;
-    //     GameObject card = Instantiate(cardPrefab, cardPosition, UnityEngine.Quaternion.identity);
-    //     card.transform.SetParent(canvas.transform, false);
-    //     CardManager cardManager = card.GetComponent<CardManager>();
-    //     card.transform.position = cardPosition;
-    //     cardManager.characterId = characterId;
+        UnityEngine.Vector3 cardPosition = new UnityEngine.Vector3(9999,9999,0);
+        GameObject card = Instantiate(cardPrefab, cardPosition, UnityEngine.Quaternion.identity);
+        card.transform.SetParent(canvas.transform, false);
+        // card.GetComponent<MeshRenderer>().enabled = false;
+        CardManager cardManager = card.GetComponent<CardManager>();
+        card.transform.position = cardPosition;
+        cardManager.characterId = characterId;
+        cardManager.belongsToOpponent = true;
 
-    //     Debug.Log(cardManager);
+        Debug.Log(cardManager);
 
-    //     string cardUri = ipfsHost + "/" + imageCid;
-    //     cardManager.SetImage(cardUri);
-    //     Debug.Log("Created card " + handSlotsFilled + 1);
-    // }
+        string cardUri = ipfsHost + "/" + imageCid;
+        cardManager.SetImage(cardUri);
+        Debug.Log("Created opponent " + (opponentCounter + 1));
+    }
 
     public async Task<int> RefreshFromMud()
     {
@@ -247,14 +197,16 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log(character);
             }
+
+            string[] characterAssets = await GetAssetsForOpponents(opponentCharacters);
+            Debug.Log("Assets for each opponent");
+            foreach (var asset in characterAssets)
+            {
+                Debug.Log(asset);
+            }
+
             opponentLoaded = true;
 
-            // string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
-            // Debug.Log("Assets for each character");
-            // foreach (var asset in characterAssets)
-            // {
-            //     Debug.Log(asset);
-            // }
         }
         return 0;
     }
@@ -270,6 +222,22 @@ public class GameManager : MonoBehaviour
             assetsForChar[i] = await GetAssetForCharacter(character);
             Debug.Log("Character asset: " + assetsForChar[i]);
             AddToHand(character, assetsForChar[i]);
+        }
+
+        return assetsForChar;
+    }
+
+    public async Task<string[]> GetAssetsForOpponents(string[] characters)
+    {
+        Debug.Log("GetAssetsForOpponents");
+        string[] assetsForChar = new string[characters.Length];
+        for (int i = 0; i < characters.Length; i++)
+        {
+            string character = characters[i];
+            Debug.Log("opponent entity: " + character);
+            assetsForChar[i] = await GetAssetForCharacter(character);
+            Debug.Log("opponent asset: " + assetsForChar[i]);
+            AddToOpponentHand(character, assetsForChar[i]);
         }
 
         return assetsForChar;
@@ -298,14 +266,24 @@ public class GameManager : MonoBehaviour
         // Get all players in game, filter out self
         string playerAddress = PlayerPrefs.GetString("Account");
         string[] playersOwnedByGame = await GetEntitiesOwnedBy(gameHex);
-        string[] playerAddressArr = {playerAddress};
-        string[] opponents = playersOwnedByGame.Except(playerAddressArr, StringComparer.OrdinalIgnoreCase).ToArray();
         Debug.Log("Got opponents");
-        Debug.Log(opponents);
+        Debug.Log("Except self: " + playerAddress);
+        string hexShort = "0" + playerAddress.Substring(2);
+        Debug.Log("shorter: " + hexShort);
+        string b1 = BigInteger.Parse(hexShort, NumberStyles.AllowHexSpecifier).ToString();
+        // string b1 = BigInteger.Parse(playerAddress, NumberStyles.AllowHexSpecifier).ToString();
+        Debug.Log("Except converted: " + b1);
+        string[] playerAddressArr = {b1};
+        string[] opponents = playersOwnedByGame.Except(playerAddressArr, StringComparer.OrdinalIgnoreCase).ToArray();
+        foreach (var o in opponents)
+        {
+            Debug.Log(o);
+            Debug.Log(BigInteger.Parse(o).ToString("X64"));
+        }
         string opponent = opponents[0];
         PlayerData.opponentId = opponent;
         BigInteger opponentInt = BigInteger.Parse(opponent);
-        string opponentHex = "Against: 0x" + opponentInt.ToString("X64");
+        string opponentHex = "Against: 0x" + opponentInt.ToString("X");
         opponentAddress.text = opponentHex;
         opponentBox.SetActive(true);
         if (Application.platform == RuntimePlatform.WebGLPlayer) {
@@ -342,7 +320,7 @@ public class GameManager : MonoBehaviour
         string args = "[\"" + gameId + "\"]";
         // RPC invocation
         string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
-        Debug.Log("Got response");
+        Debug.Log("Got match state response for " + gameId);
         print(response);
         return Mud.AdaptMudResp2StringArr(response);
     }
@@ -366,7 +344,7 @@ public class GameManager : MonoBehaviour
         string args = "[\"" + characterHex + "\"]";
         // RPC invocation
         string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
-        Debug.Log("Got response");
+        Debug.Log("Got asset response for character " + character);
         print(response);
         return response;
     }
@@ -388,7 +366,7 @@ public class GameManager : MonoBehaviour
         string args = "[\"" + gameId + "\"]";
         // RPC invocation
         string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
-        Debug.Log("Got response");
+        Debug.Log("Got entities in game response for " + gameId);
         print(response);
         return Mud.AdaptMudResp2StringArr(response);
     }
@@ -412,7 +390,7 @@ public class GameManager : MonoBehaviour
         string args = "[\"" + playerAddress + "\"]";
         // RPC invocation
         string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
-        Debug.Log("Got response");
+        Debug.Log("Got entities owned by response for " + playerAddress);
         print(response);
         return Mud.AdaptMudResp2StringArr(response);
     }
