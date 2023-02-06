@@ -48,6 +48,8 @@ const { chains, provider } = configureChains(
   ]
 );
 
+export const clientChains = chains;
+
 export const wagmiClient = createClient({
   autoConnect: false,
   connectors: [new InjectedConnector({ chains })],

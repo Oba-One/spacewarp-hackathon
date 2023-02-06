@@ -4,8 +4,15 @@ import { useAccount, useConnect, useDisconnect, useNetwork } from "wagmi";
 import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
 
+import { clientChains } from "../modules/clients";
+
 export const ConnectWallet = () => {
-  const { connect } = useConnect();
+  const { connect } = useConnect({
+    connector: new InjectedConnector({
+      chains: clientChains,
+    }),
+    chainId: 3141,
+  });
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
   const { chain } = useNetwork();
@@ -16,7 +23,7 @@ export const ConnectWallet = () => {
 
   if (isConnected)
     return (
-      <div className="flex flex-none gap-2">
+      <div className="flex h-12 flex-none gap-2">
         <div className="grid place-items-center">
           <h5>{chain?.name}</h5>
           <div className="badge-secondary badge badge-md grid w-24 place-items-center line-clamp-1">

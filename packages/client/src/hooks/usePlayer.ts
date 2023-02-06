@@ -6,7 +6,7 @@ import { useCreateStream, useUpdateStream } from "@livepeer/react";
 import { useRootStore } from "@huddle01/huddle01-client";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
-import { huddleClient } from "../modules/clients";
+import { clientChains, huddleClient } from "../modules/clients";
 
 type FormValues = {
   name: string;
@@ -54,7 +54,10 @@ export const usePlayer = (
   // WALLET CONNECTION - Wagmi
   const { address } = useAccount();
   const { connectAsync } = useConnect({
-    connector: new InjectedConnector(),
+    connector: new InjectedConnector({
+      chains: clientChains,
+    }),
+    chainId: 3141,
   });
 
   // LIVE STREAM - Liverpeer
