@@ -14,7 +14,7 @@ declare interface Member {
 }
 
 declare interface Match {
-  id: string;
+  id: number;
   name: string;
   description: string;
   winner: string;
@@ -27,11 +27,10 @@ declare interface Match {
 }
 
 declare interface Proposal {
-  id: string;
-  assetId: string;
+  id: number;
+  assetId: number;
   proposer: string;
   description: string;
-  image: string;
   forVotes: number;
   againstVotes: number;
   // abstainVotes: number;
@@ -39,8 +38,14 @@ declare interface Proposal {
   executed: boolean;
 }
 
+declare interface Receipt {
+  proposalId: number;
+  bool: boolean;
+  support: number;
+}
+
 declare interface Asset {
-  id: string;
+  id: number;
   squadId: `0x${string}`;
   name: string;
   description: string;
