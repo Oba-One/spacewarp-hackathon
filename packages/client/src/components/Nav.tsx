@@ -18,8 +18,8 @@ export const Nav: React.FC = () => {
         <Link to="/play" className="btn-ghost btn text-2xl normal-case">
           Play
         </Link>
-        <Link to="/league" className="btn-ghost btn text-2xl normal-case">
-          League
+        <Link to="/squad" className="btn-ghost btn text-2xl normal-case">
+          Squad
         </Link>
       </div>
       <div className="navbar-end">

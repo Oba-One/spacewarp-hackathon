@@ -68,7 +68,9 @@ export const useLighthouse = () => {
   };
 
   /* Deploy file along with encryption */
-  const encryptFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const encryptFile = async (
+    e: React.ChangeEvent<HTMLInputElement> | string | Blob
+  ) => {
     /*
        uploadEncrypted(e, publicKey, accessToken, uploadProgressCallback)
        - e: js event
@@ -95,9 +97,7 @@ export const useLighthouse = () => {
   };
 
   /* Decrypt file */
-  const decryptFile = async (
-    cid = "QmcuuAtmYqbPYmPx3vhJvPDi61zMxYvJbfENMjBQjq7aM3"
-  ) => {
+  const decryptFile = async (cid: string) => {
     // Fetch file encryption key
     const { publicKey, signedMessage } = await signature();
     console.log(signedMessage);
@@ -119,7 +119,7 @@ export const useLighthouse = () => {
   };
 
   const applyAccessConditions = async (
-    cid = "QmZkEMF5y5Pq3n291fG45oyrmX8bwRh319MYvj7V4W4tNh",
+    cid: string,
     conditions: Conditions[]
   ) => {
     // CID on which you are applying encryption

@@ -5,9 +5,10 @@ import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
 
 import { clientChains } from "../modules/clients";
+import { useLeague } from "../hooks/useLeague";
 
 export const ConnectWallet = () => {
-  const { connect } = useConnect({
+  const { connectAsync } = useConnect({
     connector: new InjectedConnector({
       chains: clientChains,
     }),
@@ -16,6 +17,12 @@ export const ConnectWallet = () => {
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
   const { chain } = useNetwork();
+  const { join } = useLeague();
+
+  async function handleConnection() {
+    await connectAsync();
+    await join(address ?? `0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`);
+  }
 
   function handleDisconnection() {
     disconnect();
@@ -53,5 +60,5 @@ export const ConnectWallet = () => {
       </div>
     );
 
-  return <Button onClick={() => connect()}>Connect</Button>;
+  return <Button onClick={handleConnection}>Connect</Button>;
 };

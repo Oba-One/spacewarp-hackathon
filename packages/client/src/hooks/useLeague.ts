@@ -1,57 +1,77 @@
-import { useState } from "react";
-import {
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-} from "wagmi";
+import { fetchSigner } from "@wagmi/core";
+import { useContract, useContractRead, useProvider } from "wagmi";
+
+import { abi } from "../types/LeagueABI.json";
 
 const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
 
 export const useLeague = () => {
-  const [squadId, setSquadId] = useState<`0x${string}`>(`0x`);
+  const provider = useProvider();
+
+  const leagueContract = useContract({
+    address,
+    abi,
+    signerOrProvider: provider,
+  });
 
   const squadMap =
     useContractRead<any, "", Squad[]>({
       address,
+      abi,
+      functionName: "getSquads",
     }).data?.reduce((map: Record<string, Squad>, squad) => {
       map[squad.id] = squad;
       return map;
     }, {}) ?? {};
 
-  const isMember = useContractRead<any, "", boolean>({}).data;
-
-  const prepareJoinLeague = usePrepareContractWrite({
+  const memberInfo = useContractRead<any, "", { squadAddress?: string }>({
     address,
-    abi: [
-      {
-        name: "memberJoin",
-        type: "function",
-        stateMutability: "nonpayable",
-        inputs: ["address"],
-        outputs: [],
-      },
-    ],
-    functionName: "memberJoin",
-    args: [squadId],
-  });
+    abi,
+    functionName: "getMemberInfo",
+  }).data;
 
-  const { writeAsync } = useContractWrite(prepareJoinLeague.config);
+  const matches = useContractRead<any, "", Match[]>({
+    address,
+    abi,
+    functionName: "getMatches",
+  }).data;
 
   // Potential for joining a legue and being put in a draft or having to meet some criteria
-  async function join(squad: `0x${string}`) {
+  async function join(squadAddress: `0x${string}`) {
     try {
-      setSquadId(squad);
+      if (!leagueContract) throw new Error("No leagueContract defined");
 
-      if (!writeAsync) throw new Error("No writeAsync defined");
+      const signer = await fetchSigner({ chainId: 3141 });
+      const squad = await leagueContract
+        // @ts-ignore
+        .connect(signer)
+        .joinSquad(squadAddress, {
+          gasLimit: 2500000000,
+        });
 
-      const trasnaction = await writeAsync();
-
-      console.log("Success joining league", trasnaction);
+      console.log("Squad Joined", squadMap[squadAddress], squad);
     } catch (error) {
-      setSquadId(`0x`);
       console.error("Error joining league", error);
     }
   }
 
-  return { squadMap, squadId, isMember, join };
+  async function mintCollectible(matchId: number) {
+    try {
+      if (!leagueContract) throw new Error("No leagueContract defined");
+
+      const signer = await fetchSigner({ chainId: 3141 });
+      const collectible = await leagueContract
+        // @ts-ignore
+        .connect(signer)
+        .redeemCollectible(matchId, {
+          gasLimit: 2500000000,
+        });
+
+      console.log("Collectible Minted", collectible);
+    } catch (error) {
+      console.error("Error minting collectible", error);
+    }
+  }
+
+  return { squadMap, memberInfo, matches, join, mintCollectible };
 };
