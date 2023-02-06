@@ -13,6 +13,7 @@ contract League is AccessControl, SquadFactory {
   uint256 leageClosesAt;
   uint256 maxSquadsAllowed;
 
+
   // TODO: Add tournaments  with matches and more time based features/events
 
   bytes32 public constant LEAGUE_MEMBER = keccak256("LEAGUE_MEMBER");
@@ -22,12 +23,19 @@ contract League is AccessControl, SquadFactory {
 
   string name;
   string description;
-  address[] public leagueMembers;
-  mapping(address => bool) public squadAddresses;
+  mapping(address => bool ) public gameExists;
+  mapping(address => bool) public squadExists;
   mapping(address => address) public memberToSquad;
 
+  Game[] public games;
   Squad[] public squads;
   Match[] public matches;
+  address[] public members;
+
+  struct Game {
+    address worldAddress;
+    uint256 chainId;
+  }
 
   struct Match {
     uint256 id;
@@ -61,6 +69,11 @@ contract League is AccessControl, SquadFactory {
 
   modifier onlyClosedLeague(){
     require(block.timestamp >= leageClosesAt, "League is not closed yet");
+    _;
+  }
+
+  modifier isGameRegistered(address _worldAddress){
+    require(gameExists[_worldAddress] == true, "Game is not registered");
     _;
   }
 
@@ -103,6 +116,24 @@ contract League is AccessControl, SquadFactory {
     leageClosesAt = block.timestamp;
   }
 
+  function addGame(address _worldAddress, uint256 _chainId) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(gameExists[_worldAddress] == false, "Game already exists");
+    games.push(Game(_worldAddress, _chainId));
+    gameExists[_worldAddress] = true;
+  }
+
+  function removeGame(address _worldAddress) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(gameExists[_worldAddress] == true, "Game does not exist");
+    for(uint i = 0; i < games.length; i++){
+      if(games[i].worldAddress == _worldAddress){
+        games[i] = games[games.length - 1];
+        games.pop();
+        break;
+      }
+    }
+    gameExists[_worldAddress] = false;
+  }
+
   function joinSquad(uint _index) notInOtherSquad external {
     require(_index <= squads.length, "Squad does not exist");
     Squad squad = Squad(squads[_index]);
@@ -124,15 +155,17 @@ contract League is AccessControl, SquadFactory {
 
   function createMatch(
     uint256 _gameId,
-    uint256 _startedAt,
     uint256 _collectibleExpiresIn,
     address[] memory _players,
     address[] memory _squads
-  ) public onlyRole(DEFAULT_ADMIN_ROLE) {
+  ) public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague isGameRegistered(_gameId) {
+    require(_players.length > 0 || _squads.length > 0, "No players or squads");
+    require(_collectibleExpiresIn > 0, "Collectible expires in must be greater than 0");    
+
     Match memory newMatch = Match(
       matches.length + 1,
       _gameId,
-      _startedAt,
+      block.timestamp,
       0,
       block.timestamp + _collectibleExpiresIn + 10 minutes,
       false,
@@ -155,7 +188,7 @@ contract League is AccessControl, SquadFactory {
     require(game.collectibleExpiresAt > block.timestamp, "Collectible expired");
     require(game.winner == msg.sender, "Not winner of match");
 
-    Squad squad = Squad(squadAddresses[msg.sender]);
+    Squad squad = Squad(squadExists[msg.sender]);
     squad.redeemCollectible(game.gameId);
     game.collectibleRedeemed = true;
 
