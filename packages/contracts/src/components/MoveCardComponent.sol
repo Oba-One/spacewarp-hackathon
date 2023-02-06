@@ -3,7 +3,7 @@ pragma solidity >=0.8.0;
 
 import "solecs/Component.sol";
 
-import {MoveCard} from "../libraries/MSTypes.sol";
+import {MoveCard} from "libraries/MSTypes.sol";
 
 uint256 constant ID = uint256(keccak256("component.MoveCard"));
 

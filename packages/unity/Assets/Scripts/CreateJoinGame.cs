@@ -2,10 +2,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices;
 
 public class CreateJoinGame : MonoBehaviour
 {
-    
+
+    [DllImport("__Internal")]
+    private static extern void GameCode(int code);
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +32,13 @@ public class CreateJoinGame : MonoBehaviour
         PlayerData.gameId = PlayerData.GenGameId();
         Debug.Log("Setting game ID to " + PlayerData.gameId);
         PlayerData.playerNum = 1;
-        // await Transfer();
         string response = await MudSystemInit();
         if (response.Length > 0)
         {
             Debug.Log("Response is valid");
+            if (Application.platform == RuntimePlatform.WebGLPlayer) {
+                GameCode(PlayerData.gameId);
+            }
             SceneManager.LoadScene("4 - play");
         }
         else

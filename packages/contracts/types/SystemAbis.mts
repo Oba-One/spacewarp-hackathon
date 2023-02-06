@@ -2,11 +2,19 @@
 import ActionSystem from "../abi/ActionSystem.json";
 import CommitSystem from "../abi/CommitSystem.json";
 import InitSystem from "../abi/InitSystem.json";
+<<<<<<< HEAD
+=======
+import MoveCharacterSystem from "../abi/MoveCharacterSystem.json";
+>>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
 import MoveSystem from "../abi/MoveSystem.json";
 
 export const SystemAbis = {
   "system.Action": ActionSystem.abi,
   "system.Commit": CommitSystem.abi,
   "system.Init": InitSystem.abi,
+<<<<<<< HEAD
+=======
+  "system.Init": MoveCharacterSystem.abi,
+>>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
   "system.Move": MoveSystem.abi,
 };
