@@ -16,13 +16,13 @@ export const hyperspace = {
   rpcUrls: {
     public: {
       http: [
-        import.meta.env.VITE_VERCEL_RPC_URL ??
+        import.meta.env.VITE_VERCEL_FVM_RPC_URL ??
           "https://api.hyperspace.node.glif.io/rpc/v1",
       ],
     },
     default: {
       http: [
-        import.meta.env.VITE_VERCEL_RPC_URL ??
+        import.meta.env.VITE_VERCEL_FVM_RPC_URL ??
           "https://api.hyperspace.node.glif.io/rpc/v1",
       ],
     },
