@@ -9,6 +9,6 @@ export type SystemTypes = {
   "system.Action": ActionSystem;
   "system.Commit": CommitSystem;
   "system.Init": InitSystem;
-  "system.Init": MoveCharacterSystem;
+  "system.MoveCharacterSystem": MoveCharacterSystem;
   "system.Move": MoveSystem;
 };

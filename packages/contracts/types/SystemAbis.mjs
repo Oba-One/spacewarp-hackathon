@@ -9,6 +9,6 @@ export const SystemAbis = {
   "system.Action": ActionSystem.abi,
   "system.Commit": CommitSystem.abi,
   "system.Init": InitSystem.abi,
-  "system.Init": MoveCharacterSystem.abi,
+  "system.MoveCharacterSystem": MoveCharacterSystem.abi,
   "system.Move": MoveSystem.abi,
 };
