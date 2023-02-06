@@ -307,10 +307,10 @@
         "license": null
       },
       "src/LeagueFactory.sol": {
-        "keccak256": "0xd543215f86e11338c55388ab0347a9b971b367abc270078e88adaa7f34e7c3f9",
+        "keccak256": "0x65511fd2deea4035d01f7c095ba13dd922e01a89e6926cedf536aab2ecc6094e",
         "urls": [
-          "bzz-raw://51718ca494b4fc0cdc00b565b17c42f1495953caced6a99f55d35d8ba5a8aff7",
-          "dweb:/ipfs/QmUJQVRfe5BHtD5aVwuun8A69GoHzNqra3e2ggCxfPT2VB"
+          "bzz-raw://62700e375722d6fa265f75078e4d6cef2a3b07ca55b0266c4fc5ec4a56c7cd0b",
+          "dweb:/ipfs/QmcvMADV7cmuCRhcS7hXEmpTH1iyxBJUxHrtT44jJ3kR4L"
         ],
         "license": "MIT"
       },
@@ -323,10 +323,10 @@
         "license": "UNLICENSED"
       },
       "src/Squad.sol": {
-        "keccak256": "0x8184ed87822619e9d369702f28f30de1d391e670f1536d58f4c50a4b48adf1e6",
+        "keccak256": "0x9a81993584fcaf867690e49d1914de9e3a794a2ba28f4e2a6755bdb267f198d9",
         "urls": [
-          "bzz-raw://022fed795d1bc3541412f50bd952e208ecd0ea1220d7f319d77dd1e59ac98105",
-          "dweb:/ipfs/QmYNYBehbTsmHYDVEkytFwd1Mr5EetuyomNRZuR8nsE2j8"
+          "bzz-raw://b30a62a4843c104db54e51e2b5a419d9125e85d321f16fb0bbf7e1dad4946f32",
+          "dweb:/ipfs/QmRt962EAPmJXDFwxck8JS8qSyTrNBMNKs5N6CmB4GdzhX"
         ],
         "license": "MIT"
       },
@@ -335,14 +335,6 @@
         "urls": [
           "bzz-raw://77787e37dece79aba920c5ad763b48c0aff60c19fb797fc7adba6fdb445557a5",
           "dweb:/ipfs/QmNxxtZaTWn4qND5eMaoGn5jrBNWdnk3nwbENPHDYWkFMM"
-        ],
-        "license": "MIT"
-      },
-      "src/SquadFactory.sol": {
-        "keccak256": "0x50d5d1807fd4c80f4843032272828426688b44b61d17bfde32cb21e5a5717c13",
-        "urls": [
-          "bzz-raw://dc861017c478e42cdc6ddd062de324e679617d23c9e051171e7ace1e7c1b38ea",
-          "dweb:/ipfs/QmPe2xU9an7EugpJ2YK18WTBiFXyBhKEPgdMyqd6x4veWd"
         ],
         "license": "MIT"
       }
@@ -412,12 +404,12 @@
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "32:623:28",
+    "src": "32:614:29",
     "nodes": [
       {
         "id": 30919,
         "nodeType": "PragmaDirective",
-        "src": "32:23:28",
+        "src": "32:23:29",
         "nodes": [],
         "literals": [
           "solidity",
@@ -429,7 +421,7 @@
       {
         "id": 30920,
         "nodeType": "ImportDirective",
-        "src": "56:22:28",
+        "src": "56:22:29",
         "nodes": [],
         "absolutePath": "src/League.sol",
         "file": "./League.sol",
@@ -442,12 +434,12 @@
       {
         "id": 30983,
         "nodeType": "ContractDefinition",
-        "src": "80:575:28",
+        "src": "80:566:29",
         "nodes": [
           {
             "id": 30924,
             "nodeType": "VariableDeclaration",
-            "src": "144:50:28",
+            "src": "144:50:29",
             "nodes": [],
             "constant": false,
             "functionSelector": "29ffe5e9",
@@ -467,14 +459,14 @@
                 "id": 30921,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "152:7:28",
+                "src": "152:7:29",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "144:27:28",
+              "src": "144:27:29",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                 "typeString": "mapping(uint256 => address)"
@@ -483,7 +475,7 @@
                 "id": 30922,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "163:7:28",
+                "src": "163:7:29",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
@@ -496,7 +488,7 @@
           {
             "id": 30928,
             "nodeType": "VariableDeclaration",
-            "src": "200:23:28",
+            "src": "200:23:29",
             "nodes": [],
             "constant": false,
             "functionSelector": "c648fefe",
@@ -518,7 +510,7 @@
                   "id": 30925,
                   "name": "League",
                   "nameLocations": [
-                    "200:6:28"
+                    "200:6:29"
                   ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 30917,
@@ -533,7 +525,7 @@
               },
               "id": 30927,
               "nodeType": "ArrayTypeName",
-              "src": "200:8:28",
+              "src": "200:8:29",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_contract$_League_$30917_$dyn_storage_ptr",
                 "typeString": "contract League[]"
@@ -544,12 +536,12 @@
           {
             "id": 30938,
             "nodeType": "FunctionDefinition",
-            "src": "230:93:28",
+            "src": "230:93:29",
             "nodes": [],
             "body": {
               "id": 30937,
               "nodeType": "Block",
-              "src": "292:31:28",
+              "src": "292:31:29",
               "nodes": [],
               "statements": [
                 {
@@ -568,7 +560,7 @@
                   "functionReturnParameters": 30934,
                   "id": 30936,
                   "nodeType": "Return",
-                  "src": "302:14:28"
+                  "src": "302:14:29"
                 }
               ]
             },
@@ -577,12 +569,12 @@
             "kind": "function",
             "modifiers": [],
             "name": "getLeagues",
-            "nameLocation": "239:10:28",
+            "nameLocation": "239:10:29",
             "parameters": {
               "id": 30929,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "249:2:28"
+              "src": "249:2:29"
             },
             "returnParameters": {
               "id": 30934,
@@ -611,7 +603,7 @@
                         "id": 30930,
                         "name": "League",
                         "nameLocations": [
-                          "275:6:28"
+                          "275:6:29"
                         ],
                         "nodeType": "IdentifierPath",
                         "referencedDeclaration": 30917,
@@ -626,7 +618,7 @@
                     },
                     "id": 30932,
                     "nodeType": "ArrayTypeName",
-                    "src": "275:8:28",
+                    "src": "275:8:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_contract$_League_$30917_$dyn_storage_ptr",
                       "typeString": "contract League[]"
@@ -635,7 +627,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "274:17:28"
+              "src": "274:17:29"
             },
             "scope": 30983,
             "stateMutability": "view",
@@ -645,12 +637,12 @@
           {
             "id": 30982,
             "nodeType": "FunctionDefinition",
-            "src": "329:324:28",
+            "src": "329:315:29",
             "nodes": [],
             "body": {
               "id": 30981,
               "nodeType": "Block",
-              "src": "446:207:28",
+              "src": "446:198:29",
               "nodes": [],
               "statements": [
                 {
@@ -663,7 +655,7 @@
                       "id": 30951,
                       "mutability": "mutable",
                       "name": "league",
-                      "nameLocation": "472:6:28",
+                      "nameLocation": "463:6:29",
                       "nodeType": "VariableDeclaration",
                       "scope": 30981,
                       "src": "465:13:28",
@@ -680,7 +672,7 @@
                           "id": 30949,
                           "name": "League",
                           "nameLocations": [
-                            "465:6:28"
+                            "456:6:29"
                           ],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 30917,
@@ -757,7 +749,7 @@
                       "isPure": false,
                       "lValueRequested": false,
                       "nodeType": "NewExpression",
-                      "src": "481:10:28",
+                      "src": "472:10:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_uint256_$returns$_t_contract$_League_$30917_$",
                         "typeString": "function (string memory,string memory,uint256) returns (contract League)"
@@ -769,7 +761,7 @@
                           "id": 30952,
                           "name": "League",
                           "nameLocations": [
-                            "485:6:28"
+                            "476:6:29"
                           ],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 30917,
@@ -792,7 +784,7 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "481:44:28",
+                    "src": "472:44:29",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_League_$30917",
@@ -800,7 +792,7 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "465:60:28"
+                  "src": "456:60:29"
                 },
                 {
                   "expression": {
@@ -841,10 +833,10 @@
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "559:6:28",
+                        "memberLocation": "550:6:29",
                         "memberName": "length",
                         "nodeType": "MemberAccess",
-                        "src": "551:14:28",
+                        "src": "542:14:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -855,7 +847,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "535:31:28",
+                      "src": "526:31:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -891,7 +883,7 @@
                         "isPure": true,
                         "lValueRequested": false,
                         "nodeType": "ElementaryTypeNameExpression",
-                        "src": "569:7:28",
+                        "src": "560:7:29",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_address_$",
                           "typeString": "type(address)"
@@ -900,7 +892,7 @@
                           "id": 30964,
                           "name": "address",
                           "nodeType": "ElementaryTypeName",
-                          "src": "569:7:28",
+                          "src": "560:7:29",
                           "typeDescriptions": {}
                         }
                       },
@@ -913,14 +905,14 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "569:15:28",
+                      "src": "560:15:29",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "535:49:28",
+                    "src": "526:49:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -928,7 +920,7 @@
                   },
                   "id": 30969,
                   "nodeType": "ExpressionStatement",
-                  "src": "535:49:28"
+                  "src": "526:49:29"
                 },
                 {
                   "expression": {
@@ -970,10 +962,10 @@
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "602:4:28",
+                      "memberLocation": "593:4:29",
                       "memberName": "push",
                       "nodeType": "MemberAccess",
-                      "src": "594:12:28",
+                      "src": "585:12:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_contract$_League_$30917_$dyn_storage_ptr_$_t_contract$_League_$30917_$returns$__$bound_to$_t_array$_t_contract$_League_$30917_$dyn_storage_ptr_$",
                         "typeString": "function (contract League[] storage pointer,contract League)"
@@ -988,7 +980,7 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "594:20:28",
+                    "src": "585:20:29",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
@@ -997,7 +989,7 @@
                   },
                   "id": 30975,
                   "nodeType": "ExpressionStatement",
-                  "src": "594:20:28"
+                  "src": "585:20:29"
                 },
                 {
                   "expression": {
@@ -1028,7 +1020,7 @@
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "631:7:28",
+                      "src": "622:7:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_address_$",
                         "typeString": "type(address)"
@@ -1037,7 +1029,7 @@
                         "id": 30976,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
-                        "src": "631:7:28",
+                        "src": "622:7:29",
                         "typeDescriptions": {}
                       }
                     },
@@ -1050,7 +1042,7 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "631:15:28",
+                    "src": "622:15:29",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1060,7 +1052,7 @@
                   "functionReturnParameters": 30948,
                   "id": 30980,
                   "nodeType": "Return",
-                  "src": "624:22:28"
+                  "src": "615:22:29"
                 }
               ]
             },
@@ -1069,7 +1061,7 @@
             "kind": "function",
             "modifiers": [],
             "name": "createLeague",
-            "nameLocation": "338:12:28",
+            "nameLocation": "338:12:29",
             "parameters": {
               "id": 30945,
               "nodeType": "ParameterList",
@@ -1079,7 +1071,7 @@
                   "id": 30940,
                   "mutability": "mutable",
                   "name": "_name",
-                  "nameLocation": "365:5:28",
+                  "nameLocation": "365:5:29",
                   "nodeType": "VariableDeclaration",
                   "scope": 30982,
                   "src": "351:19:28",
@@ -1093,7 +1085,7 @@
                     "id": 30939,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:6:28",
+                    "src": "351:6:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1106,7 +1098,7 @@
                   "id": 30942,
                   "mutability": "mutable",
                   "name": "_description",
-                  "nameLocation": "386:12:28",
+                  "nameLocation": "386:12:29",
                   "nodeType": "VariableDeclaration",
                   "scope": 30982,
                   "src": "372:26:28",
@@ -1120,7 +1112,7 @@
                     "id": 30941,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "372:6:28",
+                    "src": "372:6:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1133,7 +1125,7 @@
                   "id": 30944,
                   "mutability": "mutable",
                   "name": "_squadCount",
-                  "nameLocation": "408:11:28",
+                  "nameLocation": "408:11:29",
                   "nodeType": "VariableDeclaration",
                   "scope": 30982,
                   "src": "400:19:28",
@@ -1147,7 +1139,7 @@
                     "id": 30943,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "400:7:28",
+                    "src": "400:7:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1156,7 +1148,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "350:70:28"
+              "src": "350:70:29"
             },
             "returnParameters": {
               "id": 30948,
@@ -1181,7 +1173,7 @@
                     "id": 30946,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "437:7:28",
+                    "src": "437:7:29",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1191,7 +1183,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "436:9:28"
+              "src": "436:9:29"
             },
             "scope": 30983,
             "stateMutability": "nonpayable",
@@ -1218,5 +1210,5 @@
     ],
     "license": "MIT"
   },
-  "id": 28
+  "id": 29
 }

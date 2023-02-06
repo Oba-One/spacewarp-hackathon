@@ -26,11 +26,6 @@ contract Squad is SquadCollectibles {
     bool support;
   }
 
-  struct SquadInfo {
-    string name;
-    string description;
-  }
-
   address private _owner;
   address[] public squadMembers;
   mapping(address => bool) public members;
@@ -59,21 +54,21 @@ contract Squad is SquadCollectibles {
     _;
   }
 
-  modifier requireRank(uint256 assetId) {
-    Asset memory asset = assets[assetId];
-    if (asset.rank == Rank.Bronze) {
-      require(collectiblesEarned[msg.sender] >= 3, "Insufficient wins");
-    } else if (asset.rank == Rank.Silver) {
-      require(collectiblesEarned[msg.sender] >= 10, "Insufficient wins");
-    } else if (asset.rank == Rank.Gold) {
-      require(collectiblesEarned[msg.sender] >= 25, "Insufficient wins");
-    } else if (asset.rank == Rank.Platinum) {
-      require(collectiblesEarned[msg.sender] >= 50, "Insufficient wins");
-    } else if (asset.rank == Rank.Diamond) {
-      require(collectiblesEarned[msg.sender] >= 100, "Insufficient wins");
-    }
-    _;
-  }
+  // modifier requireRank(uint256 assetId) {
+  //   Asset memory asset = assets[assetId];
+  //   if (asset.rank == Rank.Bronze) {
+  //     require(collectiblesEarned[msg.sender] >= 3, "Insufficient wins");
+  //   } else if (asset.rank == Rank.Silver) {
+  //     require(collectiblesEarned[msg.sender] >= 10, "Insufficient wins");
+  //   } else if (asset.rank == Rank.Gold) {
+  //     require(collectiblesEarned[msg.sender] >= 25, "Insufficient wins");
+  //   } else if (asset.rank == Rank.Platinum) {
+  //     require(collectiblesEarned[msg.sender] >= 50, "Insufficient wins");
+  //   } else if (asset.rank == Rank.Diamond) {
+  //     require(collectiblesEarned[msg.sender] >= 100, "Insufficient wins");
+  //   }
+  //   _;
+  // }
 
   function redeemCollectible() public {
     mintCollectible(msg.sender, collectiblesId);
@@ -100,24 +95,15 @@ contract Squad is SquadCollectibles {
   function getMembers() public view returns (address[] memory) {
     return squadMembers;
   }
-  
-  function getMembersData() public view returns (Member[] memory) {
-    Member[] memory membersData = new Member[](squadMembers.length);
-    for (uint256 i = 0; i < squadMembers.length; i++) {
-      membersData[i] = Member(squadMembers[i], collectiblesEarned[squadMembers[i]]);
-    }
-    return membersData;
-  }
-
-  function getCollectiblesEarned() public view returns (uint256) {
-    return collectiblesEarned[msg.sender];
+  function getMemberCollectiblesEarned(address _member) public view returns (uint256) {
+    return collectiblesEarned[_member];
   }
 
   function getProposals() public view returns (Proposal[] memory) {
     return proposals;
   }
 
-  function voteOnProposal(uint256 _assetId, uint256 _proposalId, bool _support) external memberOnly requireRank(_assetId) {
+  function voteOnProposal(uint256 _assetId, uint256 _proposalId, bool _support) external memberOnly {
     require(proposals[_proposalId].cancelled == false, "Proposal Cancelled");
     require(proposals[_proposalId].executed == false, "Proposal Executed");
     require(receipts[msg.sender][_proposalId].voted == false, "Already Voted");
@@ -139,7 +125,7 @@ contract Squad is SquadCollectibles {
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function proposeUpdate(uint256 _assetId, string memory _description, string memory _uri) external memberOnly requireRank(_assetId)  returns (uint256) {
+  function proposeUpdate(uint256 _assetId, string memory _description, string memory _uri) external memberOnly returns (uint256) {
     Proposal memory proposal;
     proposal.id = proposals.length + 1;
     proposal.proposer = msg.sender;
@@ -159,11 +145,10 @@ contract Squad is SquadCollectibles {
     assets.push(Asset(_uri, _assetId, _rank));
   }
 
-  // function setAssets(Asset[] memory _assets) public ownerOnly {
-  //   assets = _assets;
-  // }
-
-  function getSquadInfo() public view returns (SquadInfo memory) {
-    return SquadInfo(squadName, squadDescription);
+  function getSquadName() public view returns (string memory) {
+    return squadName;
+  }
+  function getSquadDescription() public view returns (string memory) {
+    return squadDescription;
   }
 }

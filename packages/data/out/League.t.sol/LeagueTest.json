@@ -1114,10 +1114,10 @@
         "license": null
       },
       "src/LeagueFactory.sol": {
-        "keccak256": "0xd543215f86e11338c55388ab0347a9b971b367abc270078e88adaa7f34e7c3f9",
+        "keccak256": "0x65511fd2deea4035d01f7c095ba13dd922e01a89e6926cedf536aab2ecc6094e",
         "urls": [
-          "bzz-raw://51718ca494b4fc0cdc00b565b17c42f1495953caced6a99f55d35d8ba5a8aff7",
-          "dweb:/ipfs/QmUJQVRfe5BHtD5aVwuun8A69GoHzNqra3e2ggCxfPT2VB"
+          "bzz-raw://62700e375722d6fa265f75078e4d6cef2a3b07ca55b0266c4fc5ec4a56c7cd0b",
+          "dweb:/ipfs/QmcvMADV7cmuCRhcS7hXEmpTH1iyxBJUxHrtT44jJ3kR4L"
         ],
         "license": "MIT"
       },
@@ -1130,10 +1130,10 @@
         "license": "UNLICENSED"
       },
       "src/Squad.sol": {
-        "keccak256": "0x8184ed87822619e9d369702f28f30de1d391e670f1536d58f4c50a4b48adf1e6",
+        "keccak256": "0x9a81993584fcaf867690e49d1914de9e3a794a2ba28f4e2a6755bdb267f198d9",
         "urls": [
-          "bzz-raw://022fed795d1bc3541412f50bd952e208ecd0ea1220d7f319d77dd1e59ac98105",
-          "dweb:/ipfs/QmYNYBehbTsmHYDVEkytFwd1Mr5EetuyomNRZuR8nsE2j8"
+          "bzz-raw://b30a62a4843c104db54e51e2b5a419d9125e85d321f16fb0bbf7e1dad4946f32",
+          "dweb:/ipfs/QmRt962EAPmJXDFwxck8JS8qSyTrNBMNKs5N6CmB4GdzhX"
         ],
         "license": "MIT"
       },
@@ -1142,14 +1142,6 @@
         "urls": [
           "bzz-raw://77787e37dece79aba920c5ad763b48c0aff60c19fb797fc7adba6fdb445557a5",
           "dweb:/ipfs/QmNxxtZaTWn4qND5eMaoGn5jrBNWdnk3nwbENPHDYWkFMM"
-        ],
-        "license": "MIT"
-      },
-      "src/SquadFactory.sol": {
-        "keccak256": "0x50d5d1807fd4c80f4843032272828426688b44b61d17bfde32cb21e5a5717c13",
-        "urls": [
-          "bzz-raw://dc861017c478e42cdc6ddd062de324e679617d23c9e051171e7ace1e7c1b38ea",
-          "dweb:/ipfs/QmPe2xU9an7EugpJ2YK18WTBiFXyBhKEPgdMyqd6x4veWd"
         ],
         "license": "MIT"
       },

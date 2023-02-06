@@ -1,16 +1,20 @@
 // SPDX-license-identifier: MIT
 pragma solidity ^0.8.0;
-import "./SquadFactory.sol";
+import "./Squad.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
-contract League is AccessControl, SquadFactory {
+contract League is AccessControl {
   event SquadJoined(address member);
   event LeagueJoined(address member);
   event CollectibleRedeemed(address member, uint256 collectibleTokenId);
+  event SquadCreated(address newAddress, uint256 squadId);
+
+  mapping(uint256 => address) public squadAddresses;
+  Squad[] public squads;
 
   uint256 leagueOpensAt;
-  uint256 leageClosesAt;
+  uint256 leagueClosesAt;
   uint256 maxSquadsAllowed;
 
   // TODO: Add tournaments  with matches and more time based features/events
@@ -24,14 +28,12 @@ contract League is AccessControl, SquadFactory {
 
   string name;
   string description;
-  mapping(address => bool ) public gameExists;
+  mapping(address => bool) public gameExists;
   mapping(address => bool) public squadExists;
   mapping(address => address) public memberToSquad;
 
   Game[] public games;
-  // Squad[] public squads; // Not needed for now while League is also squad factory
   Match[] public matches;
-  address[] public members;
 
   struct Game {
     address worldAddress;
@@ -50,10 +52,6 @@ contract League is AccessControl, SquadFactory {
     address[] squads;
   }
 
-  struct MemberInfo {
-    address squadAddress;
-  }
-
   constructor(string memory _name, string memory _description, uint256 _maxSquadsAllowed){
     maxSquadsAllowed = _maxSquadsAllowed;
     name = _name;
@@ -62,14 +60,8 @@ contract League is AccessControl, SquadFactory {
     
   }
 
-  modifier onlyOpenLeague(){
-    // require(block.timestamp >= leagueOpensAt, "League is not open yet");
-    // require(block.timestamp <= leageClosesAt, "League is closed");
-    _;
-  }
-
   modifier onlyClosedLeague(){
-    require(block.timestamp >= leageClosesAt, "League is not closed yet");
+    require(block.timestamp >= leagueClosesAt, "League is not closed yet");
     _;
   }
 
@@ -107,10 +99,26 @@ contract League is AccessControl, SquadFactory {
     );
     _;
   }
+    function getSquads() public view returns (Squad[] memory) {
+        return squads;
+    }
 
-  function openLeague(uint256 _leagueOpensAt, uint256 _leageClosesAt) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function createSquad(
+        string memory _squadName, 
+        string memory _squadDescription, 
+        string memory _baseURI, 
+        string memory _contractURI
+    ) public returns (address){
+        Squad newSquad = new Squad(_squadName, _squadDescription, _baseURI, _contractURI); 
+        uint256 index = squads.length + 1;
+        squads.push(newSquad);
+        squadAddresses[index] = address(newSquad);
+        emit SquadCreated(address(newSquad), index);
+        return address(newSquad);
+    }
+  function openLeague(uint256 _leagueOpensAt, uint256 _leagueClosesAt) public onlyRole(DEFAULT_ADMIN_ROLE) {
     leagueOpensAt = _leagueOpensAt;
-    leageClosesAt = _leageClosesAt;
+    leagueClosesAt = _leagueClosesAt;
   }
 
   function enterLeague(address _squadAddress) public maxSquads {
@@ -123,7 +131,7 @@ contract League is AccessControl, SquadFactory {
   }
 
   function closeLeague() public onlyRole(DEFAULT_ADMIN_ROLE) {
-    leageClosesAt = block.timestamp;
+    leagueClosesAt = block.timestamp;
   }
 
   function addGame(address _worldAddress, uint256 _chainId) public onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -163,14 +171,14 @@ contract League is AccessControl, SquadFactory {
     emit SquadJoined(_member);
   }
 
-  function isSquadMember(address member) public view returns (MemberInfo memory) {
+  function isSquadMember(address member) public view returns (address) {
     for (uint i = 0; i < squads.length; i++) {
       Squad squad = squads[i];
       if (squad.isMember(member)) {
-        return MemberInfo(address(squad));
+        return address(squad);
       }
     }
-    return MemberInfo(address(0));
+    return address(0);
   }
 
   function createMatch(
@@ -233,6 +241,5 @@ contract League is AccessControl, SquadFactory {
   function getMatch(uint256 _matchId) public view returns (Match memory) {
     return matches[_matchId];
   }
-
 
 }
