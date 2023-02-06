@@ -41,7 +41,8 @@ const squads: Record<GameElement, Squad> = {
 };
 
 const League: React.FC<LeagueProps> = ({ squadId, isMember, join }) => {
-  const { members, assets, proposals } = useSquad(squadId);
+  const { members, assets, proposals, proposeUpdate, voteOnProposal } =
+    useSquad(squadId);
 
   if (!isMember) {
     return (
@@ -64,6 +65,8 @@ const League: React.FC<LeagueProps> = ({ squadId, isMember, join }) => {
           team="water"
           assets={assets.data ?? []}
           proposals={proposals.data ?? []}
+          proposeUpdate={proposeUpdate}
+          voteOnProposal={voteOnProposal}
         />
       </div>
       <LeaderBoard team="water" members={members.data ?? []} />

@@ -24,11 +24,13 @@ export const useLeague = () => {
       return map;
     }, {}) ?? {};
 
-  const memberInfo = useContractRead<any, "", { squadAddress?: string }>({
-    address,
-    abi,
-    functionName: "getMemberInfo",
-  });
+  const memberInfo = useContractRead<any, "", { squadAddress?: `0x${string}` }>(
+    {
+      address,
+      abi,
+      functionName: "getMemberInfo",
+    }
+  );
 
   const matches = useContractRead<any, "", Match[]>({
     address,

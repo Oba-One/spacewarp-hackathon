@@ -20,7 +20,11 @@ interface AssetProps extends Asset {
     description: string,
     url: string
   ) => Promise<void>;
-  voteOnProposal: (proposalId: number, vote: boolean) => Promise<void>;
+  voteOnProposal: (
+    assetId: number,
+    proposalId: number,
+    vote: boolean
+  ) => Promise<void>;
 }
 
 export const Asset: FC<AssetProps> = (asset) => {

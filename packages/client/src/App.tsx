@@ -12,19 +12,29 @@ import { useLeague } from "./hooks/useLeague";
 import { huddleClient, wagmiClient } from "./modules/clients";
 
 const Views = () => {
-  const { squadId, squadMap, isMember, join } = useLeague();
+  const { squadMap, memberInfo, join } = useLeague();
 
   return (
     <Routes>
       <Route
         index
         element={
-          <Game squadId={squadId} squadMap={squadMap} isMember={isMember} />
+          <Game
+            squadId={memberInfo.data?.squadAddress ?? `0x`}
+            squadMap={squadMap}
+            isMember={!!memberInfo.data?.squadAddress}
+          />
         }
       />
       <Route
         path="/league"
-        element={<League squadId={squadId} join={join} isMember={isMember} />}
+        element={
+          <League
+            squadId={memberInfo.data?.squadAddress ?? `0x`}
+            join={join}
+            isMember={!!memberInfo.data?.squadAddress}
+          />
+        }
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
