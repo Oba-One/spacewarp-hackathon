@@ -113,7 +113,7 @@ contract League is AccessControl, SquadFactory {
     leageClosesAt = _leageClosesAt;
   }
 
-  function enterLeague(address _squadAddress) public onlyOpenLeague maxSquads {
+  function enterLeague(address _squadAddress) public maxSquads {
     require(squadExists[_squadAddress] == false, "Squad already exists");
     Squad squad = Squad(_squadAddress);
     squads.push(squad);
@@ -122,7 +122,7 @@ contract League is AccessControl, SquadFactory {
     emit SquadJoined(msg.sender);
   }
 
-  function closeLeague() public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague {
+  function closeLeague() public onlyRole(DEFAULT_ADMIN_ROLE) {
     leageClosesAt = block.timestamp;
   }
 
@@ -178,7 +178,7 @@ contract League is AccessControl, SquadFactory {
     address _gameId,
     address[] memory _players,
     address[] memory _squads
-  ) public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague isGameRegistered(_gameId) {
+  ) public onlyRole(DEFAULT_ADMIN_ROLE) isGameRegistered(_gameId) {
     require(_players.length > 0 || _squads.length > 0, "No players or squads");
     require(_collectibleExpiresIn > 0, "Collectible expires in must be greater than 0");    
 
