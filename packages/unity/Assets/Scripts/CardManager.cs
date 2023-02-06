@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Threading.Tasks;
 
 public class CardManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CardManager : MonoBehaviour
     private string imageUri;
 
     private GameObject[] locations;
+
+    public string characterId = null;
 
     public void MoveToLocation(int locationIndex)
     {
@@ -63,6 +66,29 @@ public class CardManager : MonoBehaviour
             GameObject.Find("L2"),
             GameObject.Find("L3")
         };
+        StartCoroutine(ContinuouslyPollMudState());
+    }
+
+
+    IEnumerator<object> ContinuouslyPollMudState() {
+        Debug.Log("CardManager#ContinuouslyPollMudState");
+        for(;;)
+        {
+            Debug.Log("WaitForOurTask");
+            Task task = PollMudState();
+            yield return new WaitUntil(() => task.IsCompleted);
+            yield return new WaitForSeconds(Mud.POLL_INTERVAL_SECS);
+        }
+    }
+
+    public async Task<string[]> PollMudState()
+    {
+        Debug.Log("PollMudState");
+        string position = await GetPosition();
+        string zone = await GetZone();
+
+
+        return new string[]{};
     }
 
     // Update is called once per frame
@@ -81,5 +107,64 @@ public class CardManager : MonoBehaviour
     void MoveFromDeck2Hand(Vector3 position)
     {
         transform.position = position;
+    }
+
+    /*
+        RPC
+    */
+    public async Task<string> GetPosition()
+    {
+        if (characterId == null)
+        {
+            Debug.Log("CharacterId not set, cannot retrieve position from MUD.");
+            return null;
+        }
+        else
+        {
+            Debug.Log("GetPosition " + characterId);
+            string abi = Mud.GET_ENUM_VALUE_ABI;
+            // address of contract
+            string contract = Mud.POSITION_COMPONENT;
+
+            string method = "getValueTyped";
+            // equivalent to sending empty bytes as arg
+
+            string chain = "mud";
+            string network = "mud";
+            // array of arguments for contract
+            string args = "[\"" + characterId + "\"]";
+            // RPC invocation
+            string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
+            Debug.Log("Got pos response");
+            print(response);
+            return response;
+        }
+    }
+
+    public async Task<string> GetZone()
+    {
+        if (characterId == null)
+        {
+            Debug.Log("CharacterId not set, cannot retrieve zone from MUD.");
+            return null;
+        }
+        else
+        {
+            Debug.Log("GetZone " + characterId);
+            string abi = Mud.GET_ENUM_VALUE_ABI;
+            string contract = Mud.ZONE_COMPONENT;
+            string method = "getValueTyped";
+            string chain = "mud";
+            string network = "mud";
+
+            // array of arguments for contract
+            string args = "[\"" + characterId + "\"]";
+
+            // RPC invocation
+            string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
+            Debug.Log("Got zone response");
+            print(response);
+            return response;
+        }
     }
 }

@@ -5,7 +5,7 @@ import { HuddleClientProvider } from "@huddle01/huddle01-client";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import Game from "./views/Game";
-import Squad from "./views/Squad";
+import League from "./views/League";
 
 import { Nav } from "./components/Nav";
 import { useLeague } from "./hooks/useLeague";
@@ -23,8 +23,8 @@ const Views = () => {
         }
       />
       <Route
-        path="/squad"
-        element={<Squad squadId={squadId} join={join} isMember={isMember} />}
+        path="/league"
+        element={<League squadId={squadId} join={join} isMember={isMember} />}
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

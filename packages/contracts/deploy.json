@@ -1,9 +1,17 @@
 {
-  "components": ["AssetComponent", "OwnedByComponent", "PositionComponent", "IdentityComponent", "MatchComponent", "InGameComponent"],
+  "components": [
+    "AssetComponent", "OwnedByComponent", "PositionComponent", 
+    "IdentityComponent", "MatchComponent", "InGameComponent", 
+    "ZoneComponent"
+  ],
   "systems": [
     {
       "name": "InitSystem",
-      "writeAccess": ["AssetComponent", "OwnedByComponent", "PositionComponent", "IdentityComponent", "MatchComponent", "InGameComponent"]
+      "writeAccess": [
+        "AssetComponent", "OwnedByComponent", "PositionComponent", 
+        "IdentityComponent", "MatchComponent", "InGameComponent", 
+        "ZoneComponent"
+      ]
     }
   ]
 }

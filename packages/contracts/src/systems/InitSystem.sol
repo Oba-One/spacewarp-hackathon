@@ -12,9 +12,10 @@ import {AssetComponent, ID as AssetID} from "../components/AssetComponent.sol";
 import {PositionComponent, ID as PositionID} from "../components/PositionComponent.sol";
 import {MatchComponent, ID as MatchID} from "../components/MatchComponent.sol";
 import {InGameComponent, ID as InGameID} from "../components/InGameComponent.sol";
+import {ZoneComponent, ID as ZoneID} from "../components/ZoneComponent.sol";
 
 // Library
-import {IdentityType, PositionEnum, MatchType} from "libraries/MSTypes.sol";
+import {IdentityType, PositionEnum, MatchType, ZoneEnum} from "libraries/MSTypes.sol";
 
 uint256 constant ID = uint256(keccak256("system.Init"));
 
@@ -24,25 +25,52 @@ contract InitSystem is System {
     function execute(bytes memory arguments) public override returns (bytes memory) {
         // Generate match
         // uint256 gameId = LibInit.initPlayer(msg.sender);
-        (uint256 gameId, uint256 teamId) = abi.decode(arguments, (uint256, uint256));
-        genMatch(gameId);
+        (uint256 gameId, uint256 teamId, uint256 playerNum) = abi.decode(arguments, (uint256, uint256, uint256));
+        genMatch(gameId, playerNum);
 
         // Generate player 1
-        uint256 playerEntity = genPlayer(gameId);
+        uint256 playerEntity = genPlayer(gameId, playerNum);
 
         // Generate characters
         genCharacters(playerEntity, gameId, teamId);
     }
 
-    function genMatch(uint256 gameId) private {
-        MatchComponent matchComponent = MatchComponent(getAddressById(components, MatchID));
-        matchComponent.set(gameId, MatchType({startedAt: 0, finishedAt: 1, turnsLeft: 5}));
+    function uint2str(uint256 _i) internal pure returns (string memory _uintAsString) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint256 j = _i;
+        uint256 len;
+        while (j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint256 k = len;
+        while (_i != 0) {
+            k = k - 1;
+            uint8 temp = (48 + uint8(_i - _i / 10 * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
     }
 
-    function genPlayer(uint256 gameId) private returns (uint256) {
+    function genMatch(uint256 gameId, uint256 playerNum) private {
+        MatchComponent matchComponent = MatchComponent(getAddressById(components, MatchID));
+        uint256 startedAt = 0;
+        // Client knows the match has started when startedAt > 0
+        if (playerNum == 2) {
+            startedAt = 1;
+        }
+        matchComponent.set(gameId, MatchType({startedAt: startedAt, finishedAt: 0, turnsLeft: 5}));
+    }
+
+    function genPlayer(uint256 gameId, uint256 playerNum) private returns (uint256) {
         uint256 playerEntity = LibInit.initPlayer(msg.sender);
-        IdentityType memory playerIdentity =
-            IdentityType({name: "Player 1", description: "The one who create the game"});
+        string memory name = string.concat("Player ", uint2str(playerNum));
+        IdentityType memory playerIdentity = IdentityType({name: name, description: "A player in the game"});
         IdentityComponent(getAddressById(components, IdentityID)).set(playerEntity, playerIdentity);
         OwnedByComponent(getAddressById(components, OwnedByID)).set(playerEntity, gameId);
 
@@ -416,18 +444,27 @@ contract InitSystem is System {
         string memory imgUri,
         uint256 gameId
     ) private {
-        IdentityType memory identity1 = IdentityType({name: name, description: description});
-        PositionEnum position = PositionEnum.Deck;
         uint256 characterEntity = world.getUniqueEntityId();
 
+        // Set position (deck)
+        PositionEnum position = PositionEnum.Deck;
         PositionComponent(getAddressById(components, PositionID)).set(characterEntity, position);
-        OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
-        AssetComponent(getAddressById(components, AssetID)).set(characterEntity, imgUri);
+
+        // Set zone (E)
+        ZoneEnum zone = ZoneEnum.E;
+        ZoneComponent(getAddressById(components, ZoneID)).set(characterEntity, zone);
+
+        // Set identity & asset
+        IdentityType memory identity1 = IdentityType({name: name, description: description});
         IdentityComponent(getAddressById(components, IdentityID)).set(characterEntity, identity1);
+        AssetComponent(getAddressById(components, AssetID)).set(characterEntity, imgUri);
+
+        // Ownership and ingame relation
+        OwnedByComponent(getAddressById(components, OwnedByID)).set(characterEntity, playerEntity);
         InGameComponent(getAddressById(components, InGameID)).set(characterEntity, gameId);
     }
 
-    function executeTyped(uint256 gameId, uint256 teamId) public returns (bytes memory) {
-        return execute(abi.encode(gameId, teamId));
+    function executeTyped(uint256 gameId, uint256 teamId, uint256 playerNum) public returns (bytes memory) {
+        return execute(abi.encode(gameId, teamId, playerNum));
     }
 }

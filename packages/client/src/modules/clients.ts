@@ -1,4 +1,3 @@
-import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { getHuddleClient } from "@huddle01/huddle01-client";
 import { Chain, createClient, configureChains } from "wagmi";
@@ -11,8 +10,8 @@ export const hyperspace = {
   network: "hyperspace",
   nativeCurrency: {
     decimals: 18,
-    name: "Filecoin",
-    symbol: "FIL",
+    name: "Testnet Filecoin",
+    symbol: "tFil",
   },
   rpcUrls: {
     public: {
@@ -34,24 +33,28 @@ export const hyperspace = {
       url: "https://hyperspace.filfox.info/en",
     },
   },
+  testnet: true,
 } as const satisfies Chain;
 
-const { chains, provider } = configureChains(
+const { chains, provider, webSocketProvider } = configureChains(
   [hyperspace],
   [
     jsonRpcProvider({
-      rpc: (chain) => ({
-        http: `https://api.hyperspace.node.glif.io/rpc/v1`,
-      }),
+      rpc: (chain) => {
+        if (chain.id !== hyperspace.id) return null;
+        return { http: chain.rpcUrls.default.http[0] };
+      },
     }),
-    publicProvider(),
   ]
 );
 
+export const clientChains = chains;
+
 export const wagmiClient = createClient({
-  autoConnect: false,
+  // autoConnect: true,
   connectors: [new InjectedConnector({ chains })],
   provider,
+  webSocketProvider,
 });
 
 export const livepeerClient = createReactClient({

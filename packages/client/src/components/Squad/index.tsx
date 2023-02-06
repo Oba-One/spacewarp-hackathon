@@ -49,7 +49,7 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
         <p className="text-xl ">{description}</p>
         <ul className="avatar-group -space-x-6">
           {assets[element].map((asset) => (
-            <li className="">
+            <li key={asset} className="">
               <img className="" src={asset} alt={`${element} character`} />
             </li>
           ))}

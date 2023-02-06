@@ -95,7 +95,7 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
 
   return (
     <LivepeerConfig client={livepeerClient}>
-      <div className="container">
+      <div className="container mt-24">
         <div className="grid grid-cols-5">
           <div>
             <Player

@@ -3,7 +3,10 @@ using UnityEngine;
 public static class PlayerData
 {
     public static int gameId { get; set; }
+    public static int playerNum { get; set; }
     public static int team { get; set; }
+
+    public static string opponentId { get; set; }
 
     public static string teamName()
     {
@@ -19,6 +22,12 @@ public static class PlayerData
     {
        return  "0x" + PlayerData.team.ToString("X64");
     }
+
+     public static string playerNumHex()
+    {
+       return  "0x" + PlayerData.playerNum.ToString("X64");
+    }
+
 
 
     public static int GenGameId()
