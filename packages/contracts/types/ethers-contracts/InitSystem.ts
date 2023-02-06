@@ -30,7 +30,7 @@ import type {
 export interface InitSystemInterface extends utils.Interface {
   functions: {
     "execute(bytes)": FunctionFragment;
-    "executeTyped(uint256,uint256)": FunctionFragment;
+    "executeTyped(uint256,uint256,uint256)": FunctionFragment;
     "owner()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
@@ -49,7 +49,11 @@ export interface InitSystemInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "executeTyped",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
+    values: [
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BigNumberish>
+    ]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -115,13 +119,14 @@ export interface InitSystem extends BaseContract {
 
   functions: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
       teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -134,13 +139,14 @@ export interface InitSystem extends BaseContract {
   };
 
   execute(
-    args: PromiseOrValue<BytesLike>,
+    arguments: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   executeTyped(
     gameId: PromiseOrValue<BigNumberish>,
     teamId: PromiseOrValue<BigNumberish>,
+    playerNum: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -153,13 +159,14 @@ export interface InitSystem extends BaseContract {
 
   callStatic: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
       teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -184,13 +191,14 @@ export interface InitSystem extends BaseContract {
 
   estimateGas: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
       teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -204,13 +212,14 @@ export interface InitSystem extends BaseContract {
 
   populateTransaction: {
     execute(
-      args: PromiseOrValue<BytesLike>,
+      arguments: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
       teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
