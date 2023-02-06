@@ -13,8 +13,9 @@ contract League is AccessControl, SquadFactory {
   uint256 leageClosesAt;
   uint256 maxSquadsAllowed;
 
-
   // TODO: Add tournaments  with matches and more time based features/events
+  // TODO: Adda trade funnctionality
+  // TODO: Add to convert contracts to fit ECS model and be extensible
 
   bytes32 public constant LEAGUE_MEMBER = keccak256("LEAGUE_MEMBER");
   bytes public matchMerkleRoot;

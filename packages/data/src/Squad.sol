@@ -8,6 +8,15 @@ contract Squad is SquadCollectibles {
   event ProposalCancelled(uint256 id);
   event ProposalExecuted(uint256 id);
 
+
+  enum Rank {
+    Bronze,
+    Silver,
+    Gold,
+    Platinum,
+    Diamond
+  }
+
   struct Member {
     address memberAddress;
     uint256 wins;
@@ -15,7 +24,7 @@ contract Squad is SquadCollectibles {
   struct Asset {
     string uri;
     uint256 assetId;
-    rank:
+    Rank rank;
   }
   struct Proposal {
     uint256 id;
@@ -29,9 +38,15 @@ contract Squad is SquadCollectibles {
     bool executed;
   }
   struct Receipt {
-    uint256 proposalId;
+    // uint256 proposalId;
     bool voted;
     bool support;
+  }
+
+  struct SquadInfo {
+    uint256 id;
+    string name;
+    string description;
   }
 
   address private _owner;
@@ -45,7 +60,7 @@ contract Squad is SquadCollectibles {
 
   Proposal[] public proposals;
   Asset[] public assets;
-  mapping(address => Receipt) public receipts;
+  mapping(address => mapping(uint256 => Receipt)) public receipts;
 
   constructor(string calldata _squadName, string calldata _squadDescription, string calldata _baseURI, string calldata _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
@@ -64,13 +79,19 @@ contract Squad is SquadCollectibles {
     _;
   }
 
-  modifier requireThreeWins() {
-    require(collectiblesEarned[msg.sender] >= 3, "Insufficient wins");
-    _;
-  }
-
-  modifier requireTenWins() {
-    require(collectiblesEarned[msg.sender] >= 10, "Insufficient wins");
+  modifier requireRank(uint256 assetId) {
+    Asset memory asset = assets[assetId];
+    if (asset.rank == Rank.Bronze) {
+      require(collectiblesEarned[msg.sender] >= 3, "Insufficient wins");
+    } else if (asset.rank == Rank.Silver) {
+      require(collectiblesEarned[msg.sender] >= 10, "Insufficient wins");
+    } else if (asset.rank == Rank.Gold) {
+      require(collectiblesEarned[msg.sender] >= 25, "Insufficient wins");
+    } else if (asset.rank == Rank.Platinum) {
+      require(collectiblesEarned[msg.sender] >= 50, "Insufficient wins");
+    } else if (asset.rank == Rank.Diamond) {
+      require(collectiblesEarned[msg.sender] >= 100, "Insufficient wins");
+    }
     _;
   }
 
@@ -99,6 +120,7 @@ contract Squad is SquadCollectibles {
   function getMembers() public view returns (address[] memory) {
     return squadMembers;
   }
+  
   function getMembersData() public view returns (Member[] memory) {
     Member[] memory membersData = new Member[](squadMembers.length);
     for (uint256 i = 0; i < squadMembers.length; i++) {
@@ -115,24 +137,29 @@ contract Squad is SquadCollectibles {
     return proposals;
   }
 
-  function voteOnProposal(uint256 proposalId, bool support) external {
-    Proposal storage proposal = proposals[proposalId];
+  function voteOnProposal(uint256 _assetId, uint256 _proposalId, _bool support) external memberOnly requireRank(_assetId) {
+    require(proposals[_proposalId].cancelled == false, "Proposal Cancelled");
+    require(proposals[_proposalId].executed == false, "Proposal Executed");
+    require(receipts[msg.sender][_proposalId].voted == false, "Already Voted");
+    require(proposals[_proposalId].proposer != msg.sender, "Cannot vote on own proposal");
+
+    Proposal storage proposal = proposals[_proposalId];
     Receipt storage receipt = receipts[msg.sender];
-    if (support) {
+    if (_support) {
       proposal.forVotes = proposal.forVotes + 1;
     } else {
       proposal.againstVotes = proposal.againstVotes + 1;
     }
     receipt.voted = true;
-    receipt.support = support;
+    receipt.support = _support;
 
-    emit ProposalVoted(msg.sender, proposalId, support);
+    emit ProposalVoted(msg.sender, proposalId, _support);
   }
 
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function proposeUpdate(uint256 _assetId, string memory _description, string memory _uri) public returns (uint256) {
+  function proposeUpdate(uint256 _assetId, string memory _description, string memory _uri) external memberOnly requireRank(_assetId)  returns (uint256) {
     Proposal memory proposal;
     proposal.id = proposals.length + 1;
     proposal.proposer = msg.sender;
@@ -147,11 +174,16 @@ contract Squad is SquadCollectibles {
   function isMember(address _address) public view returns (bool) {
     return members[_address];
   }
-  function updateAssets(Asset calldata _assets) public ownerOnly {
+
+  function updateAsset(Asset calldata _asset) public ownerOnly {
     assets.push(_assets);
   }
 
-  function getSquadInfo() public view returns (bytes32) {
-    return keccak256(abi.encodePacked(squadId, squadName, squadDescription));
+  function setAsset(Asset[] calldata _assets) public ownerOnly {
+    assets = _assets;
+  }
+
+  function getSquadInfo() public view returns (SquadInfo memory) {
+    return SquadInfo(squadId, squadName, squadDescription);
   }
 }
