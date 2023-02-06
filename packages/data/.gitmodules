@@ -1,0 +1,11 @@
+[submodule "lib/forge-std"]
+	path = lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "packages/datafoundry/lib/solmate"]
+	path = packages/datafoundry/lib/solmate
+	url = https://github.com/transmissions11/solmate
+[submodule "packages/datafoundry/lib/openzeppelin-contracts"]
+	path = packages/datafoundry/lib/openzeppelin-contracts
+	url = https://github.com/Openzeppelin/openzeppelin-contracts
+[submodule "lib/openzeppelin-contracts"]
+	branch = v4.8.1

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 public class CreateJoinGame : MonoBehaviour
 {
@@ -21,19 +19,20 @@ public class CreateJoinGame : MonoBehaviour
 
     public void JoinGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("3 - join");
     }
 
     public async void CreateGame()
     {
         PlayerData.gameId = PlayerData.GenGameId();
         Debug.Log("Setting game ID to " + PlayerData.gameId);
+        PlayerData.playerNum = 1;
         // await Transfer();
         string response = await MudSystemInit();
         if (response.Length > 0)
         {
             Debug.Log("Response is valid");
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("4 - play");
         }
         else
         {
@@ -44,16 +43,20 @@ public class CreateJoinGame : MonoBehaviour
     public async Task<string> MudSystemInit()
     {
         Debug.Log("Calling MudSystemInit");
-        string abi = "[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
+        string abi = Mud.EXECUTE_INIT_SYSTEM_ABI;
         // address of contract
         string contract = Mud.SYSTEM_INIT;
 
         // method you want to write to
-        string method = "execute";
+        string method = "executeTyped";
         // equivalent to sending empty bytes as arg
-        string args = "[[]]";
+        string gameIdHex = PlayerData.gameIdHex();
+        string teamIdHex = PlayerData.teamIdHex();
+        string playerNumHex = PlayerData.playerNumHex();
+        Debug.Log("Game ID hex: " + gameIdHex);
+        string[] args = {gameIdHex, teamIdHex, playerNumHex};
         string argsSerialized = JsonConvert.SerializeObject(args);
-        Debug.Log(argsSerialized);
+
         // connects to user's browser wallet to call a transaction
         string response = await Web3GL.SendContract(method, abi, contract, argsSerialized, "0", "", "");
         Debug.Log("Got response");

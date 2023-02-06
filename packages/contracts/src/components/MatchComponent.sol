@@ -3,9 +3,8 @@ pragma solidity >=0.8.0;
 
 import "solecs/Component.sol";
 
-import { snapID, MatchType } from "../libraries/MSTypes.sol";
+import { MatchType } from "../libraries/MSTypes.sol";
 
-// uint256 constant snapID = uint256(0x060D);
 uint256 constant ID = uint256(keccak256("component.MatchType"));
 
 ///@notice You can deploy this contract as ID for a system

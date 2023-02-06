@@ -1,21 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class PlayerData
 {
-    public static string gameId { get; set; }
+    public static int gameId { get; set; }
+    public static int playerNum { get; set; }
+    public static int team { get; set; }
 
-    public static string GenGameId()
+    public static string opponentId { get; set; }
+
+    public static string teamName()
     {
-        const string glyphs= "ABCDEFG0123456789";
-        string s = "";
-        
-        for(int i=0; i<4; i++)
-        {
-            s += glyphs[Random.Range(0, glyphs.Length)];
-        }
+        return Mud.TeamId2Name(team);
+    }
 
-        return s;
+    public static string gameIdHex()
+    {
+       return  "0x" + PlayerData.gameId.ToString("X64");
+    }
+
+    public static string teamIdHex()
+    {
+       return  "0x" + PlayerData.team.ToString("X64");
+    }
+
+     public static string playerNumHex()
+    {
+       return  "0x" + PlayerData.playerNum.ToString("X64");
+    }
+
+
+
+    public static int GenGameId()
+    {
+        int start = 1;
+        int end = 99999;
+        return Random.Range(start, end);
     }
 }

@@ -194,37 +194,59 @@ window.web3gl.sendContract(method, abi, contract, args, value, gasLimit, gasPric
 */
 async function sendContract(method, abi, contract, args, value, gasLimit, gasPrice) {
   const from = (await web3.eth.getAccounts())[0];
-  if (args === "\"[[]]\"") {
-    // Parsing empty strings doesn't work as desired
-    // This is a special case where you want to supply empty bytes as a single arg
-    new web3.eth.Contract(JSON.parse(abi), contract).methods[method]([])
-      .send({
-        from,
-        value,
-        gas: gasLimit ? gasLimit : undefined,
-        gasPrice: gasPrice ? gasPrice : undefined,
-      })
-      .on("transactionHash", (transactionHash) => {
-        window.web3gl.sendContractResponse = transactionHash;
-      })
-      .on("error", (error) => {
-        window.web3gl.sendContractResponse = error.message;
-      });
-  } else {
-    new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
-    .send({
-      from,
-      value,
-      gas: gasLimit ? gasLimit : undefined,
-      gasPrice: gasPrice ? gasPrice : undefined,
-    })
-    .on("transactionHash", (transactionHash) => {
-      window.web3gl.sendContractResponse = transactionHash;
-    })
-    .on("error", (error) => {
-      window.web3gl.sendContractResponse = error.message;
-    });
-  }
+  console.log("sendContract to " + contract)
+  console.log(`method: ${method}`)
+  // abi = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"teamId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"executeTyped\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}]}]"
+  console.log(abi)
+  // args = `["${args}","0x0000000000000000000000000000000000000000000000000000000000000002"]`
+  console.log(args)
+
+  new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
+  .send({
+    from,
+    value,
+    gas: gasLimit ? gasLimit : undefined,
+    gasPrice: gasPrice ? gasPrice : undefined,
+  })
+  .on("transactionHash", (transactionHash) => {
+    console.log(`Got transaction hash ${transactionHash}`)
+    window.web3gl.sendContractResponse = transactionHash;
+  })
+  .on("error", (error) => {
+    window.web3gl.sendContractResponse = error.message;
+  });
+  // if (args === "\"[[]]\"") {
+  //   // Parsing empty strings doesn't work as desired
+  //   // This is a special case where you want to supply empty bytes as a single arg
+  //   new web3.eth.Contract(JSON.parse(abi), contract).methods[method]([])
+  //     .send({
+  //       from,
+  //       value,
+  //       gas: gasLimit ? gasLimit : undefined,
+  //       gasPrice: gasPrice ? gasPrice : undefined,
+  //     })
+  //     .on("transactionHash", (transactionHash) => {
+  //       window.web3gl.sendContractResponse = transactionHash;
+  //     })
+  //     .on("error", (error) => {
+  //       window.web3gl.sendContractResponse = error.message;
+  //     });
+  // } else {
+  //   new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
+  //   .send({
+  //     from,
+  //     value,
+  //     gas: gasLimit ? gasLimit : undefined,
+  //     gasPrice: gasPrice ? gasPrice : undefined,
+  //   })
+  //   .on("transactionHash", (transactionHash) => {
+  //     console.log(`Got transaction hash ${transactionHash}`)
+  //     window.web3gl.sendContractResponse = transactionHash;
+  //   })
+  //   .on("error", (error) => {
+  //     window.web3gl.sendContractResponse = error.message;
+  //   });
+  // }
 }
 
 // add new wallet to in metamask

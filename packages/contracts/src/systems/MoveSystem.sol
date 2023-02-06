@@ -19,14 +19,13 @@ import { PowerComponent, ID as PowerComponentID } from "../components/PowerCompo
 import { ZoneComponent, ID as ZoneComponentID } from "../components/ZoneComponent.sol";
 import { CommitmentComponent, ID as CommitmentComponentID } from "../components/CommitmentComponent.sol";
 
-import { LibCardMove } from "libraries/LibCardMove.sol";
-import { LibRound } from "libraries/LibRound.sol";
+import { LibRound } from "../libraries/LibRound.sol";
 
-import { ElementEnum, PositionEnum, ZoneEnum, ActionEnum, PhaseEnum, IdentityType, ActionType, MatchType, Move, MoveCard } from "../libraries/MSTypes.sol";
+import { ElementEnum, PositionEnum, ZoneEnum, ActionEnum, PhaseEnum, IdentityType, EffectType, PowerType, ActionType, MatchType } from "../libraries/MSTypes.sol";
 
 uint256 constant ID = uint256(keccak256("system.Move"));
 
-contract MoveCardSystem is System {
+contract MoveSystem is System {
   constructor(IWorld _world, address _components) System(_world, _components) {}
 
   function execute(bytes memory arguments) public returns (bytes memory) {
@@ -43,13 +42,8 @@ contract MoveCardSystem is System {
       "MoveSystem: cannot complete move during Action Timed"
     );
 
-    (Move memory move, ) = abi.decode(arguments, (Move, uint256));
-
     uint32 currentRound = LibRound.getCurrentRound(components);
     PhaseComponent phaseComponent = PhaseComponent(getAddressById(components, PhaseComponentID));
-
-    // move the card !
-    LibCardMove.moveCard(components, move, playerEntity);
 
     phaseComponent.set(playerEntity, currentRound);
   }

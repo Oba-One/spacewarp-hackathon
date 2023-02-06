@@ -8,10 +8,6 @@ contract MyScript is Script {
     uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
     vm.startBroadcast(deployerPrivateKey);
 
-    // SimpleCoin coin = new SimpleCoin();
-    // MinerAPI miner_api = new MinerAPI("0x0000001");
-    // MarketAPI market_api = new MarketAPI();
-
     vm.stopBroadcast();
   }
 }
