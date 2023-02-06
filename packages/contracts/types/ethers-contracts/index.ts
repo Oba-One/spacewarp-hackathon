@@ -18,10 +18,6 @@ export type { InitSystem } from "./InitSystem";
 export type { LibQuery } from "./LibQuery";
 export type { MatchComponent } from "./MatchComponent";
 export type { MoveCardComponent } from "./MoveCardComponent";
-<<<<<<< HEAD
-=======
-export type { MoveCharacterSystem } from "./MoveCharacterSystem";
->>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
 export type { MoveSystem } from "./MoveSystem";
 export type { OwnedByComponent } from "./OwnedByComponent";
 export type { PhaseComponent } from "./PhaseComponent";
@@ -52,10 +48,6 @@ export { IWorld__factory } from "./factories/IWorld__factory";
 export { LibQuery__factory } from "./factories/LibQuery__factory";
 export { MatchComponent__factory } from "./factories/MatchComponent__factory";
 export { MoveCardComponent__factory } from "./factories/MoveCardComponent__factory";
-<<<<<<< HEAD
-=======
-export { MoveCharacterSystem__factory } from "./factories/MoveCharacterSystem__factory";
->>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
 export { MoveSystem__factory } from "./factories/MoveSystem__factory";
 export { OwnedByComponent__factory } from "./factories/OwnedByComponent__factory";
 export { PhaseComponent__factory } from "./factories/PhaseComponent__factory";

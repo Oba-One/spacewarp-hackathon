@@ -3,10 +3,6 @@ export const systemToId = {
   ActionSystem: "system.Action",
   CommitSystem: "system.Commit",
   InitSystem: "system.Init",
-<<<<<<< HEAD
-=======
-  MoveCharacterSystem: "system.Init",
->>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
   MoveSystem: "system.Move",
 };
 
@@ -14,10 +10,6 @@ export const idToSystem = {
   "system.Action": "ActionSystem",
   "system.Commit": "CommitSystem",
   "system.Init": "InitSystem",
-<<<<<<< HEAD
-=======
-  "system.Init": "MoveCharacterSystem",
->>>>>>> f9ed3c88598bc64551cafecd4681d41c6964bf51
   "system.Move": "MoveSystem",
 };
   
