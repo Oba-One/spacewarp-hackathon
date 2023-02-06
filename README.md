@@ -1,10 +1,10 @@
-# SpaceWarp Hackathon 2023 -- MudSnap
+# SpaceWarp Hackathon 2023 -- DAOSquad
 
-This is the official SpaceWarp Hackathon 2023 submission for our project MudSnap.
+This is the official SpaceWarp Hackathon 2023 submission for our project DAOSquad.
 
 ## Project Description
 
-MudSnap3 is a full on chain game that is built using the Mud ECS(Enity Component System) framework. It is based on Marvel Snap a simple and fun game with a limited amount of turns and the simple objective to win 2 or more locations with characters with different power & effects in your deck. It translates well to fit on chain game models since there's at most 12 transactions and the game can be wagered based covering the cost of game actions.
+DAOSquad is a full on chain game that is built using the [Mud](https://mud.dev/) ECS(Enity Component System) framework. It is based on Marvel Snap a simple and fun game with a limited amount of turns and the simple objective to win 2 or more locations with characters with different power & effects in your deck. It translates well to fit on chain game models since there's at most 12 transactions and the game can be wagered based covering the cost of game actions.
 
 ## Features
 
@@ -25,6 +25,19 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 4. The game is over after the 6th turn and the winner determined by the number of locations they have won based on the power/effects of the cards placed.
 5. (If time permits) Users can earn collectibles (characters, locations) for playing games and can use them to create custom decks.
 6. (If time permits) Users can join one of 4 teams (Water, Earth, Fire, Air) and earn team collectibles for playing games.
+
+## Architecture
+
+**Game**
+
+![Game](Squad-archi.jpg)
+
+**DAO**
+
+![DAO](DAO-archi1.jpg)
+![DAO](DAO-archi2.jpg)
+
+# Deployments
 
 ## What's next?
 
@@ -93,4 +106,4 @@ You can contact the team on the address : contact@mudsnap.com
 
 ## Video Link :
 
-[MudSnap3 Video](https://www.loom.com)
+[SquadDAO Video](https://www.loom.com)

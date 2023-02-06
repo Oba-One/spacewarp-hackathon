@@ -5,11 +5,24 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 
 import { livepeerClient } from "../../modules/clients";
 import { Player } from "../../components/Player";
-import { Loader } from "../../components/Loader";
+// import { Loader } from "../../components/Loader";
 
-const Game: React.FC = () => {
+interface GameProps {
+  isMember?: boolean;
+  squadId: `0x${string}`;
+  squadMap: Record<string, Squad>;
+}
+
+const teamEnums = {
+  water: 1,
+  earth: 2,
+  fire: 3,
+  air: 4,
+};
+
+const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
   const [code, setCode] = useState(7);
-  const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
+  // const [status, setStatus] = useState<"pre-match" | "match" | "post-match">();
   const [result, seResult] = useState<GameResult>({
     winner: "",
     loser: "",
@@ -22,10 +35,9 @@ const Game: React.FC = () => {
   );
 
   const {
-    isLoaded,
+    sendMessage,
     unityProvider,
     takeScreenshot,
-    loadingProgression,
     addEventListener,
     removeEventListener,
     initialisationError,
@@ -40,16 +52,29 @@ const Game: React.FC = () => {
   });
 
   initialisationError && console.error("Error With Unity", initialisationError);
-  const loadingPercentage = Math.round(loadingProgression * 100);
+  // const loadingPercentage = Math.round(loadingProgression * 100);
+
+  useEffect(() => {
+    if (isMember && squadId) {
+      const squad = squadMap[squadId];
+
+      sendMessage("TeamSceneManager", "SetTeam", teamEnums[squad.element]);
+    } else {
+      sendMessage("TeamSceneManager", "SetTeam", 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMember, squadId]);
 
   useEffect(() => {
     function onGameStarted() {
-      setStatus("match");
+      console.log(`onGameStarted`);
+      // setStatus("match");
     }
     function onGameEnded() {
+      console.log(`onGameEnded`);
       const screenshot = takeScreenshot();
 
-      setStatus("post-match");
+      // setStatus("post-match");
 
       seResult({
         ...result,
@@ -57,6 +82,7 @@ const Game: React.FC = () => {
       });
     }
     function onGameCode(gameCode: number) {
+      console.log(`onGameCode: ${gameCode}`);
       setCode(gameCode);
     }
 
@@ -72,42 +98,65 @@ const Game: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handleWaterSelected() {
+    console.log("Water selected")
+    sendMessage("TeamSceneManager", "SetTeam", 1);
+  }
+
+  function handleEarthSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 2);
+  }
+
+  function handleFireSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 3);
+  }
+
+  function handleAirSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 4);
+  }
+
   return (
     <LivepeerConfig client={livepeerClient}>
-      {!isLoaded && <Loader precents={loadingPercentage} />}
-      {status === "post-match" ? (
-        <section className="flex h-screen w-screen items-center justify-center bg-amber-700"></section>
-      ) : (
-        <>
-          <section
-            id="react"
-            className="z-1 fixed flex h-screen w-screen justify-between"
-          >
+      <section className="container">
+        <div className="grid grid-cols-5 mt-20 ">
+          <div>
             <Player
-              type="opponent"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-            />
+            type="opponent"
+            peerId={peerId}
+            gameCode={code}
+            setGameCode={setCode}
+          />
+
+            </div>
+            <div className="col-span-3">
+                <Unity
+                className="w-full"
+                unityProvider={unityProvider}
+              />
+            </div>
+            <div>
             <Player
-              type="player"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-              opponentId={peerId}
-            />
-          </section>
-          <section
-            id="unity"
-            className="flex grid h-screen w-screen place-items-center"
-          >
-            <Unity
-              className="h-screen w-screen"
-              unityProvider={unityProvider}
-            />
-          </section>
-        </>
-      )}
+          type="player"
+          peerId={peerId}
+          gameCode={code}
+          setGameCode={setCode}
+          opponentId={peerId}
+        />
+            </div>
+
+          </div>
+          <div>
+          <h3>Choose squad</h3>
+              <button className="btn" onClick={handleWaterSelected.bind(this)}>Water</button>
+              <button className="btn" onClick={handleEarthSelected.bind(this)}>Earth</button>
+              <button className="btn" onClick={handleFireSelected.bind(this)}>Fire</button>
+              <button className="btn" onClick={handleAirSelected.bind(this)}>Air</button>
+          </div>
+
+        
+        
+
+      </section>
     </LivepeerConfig>
   );
 };

@@ -1,5 +1,6 @@
 import lighthouse from "@lighthouse-web3/sdk";
 import { useAccount, useSignMessage } from "wagmi";
+import { fetchSigner } from "@wagmi/core";
 
 interface Conditions {
   id: number;
@@ -27,6 +28,8 @@ export const useLighthouse = () => {
   const { signMessageAsync } = useSignMessage();
 
   const signature = async () => {
+    console.log("address", address);
+
     if (!address) throw new Error("No address found.");
 
     const messageRequested = (await lighthouse.getAuthMessage(address)).data
@@ -40,18 +43,16 @@ export const useLighthouse = () => {
     };
   };
 
-  const shareFile = async () => {
+  const shareFile = async (addresses: string[]) => {
     const cid = "QmTTa7rm2nMjz6wCj9pvRsadrCKyDXm5Vmd2YyBubCvGPi";
 
     // Then get auth message and sign
     // Note: message should be signed by owner of file.
     const { publicKey, signedMessage } = await signature();
 
-    const publicKeyUserB = ["0x201Bcc3217E5AA8e803B41d1F5B6695fFEbD5CeD"];
-
     const res = await lighthouse.shareFile(
       publicKey,
-      publicKeyUserB,
+      addresses,
       cid,
       signedMessage
     );
@@ -70,7 +71,9 @@ export const useLighthouse = () => {
   };
 
   /* Deploy file along with encryption */
-  const encryptFile = async (e: string) => {
+  const encryptFile = async (
+    e: React.ChangeEvent<HTMLInputElement> | string | Blob
+  ) => {
     /*
        uploadEncrypted(e, publicKey, accessToken, uploadProgressCallback)
        - e: js event
@@ -79,8 +82,13 @@ export const useLighthouse = () => {
        - signedMessage: message signed by the owner of publicKey
        - uploadProgressCallback: function to get progress (optional)
     */
+    console.log("encryptFile", e);
+
+    await fetchSigner();
+
     const sig = await signature();
     const response = await lighthouse.uploadEncrypted(
+      // @ts-ignore
       e,
       sig.publicKey,
       import.meta.env.VITE_VERCEL_LIGHTHOUSE_API_KEY ?? "",
@@ -89,33 +97,16 @@ export const useLighthouse = () => {
     );
 
     console.log(response);
-    /*
-      output:
-        {
-          Name: "c04b017b6b9d1c189e15e6559aeb3ca8.png",
-          Size: "318557",
-          Hash: "QmcuuAtmYqbPYmPx3vhJvPDi61zMxYvJbfENMjBQjq7aM3"
-        }
-      Note: Hash in response is CID.
-    */
 
     return response.data.Hash;
   };
 
   /* Decrypt file */
-  const decryptFile = async (
-    cid = "QmcuuAtmYqbPYmPx3vhJvPDi61zMxYvJbfENMjBQjq7aM3"
-  ) => {
+  const decryptFile = async (cid: string) => {
     // Fetch file encryption key
     const { publicKey, signedMessage } = await signature();
     console.log(signedMessage);
-    /*
-      fetchEncryptionKey(cid, publicKey, signedMessage)
-        Parameters:
-          CID: CID of the file to decrypt
-          publicKey: public key of the user who has access to file or owner
-          signedMessage: message signed by the owner of publicKey
-    */
+
     const keyObject = await lighthouse.fetchEncryptionKey(
       cid,
       publicKey,
@@ -123,18 +114,8 @@ export const useLighthouse = () => {
     );
 
     // Decrypt file
-    /*
-      decryptFile(cid, key, mimeType)
-        Parameters:
-          CID: CID of the file to decrypt
-          key: the key to decrypt the file
-          mimeType: default null, mime type of file
-    */
     const decrypted = await lighthouse.decryptFile(cid, keyObject.data.key);
-    console.log(decrypted);
-    /*
-      Response: blob
-    */
+    console.log("Decrypted File", decrypted);
 
     // View File
     const url = URL.createObjectURL(decrypted);
@@ -143,7 +124,7 @@ export const useLighthouse = () => {
   };
 
   const applyAccessConditions = async (
-    cid = "QmZkEMF5y5Pq3n291fG45oyrmX8bwRh319MYvj7V4W4tNh",
+    cid: string,
     conditions: Conditions[]
   ) => {
     // CID on which you are applying encryption
@@ -155,15 +136,6 @@ export const useLighthouse = () => {
     const aggregator = "([1])";
     const { publicKey, signedMessage } = await signature();
 
-    /*
-      accessCondition(publicKey, cid, signedMessage, conditions, aggregator)
-        Parameters:
-          publicKey: owners public key
-          CID: CID of file to decrypt
-          signedMessage: message signed by owner of publicKey
-          conditions: should be in format like above
-          aggregator: aggregator to apply on conditions
-    */
     const response = await lighthouse.accessCondition(
       publicKey,
       cid,
@@ -173,20 +145,22 @@ export const useLighthouse = () => {
     );
 
     console.log(response);
-    /*
-      {
-        data: {
-          cid: "QmZkEMF5y5Pq3n291fG45oyrmX8bwRh319MYvj7V4W4tNh",
-          status: "Success"
-        }
-      }
-    */
   };
+
+  async function uploadBuffer(buffer: any) {
+    const res = await lighthouse.uploadBuffer(
+      buffer,
+      import.meta.env.VITE_VERCEL_LIGHTHOUSE_API_KEY ?? ""
+    );
+
+    return res.data.Hash;
+  }
 
   return {
     shareFile,
     decryptFile,
     encryptFile,
+    uploadBuffer,
     applyAccessConditions,
   };
 };

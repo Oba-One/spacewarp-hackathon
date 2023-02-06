@@ -30,7 +30,7 @@ import type {
 export interface InitSystemInterface extends utils.Interface {
   functions: {
     "execute(bytes)": FunctionFragment;
-    "executeTyped(uint256)": FunctionFragment;
+    "executeTyped(uint256,uint256,uint256)": FunctionFragment;
     "owner()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
@@ -49,7 +49,11 @@ export interface InitSystemInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "executeTyped",
-    values: [PromiseOrValue<BigNumberish>]
+    values: [
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BigNumberish>
+    ]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
@@ -121,6 +125,8 @@ export interface InitSystem extends BaseContract {
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
+      teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -139,6 +145,8 @@ export interface InitSystem extends BaseContract {
 
   executeTyped(
     gameId: PromiseOrValue<BigNumberish>,
+    teamId: PromiseOrValue<BigNumberish>,
+    playerNum: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -157,6 +165,8 @@ export interface InitSystem extends BaseContract {
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
+      teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -187,6 +197,8 @@ export interface InitSystem extends BaseContract {
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
+      teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -206,6 +218,8 @@ export interface InitSystem extends BaseContract {
 
     executeTyped(
       gameId: PromiseOrValue<BigNumberish>,
+      teamId: PromiseOrValue<BigNumberish>,
+      playerNum: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

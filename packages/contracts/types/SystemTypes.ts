@@ -2,11 +2,13 @@
 import { ActionSystem } from "./ethers-contracts/ActionSystem";
 import { CommitSystem } from "./ethers-contracts/CommitSystem";
 import { InitSystem } from "./ethers-contracts/InitSystem";
+import { MoveCharacterSystem } from "./ethers-contracts/MoveCharacterSystem";
 import { MoveSystem } from "./ethers-contracts/MoveSystem";
  
 export type SystemTypes = {
   "system.Action": ActionSystem;
   "system.Commit": CommitSystem;
   "system.Init": InitSystem;
+  "system.MoveCharacterSystem": MoveCharacterSystem;
   "system.Move": MoveSystem;
 };

@@ -1,13 +1,17 @@
 import React from "react";
 
-import { useLeague } from "../../hooks/useLeague";
-import { useSquad } from "../../hooks/useSquad";
 import { Squad } from "../../components/Squad";
-import { Nav } from "../../components/Nav";
+import { useSquad } from "../../hooks/useSquad";
 
 import { Assets } from "./Assets";
 import { Matches } from "./Matches";
 import { LeaderBoard } from "./Leaderboard";
+
+interface LeagueProps {
+  isMember?: boolean;
+  squadId: `0x${string}`;
+  join: (squad: `0x${string}`) => Promise<void>;
+}
 
 const squads: Record<GameElement, Squad> = {
   water: {
@@ -36,40 +40,37 @@ const squads: Record<GameElement, Squad> = {
   },
 };
 
-const League: React.FC = () => {
-  const { squadId, isMember, join } = useLeague();
-  const { members, assets, proposals } = useSquad(squadId);
+const League: React.FC<LeagueProps> = ({ squadId, isMember, join }) => {
+  const { members, assets, proposals, proposeUpdate, voteOnProposal } =
+    useSquad(squadId);
 
   if (!isMember) {
-    return <div>Not a member</div>;
+    return (
+      <section className="sm:grid-rows-[repeat(2,_minmax(320px,_1fr)] flex h-full w-full flex-col gap-6  p-12 pt-24 sm:grid sm:grid-cols-[repeat(2,_1fr)] sm:place-content-evenly sm:place-items-center">
+        {Object.values(squads).map((squad) => (
+          <Squad key={squad.id} join={join} {...squad} />
+        ))}
+      </section>
+    );
   }
 
   return (
-    <>
-      <Nav />
-      {isMember ? (
-        <section
-          id="team"
-          className="flex h-full w-full flex-col sm:grid sm:grid-cols-[1fr_minmax(360px,_25%)]"
-        >
-          <div className="flex h-full flex-col gap-16 py-20 px-8 sm:overflow-auto">
-            <Matches team="water" members={members.data ?? []} />
-            <Assets
-              team="water"
-              assets={assets.data ?? []}
-              proposals={proposals.data ?? []}
-            />
-          </div>
-          <LeaderBoard team="water" members={members.data ?? []} />
-        </section>
-      ) : (
-        <section className="grid h-full w-full grid-cols-2 grid-rows-2">
-          {Object.values(squads).map((squad) => (
-            <Squad key={squad.id} join={join} {...squad} />
-          ))}
-        </section>
-      )}
-    </>
+    <section
+      id="team"
+      className="flex h-full w-full flex-col sm:grid sm:grid-cols-[1fr_minmax(360px,_25%)]"
+    >
+      <div className="flex h-full flex-col gap-16 py-20 px-8 sm:overflow-auto">
+        <Matches team="water" members={members.data ?? []} />
+        <Assets
+          team="water"
+          assets={assets.data ?? []}
+          proposals={proposals.data ?? []}
+          proposeUpdate={proposeUpdate}
+          voteOnProposal={voteOnProposal}
+        />
+      </div>
+      <LeaderBoard team="water" members={members.data ?? []} />
+    </section>
   );
 };
 

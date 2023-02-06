@@ -1,35 +1,30 @@
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { useState } from "react";
 
 import { useLighthouse } from "./useLighthouse";
 import { useLivepeer } from "./useLivepeer";
 
-const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
+export const useMatch = (
+  match: Match,
+  squadAddress: `0x${string}`,
+  mint: (matchId: number) => Promise<void>
+) => {
+  const [streamCID, setStreamCID] = useState("");
+  const [confirmMintModal, setConfirmMintModal] = useState(false);
+  const [shouldUploadStream, setShouldUploadStream] = useState(true);
 
-export const useMatch = (match: Match) => {
-  const { getStreamSessions } = useLivepeer();
+  const { getStreamSessions, getStreams } = useLivepeer();
   const { encryptFile, applyAccessConditions } = useLighthouse();
-  const prepareRedeem = usePrepareContractWrite({
-    address,
-    abi: [
-      {
-        name: "redeemCollectible",
-        type: "function",
-        stateMutability: "nonpayable",
-        inputs: ["uint256"],
-        outputs: [],
-      },
-    ],
-    functionName: "redeemCollectible",
-    args: [match.id],
-  });
-  const { writeAsync } = useContractWrite(prepareRedeem.config);
 
   async function mintCollectible() {
-    try {
-      if (!writeAsync) throw new Error("No writeAsync defined");
-      const res = await writeAsync();
+    if (!streamCID && shouldUploadStream) {
+      setConfirmMintModal(true);
+      return;
+    }
 
-      console.log("Success redeeming collectible", res);
+    try {
+      await mint(match.id);
+
+      console.log("Minted Collectible", match.id);
     } catch (error) {
       console.error("Error redeeming collectible", error);
     }
@@ -37,15 +32,64 @@ export const useMatch = (match: Match) => {
 
   async function uploadStream() {
     try {
-      const data = await getStreamSessions(`mudsnap-match-${match.id}`);
-      console.log("Upload Game Stream", data);
+      const streams = await getStreams();
+      const stream = streams?.find(
+        (stream) => stream.name === `mudsnap-match-${match.id}`
+      );
+
+      if (!stream) throw new Error("No stream found");
+
+      const sessions = await getStreamSessions(stream.id);
+
+      if (!sessions) throw new Error("No sessions found");
+
+      const lastRecording = sessions[sessions.length - 1];
+
+      const blob = await fetch(lastRecording.recordingUrl).then((r) =>
+        r.blob()
+      );
+
+      const cid = await encryptFile(blob);
+
+      setStreamCID(cid);
+
+      await applyAccessConditions(cid, [
+        {
+          chain: "hyperspace",
+          contractAddress: squadAddress,
+          id: 3141,
+          method: "balanceOf",
+          returnValueTest: {
+            comparator: ">=",
+            value: 3,
+          },
+          standardContractType: "ERC1155",
+          parameters: [":userAddress", "collectible"],
+        },
+      ]);
+
+      console.log("Uploaded Game Stream", cid);
     } catch (error) {
       console.error("Error uploading game stream", error);
     }
   }
 
+  async function handleConfirmMint(bool: boolean) {
+    if (bool === true) {
+      // Confirm
+      setConfirmMintModal(false);
+      setShouldUploadStream(false);
+      await mintCollectible();
+    } else {
+      // Cancel
+      setConfirmMintModal(false);
+    }
+  }
+
   return {
-    mintCollectible,
     uploadStream,
+    mintCollectible,
+    confirmMintModal,
+    handleConfirmMint,
   };
 };

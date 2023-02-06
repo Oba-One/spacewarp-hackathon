@@ -5,16 +5,37 @@ import { HuddleClientProvider } from "@huddle01/huddle01-client";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import Game from "./views/Game";
-import Squad from "./views/Squad";
+import League from "./views/Squad";
 
 import { Nav } from "./components/Nav";
+import { useLeague } from "./hooks/useLeague";
 import { huddleClient, wagmiClient } from "./modules/clients";
 
 const Views = () => {
+  const { squadMap, memberInfo, join } = useLeague();
+
   return (
     <Routes>
-      <Route index element={<Game />} />
-      <Route path="/squad" element={<Squad />} />
+      <Route
+        index
+        element={
+          <Game
+            squadId={memberInfo.data?.squadAddress ?? `0x`}
+            squadMap={squadMap}
+            isMember={!!memberInfo.data?.squadAddress}
+          />
+        }
+      />
+      <Route
+        path="/squad"
+        element={
+          <League
+            squadId={memberInfo.data?.squadAddress ?? `0x`}
+            join={join}
+            isMember={!!memberInfo.data?.squadAddress}
+          />
+        }
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

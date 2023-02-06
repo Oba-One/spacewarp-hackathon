@@ -1,4 +1,9 @@
+import { Button } from "../../components/Button";
 import { FC } from "react";
+
+interface SquadProps extends Squad {
+  join: (squad: `0x${string}`) => Promise<void>;
+}
 
 const assets: Record<GameElement, string[]> = {
   water: [
@@ -22,17 +27,12 @@ const assets: Record<GameElement, string[]> = {
     "/assets/air/vision.png",
   ],
 };
-
 const squadColors: Record<GameElement, string> = {
-  water: "bg-blue-500",
-  earth: "bg-green-500",
-  fire: "bg-red-500",
-  air: "bg-yellow-500",
+  water: " border-blue-500 border-4 ",
+  earth: "border-green-500 border-4",
+  fire: "border-red-500 border-4",
+  air: "border-yellow-500 border-4",
 };
-
-interface SquadProps extends Squad {
-  join: (squad: `0x${string}`) => Promise<void>;
-}
 
 export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
   async function handleJoin() {
@@ -41,19 +41,22 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
 
   return (
     <div
-      className={`${squadColors[element]} grid place-items-center`}
-      onClick={handleJoin}
+      className={`card bg-slate-800 ${squadColors[element]} grid aspect-[1/1] max-h-full  cursor-pointer overflow-hidden rounded-lg shadow-xl`}
     >
-      <div className="">
-        <h1 className="text-3xl font-bold">{element}</h1>
-        <p>{description}</p>
+      <div className="flex flex-col items-center justify-center gap-3">
+        <h1 className="text-4xl font-bold capitalize">{element}</h1>
+        <p className="text-xl ">{description}</p>
         <ul className="avatar-group -space-x-6">
           {assets[element].map((asset) => (
-            <li className="aspect-[2/3]">
+            <li key={asset} className="">
               <img className="" src={asset} alt={`${element} character`} />
             </li>
           ))}
         </ul>
+        {/* <p className="text-xl ">{description}</p */}
+        <Button className="" onClick={handleJoin}>
+          Join Squad
+        </Button>
       </div>
     </div>
   );

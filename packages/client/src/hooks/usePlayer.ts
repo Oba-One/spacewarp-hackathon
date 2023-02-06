@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Client } from "@livepeer/webrtmp-sdk";
-import { useCreateStream } from "@livepeer/react";
-import { useRootStore } from "@huddle01/huddle01-client";
 import { useAccount, useConnect } from "wagmi";
+import { Client } from "@livepeer/webrtmp-sdk";
+import { useCreateStream, useUpdateStream } from "@livepeer/react";
+import { useRootStore } from "@huddle01/huddle01-client";
+import { InjectedConnector } from "wagmi/connectors/injected";
 
-import { huddleClient } from "../modules/clients";
+import { clientChains, huddleClient } from "../modules/clients";
 
 type FormValues = {
   name: string;
@@ -37,6 +38,8 @@ const errorHandler = (error: any): ErrorStatus => {
   }
 };
 
+const STREAM_ID = import.meta.env.VITE_VERCEL_LIVEPEER_STREAM_ID ?? "";
+
 export const usePlayer = (
   gameCode: number,
   setGameCode: (code: number) => void
@@ -50,11 +53,21 @@ export const usePlayer = (
 
   // WALLET CONNECTION - Wagmi
   const { address } = useAccount();
-  const { connectAsync } = useConnect();
+  const { connectAsync } = useConnect({
+    connector: new InjectedConnector({
+      chains: clientChains,
+    }),
+    chainId: 3141,
+  });
 
   // LIVE STREAM - Liverpeer
   const liveStream = useCreateStream({
     name: `daosmack-match-${gameCode}`,
+    record: true,
+  });
+
+  const liveStreamUpdate = useUpdateStream({
+    streamId: STREAM_ID,
     record: true,
   });
 
@@ -83,7 +96,7 @@ export const usePlayer = (
     try {
       if (!gameCode) throw new Error("No game id found");
 
-      liveStream.mutate?.();
+      STREAM_ID ? liveStreamUpdate.mutate?.() : liveStream.mutate?.();
     } catch (error: any) {
       console.error("Error Starting Stream", error);
       setError(error.message ?? "Issue starting stream, please try again");
@@ -161,25 +174,33 @@ export const usePlayer = (
   }
 
   useEffect(() => {
-    if (liveStream.isError) {
+    if (liveStream.isError || liveStreamUpdate.isError) {
       setError(liveStream.error?.message ?? "Issue starting stream");
     }
 
-    if (liveStream.isSuccess) {
+    if (liveStream.isSuccess || liveStreamUpdate.isSuccess) {
       navigator.mediaDevices
         .getDisplayMedia({
           video: true,
           audio: true,
         })
         .then(async (stream) => {
-          if (!liveStream.data?.streamKey) {
+          if (
+            !liveStream.data?.streamKey &&
+            !liveStreamUpdate.data?.streamKey
+          ) {
             console.log("Stream Data", liveStream.data);
 
             throw new Error("No stream key!");
           }
 
           const client = new Client();
-          const session = client.cast(stream, liveStream.data?.streamKey ?? "");
+          const session = client.cast(
+            stream,
+            STREAM_ID
+              ? liveStreamUpdate.data?.streamKey ?? ""
+              : liveStream.data?.streamKey ?? ""
+          );
 
           session.on("open", () => {
             console.log("Stream started.");
@@ -196,7 +217,12 @@ export const usePlayer = (
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [liveStream.isSuccess, liveStream.isError]);
+  }, [
+    liveStream.isSuccess,
+    liveStream.isError,
+    liveStreamUpdate.isSuccess,
+    liveStreamUpdate.isError,
+  ]);
 
   return {
     error,

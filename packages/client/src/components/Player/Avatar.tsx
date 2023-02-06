@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { AvatarGenerator } from "random-avatar-generator";
-import { Player as LivePlayer } from "@livepeer/react";
 
 import PlayerAvatar from "/assets/avatar1.png";
 import OpponentAvatar from "/assets/avatar2.png";
@@ -75,7 +74,6 @@ const Player: FC<PlayerAvatarProps> = ({
     mics,
     isMicPaused,
     streamStatus,
-    liveStream,
     huddleName,
     huddleAvatar,
     showSettings,
@@ -137,7 +135,7 @@ const Player: FC<PlayerAvatarProps> = ({
                 <h5>Select Mic</h5>
                 <ul>
                   {mics.map((mic) => {
-                    return <li>{mic.label}</li>;
+                    return <li key={mic.deviceId}>{mic.label}</li>;
                   })}
                 </ul>
               </div>
@@ -171,20 +169,12 @@ const Player: FC<PlayerAvatarProps> = ({
               validate: (value) => value > 0,
             })}
           />
-          <Button type="submit">Connect To HQ</Button>
+          <Button type="submit">Join Chat</Button>
         </form>
       )}
       <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
         {error}
       </p>
-      {liveStream.data?.playbackId && (
-        <LivePlayer
-          title={liveStream.data?.name}
-          playbackId={liveStream.data?.playbackId}
-          autoPlay
-          muted
-        />
-      )}
     </>
   );
 };

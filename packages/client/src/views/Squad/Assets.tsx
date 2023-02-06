@@ -6,9 +6,24 @@ interface AssetsProps {
   team: GameElement;
   assets: Asset[];
   proposals: Proposal[];
+  proposeUpdate: (
+    assetId: number,
+    description: string,
+    url: string
+  ) => Promise<void>;
+  voteOnProposal: (
+    assetId: number,
+    proposalId: number,
+    vote: boolean
+  ) => Promise<void>;
 }
 
-export const Assets: FC<AssetsProps> = ({ assets, proposals }) => {
+export const Assets: FC<AssetsProps> = ({
+  assets,
+  proposals,
+  proposeUpdate,
+  voteOnProposal,
+}) => {
   const assetMap = assets.reduce((acc, asset) => {
     acc[asset.id] = asset;
     return acc;
@@ -36,7 +51,13 @@ export const Assets: FC<AssetsProps> = ({ assets, proposals }) => {
       </div>
       <ul className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4">
         {Object.values(assetMap).map((asset) => (
-          <Asset key={asset.id} actionsEnabled {...asset} />
+          <Asset
+            key={asset.id}
+            actionsEnabled
+            proposeUpdate={proposeUpdate}
+            voteOnProposal={voteOnProposal}
+            {...asset}
+          />
         ))}
       </ul>
     </div>

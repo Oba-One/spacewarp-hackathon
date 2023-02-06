@@ -1,0 +1,271 @@
+/* see PropPacks for the full list */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  --color-text: #000;
+  --color-bg: #ddd;
+  --color-link: #888;
+  --color-link-hover: #000;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  padding: 24px;
+   background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+  content: "";
+  position: fixed;
+  z-index: 1000;
+}
+
+.js .loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+.js .loading::after {
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: var(--color-link);
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+
+@keyframes loaderAnim {
+  to {
+    opacity: 1;
+    transform: scale3d(0.5, 0.5, 1);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+  /* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+  outline: none;
+  background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+  /* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+  background: transparent;
+}
+
+a:focus-visible {
+  /* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+  outline: 2px solid red;
+  background: transparent;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.unbutton:focus {
+  outline: none;
+}
+
+.frame {
+  color: var(--color-title);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "title prev sponsor";
+  justify-content: start;
+  grid-gap: 2rem;
+  z-index: 1000;
+}
+
+.frame a:not(.frame__title-back) {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.frame a:not(.frame__title-back)::before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  position: absolute;
+  top: 90%;
+  transition: transform 0.3s;
+  transform-origin: 0% 50%;
+}
+
+.frame a:not(.frame__title-back):hover::before {
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+}
+
+.frame__title {
+  grid-area: title;
+  display: flex;
+}
+
+.frame__title-main {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: normal;
+}
+
+.frame__title-back {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0.15rem;
+}
+
+.frame__title-back span {
+  display: none;
+}
+
+.frame__title-back svg {
+  fill: currentColor;
+}
+
+.frame__prev {
+  grid-area: prev;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ui-controls {
+  position: relative;
+  margin-top: 25vh;
+  width: 100%;
+  max-width: 500px;
+  font-family: inherit;
+  user-select: none;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.score {
+  font-weight: bold;
+}
+
+.ui-controls #score-result {
+  display: inline-block;
+  min-width: 1.8em;
+  color: #d45f2e;
+}
+.ui-controls #score-result:after {
+  content: "\200b";
+}
+.ui-controls #roll-btn {
+  background-color: #273e9a;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: 1.5em;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 2em 0 0 0;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.ui-controls #roll-btn:active {
+  transform: translateY(2px);
+}
+.ui-controls #roll-btn:hover {
+  background-color: #3737af;
+}
+
+ CSSResult Skip Results Iframe
+EDIT ON
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    

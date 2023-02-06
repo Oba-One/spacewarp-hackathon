@@ -39,13 +39,22 @@ enum PhaseEnum {
     Commit
 }
 
+struct MoveCard {
+    uint8 location;
+    bool used;
+}
+
+struct Move {
+    uint256 cardEntity;
+    uint256 moveCardEntity;
+}
+
 struct IdentityType {
     string name;
     string description;
 }
 
 struct EffectType {
-    // @junaama NOTE: Could/Should we use IdentityType here?
     string name;
     string description;
     uint256 value;

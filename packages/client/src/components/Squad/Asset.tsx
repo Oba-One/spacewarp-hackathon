@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 
-// import { useLighthouse } from "../../hooks/useLighthouse";
-import { useAsset } from "../../hooks/useAsset";
+import { useLighthouse } from "../../hooks/useLighthouse";
 
 // interface Metadata {
 //   name: string;
@@ -16,11 +15,21 @@ interface AssetProps extends Asset {
   // image: string;
   // metadata: Metadata;
   actionsEnabled: boolean;
+  proposeUpdate: (
+    assetId: number,
+    description: string,
+    url: string
+  ) => Promise<void>;
+  voteOnProposal: (
+    assetId: number,
+    proposalId: number,
+    vote: boolean
+  ) => Promise<void>;
 }
 
 export const Asset: FC<AssetProps> = (asset) => {
-  const { proposeUpdate, voteOnProposal } = useAsset(asset);
-  // const { encryptFile, applyAccessConditions } = useLighthouse();
+  const { proposeUpdate, voteOnProposal } = asset;
+  const { encryptFile, applyAccessConditions } = useLighthouse();
 
   const { register, handleSubmit } = useForm<{
     image: string;
@@ -33,21 +42,21 @@ export const Asset: FC<AssetProps> = (asset) => {
     const { image } = values;
 
     try {
-      // const encryptedFile = await encryptFile(image);
-      // await applyAccessConditions(encryptedFile, [
-      //   {
-      //     id: 1,
-      //     chain: "hyperspace",
-      //     contractAddress: asset.squadId,
-      //     method: "balanceOf",
-      //     returnValueTest: {
-      //       comparator: ">",
-      //       value: 0,
-      //     },
-      //     standardContractType: "ERC1155",
-      //   },
-      // ]);
-      // await proposeUpdate(asset.id, encryptedFile);
+      const encryptedFile = await encryptFile(image);
+      await applyAccessConditions(encryptedFile, [
+        {
+          id: 1,
+          chain: "hyperspace",
+          contractAddress: asset.squadId,
+          method: "balanceOf",
+          returnValueTest: {
+            comparator: ">",
+            value: 0,
+          },
+          standardContractType: "ERC1155",
+        },
+      ]);
+      await proposeUpdate(asset.id, "", encryptedFile);
     } catch (error) {
       console.error(error);
     }
