@@ -98,29 +98,64 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handleWaterSelected() {
+    console.log("Water selected")
+    sendMessage("TeamSceneManager", "SetTeam", 1);
+  }
+
+  function handleEarthSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 2);
+  }
+
+  function handleFireSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 3);
+  }
+
+  function handleAirSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 4);
+  }
+
   return (
     <LivepeerConfig client={livepeerClient}>
-      <section className="container h-screen w-screen">
-        {/* <Player
-          type="opponent"
-          peerId={peerId}
-          gameCode={code}
-          setGameCode={setCode}
-        />
-        <Player
+      <section className="container">
+        <div className="grid grid-cols-5 mt-20 ">
+          <div>
+            <Player
+            type="opponent"
+            peerId={peerId}
+            gameCode={code}
+            setGameCode={setCode}
+          />
+
+            </div>
+            <div className="col-span-3">
+                <Unity
+                className="w-full"
+                unityProvider={unityProvider}
+              />
+            </div>
+            <div>
+            <Player
           type="player"
           peerId={peerId}
           gameCode={code}
           setGameCode={setCode}
           opponentId={peerId}
-        /> */}
-        <Unity
-          className="mt-20 h-screen w-screen "
-          unityProvider={unityProvider}
         />
-        {/* <button className="btn" onClick={handleWaterSelected}>
-          Water
-        </button> */}
+            </div>
+
+          </div>
+          <div>
+          <h3>Choose squad</h3>
+              <button className="btn" onClick={handleWaterSelected.bind(this)}>Water</button>
+              <button className="btn" onClick={handleEarthSelected.bind(this)}>Earth</button>
+              <button className="btn" onClick={handleFireSelected.bind(this)}>Fire</button>
+              <button className="btn" onClick={handleAirSelected.bind(this)}>Air</button>
+          </div>
+
+        
+        
+
       </section>
     </LivepeerConfig>
   );
