@@ -28,11 +28,19 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 
 ## Architecture
 
-![PoPV](./docs/Squad-archi.jpg)
+**Game**
+
+![Game](./docs/Squad-archi.jpg)
+
+**DAO**
+
+![DAO](./docs/DAO-archi.jpg)
+![DAO](./docs/DAO-archi1.jpg)
 
 # Deployments
 
 ## What's next?
+
 
 **Optimization**
 
