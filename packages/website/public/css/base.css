@@ -199,14 +199,14 @@ canvas {
 }
 
 .ui-controls {
-  position: relative;
+  /* position: relative;
   margin-top: 25vh;
   width: 100%;
   max-width: 500px;
   font-family: inherit;
   user-select: none;
   line-height: 1.5;
-  padding: 10px;
+  padding: 10px; */
 }
 
 .score {
@@ -241,8 +241,6 @@ canvas {
   background-color: #3737af;
 }
 
- CSSResult Skip Results Iframe
-EDIT ON
 .animate-charcter
 {
    text-transform: uppercase;
@@ -268,4 +266,6 @@ EDIT ON
 
 @keyframes textclip {
   to {
-    
+    background-position: 200% center;
+  }
+}
