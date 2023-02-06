@@ -12,6 +12,13 @@
         "IdentityComponent", "MatchComponent", "InGameComponent", 
         "ZoneComponent"
       ]
+    },
+    {
+      "name": "MoveCharacterSystem",
+      "writeAccess": [
+        "PositionComponent", 
+        "ZoneComponent"
+      ]
     }
   ]
 }
