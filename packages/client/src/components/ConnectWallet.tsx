@@ -5,9 +5,6 @@ import { playerAvatar } from "../utils/avatarGenerator";
 import { Button } from "./Button";
 
 import { clientChains } from "../modules/clients";
-import { useLeague } from "../hooks/useLeague";
-import { useLighthouse } from "../hooks/useLighthouse";
-import { useLivepeer } from "../hooks/useLivepeer";
 
 export const ConnectWallet = () => {
   const { connectAsync } = useConnect({
@@ -19,63 +16,9 @@ export const ConnectWallet = () => {
   const { disconnect } = useDisconnect();
   const { address, isConnected } = useAccount();
   const { chain } = useNetwork();
-  const { join } = useLeague();
-  const { encryptFile, applyAccessConditions, uploadBuffer } = useLighthouse();
-  const { getStreamSessions, getStreams } = useLivepeer();
 
   async function handleConnection() {
     await connectAsync();
-    // await join(address ?? `0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`);
-  }
-
-  async function handleStreaming() {
-    try {
-      const streams = await getStreams();
-
-      console.log("Streams", streams);
-      const stream = streams?.find(
-        (stream) => stream.name === `daosmack-match-${7}`
-      );
-
-      if (!stream) throw new Error("No stream found");
-
-      const sessions = await getStreamSessions(stream.id);
-
-      if (!sessions) throw new Error("No sessions found");
-
-      const lastRecording = sessions[sessions.length - 1];
-
-      const blob = await fetch(lastRecording.recordingUrl).then((r) =>
-        r.blob()
-      );
-
-      const buffer = await blob.arrayBuffer();
-
-      // @ts-ignore
-      const cid = await uploadBuffer(buffer);
-
-      // setStreamCID(cid);
-
-      // await applyAccessConditions(cid, [
-      //   {
-      //     chain: "hyperspace",
-      //     contractAddress:
-      //       address ?? "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      //     id: 3141,
-      //     method: "balanceOf",
-      //     returnValueTest: {
-      //       comparator: ">=",
-      //       value: 3,
-      //     },
-      //     standardContractType: "ERC1155",
-      //     parameters: [":userAddress", "collectible"],
-      //   },
-      // ]);
-
-      // console.log("Uploaded Game Stream", cid);
-    } catch (error) {
-      console.error("Error uploading game stream", error);
-    }
   }
 
   function handleDisconnection() {
@@ -111,7 +54,6 @@ export const ConnectWallet = () => {
             </li>
           </ul>
         </div>
-        <Button onClick={handleStreaming}>Upload</Button>
       </div>
     );
 

@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-
 import { Chat } from "./Chat";
 import { Avatar, PlayerProps } from "./Avatar";
 
@@ -13,7 +12,9 @@ export const Player: FC<PlayerProps> = ({
 
   return (
     <aside
-      className={`fixed py-3 ${props.type === "player" ? "right-0" : "left-0"}`}
+      className={`absolute py-3 ${
+        props.type === "player" ? "right-0" : "left-0"
+      }`}
     >
       <Avatar
         {...props}
