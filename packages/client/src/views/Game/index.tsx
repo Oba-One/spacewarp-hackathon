@@ -59,17 +59,19 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
       const squad = squadMap[squadId];
 
       sendMessage("TeamSceneManager", "SetTeam", teamEnums[squad.element]);
+    } else {
+      sendMessage("TeamSceneManager", "SetTeam", 0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMember, squadId]);
 
   useEffect(() => {
     function onGameStarted() {
-      console.log(`onGameStarted`)
+      console.log(`onGameStarted`);
       // setStatus("match");
     }
     function onGameEnded() {
-      console.log(`onGameEnded`)
+      console.log(`onGameEnded`);
       const screenshot = takeScreenshot();
 
       // setStatus("post-match");
@@ -80,7 +82,7 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
       });
     }
     function onGameCode(gameCode: number) {
-      console.log(`onGameCode: ${gameCode}`)
+      console.log(`onGameCode: ${gameCode}`);
       setCode(gameCode);
     }
 
@@ -96,53 +98,30 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleWaterSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 1);
-  }
-
-  function handleEarthSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 2);
-  }
-
-  function handleFireSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 3);
-  }
-
-  function handleAirSelected() {
-    sendMessage("TeamSceneManager", "SetTeam", 4);
-  }
   return (
     <LivepeerConfig client={livepeerClient}>
-      <div className="container mt-24">
-        <div className="grid grid-cols-5">
-          <div>
-            <Player
-              type="opponent"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-            />
-          </div>
-
-          <div className="col-span-3">
-            <Unity className="w-full" unityProvider={unityProvider} />
-          </div>
-
-          <div>
-            <Player
-              type="player"
-              peerId={peerId}
-              gameCode={code}
-              setGameCode={setCode}
-              opponentId={peerId}
-            />
-          </div>
-        </div>
-      </div>
-      <button className="btn" onClick={handleWaterSelected}>Water</button>
-            <button className="btn" onClick={handleEarthSelected}>Earth</button>
-            <button className="btn" onClick={handleFireSelected}>Fire</button>
-            <button className="btn" onClick={handleAirSelected}>Air</button>
+      <section className="container h-screen w-screen">
+        {/* <Player
+          type="opponent"
+          peerId={peerId}
+          gameCode={code}
+          setGameCode={setCode}
+        />
+        <Player
+          type="player"
+          peerId={peerId}
+          gameCode={code}
+          setGameCode={setCode}
+          opponentId={peerId}
+        /> */}
+        <Unity
+          className="mt-20 h-screen w-screen "
+          unityProvider={unityProvider}
+        />
+        {/* <button className="btn" onClick={handleWaterSelected}>
+          Water
+        </button> */}
+      </section>
     </LivepeerConfig>
   );
 };

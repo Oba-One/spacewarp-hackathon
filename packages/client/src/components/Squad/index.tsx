@@ -28,7 +28,7 @@ const assets: Record<GameElement, string[]> = {
   ],
 };
 const squadColors: Record<GameElement, string> = {
-  water: " border-blue-500 border-4",
+  water: " border-blue-500 border-4 ",
   earth: "border-green-500 border-4",
   fire: "border-red-500 border-4",
   air: "border-yellow-500 border-4",

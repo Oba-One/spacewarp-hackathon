@@ -1,5 +1,6 @@
 import lighthouse from "@lighthouse-web3/sdk";
 import { useAccount, useSignMessage } from "wagmi";
+import { fetchSigner } from "@wagmi/core";
 
 interface Conditions {
   id: number;
@@ -27,6 +28,8 @@ export const useLighthouse = () => {
   const { signMessageAsync } = useSignMessage();
 
   const signature = async () => {
+    console.log("address", address);
+
     if (!address) throw new Error("No address found.");
 
     const messageRequested = (await lighthouse.getAuthMessage(address)).data
@@ -80,6 +83,8 @@ export const useLighthouse = () => {
        - uploadProgressCallback: function to get progress (optional)
     */
     console.log("encryptFile", e);
+
+    await fetchSigner();
 
     const sig = await signature();
     const response = await lighthouse.uploadEncrypted(
@@ -142,10 +147,20 @@ export const useLighthouse = () => {
     console.log(response);
   };
 
+  async function uploadBuffer(buffer: any) {
+    const res = await lighthouse.uploadBuffer(
+      buffer,
+      import.meta.env.VITE_VERCEL_LIGHTHOUSE_API_KEY ?? ""
+    );
+
+    return res.data.Hash;
+  }
+
   return {
     shareFile,
     decryptFile,
     encryptFile,
+    uploadBuffer,
     applyAccessConditions,
   };
 };
