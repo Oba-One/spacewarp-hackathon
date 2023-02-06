@@ -41,7 +41,6 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 
 ## What's next?
 
-
 **Optimization**
 
 **Gameplay**
