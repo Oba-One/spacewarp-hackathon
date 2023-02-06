@@ -1,0 +1,111 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212200e20a66a7f9349b9b90f26d5a7fc4931c4ac7c518ba48a94d9d836cca5f0bd1464736f6c63430008110033",
+    "sourceMap": "57:24:27:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea26469706673582212200e20a66a7f9349b9b90f26d5a7fc4931c4ac7c518ba48a94d9d836cca5f0bd1464736f6c63430008110033",
+    "sourceMap": "57:24:27:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/SquadFactory.sol\":\"SquadFactory\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/=lib/openzeppelin-contracts/\",\":@solmate/=lib/solmate/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"src/SquadFactory.sol\":{\"keccak256\":\"0x88392245357a758f1f77071a342dd2b6d5f9a11a0e4824f2fe318e6ecd9cd6d4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1d9d050338c37787dccd0eb2fda412d321612c72dc9d3efb0d963d0eff2034b4\",\"dweb:/ipfs/Qmack6VwMgnt3yB1UnnGaLa7aWJDK842hDoB2XVRVNUjVH\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=lib/openzeppelin-contracts/",
+        ":@solmate/=lib/solmate/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/SquadFactory.sol": "SquadFactory"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/SquadFactory.sol": {
+        "keccak256": "0x88392245357a758f1f77071a342dd2b6d5f9a11a0e4824f2fe318e6ecd9cd6d4",
+        "urls": [
+          "bzz-raw://1d9d050338c37787dccd0eb2fda412d321612c72dc9d3efb0d963d0eff2034b4",
+          "dweb:/ipfs/Qmack6VwMgnt3yB1UnnGaLa7aWJDK842hDoB2XVRVNUjVH"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/SquadFactory.sol",
+    "id": 29992,
+    "exportedSymbols": {
+      "SquadFactory": [
+        29991
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:49:27",
+    "nodes": [
+      {
+        "id": 29990,
+        "nodeType": "PragmaDirective",
+        "src": "32:23:27",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 29991,
+        "nodeType": "ContractDefinition",
+        "src": "57:24:27",
+        "nodes": [],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "SquadFactory",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          29991
+        ],
+        "name": "SquadFactory",
+        "nameLocation": "66:12:27",
+        "scope": 29992,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 27
+}

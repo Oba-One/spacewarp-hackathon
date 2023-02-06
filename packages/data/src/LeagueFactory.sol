@@ -6,7 +6,6 @@ contract LeagueFactory {
     // League id to league address
     mapping(uint256 => address) public leagueAddresses;
     League[] public leagues;
-    constructor() {}
 
     function getLeagues() public view returns (League[] memory) {
         return leagues;
