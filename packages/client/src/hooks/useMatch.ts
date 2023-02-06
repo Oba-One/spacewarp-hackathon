@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useLighthouse } from "./useLighthouse";
 import { useLivepeer } from "./useLivepeer";
+import { useStore } from '../Store';
 
 export const useMatch = (
   match: Match,
@@ -11,6 +12,8 @@ export const useMatch = (
   const [streamCID, setStreamCID] = useState("");
   const [confirmMintModal, setConfirmMintModal] = useState(false);
   const [shouldUploadStream, setShouldUploadStream] = useState(true);
+
+  const {updateError} = useStore();
 
   const { getStreamSessions, getStreams } = useLivepeer();
   const { encryptFile, applyAccessConditions } = useLighthouse();
@@ -26,6 +29,7 @@ export const useMatch = (
 
       console.log("Minted Collectible", match.id);
     } catch (error) {
+      updateError("Error redeeming collectible");
       console.error("Error redeeming collectible", error);
     }
   }
@@ -70,6 +74,7 @@ export const useMatch = (
 
       console.log("Uploaded Game Stream", cid);
     } catch (error) {
+      updateError("Error uploading game stream");
       console.error("Error uploading game stream", error);
     }
   }

@@ -1,4 +1,5 @@
 import { fetchSigner } from "@wagmi/core";
+import { useStore } from "../Store";
 import { useContract, useContractRead, useProvider } from "wagmi";
 
 import { abi } from "../types/LeagueABI.json";
@@ -6,6 +7,7 @@ import { abi } from "../types/LeagueABI.json";
 const address = import.meta.env.VITE_VERCEL_LEAGUE_CONTRACT_ADDRESS;
 
 export const useLeague = () => {
+  const {updateError} = useStore();
   const provider = useProvider();
 
   const leagueContract = useContract({
@@ -53,6 +55,7 @@ export const useLeague = () => {
 
       console.log("Squad Joined", squadMap[squadAddress], squad);
     } catch (error) {
+      updateError("Error joining league");
       console.error("Error joining league", error);
     }
   }

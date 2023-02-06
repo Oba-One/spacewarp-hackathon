@@ -1,3 +1,4 @@
+import React from "react";
 import { SWRConfig } from "swr";
 import { WagmiConfig } from "wagmi";
 import { Toaster } from "react-hot-toast";
@@ -10,6 +11,8 @@ import League from "./views/Squad";
 import { Nav } from "./components/Nav";
 import { useLeague } from "./hooks/useLeague";
 import { huddleClient, wagmiClient } from "./modules/clients";
+import { StoreProvider } from './Store';
+import { ErrorToast } from "./components/ErrorToast";
 
 const Views = () => {
   const { squadMap, memberInfo, join } = useLeague();
@@ -50,11 +53,14 @@ function App() {
         }}
       >
         <HuddleClientProvider value={huddleClient}>
-          <BrowserRouter>
-            <Nav />
-            <Views />
-            <Toaster />
-          </BrowserRouter>
+          <StoreProvider>  
+            <BrowserRouter>
+              <Nav />
+              <ErrorToast/>
+              <Views />
+              <Toaster />
+            </BrowserRouter>
+          </StoreProvider>
         </HuddleClientProvider>
       </SWRConfig>
     </WagmiConfig>

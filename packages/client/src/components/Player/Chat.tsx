@@ -7,11 +7,12 @@ import { RC as HistoryIcon } from "../../assets/history.svg";
 import { huddleClient } from "../../modules/clients";
 
 import { Input } from "../Input";
-import { iconStyles } from "./Avatar";
+import { smallIconStyles } from "./player.styles";
 
 type IChatType = "text" | "file" | "video" | "audio";
 
 interface ChatInputProps {
+  type: "player" | "opponent";
   peerId: string;
   opponentId?: string;
   setShowHistory: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,11 +27,11 @@ interface IChatMessage {
   message?: string | undefined;
   timestamp?: string | undefined;
   error?:
-    | {
-        type?: string | undefined;
-        isError: boolean;
-      }
-    | undefined;
+  | {
+    type?: string | undefined;
+    isError: boolean;
+  }
+  | undefined;
 }
 
 interface MessagesProps {
@@ -52,7 +53,9 @@ const ChatInput: FC<ChatInputProps> = ({
   opponentId,
   sendMessage,
   setShowHistory,
+  type
 }) => {
+  const isPlayer = type === 'player';
   const { handleSubmit } = useForm<{ msg: string }>({
     shouldUseNativeValidation: true,
   });
@@ -67,15 +70,17 @@ const ChatInput: FC<ChatInputProps> = ({
     }
   }
   return (
-    <div className="flex gap-2">
-      <form onSubmit={handleSubmit(handleSendMessage)}>
-        <Input icon={{ Svg: SendIcon, title: "Send Message" }} />;
-      </form>
+    <div className={`flex gap-2 items-center ${isPlayer ? 'justify-center' : 'ml-5'}`}>
+      {isPlayer ?
+        <form onSubmit={handleSubmit(handleSendMessage)}>
+          <Input ghost icon={{ Svg: SendIcon, title: "Send Message" }} />
+        </form> : null
+      }
       <div
-        className={`${iconStyles}`}
+        className={`${smallIconStyles}`}
         onClick={() => setShowHistory((view) => !view)}
       >
-        <HistoryIcon />
+        <HistoryIcon className='w-6 h-6' viewBox="0 0 39 39" />
       </div>
     </div>
   );
@@ -114,6 +119,7 @@ export const Chat: FC<ChatProps> = ({
   opponentId,
   showChat,
   setHasNotifications,
+  type
 }) => {
   const [showHistory, setShowHistory] = useState(false);
   const [notifications, setNotifications] = useState<IChatMessage[]>([]);
@@ -141,13 +147,10 @@ export const Chat: FC<ChatProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
-  if (!showChat) {
-    return null;
-  }
-
   return (
     <>
       <ChatInput
+        type={type}
         setShowHistory={setShowHistory}
         sendMessage={huddleClient.sendDM}
         peerId={peerId}

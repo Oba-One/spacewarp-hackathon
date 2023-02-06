@@ -84,7 +84,7 @@ export const ConnectWallet = () => {
 
   if (isConnected)
     return (
-      <div className="flex h-12 flex-none gap-2">
+      <div className="flex flex-none gap-2">
         <div className="grid place-items-center">
           <h5>{chain?.name}</h5>
           <div className="badge-secondary badge badge-md grid w-24 place-items-center line-clamp-1">

@@ -1,4 +1,5 @@
 import lighthouse from "@lighthouse-web3/sdk";
+import { useStore } from "../Store";
 import { useAccount, useSignMessage } from "wagmi";
 import { fetchSigner } from "@wagmi/core";
 
@@ -24,13 +25,15 @@ const progressCallback = (progressData: {
 };
 
 export const useLighthouse = () => {
+  const {updateError} = useStore();
   const { address } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
   const signature = async () => {
-    console.log("address", address);
-
-    if (!address) throw new Error("No address found.");
+    if (!address) {
+      updateError('No address found.')
+      throw new Error("No address found.");
+    }
 
     const messageRequested = (await lighthouse.getAuthMessage(address)).data
       .message;

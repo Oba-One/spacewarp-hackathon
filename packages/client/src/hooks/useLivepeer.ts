@@ -1,3 +1,5 @@
+import { useStore } from "../Store";
+
 interface Stream {
   name: string;
   id: string;
@@ -24,6 +26,7 @@ interface StreamSession {
 }
 
 export const useLivepeer = () => {
+  const {updateError} = useStore();
   const getStreams = async () => {
     try {
       const response = await fetch(
@@ -38,11 +41,12 @@ export const useLivepeer = () => {
           },
         }
       );
-
+    
       const data: Stream[] = await response.json();
 
       return data;
     } catch (error) {
+      updateError('Error fetching streams');
       console.log("Error fetching streams", error);
     }
   };
@@ -65,7 +69,8 @@ export const useLivepeer = () => {
       const data: StreamSession[] = await response.json();
 
       return data;
-    } catch (error) {
+    } catch (error: any) {
+      updateError(error.message ?? 'Error')
       console.log("Error", error);
     }
   };
