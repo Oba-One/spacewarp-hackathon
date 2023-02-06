@@ -42,7 +42,6 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
   return (
     <div
       className={`card bg-slate-800 ${squadColors[element]} grid aspect-[1/1] max-h-full  cursor-pointer overflow-hidden rounded-lg shadow-xl`}
-      onClick={handleJoin}
     >
       <div className="flex flex-col items-center justify-center gap-3">
         <h1 className="text-4xl font-bold capitalize">{element}</h1>
@@ -55,7 +54,9 @@ export const Squad: FC<SquadProps> = ({ id, element, description, join }) => {
           ))}
         </ul>
         {/* <p className="text-xl ">{description}</p */}
-        <Button className="">Join Squad</Button>
+        <Button className="" onClick={handleJoin}>
+          Join Squad
+        </Button>
       </div>
     </div>
   );

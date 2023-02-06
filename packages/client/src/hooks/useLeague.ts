@@ -24,17 +24,19 @@ export const useLeague = () => {
       return map;
     }, {}) ?? {};
 
-  const memberInfo = useContractRead<any, "", { squadAddress?: string }>({
-    address,
-    abi,
-    functionName: "getMemberInfo",
-  }).data;
+  const memberInfo = useContractRead<any, "", { squadAddress?: `0x${string}` }>(
+    {
+      address,
+      abi,
+      functionName: "getMemberInfo",
+    }
+  );
 
   const matches = useContractRead<any, "", Match[]>({
     address,
     abi,
     functionName: "getMatches",
-  }).data;
+  });
 
   // Potential for joining a legue and being put in a draft or having to meet some criteria
   async function join(squadAddress: `0x${string}`) {

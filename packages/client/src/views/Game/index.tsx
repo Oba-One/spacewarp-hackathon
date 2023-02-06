@@ -9,7 +9,7 @@ import { Player } from "../../components/Player";
 
 interface GameProps {
   isMember?: boolean;
-  squadId: string;
+  squadId: `0x${string}`;
   squadMap: Record<string, Squad>;
 }
 
