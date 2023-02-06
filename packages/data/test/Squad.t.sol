@@ -50,4 +50,6 @@ contract LeagueTest is Test {
         // @junaama TODO: failing assertion
         assertEq(_squad.getSquadInfo(),keccak256(abi.encodePacked(squadIdIdx, "TestName", "TestDescription")));
     }
+
+    // TODO: Tests for proposal creation, voting, execution, etc.
 }
