@@ -10,13 +10,6 @@
     />
     <meta name="keywords" content="DAO, gaming, web3, webgl" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
     <link rel="stylesheet" type="text/css" href="css/base.css" />
     <script>
       document.documentElement.className = "js";
@@ -42,32 +35,21 @@
     </script>
     <script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
   </head>
-  <body class="grid h-screen w-screen overflow-hidden">
-    <header class="fixed">
-      <img src="daosquad-logo.png" />
+  <body>
+    <header>
+      <img src="daosquad-logo.png" alt="Dao Squad" />
     </header>
-    <main class="grid h-full w-full place-items-center bg-slate-800">
+    <main>
       <div class="content">
         <canvas id="canvas"></canvas>
-        <div class="absolute text-4xl">
-          <h3 class="animate-charcter">DAO Shall Not Steal</h3>
-          <h3 class="animate-charcter">DAO Shall Not Lie</h3>
-          <h3 class="animate-charcter">DAO Shall Play</h3>
-        </div>
-        <div class="ui-controls absolute">
-          <button id="roll-btn" class="btn">Throw some dice</button>
-          <a id="roll-btn" class="btn-primary bg-primary">Play Dao Smack</a>
+        <div class="ui-controls">
+          <h3 class="animate-charcter">EKOSH</h3>
+          <h3 class="animate-charcter">EKOSH</h3>
+
+          <button id="roll-btn">Throw the dice</button>
         </div>
       </div>
     </main>
-    <footer class="fixed bottom-0 flex w-full py-2">
-      <a>
-        <img src="daosquad-logo.png" />
-      </a>
-      <a>
-        <img src="daosquad-logo.png" />
-      </a>
-    </footer>
     <script
       async
       src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
@@ -80,7 +62,7 @@
         }
       }
     </script>
+    <script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
