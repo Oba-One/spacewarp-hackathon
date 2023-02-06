@@ -30,12 +30,12 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 
 **Game**
 
-![Game](./docs/Squad-archi.jpg)
+![Game](Squad-archi.jpg)
 
 **DAO**
 
-![DAO](DAO-archi.jpg)
 ![DAO](DAO-archi1.jpg)
+![DAO](DAO-archi2.jpg)
 
 # Deployments
 
