@@ -9,3 +9,6 @@
 [submodule "packages/data/lib/openzeppelin-contracts"]
 	path = packages/data/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "packages/data/lib/solmate"]
+	path = packages/data/lib/solmate
+	url = https://github.com/transmissions11/solmate
