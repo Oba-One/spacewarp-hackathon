@@ -15,21 +15,21 @@ export const useSquad = (address: `0x${string}`) => {
     address,
     abi,
     functionName: "getInfo",
-  }).data;
+  });
   const assets = useContractRead<any, "", Asset[]>({
     address,
     abi,
-  }).data;
+  });
   const members = useContractRead<any, "", Member[]>({
     address,
     abi,
     functionName: "getMembers",
-  }).data;
+  });
   const proposals = useContractRead<any, "", Proposal[]>({
     address,
     abi,
     functionName: "getProposals",
-  }).data;
+  });
 
   async function proposeUpdate(
     assetId: number,

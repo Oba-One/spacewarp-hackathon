@@ -1,23 +1,36 @@
 import { useMatch } from "../../hooks/useMatch";
 import { FC } from "react";
 
-export const Match: FC<Match> = (match) => {
-  const { mintCollectible, uploadStream } = useMatch(match);
+interface MatchProps extends Match {
+  squadId: `0x${string}`;
+  mint: (assetId: number) => Promise<void>;
+}
+
+const teamAvatars: Record<GameElement, string[]> = {
+  water: [],
+  earth: [],
+  fire: [],
+  air: [],
+};
+
+export const Match: FC<MatchProps> = ({ mint, ...match }) => {
+  const { mintCollectible, uploadStream } = useMatch(
+    match,
+    match.squadId,
+    mint
+  );
 
   return (
     <li className="card card-side flex aspect-[4/3] flex-col items-center justify-between gap-3 bg-slate-800 px-4 py-3 shadow-xl">
       <div className="flex w-full items-center justify-around">
-        <h4 className="text-lg font-bold">Water Squad</h4>
+        <h4 className="text-lg font-bold">{match.squads[0]}</h4>
         <h4 className="text-2xl font-bold">VS</h4>
-        <h4 className="text-xl font-bold">Fire Squad</h4>
+        <h4 className="text-xl font-bold">{match.squads[1]}</h4>
       </div>
-      <p className="text-lg font-light">Won by Player 1</p>
+      <p className="text-clamp-1 text-lg font-light">Won by {match.winner}</p>
 
       <div className="flex w-full items-center justify-around">
         <ul className="avatar-group -space-x-6">
-          <figure className="mask mask-hexagon w-16">
-            <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
-          </figure>
           <figure className="mask mask-hexagon w-16">
             <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
           </figure>
@@ -26,9 +39,6 @@ export const Match: FC<Match> = (match) => {
           <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
         </figure>
         <ul className="avatar-group -space-x-6">
-          <figure className="mask mask-hexagon w-16">
-            <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
-          </figure>
           <figure className="mask mask-hexagon w-16">
             <img src="https://picsum.photos/seed/picsum/200/200" alt="Movie" />
           </figure>

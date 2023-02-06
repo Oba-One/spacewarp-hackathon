@@ -2,7 +2,6 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 
 import { useLighthouse } from "../../hooks/useLighthouse";
-import { useAsset } from "../../hooks/useAsset";
 
 // interface Metadata {
 //   name: string;
@@ -16,10 +15,16 @@ interface AssetProps extends Asset {
   // image: string;
   // metadata: Metadata;
   actionsEnabled: boolean;
+  proposeUpdate: (
+    assetId: number,
+    description: string,
+    url: string
+  ) => Promise<void>;
+  voteOnProposal: (proposalId: number, vote: boolean) => Promise<void>;
 }
 
 export const Asset: FC<AssetProps> = (asset) => {
-  const { proposeUpdate, voteOnProposal } = useAsset(asset);
+  const { proposeUpdate, voteOnProposal } = asset;
   const { encryptFile, applyAccessConditions } = useLighthouse();
 
   const { register, handleSubmit } = useForm<{
@@ -47,7 +52,7 @@ export const Asset: FC<AssetProps> = (asset) => {
           standardContractType: "ERC1155",
         },
       ]);
-      await proposeUpdate(asset.id, encryptedFile);
+      await proposeUpdate(asset.id, "", encryptedFile);
     } catch (error) {
       console.error(error);
     }

@@ -17,7 +17,6 @@ import { huddleClient } from "../../modules/clients";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { useOpponent, usePlayer } from "../../hooks/usePlayer";
-import { useLighthouse } from "../../hooks/useLighthouse";
 
 export interface PlayerProps extends GameProps, OpponentAvatarProps {
   type: "player" | "opponent";
@@ -69,7 +68,6 @@ const Player: FC<PlayerAvatarProps> = ({
   setShowChat,
   hasNotifications,
 }) => {
-  const { applyAccessConditions, decryptFile, encryptFile } = useLighthouse();
   const {
     status,
     error,
@@ -174,18 +172,6 @@ const Player: FC<PlayerAvatarProps> = ({
           <Button type="submit">Join Chat</Button>
         </form>
       )}
-      <Button
-        onClick={() =>
-          decryptFile("QmUnZMhyWimo6gTAfj7V9cN8bBo5YL8C4uiWERRtWi9H2Q")
-        }
-      >
-        Test Lighthouse
-      </Button>
-      <input
-        onChange={(e) => encryptFile(e)}
-        type="file"
-        className="file-input w-full max-w-xs"
-      />
       <p className="h-4 px-1 text-xs leading-4 text-red-700 line-clamp-1">
         {error}
       </p>
