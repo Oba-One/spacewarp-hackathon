@@ -45,7 +45,6 @@ struct IdentityType {
 }
 
 struct EffectType {
-    // @junaama NOTE: Could/Should we use IdentityType here?
     string name;
     string description;
     uint256 value;

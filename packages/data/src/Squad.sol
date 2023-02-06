@@ -4,7 +4,7 @@ import "./SquadCollectibles.sol";
 
 contract Squad is SquadCollectibles {
   event ProposalCreated(uint256 id, address proposer, uint256 assetId);
-  event ProposalVoted(address indexed voter, uint256 proposalId, uint8 support);
+  event ProposalVoted(address indexed voter, uint256 proposalId, bool support);
   event ProposalCancelled(uint256 id);
   event ProposalExecuted(uint256 id);
 
@@ -14,7 +14,8 @@ contract Squad is SquadCollectibles {
   mapping(address => uint256) public collectiblesEarned;
   uint256 collectiblesId;
   uint256 public squadId;
-
+  string public squadName;
+  string public squadDescription;
   struct Member {
     address memberAddress;
     uint256 wins;
@@ -26,26 +27,29 @@ contract Squad is SquadCollectibles {
   struct Proposal {
     uint256 id;
     uint256 assetId;
+    string assetUri;
     address proposer;
     string description;
     uint256 forVotes;
     uint256 againstVotes;
-    uint256 abstainVotes;
     bool cancelled;
     bool executed;
   }
   struct Receipt {
+    uint256 proposalId;
     bool voted;
-    uint8 support;
+    bool support;
   }
 
   Proposal[] public proposals;
   Asset[] public assets;
   mapping(address => Receipt) public receipts;
 
-  constructor(uint256 _squadId, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
+  constructor(uint256 _squadId, string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
     squadId = _squadId;
+    squadName = _squadName;
+    squadDescription = _squadDescription;
   }
 
   modifier ownerOnly() {
@@ -93,20 +97,22 @@ contract Squad is SquadCollectibles {
     }
     return membersData;
   }
+
+  function getCollectiblesEarned() public view returns (uint256) {
+    return collectiblesEarned[msg.sender];
+  }
+
   function getProposals() public view returns (Proposal[] memory) {
     return proposals;
   }
 
-  function voteOnProposal(uint256 proposalId, uint8 support) external {
-    require(support <= 2, "Invalid vote");
+  function voteOnProposal(uint256 proposalId, bool support) external {
     Proposal storage proposal = proposals[proposalId];
     Receipt storage receipt = receipts[msg.sender];
-    if (support == 0) {
+    if (support) {
       proposal.forVotes = proposal.forVotes + 1;
-    } else if (support == 1) {
-      proposal.againstVotes = proposal.againstVotes + 1;
     } else {
-      proposal.abstainVotes = proposal.abstainVotes + 1;
+      proposal.againstVotes = proposal.againstVotes + 1;
     }
     receipt.voted = true;
     receipt.support = support;
@@ -117,12 +123,13 @@ contract Squad is SquadCollectibles {
   /**
    * @notice Function to propose a new asset to be added to the DAO
    */
-  function proposeUpdate(string memory _description, uint256 _assetId) public returns (uint256) {
+  function proposeUpdate(uint256 _assetId, string memory _description, string memory _uri) public returns (uint256) {
     Proposal memory proposal;
     proposal.id = proposals.length + 1;
     proposal.proposer = msg.sender;
     proposal.description = _description;
     proposal.assetId = _assetId;
+    proposal.assetUri = _uri;
     proposals.push(proposal);
     emit ProposalCreated(proposal.id, msg.sender, proposal.assetId);
     return proposal.id;
@@ -133,5 +140,9 @@ contract Squad is SquadCollectibles {
   }
   function updateAssets(Asset calldata _assets) public ownerOnly {
     assets.push(_assets);
+  }
+
+  function getSquadInfo() public view returns (bytes32) {
+    return keccak256(abi.encodePacked(squadId, squadName, squadDescription));
   }
 }
