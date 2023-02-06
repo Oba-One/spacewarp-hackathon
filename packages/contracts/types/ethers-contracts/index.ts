@@ -17,12 +17,9 @@ export type { InGameComponent } from "./InGameComponent";
 export type { InitSystem } from "./InitSystem";
 export type { LibQuery } from "./LibQuery";
 export type { MatchComponent } from "./MatchComponent";
-<<<<<<< HEAD
 export type { MoveCardComponent } from "./MoveCardComponent";
-=======
 export type { MoveCharacterSystem } from "./MoveCharacterSystem";
 export type { MoveSystem } from "./MoveSystem";
->>>>>>> 658be4eb8f03f20a856785f96e3b5e1db79bc2c6
 export type { OwnedByComponent } from "./OwnedByComponent";
 export type { PhaseComponent } from "./PhaseComponent";
 export type { PositionComponent } from "./PositionComponent";
@@ -39,14 +36,7 @@ export { ActionSystem__factory } from "./factories/ActionSystem__factory";
 export { AssetComponent__factory } from "./factories/AssetComponent__factory";
 export { BareComponent__factory } from "./factories/BareComponent__factory";
 export { CommitmentComponent__factory } from "./factories/CommitmentComponent__factory";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 export { CommitSystem__factory } from "./factories/CommitSystem__factory";
->>>>>>> b8b513cdbb0d1bb2ca65acf7faba59802bb83286
-=======
-export { CommitSystem__factory } from "./factories/CommitSystem__factory";
->>>>>>> 658be4eb8f03f20a856785f96e3b5e1db79bc2c6
 export { CoordComponent__factory } from "./factories/CoordComponent__factory";
 export { EffectComponent__factory } from "./factories/EffectComponent__factory";
 export { EnergyComponent__factory } from "./factories/EnergyComponent__factory";
@@ -58,12 +48,9 @@ export { IUint256Component__factory } from "./factories/IUint256Component__facto
 export { IWorld__factory } from "./factories/IWorld__factory";
 export { LibQuery__factory } from "./factories/LibQuery__factory";
 export { MatchComponent__factory } from "./factories/MatchComponent__factory";
-<<<<<<< HEAD
 export { MoveCardComponent__factory } from "./factories/MoveCardComponent__factory";
-=======
 export { MoveCharacterSystem__factory } from "./factories/MoveCharacterSystem__factory";
 export { MoveSystem__factory } from "./factories/MoveSystem__factory";
->>>>>>> 658be4eb8f03f20a856785f96e3b5e1db79bc2c6
 export { OwnedByComponent__factory } from "./factories/OwnedByComponent__factory";
 export { PhaseComponent__factory } from "./factories/PhaseComponent__factory";
 export { PositionComponent__factory } from "./factories/PositionComponent__factory";

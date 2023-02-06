@@ -6,18 +6,18 @@ public static class Mud
     public readonly static float POLL_INTERVAL_SECS = 10f;
 
     // World
-    public readonly static string WORLD_ADDRESS = "0x46E69aAe78E2df6a8a72E45eE6c5dA2904cdaB04";
+    public readonly static string WORLD_ADDRESS = "0x71158F752678238c1260859fe7e1709CB956EE76";
 
     // Components
-    public readonly static string ASSET_COMPONENT = "0xEfE20c73f64bd3e995C271bfca7eaf76F27c9206";
-    public readonly static string OWNEDBY_COMPONENT = "0x492d77998F9E0549A3c75035faFC1c8051DeaCE4";
-    public readonly static string POSITION_COMPONENT = "0xc27Df43AbDb760c02912328d99A0a575378F7e73";
-    public readonly static string MATCH_COMPONENT = "0xE8c775a6B5d4994097a9F6Ed950a306B42400Aa3";
-    public readonly static string INGAME_COMPONENT = "0x001333715e8500cB83775746B347384A675b37C0";
-    public readonly static string ZONE_COMPONENT = "0x74C154b1d4966Cd64daEbE00579E339500cf729F";
+    public readonly static string ASSET_COMPONENT = "0x4105334c031eC0040112a7e6d1eDb237c21b43cB";
+    public readonly static string OWNEDBY_COMPONENT = "0x76bFa758ca1380dc07D4c7237cA375CcD99Fcb1F";
+    public readonly static string POSITION_COMPONENT = "0x055FE8a4A3356B6ca79398a4C5a881a224d1f053";
+    public readonly static string MATCH_COMPONENT = "0x3DDdf14A82f4541B9a16A35f0617E861A65866A4";
+    public readonly static string INGAME_COMPONENT = "0x402Ae0f3925be21E2C98213F36C5259593B677DB";
+    public readonly static string ZONE_COMPONENT = "0x35a93e84428BAC803916c5074eCBEc73a4990141";
 
     // Systems
-    public readonly static string SYSTEM_INIT = "0x57d873217e90A6b47cc27BFb06eB930EB5C5D3cc";
+    public readonly static string SYSTEM_INIT = "0xa80688399f68b82cA0b848F13461d31433C85C99";
 
     // ABIs
     // https://www.freeformatter.com/json-escape.html
