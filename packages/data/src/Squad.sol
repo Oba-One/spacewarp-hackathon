@@ -8,14 +8,6 @@ contract Squad is SquadCollectibles {
   event ProposalCancelled(uint256 id);
   event ProposalExecuted(uint256 id);
 
-  address private _owner;
-  address[] public squadMembers;
-  mapping(address => bool) public members;
-  mapping(address => uint256) public collectiblesEarned;
-  uint256 collectiblesId;
-  uint256 public squadId;
-  string public squadName;
-  string public squadDescription;
   struct Member {
     address memberAddress;
     uint256 wins;
@@ -23,6 +15,7 @@ contract Squad is SquadCollectibles {
   struct Asset {
     string uri;
     uint256 assetId;
+    rank:
   }
   struct Proposal {
     uint256 id;
@@ -41,11 +34,20 @@ contract Squad is SquadCollectibles {
     bool support;
   }
 
+  address private _owner;
+  address[] public squadMembers;
+  mapping(address => bool) public members;
+  mapping(address => uint256) public collectiblesEarned;
+  uint256 collectiblesId;
+  uint256 public squadId;
+  string public squadName;
+  string public squadDescription;
+
   Proposal[] public proposals;
   Asset[] public assets;
   mapping(address => Receipt) public receipts;
 
-  constructor(uint256 _squadId, string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
+  constructor(string calldata _squadName, string calldata _squadDescription, string calldata _baseURI, string calldata _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
     squadId = _squadId;
     squadName = _squadName;
@@ -81,6 +83,13 @@ contract Squad is SquadCollectibles {
     receiveOnJoin(msg.sender, squadId);
     squadMembers.push(msg.sender);
     members[msg.sender] = true;
+  }
+
+  function addMember(address _address, uint256 wins) public ownerOnly {
+    receiveOnJoin(_address, squadId);
+    squadMembers.push(_address);
+    members[_address] = true;
+    collectiblesEarned[_address] = wins;
   }
 
   function getAssets() public view returns (Asset[] memory) {

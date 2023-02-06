@@ -143,13 +143,22 @@ contract League is AccessControl, SquadFactory {
     gameExists[_worldAddress] = false;
   }
 
-  function joinSquad(uint _index) notInOtherSquad external {
-    require(_index <= squads.length, "Squad does not exist");
+  function joinSquad(address _squadAddress) notInOtherSquad external {
+    require(squadExists[_squadAddress] == true, "Squad does not exist");
     Squad squad = Squad(squads[_index]);
     squad.join();
     memberToSquad[msg.sender] = address(squad);
     _grantRole(LEAGUE_MEMBER, msg.sender);
     emit SquadJoined(msg.sender, _index);
+  }
+
+  function addMemberToSquad(address _squadAddress, address _member, uint256 _wins) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(squadExists[_squadAddress] == true, "Squad does not exist");
+    Squad squad = Squad(_squadAddress);
+    squad.addMember(_member, _wins);
+    memberToSquad[_member] = address(squad);
+    _grantRole(LEAGUE_MEMBER, _member);
+    emit SquadJoined(_member, squads.length - 1);
   }
 
   function isSquadMember(address member) public view returns (MemberInfo memory) {
