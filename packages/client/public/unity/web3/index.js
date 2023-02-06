@@ -196,33 +196,12 @@ async function sendContract(method, abi, contract, args, value, gasLimit, gasPri
   const from = (await web3.eth.getAccounts())[0];
   console.log("sendContract to " + contract)
   console.log(`method: ${method}`)
+  // abi = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gameId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"teamId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"executeTyped\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}]}]"
   console.log(abi)
+  // args = `["${args}","0x0000000000000000000000000000000000000000000000000000000000000002"]`
   console.log(args)
-  // method = 'executeTyped'
-  // const contract2 = "0x9836ea5087Ec83c95D5582C2FBd15Ecf3E61f968"
-  // const args2 = '0x000000000000000000000000000000000000000000000000000000000001415d'
-  // // args = web3.utils.hexToUtf8(args)
-  // console.log(args)
-  // const abi2 = [{
-  //   "inputs": [
-  //     {
-  //       "internalType": "uint256",
-  //       "name": "gameId",
-  //       "type": "uint256"
-  //     }
-  //   ],
-  //   "name": "executeTyped",
-  //   "outputs": [
-  //     {
-  //       "internalType": "bytes",
-  //       "name": "",
-  //       "type": "bytes"
-  //     }
-  //   ],
-  //   "stateMutability": "nonpayable",
-  //   "type": "function"
-  // }]
-  new web3.eth.Contract(JSON.parse(abi), contract).methods[method](args)
+
+  new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
   .send({
     from,
     value,

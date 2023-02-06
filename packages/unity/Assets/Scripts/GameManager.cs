@@ -20,10 +20,20 @@ public class GameManager : MonoBehaviour
     private List<CardManager> field;
     [SerializeField]
     private Transform[] handSlots;
+    [SerializeField]
     private Transform[] fieldSlots;
 
     [SerializeField]
     private Text account;
+
+    [SerializeField]
+    private Text joinCode;
+
+    [SerializeField]
+    private Text numerator;
+
+    private int POLL_INTERVAL_MS = 1500;
+    private bool firstLoad = true;
 
     void Awake()
     {
@@ -35,29 +45,44 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("PollMudState");
+        DrawHand(new string[]{
+            "QmVRKmufiSDogoQh6c1heFbCvUTSgu6xctycTb5jyoCcm1",
+            "QmYc7CYd2wpiY69PdzWrsZjrUum69GDvzt24YpRFUmhr8U",
+            "QmZRTKS5iBULdk3u1Sm69MVyEaPe1evcnUFfWaYj4cA7av",
+            "Qme9uezkeVaRZ8Qo2N16duFCsmGZjXiXt2tkPH6KZUV3n7",
+            "QmNe4AbGkyyaoKjLdE6jpiyuMjisiPeGAQ2NA7TigW1p5E",
+            "QmW7q4QxyYC6mFZniU7SqXPivSsijNCt6kWDQWxiWpyDK3",
+            "QmerXkUqbixUfy47YHusPBVTd2CPDBgpmHVtxiyC9n31NN"
+            });
     }
 
-    IEnumerator<WaitForSeconds> PollMudState()
-    {
-        for(;;)
-        {
-            Debug.Log("PollMudState");
-            //yield on a new YieldInstruction that waits for 5 seconds.
-            yield return new WaitForSeconds(60);
-            // await RefreshFromMud();
-        }
-    }
+    // public async Task<int> PollMudState()
+    // {
+    //     if (shouldPoll)
+    //     {
+    //         Debug.Log("PollMudState");
+    //         shouldPoll = false;
+    //         string gameHex = PlayerData.gameIdHex();
+    //         string matchState = await GetMatchState(gameHex);
+    //         Debug.Log("Got match state");
+    //         Debug.Log(matchState);
+
+    //         await Task.Delay(POLL_INTERVAL_MS);
+    //         shouldPoll = true;
+    //         return 1;
+    //     }
+    //     return 0;
+    // }
 
     // Update is called once per frame
     void Update()
     {
-        account.text = PlayerPrefs.GetString("Account");
+        account.text = PlayerData.teamName() + " " + PlayerPrefs.GetString("Account");
+        joinCode.text = "Join code:  " + PlayerData.gameId.ToString();
+        // await PollMudState();
     }
 
-    
-
-    void DrawGame(string[] imageCids)
+    void DrawHand(string[] imageCids)
     {
         Debug.Log("CreateGame");
         string ipfsHost = "https://gateway.lighthouse.storage/ipfs";
@@ -66,7 +91,8 @@ public class GameManager : MonoBehaviour
         foreach (var imageCid in imageCids)
         {
             Debug.Log("Creating card " + handSlotIndex);
-            if (handSlotIndex >= handSlots.Length) {
+            if (handSlotIndex >= handSlots.Length)
+            {
                 Debug.Log("More characters then spaces on the board!!!!!!!!!");
                 break;
             }
@@ -75,9 +101,9 @@ public class GameManager : MonoBehaviour
             card.transform.SetParent(canvas.transform, false);
             CardManager cardManager = card.GetComponent<CardManager>();
             card.transform.position = cardPosition;
-            
+
             Debug.Log(cardManager);
-            
+
             string cardUri = ipfsHost + "/" + imageCid;
             cardManager.SetImage(cardUri);
             Debug.Log("Created card " + handSlotIndex);
@@ -87,20 +113,36 @@ public class GameManager : MonoBehaviour
     public async void RefreshFromMud()
     {
         Debug.Log("RefreshFromMud");
-        string[] playerCharacters = await GetPlayerCharacters();
-        Debug.Log("Got characters for this player, this game");
-        foreach (var character in playerCharacters)
+        if (firstLoad)
         {
-            Debug.Log(character);
+            firstLoad = false;
+            Debug.Log("Will draw characters for the first time");
+            string[] playerCharacters = await GetPlayerCharacters();
+            Debug.Log("Got characters for this player, this game");
+            foreach (var character in playerCharacters)
+            {
+                Debug.Log(character);
+            }
+            string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
+            Debug.Log("Assets for each character");
+            foreach (var asset in characterAssets)
+            {
+                Debug.Log(asset);
+            }
+            DrawHand(characterAssets);
         }
-        
-        string[] characterAssets = await GetAssetsForCharacters(playerCharacters);
-        Debug.Log("Assets for each character");
-        foreach (var asset in characterAssets)
+        else
         {
-            Debug.Log(asset);
+            Debug.Log("Will not redraw characters");
         }
-        DrawGame(characterAssets);
+
+        string gameHex = PlayerData.gameIdHex();
+        string[] matchState = await GetMatchState(gameHex);
+        Debug.Log("Got match state");
+        Debug.Log(matchState);
+        string turnsLeft = matchState[2];
+        int turnNum = 6 - int.Parse(turnsLeft);
+        numerator.text = turnNum.ToString();
     }
 
     public async Task<string[]> GetAssetsForCharacters(string[] characters)
@@ -136,11 +178,32 @@ public class GameManager : MonoBehaviour
     /*
         RPC
     */
+    public async Task<string[]> GetMatchState(string gameId)
+    {
+        Debug.Log("GetMatchState");
+        string abi = Mud.GET_MATCH_VALUE_ABI;
+        // address of contract
+        string contract = Mud.MATCH_COMPONENT;
+        Debug.Log("Game id: " + gameId);
+
+        string method = "getValue";
+        // equivalent to sending empty bytes as arg
+
+        string chain = "mud";
+        string network = "mud";
+        // array of arguments for contract
+        string args = "[\"" + gameId + "\"]";
+        // RPC invocation
+        string response = await EVM.Call(chain, network, contract, abi, method, args, Mud.RPC_URI);
+        Debug.Log("Got response");
+        print(response);
+        return Mud.AdaptMudResp2StringArr(response);
+    }
 
     public async Task<string> GetAssetForCharacter(string character)
     {
         Debug.Log("GetAssetForCharacter");
-        string abi = Mud.GET_VALUE_ABI;
+        string abi = Mud.GET_STRING_VALUE_ABI;
         // address of contract
         string contract = Mud.ASSET_COMPONENT;
         Debug.Log("Character: " + character);

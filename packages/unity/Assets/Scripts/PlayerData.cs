@@ -3,25 +3,28 @@ using UnityEngine;
 public static class PlayerData
 {
     public static int gameId { get; set; }
+    public static int team { get; set; }
 
-    public static string gameIdHex() {
+    public static string teamName()
+    {
+        return Mud.TeamId2Name(team);
+    }
+
+    public static string gameIdHex()
+    {
        return  "0x" + PlayerData.gameId.ToString("X64");
     }
+
+    public static string teamIdHex()
+    {
+       return  "0x" + PlayerData.team.ToString("X64");
+    }
+
 
     public static int GenGameId()
     {
         int start = 1;
         int end = 99999;
         return Random.Range(start, end);
-        // const string glyphs= "ABCDEFG0123456789";
-        // string s = "";
-        
-        // for(int i=0; i<4; i++)
-        // {
-        //     s += glyphs[Random.Range(0, glyphs.Length)];
-        // }
-
-
-        // return s;
     }
 }

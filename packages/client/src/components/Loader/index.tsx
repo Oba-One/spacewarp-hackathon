@@ -5,11 +5,12 @@ import styles from "./Loader.module.css";
 interface LoaderProps {
   error?: string;
   reload?: () => void;
+  precents?: number;
 }
 
 export const Loader: React.FC<LoaderProps> = ({ error }) => {
   return (
-    <div className="flex h-screen w-screen justify-center items-center bg-amber-700 z-10">
+    <div className="z-10 flex h-screen w-screen items-center justify-center bg-amber-700">
       {error ? (
         <div className="">
           💔
