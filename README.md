@@ -34,8 +34,8 @@ Focused on creating a fun and interactive experience MudSnap has the following f
 
 **DAO**
 
-![DAO](./docs/DAO-archi.jpg)
-![DAO](./docs/DAO-archi1.jpg)
+![DAO](DAO-archi.jpg)
+![DAO](DAO-archi1.jpg)
 
 # Deployments
 
