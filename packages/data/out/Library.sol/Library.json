@@ -1,0 +1,262 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "src/Library.sol",
+    "id": 31027,
+    "exportedSymbols": {
+      "Asset": [
+        31026
+      ],
+      "Member": [
+        31018
+      ],
+      "Rank": [
+        31013
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:244:29",
+    "nodes": [
+      {
+        "id": 31007,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:29",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".17"
+        ]
+      },
+      {
+        "id": 31013,
+        "nodeType": "EnumDefinition",
+        "src": "67:75:29",
+        "nodes": [],
+        "canonicalName": "Rank",
+        "members": [
+          {
+            "id": 31008,
+            "name": "Bronze",
+            "nameLocation": "83:6:29",
+            "nodeType": "EnumValue",
+            "src": "83:6:29"
+          },
+          {
+            "id": 31009,
+            "name": "Silver",
+            "nameLocation": "95:6:29",
+            "nodeType": "EnumValue",
+            "src": "95:6:29"
+          },
+          {
+            "id": 31010,
+            "name": "Gold",
+            "nameLocation": "107:4:29",
+            "nodeType": "EnumValue",
+            "src": "107:4:29"
+          },
+          {
+            "id": 31011,
+            "name": "Platinum",
+            "nameLocation": "117:8:29",
+            "nodeType": "EnumValue",
+            "src": "117:8:29"
+          },
+          {
+            "id": 31012,
+            "name": "Diamond",
+            "nameLocation": "131:7:29",
+            "nodeType": "EnumValue",
+            "src": "131:7:29"
+          }
+        ],
+        "name": "Rank",
+        "nameLocation": "72:4:29"
+      },
+      {
+        "id": 31018,
+        "nodeType": "StructDefinition",
+        "src": "146:64:29",
+        "nodes": [],
+        "canonicalName": "Member",
+        "members": [
+          {
+            "constant": false,
+            "id": 31015,
+            "mutability": "mutable",
+            "name": "memberAddress",
+            "nameLocation": "174:13:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 31018,
+            "src": "166:21:29",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 31014,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "166:7:29",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 31017,
+            "mutability": "mutable",
+            "name": "wins",
+            "nameLocation": "201:4:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 31018,
+            "src": "193:12:29",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 31016,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "193:7:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "Member",
+        "nameLocation": "153:6:29",
+        "scope": 31027,
+        "visibility": "public"
+      },
+      {
+        "id": 31026,
+        "nodeType": "StructDefinition",
+        "src": "213:70:29",
+        "nodes": [],
+        "canonicalName": "Asset",
+        "members": [
+          {
+            "constant": false,
+            "id": 31020,
+            "mutability": "mutable",
+            "name": "uri",
+            "nameLocation": "239:3:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 31026,
+            "src": "232:10:29",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage_ptr",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 31019,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "232:6:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 31022,
+            "mutability": "mutable",
+            "name": "assetId",
+            "nameLocation": "256:7:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 31026,
+            "src": "248:15:29",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 31021,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "248:7:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 31025,
+            "mutability": "mutable",
+            "name": "rank",
+            "nameLocation": "274:4:29",
+            "nodeType": "VariableDeclaration",
+            "scope": 31026,
+            "src": "269:9:29",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_Rank_$31013",
+              "typeString": "enum Rank"
+            },
+            "typeName": {
+              "id": 31024,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 31023,
+                "name": "Rank",
+                "nameLocations": [
+                  "269:4:29"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 31013,
+                "src": "269:4:29"
+              },
+              "referencedDeclaration": 31013,
+              "src": "269:4:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_Rank_$31013",
+                "typeString": "enum Rank"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "Asset",
+        "nameLocation": "220:5:29",
+        "scope": 31027,
+        "visibility": "public"
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 29
+}

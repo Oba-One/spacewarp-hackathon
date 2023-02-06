@@ -51,8 +51,8 @@ contract SquadCollectibles is ERC1155, Ownable {
     _mint(to, tokenId, 1, "");
   }
 
-  function receiveOnJoin(address _to, uint256 squadId) internal {
-    _mint(_to, squadId, 1, "");
+  function receiveOnJoin(address _to) internal {
+    _mint(_to, uint256(uint160(msg.sender)), 1, "");
   }
 
   function uri(uint256 id) public view override returns (string memory) {

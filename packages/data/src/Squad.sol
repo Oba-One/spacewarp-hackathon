@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "./SquadCollectibles.sol";
+import "./Library.sol";
 
 contract Squad is SquadCollectibles {
   event ProposalCreated(uint256 id, address proposer, uint256 assetId);
@@ -8,24 +9,6 @@ contract Squad is SquadCollectibles {
   event ProposalCancelled(uint256 id);
   event ProposalExecuted(uint256 id);
 
-
-  enum Rank {
-    Bronze,
-    Silver,
-    Gold,
-    Platinum,
-    Diamond
-  }
-
-  struct Member {
-    address memberAddress;
-    uint256 wins;
-  }
-  struct Asset {
-    string uri;
-    uint256 assetId;
-    Rank rank;
-  }
   struct Proposal {
     uint256 id;
     uint256 assetId;
@@ -44,7 +27,6 @@ contract Squad is SquadCollectibles {
   }
 
   struct SquadInfo {
-    uint256 id;
     string name;
     string description;
   }
@@ -54,7 +36,6 @@ contract Squad is SquadCollectibles {
   mapping(address => bool) public members;
   mapping(address => uint256) public collectiblesEarned;
   uint256 collectiblesId;
-  uint256 public squadId;
   string public squadName;
   string public squadDescription;
 
@@ -62,9 +43,8 @@ contract Squad is SquadCollectibles {
   Asset[] public assets;
   mapping(address => mapping(uint256 => Receipt)) public receipts;
 
-  constructor(string calldata _squadName, string calldata _squadDescription, string calldata _baseURI, string calldata _contractURI) SquadCollectibles(_baseURI, _contractURI) {
+  constructor(string memory _squadName, string memory _squadDescription, string memory _baseURI, string memory _contractURI) SquadCollectibles(_baseURI, _contractURI) {
     _owner = msg.sender;
-    squadId = _squadId;
     squadName = _squadName;
     squadDescription = _squadDescription;
   }
@@ -101,13 +81,13 @@ contract Squad is SquadCollectibles {
   }
 
   function join() public ownerOnly {
-    receiveOnJoin(msg.sender, squadId);
+    receiveOnJoin(msg.sender);
     squadMembers.push(msg.sender);
     members[msg.sender] = true;
   }
 
   function addMember(address _address, uint256 wins) public ownerOnly {
-    receiveOnJoin(_address, squadId);
+    receiveOnJoin(_address);
     squadMembers.push(_address);
     members[_address] = true;
     collectiblesEarned[_address] = wins;
@@ -137,14 +117,14 @@ contract Squad is SquadCollectibles {
     return proposals;
   }
 
-  function voteOnProposal(uint256 _assetId, uint256 _proposalId, _bool support) external memberOnly requireRank(_assetId) {
+  function voteOnProposal(uint256 _assetId, uint256 _proposalId, bool _support) external memberOnly requireRank(_assetId) {
     require(proposals[_proposalId].cancelled == false, "Proposal Cancelled");
     require(proposals[_proposalId].executed == false, "Proposal Executed");
     require(receipts[msg.sender][_proposalId].voted == false, "Already Voted");
     require(proposals[_proposalId].proposer != msg.sender, "Cannot vote on own proposal");
 
     Proposal storage proposal = proposals[_proposalId];
-    Receipt storage receipt = receipts[msg.sender];
+    Receipt storage receipt = receipts[msg.sender][_proposalId];
     if (_support) {
       proposal.forVotes = proposal.forVotes + 1;
     } else {
@@ -153,7 +133,7 @@ contract Squad is SquadCollectibles {
     receipt.voted = true;
     receipt.support = _support;
 
-    emit ProposalVoted(msg.sender, proposalId, _support);
+    emit ProposalVoted(msg.sender, _proposalId, _support);
   }
 
   /**
@@ -175,15 +155,15 @@ contract Squad is SquadCollectibles {
     return members[_address];
   }
 
-  function updateAsset(Asset calldata _asset) public ownerOnly {
-    assets.push(_assets);
+  function updateAsset(uint256 _assetId, Rank _rank, string memory _uri) public ownerOnly {
+    assets.push(Asset(_uri, _assetId, _rank));
   }
 
-  function setAsset(Asset[] calldata _assets) public ownerOnly {
-    assets = _assets;
-  }
+  // function setAssets(Asset[] memory _assets) public ownerOnly {
+  //   assets = _assets;
+  // }
 
   function getSquadInfo() public view returns (SquadInfo memory) {
-    return SquadInfo(squadId, squadName, squadDescription);
+    return SquadInfo(squadName, squadDescription);
   }
 }

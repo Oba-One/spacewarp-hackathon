@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 contract League is AccessControl, SquadFactory {
-  event SquadJoined(address member, uint256 squadId);
+  event SquadJoined(address member);
   event LeagueJoined(address member);
   event CollectibleRedeemed(address member, uint256 collectibleTokenId);
 
@@ -119,7 +119,7 @@ contract League is AccessControl, SquadFactory {
     squads.push(squad);
     squadExists[_squadAddress] = true;
 
-    emit SquadJoined(msg.sender, squads.length - 1);
+    emit SquadJoined(msg.sender);
   }
 
   function closeLeague() public onlyRole(DEFAULT_ADMIN_ROLE) onlyOpenLeague {
@@ -146,11 +146,12 @@ contract League is AccessControl, SquadFactory {
 
   function joinSquad(address _squadAddress) notInOtherSquad external {
     require(squadExists[_squadAddress] == true, "Squad does not exist");
-    Squad squad = Squad(squads[_index]);
+    Squad squad = Squad(_squadAddress);
     squad.join();
     memberToSquad[msg.sender] = address(squad);
     _grantRole(LEAGUE_MEMBER, msg.sender);
-    emit SquadJoined(msg.sender, _index);
+  
+    emit SquadJoined(msg.sender);
   }
 
   function addMemberToSquad(address _squadAddress, address _member, uint256 _wins) public onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -159,7 +160,7 @@ contract League is AccessControl, SquadFactory {
     squad.addMember(_member, _wins);
     memberToSquad[_member] = address(squad);
     _grantRole(LEAGUE_MEMBER, _member);
-    emit SquadJoined(_member, squads.length - 1);
+    emit SquadJoined(_member);
   }
 
   function isSquadMember(address member) public view returns (MemberInfo memory) {
