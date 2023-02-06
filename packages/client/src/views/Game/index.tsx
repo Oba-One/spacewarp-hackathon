@@ -65,9 +65,11 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
 
   useEffect(() => {
     function onGameStarted() {
+      console.log(`onGameStarted`)
       // setStatus("match");
     }
     function onGameEnded() {
+      console.log(`onGameEnded`)
       const screenshot = takeScreenshot();
 
       // setStatus("post-match");
@@ -78,6 +80,7 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
       });
     }
     function onGameCode(gameCode: number) {
+      console.log(`onGameCode: ${gameCode}`)
       setCode(gameCode);
     }
 
@@ -93,6 +96,21 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handleWaterSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 1);
+  }
+
+  function handleEarthSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 2);
+  }
+
+  function handleFireSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 3);
+  }
+
+  function handleAirSelected() {
+    sendMessage("TeamSceneManager", "SetTeam", 4);
+  }
   return (
     <LivepeerConfig client={livepeerClient}>
       <div className="container mt-24">
@@ -121,6 +139,10 @@ const Game: React.FC<GameProps> = ({ isMember, squadId, squadMap }) => {
           </div>
         </div>
       </div>
+      <button className="btn" onClick={handleWaterSelected}>Water</button>
+            <button className="btn" onClick={handleEarthSelected}>Earth</button>
+            <button className="btn" onClick={handleFireSelected}>Fire</button>
+            <button className="btn" onClick={handleAirSelected}>Air</button>
     </LivepeerConfig>
   );
 };

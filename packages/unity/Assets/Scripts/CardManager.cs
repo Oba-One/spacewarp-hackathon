@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 public class CardManager : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void GameEnded();
+
     [SerializeField]
     private GameObject imageObj;
     [SerializeField]
@@ -30,6 +34,12 @@ public class CardManager : MonoBehaviour
             transform.position = zone.position;
             transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
             location.lastZoneFilled++;
+            if (location.lastZoneFilled >= 4)
+            {
+                if (Application.platform == RuntimePlatform.WebGLPlayer) {
+                    GameEnded();
+                }
+            }
             moveButtons.SetActive(false);
         }
     }

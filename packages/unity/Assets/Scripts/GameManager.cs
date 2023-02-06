@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Text numerator;
+
+    [DllImport("__Internal")]
+    private static extern void GameStarted();
+
 
     private bool firstLoad = true;
     private bool opponentLoaded = false;
@@ -303,6 +308,9 @@ public class GameManager : MonoBehaviour
         string opponentHex = "Against: 0x" + opponentInt.ToString("X64");
         opponentAddress.text = opponentHex;
         opponentBox.SetActive(true);
+        if (Application.platform == RuntimePlatform.WebGLPlayer) {
+            GameStarted();
+        }
 
         // All characters from all games owned by player
         string[] entitiesOwnedByOpponent = await GetEntitiesOwnedBy(opponent);
