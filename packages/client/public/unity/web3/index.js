@@ -40,22 +40,7 @@ window.web3gl.connect()
 */
 async function connect() {
   // uncomment to enable torus and walletconnect
-  const providerOptions = {
-    // torus: {
-    //   package: Torus,
-    //     options:{
-    //       rpc: "https://goerli.infura.io/v3/",
-    //       chainId: 5,
-    //       networkId: 5
-    //   },
-    // walletconnect: {
-    //   package: window.WalletConnectProvider.default,
-    //   options: {
-    //     infuraId: "00000000000000000000000000000000",
-    //   },
-    // },
-  };
-
+  const providerOptions = new Web3.providers.HttpProvider("https://follower.testnet-chain.linfra.xyz")
   const web3Modal = new window.Web3Modal.default({
     providerOptions,
   });
@@ -201,7 +186,7 @@ paste this in inspector to connect to interact with contract:
 const method = "increment"
 const abi = `[ { "inputs": [], "name": "increment", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "x", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" } ]`;
 const contract = "0xB6B8bB1e16A6F73f7078108538979336B9B7341C"
-const args = "[]"
+const args = "[]" to send no params. "[[]]" to send empty bytes.
 const value = "0"
 const gasLimit = "222222" // gas limit
 const gasPrice = "333333333333"
@@ -209,7 +194,10 @@ window.web3gl.sendContract(method, abi, contract, args, value, gasLimit, gasPric
 */
 async function sendContract(method, abi, contract, args, value, gasLimit, gasPrice) {
   const from = (await web3.eth.getAccounts())[0];
-  new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
+  if (args === "\"[[]]\"") {
+    // Parsing empty strings doesn't work as desired
+    // This is a special case where you want to supply empty bytes as a single arg
+    new web3.eth.Contract(JSON.parse(abi), contract).methods[method]([])
       .send({
         from,
         value,
@@ -222,6 +210,21 @@ async function sendContract(method, abi, contract, args, value, gasLimit, gasPri
       .on("error", (error) => {
         window.web3gl.sendContractResponse = error.message;
       });
+  } else {
+    new web3.eth.Contract(JSON.parse(abi), contract).methods[method](...JSON.parse(args))
+    .send({
+      from,
+      value,
+      gas: gasLimit ? gasLimit : undefined,
+      gasPrice: gasPrice ? gasPrice : undefined,
+    })
+    .on("transactionHash", (transactionHash) => {
+      window.web3gl.sendContractResponse = transactionHash;
+    })
+    .on("error", (error) => {
+      window.web3gl.sendContractResponse = error.message;
+    });
+  }
 }
 
 // add new wallet to in metamask
@@ -229,11 +232,46 @@ async function addEthereumChain() {
   const account = (await web3.eth.getAccounts())[0];
 
   // fetch https://chainid.network/chains.json
-  const response = await fetch("https://chainid.network/chains.json");
-  const chains = await response.json();
-
+  // const response = await fetch("https://chainid.network/chains.json");
+  // const chains = await response.json();
   // find chain with network id
-  const chain = chains.find((chain) => chain.chainId == window.web3ChainId);
+  // const chain = chains.find((chain) => chain.chainId == window.web3ChainId);
+  const chain =  {
+       "name":"MUD Testnet",
+       "chain":"MUD",
+       "icon":"ethereum",
+       "rpc":[
+          "https://follower.testnet-chain.linfra.xyz"
+       ],
+       "features":[
+          {
+             "name":"EIP155"
+          },
+          {
+             "name":"EIP1559"
+          }
+       ],
+       "faucets":[
+          'https://faucet.testnet-mud-services.linfra.xyz'
+       ],
+       "nativeCurrency":{
+          "name":"MUD",
+          "symbol":"MUD",
+          "decimals":18
+       },
+       "infoURL":"https://mud.dev",
+       "shortName":"mud",
+       "chainId":4242,
+       "networkId":4242,
+       "slip44":60,
+       "explorers":[
+          {
+             "name":"otterscan",
+             "url":"https://explorer.testnet-chain.linfra.xyz",
+             "standard":"EIP3091"
+          }
+       ]
+    }
 
   const params = {
     chainId: "0x" + chain.chainId.toString(16), // A 0x-prefixed hexadecimal string
