@@ -10,10 +10,9 @@ DAOSquad is a platform building on chain communities and games our 1st POC is DA
 
 Focused on creating a fun and interactive experience DAO Smack has the following features:
 
-- Users can create a games with a wager and generate a deck of random characters
-- Game can be joined by using the game id and accepting the wager, and creating a wager pool.
-- 6 turn game where each turn (transaction paid from wager pool) based on a players energy they can play cards from their deck on 1 of 3 locations.
-- Locations and charcaters have effects that augment the game play and randomness is introduced in the drawing of cards and revealing of locations.
+- Users can pick a squad and play a game agaisnst another address by giving them the game ID.
+- 6 turn game where each turn based on a players energy they can play cards from their deck on 1 of 3 locations.
+- Eandomness is introduced in the drawing of cards and revealing of locations.
 - In game audio and text chat, notifications, and livestreaming for friends and followers.
 - Users earn collectibles (characters, locations, game stream) for playing games and can use them to unlock access to different assets in the DAO baszed on their rank.
 
@@ -26,19 +25,20 @@ Focused on creating a fun and interactive experience DAO Smack has the following
 5. Users can earn collectibles (characters, locations) for playing games and can use them to create custom decks.
 6. Users can join one of 4 teams (Water, Earth, Fire, Air) and earn team collectibles for playing games.
 
-## Architecture
+## Architectures
 
 ### Game
 
 **MUD ECS (Entity Component System)**
 ![Game](Squad-archi.jpg)
-**Game Architecture **
-![DAO](DAO-archi1.jpg)
-
-### DAO
 
 **Arvhitecture**
 ![DAO](DAO-archi2.jpg)
+
+### DAO
+
+**Game Architecture **
+![DAO](DAO-archi1.jpg)
 
 # Deployments
 [Peoduction](https://daosmack.app[)
@@ -50,8 +50,11 @@ Focused on creating a fun and interactive experience DAO Smack has the following
 
 **Gameplay**
 
+- Add effect component for characters and locations to enhance the gameplay and make more dynamic
+- Introduce elements as a components based on squad and enable locations to be controlled by squads and benefit their squad
+- Make UI nore clean and introduce a mobile client for users to play
 - Add more characters and locations and make a more interactive UI.
-- Introduce another matrix to the game with a Risk like element.
+- Introduce another matrix to the game with a Risk like element where each game is a battle for an region of space.
 
 **Squad DAOs**
 
