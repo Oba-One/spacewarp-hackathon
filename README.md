@@ -41,29 +41,30 @@ Focused on creating a fun and interactive experience DAO Smack has the following
 ![DAO](DAO-archi2.jpg)
 
 # Deployments
+[Peoduction](https://daosmack.app[)
+[Development](https://daosmack.app)
 
+[Mud Faucet] 
 
 ## What's next?
-
-**Optimization**
 
 **Gameplay**
 
 - Add more characters and locations and make a more interactive UI.
 - Introduce another matrix to the game with a Risk like element.
 
-**TeamDAOs**
+**Squad DAOs**
 
-- Users can join one of 4 teams (Water, Earth, Fire, Air) and earn team tokens for playing games.
+- Users can join one of 4 squads (Water, Earth, Fire, Air) and earn team tokens for playing games.
 - Users rank is based on game results and mostly contribution to the DAOs deck.
-- Team DAO can be used to vote on team specific features and upgrades such as new characters, locations, and asset updates.
-- Teams can augment the game logic adding new components and systems controlled by the DAO and with access control for members
-- Users can have a part of their deck be made up from the team DAO deck.
-- Dashboard for viewing team stats compared to other teams. Along with how teammates rank against each other.
+- Squads can be used to vote on specific features and upgrades such as new characters, locations, and asset updates.
+- Squads can augment the game logic adding new components and systems controlled by the DAO and with access control for members
+- Users can have a part of their deck be made up from the squads deck.
+- Dashboard for viewing squad stats compared to other squads. Along with how squadmates rank against each other.
 
 **Marketplace**
 
-- Team/Users can trade characters and locations with each other.
+- Squad/Users can trade characters and locations with each other.
 - Hook into emerging game centric NFT marketplaces to enable users to seamlessly trade characters and locations.
 
 ## Getting Started
@@ -106,7 +107,7 @@ yarn dev
 
 ## Contact Information :
 
-You can contact the team on the address : contact@mudsnap.com
+You can contact the team on the address : contact@daosquad.dev
 
 ## Video Link :
 
