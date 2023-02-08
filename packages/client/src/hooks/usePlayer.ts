@@ -3,7 +3,10 @@ import { useForm } from "react-hook-form";
 import { useAccount, useConnect } from "wagmi";
 import { Client } from "@livepeer/webrtmp-sdk";
 import { useCreateStream, useUpdateStream } from "@livepeer/react";
-import { useRootStore } from "@huddle01/huddle01-client";
+import {
+  useRootStore,
+  setState as setHuddleState,
+} from "@huddle01/huddle01-client";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
 import { clientChains, huddleClient } from "../modules/clients";
@@ -17,7 +20,7 @@ type Status = "idle" | "connecting" | "connected" | "disconnecting";
 
 type ErrorStatus = "connect_wallet" | "invalid_game_code" | "default";
 
-const errorMsgs: Record<ErrorStatus, string> = {
+export const errorMsgs: Record<ErrorStatus, string> = {
   connect_wallet: "Please log into your Metamask or Browser wallet",
   invalid_game_code: "Invalid game code",
   default: "Issue connecting, please try again",
@@ -45,7 +48,6 @@ export const usePlayer = (
   setGameCode: (code: number) => void
 ) => {
   // LOCAL STATE
-  const [error, setError] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
   const [streamStatus, setStreamStatus] = useState<Status>("idle");
@@ -79,6 +81,7 @@ export const usePlayer = (
     state.displayName ? state.displayName : null
   );
   const isMicPaused = useRootStore((state) => state.isMicPaused ?? false);
+  const micState = useRootStore((state) => state.micState);
 
   // FORMS
   const connectForm = useForm<FormValues>({
@@ -99,7 +102,7 @@ export const usePlayer = (
       STREAM_ID ? liveStreamUpdate.mutate?.() : liveStream.mutate?.();
     } catch (error: any) {
       console.error("Error Starting Stream", error);
-      setError(error.message ?? "Issue starting stream, please try again");
+      // notify(error.message ?? "Issue starting stream, please try again");
     }
   }
 
@@ -112,7 +115,7 @@ export const usePlayer = (
       setStreamStatus("idle");
     } catch (error: any) {
       console.error("Error Stoping Stream", error);
-      setError(error.message ?? "Issue stopping stream, please try again");
+      // updateError(error.message ?? "Issue stopping stream, please try again");
     }
   }
 
@@ -132,10 +135,20 @@ export const usePlayer = (
         ens: `${values.name}.eth}`,
       });
 
-      const mics = (await navigator.mediaDevices.enumerateDevices()).filter(
-        (device) => device.kind === "audioinput"
-      );
+      setHuddleState({ displayName: values.name });
 
+      const mics = (await navigator.mediaDevices.enumerateDevices()).reduce(
+        (micsObj, device) => {
+          if (
+            device.kind === "audioinput" &&
+            !micsObj.find((mic) => mic.groupId === device.groupId)
+          )
+            micsObj.push(device);
+
+          return micsObj;
+        },
+        [] as MediaDeviceInfo[]
+      );
       setMics(mics);
 
       setStatus("connected");
@@ -154,7 +167,7 @@ export const usePlayer = (
         });
       }
 
-      setError(errorMsgs[errStatus]);
+      // updateError(errorMsgs[errStatus]);
       console.error("Error Connecting", error.message);
     }
   }
@@ -169,13 +182,13 @@ export const usePlayer = (
       setStatus("idle");
     } catch (error: any) {
       console.error("Error Disconnecting", error);
-      setError(error.message ?? "Issue disconnecting, please try again");
+      // updateError(error.message ?? "Issue disconnecting, please try again");
     }
   }
 
   useEffect(() => {
     if (liveStream.isError || liveStreamUpdate.isError) {
-      setError(liveStream.error?.message ?? "Issue starting stream");
+      // updateError(liveStream.error?.message ?? "Issue starting stream");
     }
 
     if (liveStream.isSuccess || liveStreamUpdate.isSuccess) {
@@ -225,13 +238,12 @@ export const usePlayer = (
   ]);
 
   return {
-    error,
     status,
     streamStatus,
     showSettings,
     setShowSettings,
     liveStream,
-    isMicPaused,
+    micState: { ...micState, isMicPaused },
     mics,
     huddleAvatar,
     huddleName,
