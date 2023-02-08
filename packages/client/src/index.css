@@ -78,6 +78,11 @@ iframe {
   block-size: auto;
 }
 
+@font-face {
+  font-family: "Bord";
+  src: url("./assets/Bord.ttf");
+}
+
 /* input {
   background-color: var(--page-color);
   color: var(--ink-color);
